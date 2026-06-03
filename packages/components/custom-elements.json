@@ -1,0 +1,520 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsButton",
+          "declaration": {
+            "name": "KdsButton",
+            "module": "./components/button/kds-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ButtonVariant",
+          "declaration": {
+            "name": "ButtonVariant",
+            "module": "./components/button/kds-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ButtonSize",
+          "declaration": {
+            "name": "ButtonSize",
+            "module": "./components/button/kds-button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "KdsInput",
+          "declaration": {
+            "name": "KdsInput",
+            "module": "./components/input/kds-input.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "InputType",
+          "declaration": {
+            "name": "InputType",
+            "module": "./components/input/kds-input.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "KdsCard",
+          "declaration": {
+            "name": "KdsCard",
+            "module": "./components/card/kds-card.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "KdsBadge",
+          "declaration": {
+            "name": "KdsBadge",
+            "module": "./components/badge/kds-badge.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BadgeVariant",
+          "declaration": {
+            "name": "BadgeVariant",
+            "module": "./components/badge/kds-badge.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/badge/kds-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsBadge",
+          "slots": [
+            {
+              "description": "Default slot: badge text content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; } span { display: inline-flex; align-items: center; font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-100); font-weight: var(--kds-font-weight-bold); line-height: var(--kds-font-line-height-small); white-space: nowrap; } :host(:not([variant])) span, :host([variant='default']) span { background-color: var(--kds-component-badge-default-bg); color: var(--kds-component-badge-default-text); border-radius: var(--kds-component-badge-default-radius); padding: var(--kds-component-badge-default-padding-y) var(--kds-component-badge-default-padding-x); } :host([variant='primary']) span { background-color: var(--kds-component-badge-primary-bg); color: var(--kds-component-badge-primary-text); border-radius: var(--kds-component-badge-primary-radius); padding: var(--kds-component-badge-primary-padding-y) var(--kds-component-badge-primary-padding-x); } :host([variant='danger']) span { background-color: var(--kds-component-badge-danger-bg); color: var(--kds-component-badge-danger-text); border-radius: var(--kds-component-badge-danger-radius); padding: var(--kds-component-badge-danger-padding-y) var(--kds-component-badge-danger-padding-x); } :host([variant='warning']) span { background-color: var(--kds-component-badge-warning-bg); color: var(--kds-component-badge-warning-text); border-radius: var(--kds-component-badge-warning-radius); padding: var(--kds-component-badge-warning-padding-y) var(--kds-component-badge-warning-padding-x); } :host([variant='success']) span { background-color: var(--kds-component-badge-success-bg); color: var(--kds-component-badge-success-text); border-radius: var(--kds-component-badge-success-radius); padding: var(--kds-component-badge-success-padding-y) var(--kds-component-badge-success-padding-x); } `"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "'default'"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "default|primary|danger|warning|success"
+              },
+              "description": "Visual style variant",
+              "name": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-badge",
+          "customElement": true,
+          "summary": "Small status label for categorization or state indication."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsBadge",
+          "declaration": {
+            "name": "KdsBadge",
+            "module": "src/components/badge/kds-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/card/kds-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsCard",
+          "slots": [
+            {
+              "description": "Default slot: card content",
+              "name": ""
+            },
+            {
+              "description": "Optional card header area",
+              "name": "header"
+            },
+            {
+              "description": "Optional card footer area",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } .card { background-color: var(--kds-component-card-bg); border: 1px solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--kds-component-card-shadow); overflow: hidden; } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; } :host([interactive]) .card:hover { background-color: var(--kds-component-card-bg-hover); border-color: var(--kds-component-card-border-hover); box-shadow: var(--kds-component-card-shadow-hover); } .header { padding: var(--kds-component-card-padding); border-bottom: 1px solid var(--kds-component-card-border); } .header:empty { display: none; } .body { padding: var(--kds-component-card-padding); } .footer { padding: var(--kds-component-card-padding); border-top: 1px solid var(--kds-component-card-border); } .footer:empty { display: none; } `"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When set, the card shows hover styles (use for clickable cards)",
+              "name": "interactive"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-card",
+          "customElement": true,
+          "summary": "Surface container for grouping related content."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsCard",
+          "declaration": {
+            "name": "KdsCard",
+            "module": "src/components/card/kds-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/input/kds-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: 1px solid var(--kds-component-input-border); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } input:hover:not(:disabled) { border-color: var(--kds-component-input-border-hover); } input:focus { border-color: var(--kds-component-input-border-focus); box-shadow: 0 0 0 3px var(--kds-component-input-ring-focus); } input:disabled { background-color: var(--kds-component-input-bg-disabled); border-color: var(--kds-component-input-border-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } :host([error]) input { border-color: var(--kds-component-input-border-error); } :host([error]) input:focus { box-shadow: 0 0 0 3px var(--kds-component-input-ring-error); } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "InputType"
+              },
+              "default": "'text'"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_inputId",
+              "privacy": "private",
+              "default": "`kds-input-${Math.random().toString(36).slice(2, 9)}`"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-input",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible label text",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Current value",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text",
+              "name": "placeholder"
+            },
+            {
+              "type": {
+                "text": "text|email|password|number|search|tel|url"
+              },
+              "description": "Input type",
+              "name": "type"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Helper text displayed below the input",
+              "name": "helper"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message. When set, puts the input in error state.",
+              "name": "error"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the input",
+              "name": "disabled"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Marks the input as required",
+              "name": "required"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-input",
+          "customElement": true,
+          "summary": "Text input field. Always use this instead of a raw <input> with manual styling."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsInput",
+          "declaration": {
+            "name": "KdsInput",
+            "module": "src/components/input/kds-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/kds-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsButton",
+          "slots": [
+            {
+              "description": "Default slot: button label text",
+              "name": ""
+            },
+            {
+              "description": "Icon slot before the label",
+              "name": "start"
+            },
+            {
+              "description": "Icon slot after the label",
+              "name": "end"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; } button { display: inline-flex; align-items: center; gap: var(--kds-size-200); font-family: var(--kds-font-family-label); font-weight: var(--kds-font-weight-bold); font-size: var(--kds-font-size-200); line-height: var(--kds-font-line-height-small); cursor: pointer; border: 1px solid; transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; text-decoration: none; white-space: nowrap; } button:focus-visible { outline: none; } /* === PRIMARY === */ :host(:not([variant])) button, :host([variant='primary']) button { background-color: var(--kds-component-button-primary-bg); color: var(--kds-component-button-primary-text); border-color: var(--kds-component-button-primary-border); border-radius: var(--kds-component-button-primary-radius); padding: var(--kds-component-button-primary-padding-y) var(--kds-component-button-primary-padding-x); } :host(:not([variant])) button:hover:not(:disabled), :host([variant='primary']) button:hover:not(:disabled) { background-color: var(--kds-component-button-primary-bg-hover); border-color: var(--kds-component-button-primary-border-hover); } :host(:not([variant])) button:active:not(:disabled), :host([variant='primary']) button:active:not(:disabled) { background-color: var(--kds-component-button-primary-bg-active); } :host(:not([variant])) button:focus-visible, :host([variant='primary']) button:focus-visible { border-color: var(--kds-component-button-primary-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-primary-ring-focus); } :host(:not([variant])) button:disabled, :host([variant='primary']) button:disabled { background-color: var(--kds-component-button-primary-bg-disabled); border-color: var(--kds-component-button-primary-border-disabled); color: var(--kds-component-button-primary-text-disabled); cursor: not-allowed; } /* === SECONDARY === */ :host([variant='secondary']) button { background-color: var(--kds-component-button-secondary-bg); color: var(--kds-component-button-secondary-text); border-color: var(--kds-component-button-secondary-border); border-radius: var(--kds-component-button-secondary-radius); padding: var(--kds-component-button-secondary-padding-y) var(--kds-component-button-secondary-padding-x); } :host([variant='secondary']) button:hover:not(:disabled) { background-color: var(--kds-component-button-secondary-bg-hover); border-color: var(--kds-component-button-secondary-border-hover); } :host([variant='secondary']) button:active:not(:disabled) { background-color: var(--kds-component-button-secondary-bg-active); } :host([variant='secondary']) button:focus-visible { border-color: var(--kds-component-button-secondary-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-secondary-ring-focus); } :host([variant='secondary']) button:disabled { background-color: var(--kds-component-button-secondary-bg-disabled); border-color: var(--kds-component-button-secondary-border-disabled); color: var(--kds-component-button-secondary-text-disabled); cursor: not-allowed; } /* === DANGER === */ :host([variant='danger']) button { background-color: var(--kds-component-button-danger-bg); color: var(--kds-component-button-danger-text); border-color: var(--kds-component-button-danger-border); border-radius: var(--kds-component-button-danger-radius); padding: var(--kds-component-button-danger-padding-y) var(--kds-component-button-danger-padding-x); } :host([variant='danger']) button:hover:not(:disabled) { background-color: var(--kds-component-button-danger-bg-hover); border-color: var(--kds-component-button-danger-border-hover); } :host([variant='danger']) button:active:not(:disabled) { background-color: var(--kds-component-button-danger-bg-active); } :host([variant='danger']) button:focus-visible { border-color: var(--kds-component-button-danger-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-danger-ring-focus); } :host([variant='danger']) button:disabled { background-color: var(--kds-component-button-danger-bg-disabled); border-color: var(--kds-component-button-danger-border-disabled); color: var(--kds-component-button-danger-text-disabled); cursor: not-allowed; } /* === GHOST === */ :host([variant='ghost']) button { background-color: var(--kds-component-button-ghost-bg); color: var(--kds-component-button-ghost-text); border-color: var(--kds-component-button-ghost-border); border-radius: var(--kds-component-button-ghost-radius); padding: var(--kds-component-button-ghost-padding-y) var(--kds-component-button-ghost-padding-x); } :host([variant='ghost']) button:hover:not(:disabled) { background-color: var(--kds-component-button-ghost-bg-hover); } :host([variant='ghost']) button:active:not(:disabled) { background-color: var(--kds-component-button-ghost-bg-active); } :host([variant='ghost']) button:focus-visible { border-color: var(--kds-component-button-ghost-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-ghost-ring-focus); } :host([variant='ghost']) button:disabled { color: var(--kds-component-button-ghost-text-disabled); cursor: not-allowed; } /* === SIZES === */ :host([size='sm']) button { font-size: var(--kds-font-size-100); padding: var(--kds-size-100) var(--kds-size-300); } :host([size='lg']) button { font-size: var(--kds-font-size-300); padding: var(--kds-size-300) var(--kds-size-600); } `"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "default": "'primary'"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "default": "'md'"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "primary|secondary|danger|ghost"
+              },
+              "description": "Visual style variant",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "sm|md|lg"
+              },
+              "description": "Size variant",
+              "name": "size"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the button",
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-button",
+          "customElement": true,
+          "summary": "Trigger actions or navigate. Always use this instead of a native <button> with manual styling."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsButton",
+          "declaration": {
+            "name": "KdsButton",
+            "module": "src/components/button/kds-button.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

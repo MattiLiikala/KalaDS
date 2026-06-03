@@ -1,0 +1,11 @@
+{
+  "semantic": {
+    "radius": {
+      "none":  { "$type": "dimension", "$value": "{size.0}" },
+      "sm":    { "$type": "dimension", "$value": "{size.100}" },
+      "md":    { "$type": "dimension", "$value": "{size.200}" },
+      "lg":    { "$type": "dimension", "$value": "{size.400}" },
+      "full":  { "$type": "dimension", "$value": "9999px" }
+    }
+  }
+}

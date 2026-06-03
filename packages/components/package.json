@@ -1,0 +1,28 @@
+{
+  "name": "@kalads/components",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./custom-elements.json": "./custom-elements.json"
+  },
+  "types": "dist/index.d.ts",
+  "customElements": "custom-elements.json",
+  "scripts": {
+    "build": "vite build && cem analyze --globs \"src/**/*.ts\" --outdir .",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist custom-elements.json"
+  },
+  "dependencies": {
+    "@kalads/icons": "workspace:*",
+    "@kalads/tokens": "workspace:*",
+    "lit": "^3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.11.0",
+    "glob": "^11.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^6.3.5"
+  }
+}

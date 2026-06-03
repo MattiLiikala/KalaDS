@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Icons/All Icons" />
+
+# Icons
+
+Icons are web components from `@kalads/icons`. Each icon is a custom element with `<kds-icon-*>` prefix.
+
+**Rules:**
+- Always use `<kds-icon-*>` — never inline `<svg>` or use image files for icons
+- Set size via `--kds-icon-size` CSS custom property (default: 1.5rem)
+- Color is inherited from `currentColor` — set it on the parent element
+
+```html
+<!-- Basic usage -->
+<kds-icon-arrow-left label="Go back"></kds-icon-arrow-left>
+
+<!-- With custom size -->
+<kds-icon-search style="--kds-icon-size: 1rem;"></kds-icon-search>
+
+<!-- Inside a button (color inherited) -->
+<kds-button variant="primary">
+  <kds-icon-plus slot="start" label="Add"></kds-icon-plus>
+  Add item
+</kds-button>
+```
+
+---
+
+## Available Icons
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '1.5rem', padding: '1.5rem 0'}}>
+  {[
+    'arrow-left', 'arrow-right', 'chevron-down', 'chevron-up',
+    'check', 'close', 'search', 'info', 'warning', 'plus'
+  ].map(name => (
+    <div key={name} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', padding: '1rem', border: '1px solid var(--kds-color-neutral-300)', borderRadius: 'var(--kds-semantic-radius-md)'}}>
+      <div dangerouslySetInnerHTML={{ __html: `<kds-icon-${name} style="--kds-icon-size: 2rem;" label="${name}"></kds-icon-${name}>` }} />
+      <code style={{fontSize: '11px', color: 'var(--kds-semantic-text-subtle)'}}>{`kds-icon-${name}`}</code>
+    </div>
+  ))}
+</div>
+
+---
+
+## Adding New Icons
+
+1. Place an SVG file in `packages/icons/src/svgs/<name>.svg`
+2. Run `pnpm --filter @kalads/icons build`
+3. The element `<kds-icon-<name>>` is automatically generated
+
+SVG files should not contain `fill`, `stroke`, `width`, or `height` attributes — the build script removes them so icons inherit `currentColor`.

@@ -1,0 +1,64 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Design Tokens/Typography" />
+
+# Typography Tokens
+
+Two font families are used across the design system:
+
+- **Overlock** — `font.family.heading` / `font.family.base` — used for headings and body text
+- **Parkinsans** — `font.family.label` / `font.family.section` — used for labels, section titles, and UI controls
+
+---
+
+## Font Families
+
+| Token | CSS Var | Value |
+|---|---|---|
+| `font.family.heading` | `--kds-font-family-heading` | 'Overlock', serif |
+| `font.family.base` | `--kds-font-family-base` | 'Overlock', serif |
+| `font.family.label` | `--kds-font-family-label` | 'Parkinsans', sans-serif |
+| `font.family.section` | `--kds-font-family-section` | 'Parkinsans', sans-serif |
+
+---
+
+## Font Sizes
+
+All sizes use `rem` based on the 16px root value.
+
+| Token | CSS Var | Size |
+|---|---|---|
+| `font.size.100` | `--kds-font-size-100` | 12px (0.75rem) |
+| `font.size.200` | `--kds-font-size-200` | 14px (0.875rem) |
+| `font.size.300` | `--kds-font-size-300` | 16px (1rem) |
+| `font.size.400` | `--kds-font-size-400` | 20px (1.25rem) |
+| `font.size.500` | `--kds-font-size-500` | 24px (1.5rem) |
+| `font.size.600` | `--kds-font-size-600` | 32px (2rem) |
+| `font.size.700` | `--kds-font-size-700` | 40px (2.5rem) |
+
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32, 40]}
+  fontWeight={400}
+  sampleText="The quick brown fox"
+  fontFamily="'Overlock', serif"
+/>
+
+---
+
+## Font Weights
+
+| Token | CSS Var | Value |
+|---|---|---|
+| `font.weight.light` | `--kds-font-weight-light` | 300 |
+| `font.weight.normal` | `--kds-font-weight-normal` | 400 |
+| `font.weight.bold` | `--kds-font-weight-bold` | 700 |
+
+---
+
+## Line Heights
+
+| Token | CSS Var | Value |
+|---|---|---|
+| `font.lineHeight.small` | `--kds-font-line-height-small` | 1.2 |
+| `font.lineHeight.medium` | `--kds-font-line-height-medium` | 1.5 |
+| `font.lineHeight.large` | `--kds-font-line-height-large` | 1.8 |

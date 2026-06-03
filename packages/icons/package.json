@@ -1,0 +1,28 @@
+{
+  "name": "@kalads/icons",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/components/*.js"
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "node scripts/build-icons.mjs",
+    "build": "tsc --project tsconfig.json",
+    "dev": "node scripts/build-icons.mjs --watch",
+    "clean": "rm -rf dist src/components src/index.ts"
+  },
+  "dependencies": {
+    "lit": "^3.3.3"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.0",
+    "glob": "^11.0.0",
+    "svgo": "^4.0.1",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@kalads/tokens": "workspace:*"
+  }
+}

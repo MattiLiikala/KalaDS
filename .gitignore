@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.turbo/
+storybook-static/
+*.tsbuildinfo
+.DS_Store
+packages/icons/src/components/
+packages/icons/src/index.ts

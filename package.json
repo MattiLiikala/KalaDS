@@ -1,0 +1,25 @@
+{
+  "name": "kalads",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "storybook": "turbo run storybook",
+    "build:storybook": "turbo run build:storybook",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,json,css,md,mdx}\"",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3",
+    "turbo": "^2.9.16",
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

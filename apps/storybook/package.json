@@ -1,0 +1,25 @@
+{
+  "name": "@kalads/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build",
+    "clean": "rm -rf storybook-static"
+  },
+  "dependencies": {
+    "@kalads/components": "workspace:*",
+    "@kalads/icons": "workspace:*",
+    "@kalads/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/addon-themes": "^8.6.18",
+    "@storybook/blocks": "^8.6.18",
+    "@storybook/web-components": "^8.6.18",
+    "@storybook/web-components-vite": "^8.6.18",
+    "lit": "^3.3.3",
+    "storybook": "^8.6.18",
+    "vite": "^6.3.5"
+  }
+}

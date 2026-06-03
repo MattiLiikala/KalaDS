@@ -1,0 +1,9 @@
+{
+  "semantic": {
+    "font": {
+      "heading":  { "$type": "fontFamily", "$value": "{font.family.heading}" },
+      "body":     { "$type": "fontFamily", "$value": "{font.family.base}" },
+      "ui":       { "$type": "fontFamily", "$value": "{font.family.label}" }
+    }
+  }
+}

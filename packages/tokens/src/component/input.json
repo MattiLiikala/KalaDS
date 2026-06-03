@@ -1,0 +1,24 @@
+{
+  "component": {
+    "input": {
+      "bg":              { "$type": "color",     "$value": "{semantic.bg.default}" },
+      "bg-disabled":     { "$type": "color",     "$value": "{semantic.bg.subtle}" },
+      "text":            { "$type": "color",     "$value": "{semantic.text.default}" },
+      "text-placeholder":{ "$type": "color",     "$value": "{semantic.text.muted}" },
+      "text-disabled":   { "$type": "color",     "$value": "{semantic.text.muted}" },
+      "border":          { "$type": "color",     "$value": "{semantic.border.default}" },
+      "border-hover":    { "$type": "color",     "$value": "{semantic.border.strong}" },
+      "border-focus":    { "$type": "color",     "$value": "{color.primary.500}" },
+      "border-error":    { "$type": "color",     "$value": "{color.danger.500}" },
+      "border-disabled": { "$type": "color",     "$value": "{color.neutral.200}" },
+      "ring-focus":      { "$type": "color",     "$value": "{color.primary.200}" },
+      "ring-error":      { "$type": "color",     "$value": "{color.danger.200}" },
+      "radius":          { "$type": "dimension", "$value": "{semantic.radius.md}" },
+      "padding-x":       { "$type": "dimension", "$value": "{semantic.padding.md}" },
+      "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+      "label-text":      { "$type": "color",     "$value": "{semantic.text.default}" },
+      "helper-text":     { "$type": "color",     "$value": "{semantic.text.subtle}" },
+      "error-text":      { "$type": "color",     "$value": "{color.danger.600}" }
+    }
+  }
+}

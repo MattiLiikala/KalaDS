@@ -1,0 +1,31 @@
+{
+  "semantic": {
+    "bg": {
+      "default":  { "$type": "color", "$value": "{color.neutral.100}" },
+      "subtle":   { "$type": "color", "$value": "{color.neutral.200}" },
+      "muted":    { "$type": "color", "$value": "{color.neutral.300}" },
+      "inverse":  { "$type": "color", "$value": "{color.neutral.900}" }
+    },
+    "text": {
+      "default":  { "$type": "color", "$value": "{color.neutral.900}" },
+      "subtle":   { "$type": "color", "$value": "{color.neutral.600}" },
+      "muted":    { "$type": "color", "$value": "{color.neutral.500}" },
+      "inverse":  { "$type": "color", "$value": "{color.neutral.100}" },
+      "brand":    { "$type": "color", "$value": "{color.primary.500}" }
+    },
+    "border": {
+      "default":  { "$type": "color", "$value": "{color.neutral.300}" },
+      "subtle":   { "$type": "color", "$value": "{color.neutral.200}" },
+      "strong":   { "$type": "color", "$value": "{color.neutral.500}" }
+    },
+    "status": {
+      "danger":   { "$type": "color", "$value": "{color.danger.500}" },
+      "warning":  { "$type": "color", "$value": "{color.warning.500}" },
+      "success":  { "$type": "color", "$value": "{color.success.500}" },
+      "info":     { "$type": "color", "$value": "{color.primary.500}" }
+    },
+    "interactive": {
+      "focus":    { "$type": "color", "$value": "{color.primary.300}" }
+    }
+  }
+}

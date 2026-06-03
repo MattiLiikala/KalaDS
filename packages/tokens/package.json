@@ -1,0 +1,19 @@
+{
+  "name": "@kalads/tokens",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./css": "./dist/css/variables.css",
+    "./js": "./dist/js/tokens.js",
+    "./json": "./dist/json/tokens.json"
+  },
+  "scripts": {
+    "build": "node sd.config.mjs",
+    "dev": "node sd.config.mjs --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.0",
+    "style-dictionary": "^4.4.0"
+  }
+}
