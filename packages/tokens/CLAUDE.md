@@ -6,7 +6,7 @@
 Layer 1 → Core (primitive, raw values, no references)
   src/core/colors.json       — color palettes (primary, secondary, neutral, danger, warning, success, data1-10)
   src/core/typography.json   — font families, weights, line-heights, sizes
-  src/core/size.json         — spacing scale (size.0 through size.900)
+  src/core/size.json         — size scale (size.0 through size.900); every step has .rem and .px values
 
 Layer 2 → Semantic (references Core only)
   src/semantic/color.json    — bg/text/border/status semantic aliases
@@ -14,6 +14,7 @@ Layer 2 → Semantic (references Core only)
   src/semantic/spacing.json  — spacing.none/xs/sm/md/lg/xl/2xl
   src/semantic/radius.json   — radius.none/sm/md/lg/full
   src/semantic/padding.json  — padding.xs/sm/md/lg/xl
+  src/semantic/border-width.json — border-width.default/focus (uses the size .px values)
 
 Layer 3 → Component (references Semantic only, never Core directly)
   src/component/button.json

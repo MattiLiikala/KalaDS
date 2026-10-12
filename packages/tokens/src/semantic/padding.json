@@ -1,11 +1,11 @@
 {
   "semantic": {
     "padding": {
-      "xs":  { "$type": "dimension", "$value": "{size.100}" },
-      "sm":  { "$type": "dimension", "$value": "{size.200}" },
-      "md":  { "$type": "dimension", "$value": "{size.300}" },
-      "lg":  { "$type": "dimension", "$value": "{size.400}" },
-      "xl":  { "$type": "dimension", "$value": "{size.500}" }
+      "xs":  { "$type": "dimension", "$value": "{size.100.rem}" },
+      "sm":  { "$type": "dimension", "$value": "{size.200.rem}" },
+      "md":  { "$type": "dimension", "$value": "{size.300.rem}" },
+      "lg":  { "$type": "dimension", "$value": "{size.400.rem}" },
+      "xl":  { "$type": "dimension", "$value": "{size.500.rem}" }
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "semantic": {
+    "border-width": {
+      "default": { "$type": "dimension", "$value": "{size.25.px}" },
+      "focus":   { "$type": "dimension", "$value": "{size.50.px}" }
+    }
+  }
+}

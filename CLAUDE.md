@@ -68,6 +68,13 @@ font-size: var(--kds-font-size-200);
    - Component tokens in `packages/tokens/src/component/<name>.json`
    - A Storybook story in `apps/storybook/src/stories/components/`
 
+**7. Never place a solid button (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with its fill.**
+Solid buttons render their label as knockout text cut out of the fill, so the label *is* the surface colour.
+The surface behind the button must have at least 4.5:1 contrast with the button fill in every state
+(`bg`, `bg-hover`, `bg-active`). On inverse surfaces (`var(--kds-semantic-bg-inverse)`) always add the `on-inverse` attribute:
+`<kds-button variant="primary" on-inverse>`. Never put solid buttons on images, gradients or surfaces close to
+the button colour. See the contrast tables in the Button story.
+
 ### ALWAYS do these things:
 
 **1. Use semantic tokens for layout:**

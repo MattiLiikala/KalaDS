@@ -5,14 +5,34 @@ import { Meta } from '@storybook/blocks';
 # Spacing & Size Tokens
 
 All spacing is based on a **16px root** scale. Core size tokens are mapped to semantic names for
-spacing, padding, and border-radius.
+spacing, padding, border-radius and border width.
 
 ---
 
 ## Core Size Scale
 
-| Token | CSS Var | Value |
-|---|---|---|
+Every step has a **rem** and a **px** value. Use rem for anything that should scale with the user's font
+size (spacing, padding, radius). Use px where the size must stay fixed, such as border widths.
+
+| Token | CSS Vars | rem | px |
+|---|---|---|---|
+| `size.0` | `--kds-size-0-rem` / `--kds-size-0-px` | 0rem | 0px |
+| `size.25` | `--kds-size-25-rem` / `--kds-size-25-px` | 0.063rem | 1px |
+| `size.50` | `--kds-size-50-rem` / `--kds-size-50-px` | 0.094rem | 1.5px |
+| `size.75` | `--kds-size-75-rem` / `--kds-size-75-px` | 0.125rem | 2px |
+| `size.100` | `--kds-size-100-rem` / `--kds-size-100-px` | 0.25rem | 4px |
+| `size.200` | `--kds-size-200-rem` / `--kds-size-200-px` | 0.5rem | 8px |
+| `size.300` | `--kds-size-300-rem` / `--kds-size-300-px` | 0.75rem | 12px |
+| `size.400` | `--kds-size-400-rem` / `--kds-size-400-px` | 1rem | 16px |
+| `size.500` | `--kds-size-500-rem` / `--kds-size-500-px` | 1.5rem | 24px |
+| `size.600` | `--kds-size-600-rem` / `--kds-size-600-px` | 2rem | 32px |
+| `size.700` | `--kds-size-700-rem` / `--kds-size-700-px` | 3rem | 48px |
+| `size.800` | `--kds-size-800-rem` / `--kds-size-800-px` | 4rem | 64px |
+| `size.900` | `--kds-size-900-rem` / `--kds-size-900-px` | 6rem | 96px |
+
+The 25, 50 and 75 steps are for hairline sizes (borders).
+
+---|---|---|
 | `size.0` | `--kds-size-0` | 0rem |
 | `size.100` | `--kds-size-100` | 4px (0.25rem) |
 | `size.200` | `--kds-size-200` | 8px (0.5rem) |
@@ -32,13 +52,13 @@ Use these for **margins, gaps, and layout spacing**:
 
 | Token | CSS Var | Core Alias |
 |---|---|---|
-| `semantic.spacing.none` | `--kds-semantic-spacing-none` | size.0 |
-| `semantic.spacing.xs` | `--kds-semantic-spacing-xs` | size.100 (4px) |
-| `semantic.spacing.sm` | `--kds-semantic-spacing-sm` | size.200 (8px) |
-| `semantic.spacing.md` | `--kds-semantic-spacing-md` | size.400 (16px) |
-| `semantic.spacing.lg` | `--kds-semantic-spacing-lg` | size.500 (24px) |
-| `semantic.spacing.xl` | `--kds-semantic-spacing-xl` | size.600 (32px) |
-| `semantic.spacing.2xl` | `--kds-semantic-spacing-2xl` | size.700 (48px) |
+| `semantic.spacing.none` | `--kds-semantic-spacing-none` | size.0.rem |
+| `semantic.spacing.xs` | `--kds-semantic-spacing-xs` | size.100.rem (4px) |
+| `semantic.spacing.sm` | `--kds-semantic-spacing-sm` | size.200.rem (8px) |
+| `semantic.spacing.md` | `--kds-semantic-spacing-md` | size.400.rem (16px) |
+| `semantic.spacing.lg` | `--kds-semantic-spacing-lg` | size.500.rem (24px) |
+| `semantic.spacing.xl` | `--kds-semantic-spacing-xl` | size.600.rem (32px) |
+| `semantic.spacing.2xl` | `--kds-semantic-spacing-2xl` | size.700.rem (48px) |
 
 ---
 
@@ -48,11 +68,11 @@ Use these for **component internal padding**:
 
 | Token | CSS Var | Core Alias |
 |---|---|---|
-| `semantic.padding.xs` | `--kds-semantic-padding-xs` | size.100 (4px) |
-| `semantic.padding.sm` | `--kds-semantic-padding-sm` | size.200 (8px) |
-| `semantic.padding.md` | `--kds-semantic-padding-md` | size.300 (12px) |
-| `semantic.padding.lg` | `--kds-semantic-padding-lg` | size.400 (16px) |
-| `semantic.padding.xl` | `--kds-semantic-padding-xl` | size.500 (24px) |
+| `semantic.padding.xs` | `--kds-semantic-padding-xs` | size.100.rem (4px) |
+| `semantic.padding.sm` | `--kds-semantic-padding-sm` | size.200.rem (8px) |
+| `semantic.padding.md` | `--kds-semantic-padding-md` | size.300.rem (12px) |
+| `semantic.padding.lg` | `--kds-semantic-padding-lg` | size.400.rem (16px) |
+| `semantic.padding.xl` | `--kds-semantic-padding-xl` | size.500.rem (24px) |
 
 ---
 
@@ -67,3 +87,14 @@ Use these for **border-radius**:
 | `semantic.radius.md` | `--kds-semantic-radius-md` | 8px |
 | `semantic.radius.lg` | `--kds-semantic-radius-lg` | 16px |
 | `semantic.radius.full` | `--kds-semantic-radius-full` | 9999px |
+
+---
+
+## Semantic Border Width
+
+Border widths use the **px** values, so borders stay crisp and don't grow with the user's font size:
+
+| Token | CSS Var | Value |
+|---|---|---|
+| `semantic.border-width.default` | `--kds-semantic-border-width-default` | size.25.px (1px) |
+| `semantic.border-width.focus` | `--kds-semantic-border-width-focus` | size.50.px (1.5px) |

@@ -13,6 +13,8 @@
     "@kalads/tokens": "workspace:*"
   },
   "devDependencies": {
+    "@fontsource/overlock": "^5.3.0",
+    "@fontsource/parkinsans": "^5.3.0",
     "@storybook/addon-essentials": "^8.6.18",
     "@storybook/addon-themes": "^8.6.18",
     "@storybook/blocks": "^8.6.18",

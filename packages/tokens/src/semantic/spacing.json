@@ -1,13 +1,13 @@
 {
   "semantic": {
     "spacing": {
-      "none": { "$type": "dimension", "$value": "{size.0}" },
-      "xs":   { "$type": "dimension", "$value": "{size.100}" },
-      "sm":   { "$type": "dimension", "$value": "{size.200}" },
-      "md":   { "$type": "dimension", "$value": "{size.400}" },
-      "lg":   { "$type": "dimension", "$value": "{size.500}" },
-      "xl":   { "$type": "dimension", "$value": "{size.600}" },
-      "2xl":  { "$type": "dimension", "$value": "{size.700}" }
+      "none": { "$type": "dimension", "$value": "{size.0.rem}" },
+      "xs":   { "$type": "dimension", "$value": "{size.100.rem}" },
+      "sm":   { "$type": "dimension", "$value": "{size.200.rem}" },
+      "md":   { "$type": "dimension", "$value": "{size.400.rem}" },
+      "lg":   { "$type": "dimension", "$value": "{size.500.rem}" },
+      "xl":   { "$type": "dimension", "$value": "{size.600.rem}" },
+      "2xl":  { "$type": "dimension", "$value": "{size.700.rem}" }
     }
   }
 }
