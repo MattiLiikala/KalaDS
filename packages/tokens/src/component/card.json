@@ -4,11 +4,14 @@
       "bg":            { "$type": "color",     "$value": "{semantic.bg.default}" },
       "bg-hover":      { "$type": "color",     "$value": "{semantic.bg.subtle}" },
       "border":        { "$type": "color",     "$value": "{semantic.border.default}" },
-      "border-hover":  { "$type": "color",     "$value": "{semantic.border.strong}" },
+      "border-width":  { "$type": "dimension", "$value": "{semantic.border-width.default}" },
       "radius":        { "$type": "dimension", "$value": "{semantic.radius.lg}" },
       "padding":       { "$type": "dimension", "$value": "{semantic.padding.xl}" },
-      "shadow":        { "$type": "shadow",    "$value": { "offsetX": "0", "offsetY": "1px", "blur": "3px", "spread": "0", "color": "rgba(0,0,0,0.1)" } },
-      "shadow-hover":  { "$type": "shadow",    "$value": { "offsetX": "0", "offsetY": "4px", "blur": "12px", "spread": "0", "color": "rgba(0,0,0,0.15)" } }
+      "gap":           { "$type": "dimension", "$value": "{semantic.spacing.md}" },
+      "shadow":        { "$type": "shadow",    "$value": { "offsetX": "{semantic.spacing.sm}", "offsetY": "{semantic.spacing.sm}", "blur": "0", "spread": "0", "color": "{semantic.shadow.default}" } },
+      "shadow-hover":  { "$type": "shadow",    "$value": { "offsetX": "0", "offsetY": "0", "blur": "0", "spread": "0", "color": "{semantic.shadow.default}" } },
+      "offset-x-hover": { "$type": "dimension", "$value": "{semantic.spacing.sm}" },
+      "offset-y-hover": { "$type": "dimension", "$value": "{semantic.spacing.sm}" }
     }
   }
 }

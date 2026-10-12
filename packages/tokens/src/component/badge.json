@@ -2,39 +2,44 @@
   "component": {
     "badge": {
       "default": {
-        "bg":     { "$type": "color",     "$value": "{color.neutral.200}" },
-        "text":   { "$type": "color",     "$value": "{semantic.text.default}" },
-        "radius": { "$type": "dimension", "$value": "{semantic.radius.full}" },
-        "padding-x": { "$type": "dimension", "$value": "{semantic.padding.sm}" },
-        "padding-y": { "$type": "dimension", "$value": "{semantic.padding.xs}" }
+        "text":         { "$type": "color",     "$value": "{semantic.text.default}" },
+        "border":       { "$type": "color",     "$value": "{component.badge.default.text}" },
+        "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
+        "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+        "padding-x":    { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+        "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "primary": {
-        "bg":     { "$type": "color",     "$value": "{color.primary.100}" },
-        "text":   { "$type": "color",     "$value": "{color.primary.700}" },
-        "radius": { "$type": "dimension", "$value": "{semantic.radius.full}" },
-        "padding-x": { "$type": "dimension", "$value": "{semantic.padding.sm}" },
-        "padding-y": { "$type": "dimension", "$value": "{semantic.padding.xs}" }
+        "text":         { "$type": "color",     "$value": "{color.primary.700}" },
+        "border":       { "$type": "color",     "$value": "{component.badge.primary.text}" },
+        "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
+        "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+        "padding-x":    { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+        "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "danger": {
-        "bg":     { "$type": "color",     "$value": "{color.danger.100}" },
-        "text":   { "$type": "color",     "$value": "{color.danger.700}" },
-        "radius": { "$type": "dimension", "$value": "{semantic.radius.full}" },
-        "padding-x": { "$type": "dimension", "$value": "{semantic.padding.sm}" },
-        "padding-y": { "$type": "dimension", "$value": "{semantic.padding.xs}" }
+        "text":         { "$type": "color",     "$value": "{color.danger.700}" },
+        "border":       { "$type": "color",     "$value": "{component.badge.danger.text}" },
+        "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
+        "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+        "padding-x":    { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+        "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "warning": {
-        "bg":     { "$type": "color",     "$value": "{color.warning.100}" },
-        "text":   { "$type": "color",     "$value": "{color.warning.700}" },
-        "radius": { "$type": "dimension", "$value": "{semantic.radius.full}" },
-        "padding-x": { "$type": "dimension", "$value": "{semantic.padding.sm}" },
-        "padding-y": { "$type": "dimension", "$value": "{semantic.padding.xs}" }
+        "text":         { "$type": "color",     "$value": "{color.warning.700}" },
+        "border":       { "$type": "color",     "$value": "{component.badge.warning.text}" },
+        "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
+        "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+        "padding-x":    { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+        "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "success": {
-        "bg":     { "$type": "color",     "$value": "{color.success.100}" },
-        "text":   { "$type": "color",     "$value": "{color.success.700}" },
-        "radius": { "$type": "dimension", "$value": "{semantic.radius.full}" },
-        "padding-x": { "$type": "dimension", "$value": "{semantic.padding.sm}" },
-        "padding-y": { "$type": "dimension", "$value": "{semantic.padding.xs}" }
+        "text":         { "$type": "color",     "$value": "{color.success.700}" },
+        "border":       { "$type": "color",     "$value": "{component.badge.success.text}" },
+        "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
+        "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+        "padding-x":    { "$type": "dimension", "$value": "{semantic.padding.sm}" },
+        "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       }
     }
   }

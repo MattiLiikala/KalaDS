@@ -92,7 +92,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: inline-flex; } span { display: inline-flex; align-items: center; font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-100); font-weight: var(--kds-font-weight-bold); line-height: var(--kds-font-line-height-small); white-space: nowrap; } :host(:not([variant])) span, :host([variant='default']) span { background-color: var(--kds-component-badge-default-bg); color: var(--kds-component-badge-default-text); border-radius: var(--kds-component-badge-default-radius); padding: var(--kds-component-badge-default-padding-y) var(--kds-component-badge-default-padding-x); } :host([variant='primary']) span { background-color: var(--kds-component-badge-primary-bg); color: var(--kds-component-badge-primary-text); border-radius: var(--kds-component-badge-primary-radius); padding: var(--kds-component-badge-primary-padding-y) var(--kds-component-badge-primary-padding-x); } :host([variant='danger']) span { background-color: var(--kds-component-badge-danger-bg); color: var(--kds-component-badge-danger-text); border-radius: var(--kds-component-badge-danger-radius); padding: var(--kds-component-badge-danger-padding-y) var(--kds-component-badge-danger-padding-x); } :host([variant='warning']) span { background-color: var(--kds-component-badge-warning-bg); color: var(--kds-component-badge-warning-text); border-radius: var(--kds-component-badge-warning-radius); padding: var(--kds-component-badge-warning-padding-y) var(--kds-component-badge-warning-padding-x); } :host([variant='success']) span { background-color: var(--kds-component-badge-success-bg); color: var(--kds-component-badge-success-text); border-radius: var(--kds-component-badge-success-radius); padding: var(--kds-component-badge-success-padding-y) var(--kds-component-badge-success-padding-x); } `"
+              "default": "css` :host { display: inline-flex; } span { display: inline-flex; align-items: center; font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-100); font-weight: var(--kds-font-weight-bold); line-height: var(--kds-font-line-height-small); white-space: nowrap; color: var(--_text); background: none; border: var(--_border-width) solid var(--_border); border-radius: var(--_radius); /* The border sits inside the padding, so badges keep the same outer size as without one. */ padding: calc(var(--_padding-y) - var(--_border-width)) calc(var(--_padding-x) - var(--_border-width)); } :host(:not([variant])) span, :host([variant='default']) span { --_text: var(--kds-component-badge-default-text); --_border: var(--kds-component-badge-default-border); --_border-width: var(--kds-component-badge-default-border-width); --_radius: var(--kds-component-badge-default-radius); --_padding-y: var(--kds-component-badge-default-padding-y); --_padding-x: var(--kds-component-badge-default-padding-x); } :host([variant='primary']) span { --_text: var(--kds-component-badge-primary-text); --_border: var(--kds-component-badge-primary-border); --_border-width: var(--kds-component-badge-primary-border-width); --_radius: var(--kds-component-badge-primary-radius); --_padding-y: var(--kds-component-badge-primary-padding-y); --_padding-x: var(--kds-component-badge-primary-padding-x); } :host([variant='danger']) span { --_text: var(--kds-component-badge-danger-text); --_border: var(--kds-component-badge-danger-border); --_border-width: var(--kds-component-badge-danger-border-width); --_radius: var(--kds-component-badge-danger-radius); --_padding-y: var(--kds-component-badge-danger-padding-y); --_padding-x: var(--kds-component-badge-danger-padding-x); } :host([variant='warning']) span { --_text: var(--kds-component-badge-warning-text); --_border: var(--kds-component-badge-warning-border); --_border-width: var(--kds-component-badge-warning-border-width); --_radius: var(--kds-component-badge-warning-radius); --_padding-y: var(--kds-component-badge-warning-padding-y); --_padding-x: var(--kds-component-badge-warning-padding-x); } :host([variant='success']) span { --_text: var(--kds-component-badge-success-text); --_border: var(--kds-component-badge-success-border); --_border-width: var(--kds-component-badge-success-border-width); --_radius: var(--kds-component-badge-success-radius); --_padding-y: var(--kds-component-badge-success-padding-y); --_padding-x: var(--kds-component-badge-success-padding-x); } `"
             },
             {
               "kind": "field",
@@ -122,7 +122,7 @@
           },
           "tagName": "kds-badge",
           "customElement": true,
-          "summary": "Small status label for categorization or state indication."
+          "summary": "Small status label for categorization or state indication.\n\nBadges are outlined: no fill, with a 1px border in the same colour as the text. They take the surface\ncolour behind them, so the text colour must contrast with that surface (at least 4.5:1)."
         }
       ],
       "exports": [
@@ -138,12 +138,323 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/button/kds-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsButton",
+          "cssParts": [
+            {
+              "description": "The native button element",
+              "name": "button"
+            },
+            {
+              "description": "Wrapper around the default slot (label text)",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot: button label text",
+              "name": ""
+            },
+            {
+              "description": "Icon slot before the label",
+              "name": "start"
+            },
+            {
+              "description": "Icon slot after the label",
+              "name": "end"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; } button { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: var(--kds-size-200-rem); font-family: var(--kds-font-family-label); font-weight: var(--kds-font-weight-bold); font-size: var(--kds-font-size-200); line-height: var(--kds-font-line-height-small); cursor: pointer; color: var(--_text); background: none; border: 1px solid transparent; border-radius: var(--_radius); padding: var(--_padding-y) var(--_padding-x); transition: box-shadow 0.15s ease; text-decoration: none; white-space: nowrap; } /* The fill lives on its own layer so it can be masked without clipping the focus ring. */ button::before { content: ''; position: absolute; inset: -1px; z-index: -1; box-sizing: border-box; border: 1px solid var(--_border); border-radius: inherit; background-color: var(--_bg); transition: background-color 0.15s ease, border-color 0.15s ease; } /* * The label is wrapped in a real element rather than left as a bare slotted text node. A bare text node * becomes an anonymous flex item, and some browsers (notably Safari) report its unaligned position from * Range.getBoundingClientRect, which put the knockout text off-centre next to taller icons. */ .label[hidden] { display: none; } button.knockout { color: transparent; } button.knockout::before { -webkit-mask: var(--_knockout-mask) 0 0 / 100% 100% no-repeat; mask: var(--_knockout-mask) 0 0 / 100% 100% no-repeat; } @media (forced-colors: active) { button.knockout { color: ButtonText; } button.knockout::before { -webkit-mask: none; mask: none; } } button:focus-visible { outline: none; } ${variantStyles('primary', ['[variant=\"primary\"]', ':not([variant])'])} ${variantStyles('secondary', ['[variant=\"secondary\"]'])} ${variantStyles('danger', ['[variant=\"danger\"]'])} ${variantStyles('ghost', ['[variant=\"ghost\"]'])} /* === SIZES === */ :host([size='sm']) button { font-size: var(--kds-font-size-100); --_padding-y: var(--kds-size-100-rem); --_padding-x: var(--kds-size-300-rem); } :host([size='lg']) button { font-size: var(--kds-font-size-300); --_padding-y: var(--kds-size-300-rem); --_padding-x: var(--kds-size-600-rem); } `"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "default": "'primary'"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "default": "'md'"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "onInverse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_button",
+              "type": {
+                "text": "HTMLButtonElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_labelSlot",
+              "type": {
+                "text": "HTMLSlotElement | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_hasLabel",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "true",
+              "description": "Hides the label wrapper when there is no label, so icon-only buttons get no extra flex gap."
+            },
+            {
+              "kind": "field",
+              "name": "_resizeObserver",
+              "type": {
+                "text": "ResizeObserver | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_mutationObserver",
+              "type": {
+                "text": "MutationObserver | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_frame",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_maskVersion",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0",
+              "description": "Incremented per mask build so stale async builds (icon image loads) are discarded."
+            },
+            {
+              "kind": "field",
+              "name": "_syncLabel",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_onContentChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_scheduleMask",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clearMask",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_updateMask",
+              "privacy": "private",
+              "description": "Builds a mask image for the fill layer: opaque everywhere except where the label and icons are,\nso they appear cut out of the button and show whatever surface is behind it."
+            },
+            {
+              "kind": "method",
+              "name": "_drawText",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "ctx",
+                  "type": {
+                    "text": "CanvasRenderingContext2D"
+                  }
+                },
+                {
+                  "name": "node",
+                  "type": {
+                    "text": "Text"
+                  }
+                },
+                {
+                  "name": "toLocal",
+                  "type": {
+                    "text": "(r: DOMRect) => { x: number; y: number; width: number; height: number }"
+                  }
+                },
+                {
+                  "name": "lineBox",
+                  "optional": true,
+                  "type": {
+                    "text": "{ y: number; height: number }"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_drawSvg",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "ctx",
+                  "type": {
+                    "text": "CanvasRenderingContext2D"
+                  }
+                },
+                {
+                  "name": "svg",
+                  "type": {
+                    "text": "SVGSVGElement"
+                  }
+                },
+                {
+                  "name": "box",
+                  "type": {
+                    "text": "{ x: number; y: number; width: number; height: number }"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "primary|secondary|danger|ghost"
+              },
+              "description": "Visual style variant",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "sm|md|lg"
+              },
+              "description": "Size variant",
+              "name": "size"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the button",
+              "name": "disabled"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Use fills made for inverse surfaces (`semantic.bg.inverse`)",
+              "name": "on-inverse"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-button",
+          "customElement": true,
+          "summary": "Trigger actions or navigate. Always use this instead of a native <button> with manual styling.\n\nSolid variants (`primary`, `secondary`, `danger`) render the label and icons as a knockout: they are\ncut out of the button fill, so the surface behind the button shows through. The surface behind the\nbutton must therefore have good contrast (at least 4.5:1) with the button fill in every state.\nOn inverse surfaces (`semantic.bg.inverse`), set `on-inverse` to switch to the fills made for them."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsButton",
+          "declaration": {
+            "name": "KdsButton",
+            "module": "src/components/button/kds-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/card/kds-card.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "KdsCard",
+          "cssParts": [
+            {
+              "description": "The card surface",
+              "name": "card"
+            },
+            {
+              "description": "Header section (rendered only when the header slot has content)",
+              "name": "header"
+            },
+            {
+              "description": "Body section",
+              "name": "body"
+            },
+            {
+              "description": "Footer section (rendered only when the footer slot has content)",
+              "name": "footer"
+            }
+          ],
           "slots": [
             {
               "description": "Default slot: card content",
@@ -163,7 +474,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: block; } .card { background-color: var(--kds-component-card-bg); border: 1px solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--kds-component-card-shadow); overflow: hidden; } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; } :host([interactive]) .card:hover { background-color: var(--kds-component-card-bg-hover); border-color: var(--kds-component-card-border-hover); box-shadow: var(--kds-component-card-shadow-hover); } .header { padding: var(--kds-component-card-padding); border-bottom: 1px solid var(--kds-component-card-border); } .header:empty { display: none; } .body { padding: var(--kds-component-card-padding); } .footer { padding: var(--kds-component-card-padding); border-top: 1px solid var(--kds-component-card-border); } .footer:empty { display: none; } `"
+              "default": "css` :host { display: block; } .card { display: flex; flex-direction: column; gap: var(--kds-component-card-gap); padding: var(--kds-component-card-padding); background-color: var(--kds-component-card-bg); border: var(--kds-component-card-border-width) solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--kds-component-card-shadow); } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; } /* * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses. * Hover is taken from the host, which doesn't move, so the pointer near the top/left edge can't * slip off the moving card and make it flicker. */ :host([interactive]:hover) .card { background-color: var(--kds-component-card-bg-hover); box-shadow: var(--kds-component-card-shadow-hover); transform: translate(var(--kds-component-card-offset-x-hover), var(--kds-component-card-offset-y-hover)); } @media (prefers-reduced-motion: reduce) { :host([interactive]) .card { transition: background-color 0.15s ease; } } [hidden] { display: none; } `"
             },
             {
               "kind": "field",
@@ -172,6 +483,38 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "description": "A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content."
+            },
+            {
+              "kind": "field",
+              "name": "_hasFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
             },
             {
               "kind": "method",
@@ -183,7 +526,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "When set, the card shows hover styles (use for clickable cards)",
+              "description": "When set, the card shows hover styles (use for clickable cards): it presses down into its shadow on hover",
               "name": "interactive"
             }
           ],
@@ -193,7 +536,7 @@
           },
           "tagName": "kds-card",
           "customElement": true,
-          "summary": "Surface container for grouping related content."
+          "summary": "Surface container for grouping related content.\n\nCards have a 1px border and a crisp, unblurred offset shadow. There are no divider lines: header,\nbody and footer are separated by spacing only."
         }
       ],
       "exports": [
@@ -220,7 +563,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: 1px solid var(--kds-component-input-border); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } input:hover:not(:disabled) { border-color: var(--kds-component-input-border-hover); } input:focus { border-color: var(--kds-component-input-border-focus); box-shadow: 0 0 0 3px var(--kds-component-input-ring-focus); } input:disabled { background-color: var(--kds-component-input-bg-disabled); border-color: var(--kds-component-input-border-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } :host([error]) input { border-color: var(--kds-component-input-border-error); } :host([error]) input:focus { box-shadow: 0 0 0 3px var(--kds-component-input-ring-error); } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
+              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100-rem); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { --_border-color: var(--kds-component-input-border); width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: var(--kds-component-input-border-width) solid var(--_border-color); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } /* Hover never applies while focused, invalid or disabled, so it can't override those states. */ input:hover:not(:disabled, :focus, [aria-invalid='true']) { --_border-color: var(--kds-component-input-border-hover); } /* * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels * (1.5px often renders as 1px), so changing the border itself would resize the field on focus. */ input:focus { --_border-color: var(--kds-component-input-border-focus); box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width)) var(--_border-color); } /* * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an * empty error still sets error=\"\", which would otherwise put every input in the error state. */ input[aria-invalid='true'] { --_border-color: var(--kds-component-input-border-error); } /* The error colour wins over the focus colour, so focus darkens it to stay visible. */ input[aria-invalid='true']:focus { --_border-color: var(--kds-component-input-border-error-focus); } input:disabled { --_border-color: var(--kds-component-input-border-disabled); background-color: var(--kds-component-input-bg-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
             },
             {
               "kind": "field",
@@ -411,107 +754,6 @@
           "declaration": {
             "name": "KdsInput",
             "module": "src/components/input/kds-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/button/kds-button.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsButton",
-          "slots": [
-            {
-              "description": "Default slot: button label text",
-              "name": ""
-            },
-            {
-              "description": "Icon slot before the label",
-              "name": "start"
-            },
-            {
-              "description": "Icon slot after the label",
-              "name": "end"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: inline-flex; } button { display: inline-flex; align-items: center; gap: var(--kds-size-200); font-family: var(--kds-font-family-label); font-weight: var(--kds-font-weight-bold); font-size: var(--kds-font-size-200); line-height: var(--kds-font-line-height-small); cursor: pointer; border: 1px solid; transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; text-decoration: none; white-space: nowrap; } button:focus-visible { outline: none; } /* === PRIMARY === */ :host(:not([variant])) button, :host([variant='primary']) button { background-color: var(--kds-component-button-primary-bg); color: var(--kds-component-button-primary-text); border-color: var(--kds-component-button-primary-border); border-radius: var(--kds-component-button-primary-radius); padding: var(--kds-component-button-primary-padding-y) var(--kds-component-button-primary-padding-x); } :host(:not([variant])) button:hover:not(:disabled), :host([variant='primary']) button:hover:not(:disabled) { background-color: var(--kds-component-button-primary-bg-hover); border-color: var(--kds-component-button-primary-border-hover); } :host(:not([variant])) button:active:not(:disabled), :host([variant='primary']) button:active:not(:disabled) { background-color: var(--kds-component-button-primary-bg-active); } :host(:not([variant])) button:focus-visible, :host([variant='primary']) button:focus-visible { border-color: var(--kds-component-button-primary-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-primary-ring-focus); } :host(:not([variant])) button:disabled, :host([variant='primary']) button:disabled { background-color: var(--kds-component-button-primary-bg-disabled); border-color: var(--kds-component-button-primary-border-disabled); color: var(--kds-component-button-primary-text-disabled); cursor: not-allowed; } /* === SECONDARY === */ :host([variant='secondary']) button { background-color: var(--kds-component-button-secondary-bg); color: var(--kds-component-button-secondary-text); border-color: var(--kds-component-button-secondary-border); border-radius: var(--kds-component-button-secondary-radius); padding: var(--kds-component-button-secondary-padding-y) var(--kds-component-button-secondary-padding-x); } :host([variant='secondary']) button:hover:not(:disabled) { background-color: var(--kds-component-button-secondary-bg-hover); border-color: var(--kds-component-button-secondary-border-hover); } :host([variant='secondary']) button:active:not(:disabled) { background-color: var(--kds-component-button-secondary-bg-active); } :host([variant='secondary']) button:focus-visible { border-color: var(--kds-component-button-secondary-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-secondary-ring-focus); } :host([variant='secondary']) button:disabled { background-color: var(--kds-component-button-secondary-bg-disabled); border-color: var(--kds-component-button-secondary-border-disabled); color: var(--kds-component-button-secondary-text-disabled); cursor: not-allowed; } /* === DANGER === */ :host([variant='danger']) button { background-color: var(--kds-component-button-danger-bg); color: var(--kds-component-button-danger-text); border-color: var(--kds-component-button-danger-border); border-radius: var(--kds-component-button-danger-radius); padding: var(--kds-component-button-danger-padding-y) var(--kds-component-button-danger-padding-x); } :host([variant='danger']) button:hover:not(:disabled) { background-color: var(--kds-component-button-danger-bg-hover); border-color: var(--kds-component-button-danger-border-hover); } :host([variant='danger']) button:active:not(:disabled) { background-color: var(--kds-component-button-danger-bg-active); } :host([variant='danger']) button:focus-visible { border-color: var(--kds-component-button-danger-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-danger-ring-focus); } :host([variant='danger']) button:disabled { background-color: var(--kds-component-button-danger-bg-disabled); border-color: var(--kds-component-button-danger-border-disabled); color: var(--kds-component-button-danger-text-disabled); cursor: not-allowed; } /* === GHOST === */ :host([variant='ghost']) button { background-color: var(--kds-component-button-ghost-bg); color: var(--kds-component-button-ghost-text); border-color: var(--kds-component-button-ghost-border); border-radius: var(--kds-component-button-ghost-radius); padding: var(--kds-component-button-ghost-padding-y) var(--kds-component-button-ghost-padding-x); } :host([variant='ghost']) button:hover:not(:disabled) { background-color: var(--kds-component-button-ghost-bg-hover); } :host([variant='ghost']) button:active:not(:disabled) { background-color: var(--kds-component-button-ghost-bg-active); } :host([variant='ghost']) button:focus-visible { border-color: var(--kds-component-button-ghost-border-focus); box-shadow: 0 0 0 3px var(--kds-component-button-ghost-ring-focus); } :host([variant='ghost']) button:disabled { color: var(--kds-component-button-ghost-text-disabled); cursor: not-allowed; } /* === SIZES === */ :host([size='sm']) button { font-size: var(--kds-font-size-100); padding: var(--kds-size-100) var(--kds-size-300); } :host([size='lg']) button { font-size: var(--kds-font-size-300); padding: var(--kds-size-300) var(--kds-size-600); } `"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "ButtonVariant"
-              },
-              "default": "'primary'"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "ButtonSize"
-              },
-              "default": "'md'"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "primary|secondary|danger|ghost"
-              },
-              "description": "Visual style variant",
-              "name": "variant"
-            },
-            {
-              "type": {
-                "text": "sm|md|lg"
-              },
-              "description": "Size variant",
-              "name": "size"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the button",
-              "name": "disabled"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-button",
-          "customElement": true,
-          "summary": "Trigger actions or navigate. Always use this instead of a native <button> with manual styling."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsButton",
-          "declaration": {
-            "name": "KdsButton",
-            "module": "src/components/button/kds-button.ts"
           }
         }
       ]

@@ -6,6 +6,9 @@ export type BadgeVariant = 'default' | 'primary' | 'danger' | 'warning' | 'succe
 /**
  * @element kds-badge
  * @summary Small status label for categorization or state indication.
+ *
+ * Badges are outlined: no fill, with a 1px border in the same colour as the text. They take the surface
+ * colour behind them, so the text colour must contrast with that surface (at least 4.5:1).
  * @slot - Default slot: badge text content
  * @attr {default|primary|danger|warning|success} variant - Visual style variant
  */
@@ -24,42 +27,58 @@ export class KdsBadge extends LitElement {
       font-weight: var(--kds-font-weight-bold);
       line-height: var(--kds-font-line-height-small);
       white-space: nowrap;
+      color: var(--_text);
+      background: none;
+      border: var(--_border-width) solid var(--_border);
+      border-radius: var(--_radius);
+      /* The border sits inside the padding, so badges keep the same outer size as without one. */
+      padding: calc(var(--_padding-y) - var(--_border-width)) calc(var(--_padding-x) - var(--_border-width));
     }
 
     :host(:not([variant])) span,
     :host([variant='default']) span {
-      background-color: var(--kds-component-badge-default-bg);
-      color: var(--kds-component-badge-default-text);
-      border-radius: var(--kds-component-badge-default-radius);
-      padding: var(--kds-component-badge-default-padding-y) var(--kds-component-badge-default-padding-x);
+      --_text: var(--kds-component-badge-default-text);
+      --_border: var(--kds-component-badge-default-border);
+      --_border-width: var(--kds-component-badge-default-border-width);
+      --_radius: var(--kds-component-badge-default-radius);
+      --_padding-y: var(--kds-component-badge-default-padding-y);
+      --_padding-x: var(--kds-component-badge-default-padding-x);
     }
 
     :host([variant='primary']) span {
-      background-color: var(--kds-component-badge-primary-bg);
-      color: var(--kds-component-badge-primary-text);
-      border-radius: var(--kds-component-badge-primary-radius);
-      padding: var(--kds-component-badge-primary-padding-y) var(--kds-component-badge-primary-padding-x);
+      --_text: var(--kds-component-badge-primary-text);
+      --_border: var(--kds-component-badge-primary-border);
+      --_border-width: var(--kds-component-badge-primary-border-width);
+      --_radius: var(--kds-component-badge-primary-radius);
+      --_padding-y: var(--kds-component-badge-primary-padding-y);
+      --_padding-x: var(--kds-component-badge-primary-padding-x);
     }
 
     :host([variant='danger']) span {
-      background-color: var(--kds-component-badge-danger-bg);
-      color: var(--kds-component-badge-danger-text);
-      border-radius: var(--kds-component-badge-danger-radius);
-      padding: var(--kds-component-badge-danger-padding-y) var(--kds-component-badge-danger-padding-x);
+      --_text: var(--kds-component-badge-danger-text);
+      --_border: var(--kds-component-badge-danger-border);
+      --_border-width: var(--kds-component-badge-danger-border-width);
+      --_radius: var(--kds-component-badge-danger-radius);
+      --_padding-y: var(--kds-component-badge-danger-padding-y);
+      --_padding-x: var(--kds-component-badge-danger-padding-x);
     }
 
     :host([variant='warning']) span {
-      background-color: var(--kds-component-badge-warning-bg);
-      color: var(--kds-component-badge-warning-text);
-      border-radius: var(--kds-component-badge-warning-radius);
-      padding: var(--kds-component-badge-warning-padding-y) var(--kds-component-badge-warning-padding-x);
+      --_text: var(--kds-component-badge-warning-text);
+      --_border: var(--kds-component-badge-warning-border);
+      --_border-width: var(--kds-component-badge-warning-border-width);
+      --_radius: var(--kds-component-badge-warning-radius);
+      --_padding-y: var(--kds-component-badge-warning-padding-y);
+      --_padding-x: var(--kds-component-badge-warning-padding-x);
     }
 
     :host([variant='success']) span {
-      background-color: var(--kds-component-badge-success-bg);
-      color: var(--kds-component-badge-success-text);
-      border-radius: var(--kds-component-badge-success-radius);
-      padding: var(--kds-component-badge-success-padding-y) var(--kds-component-badge-success-padding-x);
+      --_text: var(--kds-component-badge-success-text);
+      --_border: var(--kds-component-badge-success-border);
+      --_border-width: var(--kds-component-badge-success-border-width);
+      --_radius: var(--kds-component-badge-success-radius);
+      --_padding-y: var(--kds-component-badge-success-padding-y);
+      --_padding-x: var(--kds-component-badge-success-padding-x);
     }
   `;
 

@@ -21,7 +21,7 @@ export class KdsInput extends LitElement {
     :host {
       display: flex;
       flex-direction: column;
-      gap: var(--kds-size-100);
+      gap: var(--kds-size-100-rem);
     }
 
     label {
@@ -39,6 +39,7 @@ export class KdsInput extends LitElement {
     }
 
     input {
+      --_border-color: var(--kds-component-input-border);
       width: 100%;
       box-sizing: border-box;
       font-family: var(--kds-font-family-base);
@@ -47,7 +48,7 @@ export class KdsInput extends LitElement {
       line-height: var(--kds-font-line-height-medium);
       color: var(--kds-component-input-text);
       background-color: var(--kds-component-input-bg);
-      border: 1px solid var(--kds-component-input-border);
+      border: var(--kds-component-input-border-width) solid var(--_border-color);
       border-radius: var(--kds-component-input-radius);
       padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x);
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -58,28 +59,40 @@ export class KdsInput extends LitElement {
       color: var(--kds-component-input-text-placeholder);
     }
 
-    input:hover:not(:disabled) {
-      border-color: var(--kds-component-input-border-hover);
+    /* Hover never applies while focused, invalid or disabled, so it can't override those states. */
+    input:hover:not(:disabled, :focus, [aria-invalid='true']) {
+      --_border-color: var(--kds-component-input-border-hover);
     }
 
+    /*
+     * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra
+     * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels
+     * (1.5px often renders as 1px), so changing the border itself would resize the field on focus.
+     */
     input:focus {
-      border-color: var(--kds-component-input-border-focus);
-      box-shadow: 0 0 0 3px var(--kds-component-input-ring-focus);
+      --_border-color: var(--kds-component-input-border-focus);
+      box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width))
+        var(--_border-color);
+    }
+
+    /*
+     * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an
+     * empty error still sets error="", which would otherwise put every input in the error state.
+     */
+    input[aria-invalid='true'] {
+      --_border-color: var(--kds-component-input-border-error);
+    }
+
+    /* The error colour wins over the focus colour, so focus darkens it to stay visible. */
+    input[aria-invalid='true']:focus {
+      --_border-color: var(--kds-component-input-border-error-focus);
     }
 
     input:disabled {
+      --_border-color: var(--kds-component-input-border-disabled);
       background-color: var(--kds-component-input-bg-disabled);
-      border-color: var(--kds-component-input-border-disabled);
       color: var(--kds-component-input-text-disabled);
       cursor: not-allowed;
-    }
-
-    :host([error]) input {
-      border-color: var(--kds-component-input-border-error);
-    }
-
-    :host([error]) input:focus {
-      box-shadow: 0 0 0 3px var(--kds-component-input-ring-error);
     }
 
     .helper {

@@ -1,10 +1,10 @@
 {
   "semantic": {
     "radius": {
-      "none":  { "$type": "dimension", "$value": "{size.0}" },
-      "sm":    { "$type": "dimension", "$value": "{size.100}" },
-      "md":    { "$type": "dimension", "$value": "{size.200}" },
-      "lg":    { "$type": "dimension", "$value": "{size.400}" },
+      "none":  { "$type": "dimension", "$value": "{size.0.rem}" },
+      "sm":    { "$type": "dimension", "$value": "{size.100.rem}" },
+      "md":    { "$type": "dimension", "$value": "{size.200.rem}" },
+      "lg":    { "$type": "dimension", "$value": "{size.400.rem}" },
       "full":  { "$type": "dimension", "$value": "9999px" }
     }
   }
