@@ -12,6 +12,12 @@
     "600": { "rem": { "$type": "dimension", "$value": "2rem"     }, "px": { "$type": "dimension", "$value": "32px"  } },
     "700": { "rem": { "$type": "dimension", "$value": "3rem"     }, "px": { "$type": "dimension", "$value": "48px"  } },
     "800": { "rem": { "$type": "dimension", "$value": "4rem"     }, "px": { "$type": "dimension", "$value": "64px"  } },
-    "900": { "rem": { "$type": "dimension", "$value": "6rem"     }, "px": { "$type": "dimension", "$value": "96px"  } }
+    "900": { "rem": { "$type": "dimension", "$value": "6rem"     }, "px": { "$type": "dimension", "$value": "96px"  } },
+    "1000": { "rem": { "$type": "dimension", "$value": "8rem"     }, "px": { "$type": "dimension", "$value": "128px" } },
+    "1100": { "rem": { "$type": "dimension", "$value": "12rem"    }, "px": { "$type": "dimension", "$value": "192px" } },
+    "1200": { "rem": { "$type": "dimension", "$value": "16rem"    }, "px": { "$type": "dimension", "$value": "256px" } },
+    "1300": { "rem": { "$type": "dimension", "$value": "20rem"    }, "px": { "$type": "dimension", "$value": "320px" } },
+    "1400": { "rem": { "$type": "dimension", "$value": "24rem"    }, "px": { "$type": "dimension", "$value": "384px" } },
+    "1500": { "rem": { "$type": "dimension", "$value": "32rem"    }, "px": { "$type": "dimension", "$value": "512px" } }
   }
 }

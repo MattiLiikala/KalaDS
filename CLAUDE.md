@@ -73,7 +73,7 @@ Solid buttons render their label as knockout text cut out of the fill, so the la
 The surface behind the button must have at least 4.5:1 contrast with the button fill in every state
 (`bg`, `bg-hover`, `bg-active`). On inverse surfaces (`var(--kds-semantic-bg-inverse)`) always add the `on-inverse` attribute:
 `<kds-button variant="primary" on-inverse>`. Never put solid buttons on images, gradients or surfaces close to
-the button colour. See the contrast tables in the Button story.
+the button colour. See the surface table in the Button story ("Knockout on surfaces").
 
 ### ALWAYS do these things:
 

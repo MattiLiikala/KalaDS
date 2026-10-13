@@ -5,12 +5,13 @@ import { customElement, property, state } from 'lit/decorators.js';
  * @element kds-card
  * @summary Surface container for grouping related content.
  *
- * Cards have a 1px border and a crisp, unblurred offset shadow. There are no divider lines: header,
- * body and footer are separated by spacing only.
+ * Cards have a 1px border and a crisp, unblurred offset shadow whose distance is set by `elevation`.
+ * There are no divider lines: header, body and footer are separated by spacing only.
  *
  * @slot - Default slot: card content
  * @slot header - Optional card header area
  * @slot footer - Optional card footer area
+ * @attr {1|2|3} elevation - Crisp shadow level: 1 low, 2 medium, 3 high (default 3)
  * @attr {boolean} interactive - When set, the card shows hover styles (use for clickable cards): it presses
  *   down into its shadow on hover
  * @csspart card - The card surface
@@ -23,6 +24,17 @@ export class KdsCard extends LitElement {
   static styles = css`
     :host {
       display: block;
+      --_shadow: var(--kds-component-card-shadow-3);
+      --_offset-hover: var(--kds-component-card-offset-hover-3);
+    }
+
+    :host([elevation='1']) {
+      --_shadow: var(--kds-component-card-shadow-1);
+      --_offset-hover: var(--kds-component-card-offset-hover-1);
+    }
+    :host([elevation='2']) {
+      --_shadow: var(--kds-component-card-shadow-2);
+      --_offset-hover: var(--kds-component-card-offset-hover-2);
     }
 
     .card {
@@ -33,7 +45,7 @@ export class KdsCard extends LitElement {
       background-color: var(--kds-component-card-bg);
       border: var(--kds-component-card-border-width) solid var(--kds-component-card-border);
       border-radius: var(--kds-component-card-radius);
-      box-shadow: var(--kds-component-card-shadow);
+      box-shadow: var(--_shadow);
     }
 
     :host([interactive]) .card {
@@ -49,7 +61,7 @@ export class KdsCard extends LitElement {
     :host([interactive]:hover) .card {
       background-color: var(--kds-component-card-bg-hover);
       box-shadow: var(--kds-component-card-shadow-hover);
-      transform: translate(var(--kds-component-card-offset-x-hover), var(--kds-component-card-offset-y-hover));
+      transform: translate(var(--_offset-hover), var(--_offset-hover));
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -63,6 +75,7 @@ export class KdsCard extends LitElement {
     }
   `;
 
+  @property({ type: Number, reflect: true }) elevation: 1 | 2 | 3 = 3;
   @property({ type: Boolean, reflect: true }) interactive = false;
 
   /** A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content. */

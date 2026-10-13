@@ -1,0 +1,35 @@
+{
+  "semantic": {
+    "shadow": {
+      "crisp-color": { "$type": "color", "$value": "{color.neutral.300}" },
+      "crisp-color-danger":  { "$type": "color", "$value": "{color.danger.300}" },
+      "crisp-color-warning": { "$type": "color", "$value": "{color.warning.300}" },
+      "crisp-color-success": { "$type": "color", "$value": "{color.success.300}" },
+      "crisp-color-info":    { "$type": "color", "$value": "{color.info.300}" },
+      "crisp-offset": {
+        "1": { "$type": "dimension", "$value": "{size.75.px}" },
+        "2": { "$type": "dimension", "$value": "{size.100.px}" },
+        "3": { "$type": "dimension", "$value": "{size.200.px}" }
+      },
+      "crisp": {
+        "1": { "$type": "shadow", "$value": { "offsetX": "{semantic.shadow.crisp-offset.1}", "offsetY": "{semantic.shadow.crisp-offset.1}", "blur": "{size.0.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.crisp-color}" } },
+        "2": { "$type": "shadow", "$value": { "offsetX": "{semantic.shadow.crisp-offset.2}", "offsetY": "{semantic.shadow.crisp-offset.2}", "blur": "{size.0.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.crisp-color}" } },
+        "3": { "$type": "shadow", "$value": { "offsetX": "{semantic.shadow.crisp-offset.3}", "offsetY": "{semantic.shadow.crisp-offset.3}", "blur": "{size.0.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.crisp-color}" } }
+      },
+      "soft": {
+        "1": { "$type": "shadow", "$value": [
+          { "offsetX": "{size.0.px}", "offsetY": "{size.25.px}", "blur": "{size.75.px}",  "spread": "{size.0.px}", "color": "{color.neutral-alpha.300}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}", "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.100}" }
+        ] },
+        "2": { "$type": "shadow", "$value": [
+          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}",  "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.300.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" }
+        ] },
+        "3": { "$type": "shadow", "$value": [
+          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.200.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.300.px}", "blur": "{size.600.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.300}" }
+        ] }
+      }
+    }
+  }
+}

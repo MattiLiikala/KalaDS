@@ -8,10 +8,13 @@
       "radius":        { "$type": "dimension", "$value": "{semantic.radius.lg}" },
       "padding":       { "$type": "dimension", "$value": "{semantic.padding.xl}" },
       "gap":           { "$type": "dimension", "$value": "{semantic.spacing.md}" },
-      "shadow":        { "$type": "shadow",    "$value": { "offsetX": "{semantic.spacing.sm}", "offsetY": "{semantic.spacing.sm}", "blur": "0", "spread": "0", "color": "{semantic.shadow.default}" } },
-      "shadow-hover":  { "$type": "shadow",    "$value": { "offsetX": "0", "offsetY": "0", "blur": "0", "spread": "0", "color": "{semantic.shadow.default}" } },
-      "offset-x-hover": { "$type": "dimension", "$value": "{semantic.spacing.sm}" },
-      "offset-y-hover": { "$type": "dimension", "$value": "{semantic.spacing.sm}" }
+      "shadow-1":         { "$type": "shadow",    "$value": "{semantic.shadow.crisp.1}" },
+      "shadow-2":         { "$type": "shadow",    "$value": "{semantic.shadow.crisp.2}" },
+      "shadow-3":         { "$type": "shadow",    "$value": "{semantic.shadow.crisp.3}" },
+      "offset-hover-1":   { "$type": "dimension", "$value": "{semantic.shadow.crisp-offset.1}" },
+      "offset-hover-2":   { "$type": "dimension", "$value": "{semantic.shadow.crisp-offset.2}" },
+      "offset-hover-3":   { "$type": "dimension", "$value": "{semantic.shadow.crisp-offset.3}" },
+      "shadow-hover":     { "$type": "shadow",    "$value": { "offsetX": "{size.0.px}", "offsetY": "{size.0.px}", "blur": "{size.0.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.crisp-color}" } }
     }
   }
 }

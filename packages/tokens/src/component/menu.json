@@ -1,0 +1,15 @@
+{
+  "component": {
+    "menu": {
+      "popup-bg":           { "$type": "color",      "$value": "{semantic.bg.default}" },
+      "popup-border":       { "$type": "color",      "$value": "{semantic.border.default}" },
+      "popup-border-width": { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "popup-radius":       { "$type": "dimension",  "$value": "{semantic.radius.md}" },
+      "popup-padding":      { "$type": "dimension",  "$value": "{semantic.spacing.xs}" },
+      "popup-shadow":       { "$type": "shadow",     "$value": "{semantic.shadow.soft.2}" },
+      "popup-offset":       { "$type": "dimension",  "$value": "{semantic.spacing.xs}" },
+      "popup-max-height":   { "$type": "dimension",  "$value": "{semantic.size.lg}" },
+      "min-width":          { "$type": "dimension",  "$value": "{semantic.size.sm}" }
+    }
+  }
+}

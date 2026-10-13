@@ -1,0 +1,15 @@
+{
+  "component": {
+    "icon": {
+      "size-sm":       { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "size-md":       { "$type": "dimension",  "$value": "{semantic.spacing.lg}" },
+      "size-lg":       { "$type": "dimension",  "$value": "{semantic.spacing.xl}" },
+      "color-subtle":  { "$type": "color",      "$value": "{semantic.text.subtle}" },
+      "color-muted":   { "$type": "color",      "$value": "{semantic.text.muted}" },
+      "color-brand":   { "$type": "color",      "$value": "{semantic.text.brand}" },
+      "color-danger":  { "$type": "color",      "$value": "{semantic.status.danger}" },
+      "color-warning": { "$type": "color",      "$value": "{semantic.status.warning}" },
+      "color-success": { "$type": "color",      "$value": "{semantic.status.success}" }
+    }
+  }
+}

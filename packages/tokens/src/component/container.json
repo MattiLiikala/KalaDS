@@ -1,0 +1,11 @@
+{
+  "component": {
+    "container": {
+      "max-width-sm": { "$type": "dimension",  "$value": "{semantic.container.sm}" },
+      "max-width-md": { "$type": "dimension",  "$value": "{semantic.container.md}" },
+      "max-width-lg": { "$type": "dimension",  "$value": "{semantic.container.lg}" },
+      "max-width-xl": { "$type": "dimension",  "$value": "{semantic.container.xl}" },
+      "padding-x":    { "$type": "dimension",  "$value": "{semantic.padding.lg}" }
+    }
+  }
+}

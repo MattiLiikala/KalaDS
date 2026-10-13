@@ -3,7 +3,7 @@ import { html } from 'lit';
 import '@kalads/components';
 
 const meta: Meta = {
-  title: 'Components/Input',
+  title: 'Components/Inputs/Input',
   component: 'kds-input',
   tags: ['autodocs'],
   argTypes: {

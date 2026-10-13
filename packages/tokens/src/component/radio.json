@@ -1,0 +1,27 @@
+{
+  "component": {
+    "radio": {
+      "size":                 { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "dot-size":             { "$type": "dimension",  "$value": "{semantic.spacing.sm}" },
+      "border-width":         { "$type": "dimension",  "$value": "{semantic.border-width.strong}" },
+      "radius":               { "$type": "dimension",  "$value": "{semantic.radius.full}" },
+      "bg":                   { "$type": "color",      "$value": "{semantic.bg.default}" },
+      "bg-hover":             { "$type": "color",      "$value": "{semantic.bg.subtle}" },
+      "bg-disabled":          { "$type": "color",      "$value": "{semantic.bg.subtle}" },
+      "border":               { "$type": "color",      "$value": "{semantic.border.control}" },
+      "border-hover":         { "$type": "color",      "$value": "{semantic.border.control-hover}" },
+      "border-checked":       { "$type": "color",      "$value": "{semantic.interactive.accent}" },
+      "border-checked-hover": { "$type": "color",      "$value": "{semantic.interactive.accent-hover}" },
+      "border-disabled":      { "$type": "color",      "$value": "{semantic.interactive.disabled}" },
+      "dot":                  { "$type": "color",      "$value": "{semantic.interactive.accent}" },
+      "dot-hover":            { "$type": "color",      "$value": "{semantic.interactive.accent-hover}" },
+      "dot-disabled":         { "$type": "color",      "$value": "{semantic.interactive.disabled}" },
+      "label-text":           { "$type": "color",      "$value": "{semantic.text.default}" },
+      "label-text-disabled":  { "$type": "color",      "$value": "{semantic.text.muted}" },
+      "gap":                  { "$type": "dimension",  "$value": "{semantic.spacing.sm}" },
+      "ring-focus":           { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-width":           { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
+      "ring-offset":          { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
+    }
+  }
+}

@@ -10,7 +10,7 @@
       "border-hover":    { "$type": "color",     "$value": "{semantic.border.control-hover}" },
       "border-focus":    { "$type": "color",     "$value": "{color.primary.500}" },
       "border-error":    { "$type": "color",     "$value": "{color.danger.500}" },
-      "border-error-focus": { "$type": "color",  "$value": "{color.danger.700}" },
+      "border-error-focus": { "$type": "color",  "$value": "{color.danger.500}" },
       "border-disabled": { "$type": "color",     "$value": "{color.neutral.200}" },
       "border-width":    { "$type": "dimension", "$value": "{semantic.border-width.default}" },
       "border-width-focus": { "$type": "dimension", "$value": "{semantic.border-width.focus}" },

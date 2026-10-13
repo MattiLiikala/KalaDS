@@ -4,6 +4,20 @@
       "heading":  { "$type": "fontFamily", "$value": "{font.family.heading}" },
       "body":     { "$type": "fontFamily", "$value": "{font.family.base}" },
       "ui":       { "$type": "fontFamily", "$value": "{font.family.label}" }
+    },
+    "type": {
+      "h1":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.700}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "h2":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.600}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "h3":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.500}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "h4":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.400}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "h5":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.300}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.medium}" } },
+      "h6":       { "family": { "$type": "fontFamily", "$value": "{font.family.heading}" }, "size": { "$type": "dimension", "$value": "{font.size.200}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.medium}" } },
+      "body":     { "family": { "$type": "fontFamily", "$value": "{font.family.base}" },    "size": { "$type": "dimension", "$value": "{font.size.300}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.normal}" }, "line-height": { "$type": "number", "$value": "{font.lineHeight.medium}" } },
+      "body-sm":  { "family": { "$type": "fontFamily", "$value": "{font.family.base}" },    "size": { "$type": "dimension", "$value": "{font.size.200}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.normal}" }, "line-height": { "$type": "number", "$value": "{font.lineHeight.medium}" } },
+      "caption":  { "family": { "$type": "fontFamily", "$value": "{font.family.base}" },    "size": { "$type": "dimension", "$value": "{font.size.100}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.normal}" }, "line-height": { "$type": "number", "$value": "{font.lineHeight.medium}" } },
+      "label":    { "family": { "$type": "fontFamily", "$value": "{font.family.label}" },   "size": { "$type": "dimension", "$value": "{font.size.200}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "label-sm": { "family": { "$type": "fontFamily", "$value": "{font.family.label}" },   "size": { "$type": "dimension", "$value": "{font.size.100}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.medium}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" } },
+      "overline": { "family": { "$type": "fontFamily", "$value": "{font.family.label}" },   "size": { "$type": "dimension", "$value": "{font.size.100}" }, "weight": { "$type": "fontWeight", "$value": "{font.weight.bold}" },   "line-height": { "$type": "number", "$value": "{font.lineHeight.small}" }, "letter-spacing": { "$type": "dimension", "$value": "{font.letterSpacing.wide}" } }
     }
   }
 }

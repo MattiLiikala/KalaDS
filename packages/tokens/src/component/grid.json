@@ -1,0 +1,8 @@
+{
+  "component": {
+    "grid": {
+      "gap":            { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "min-item-width": { "$type": "dimension",  "$value": "{semantic.size.sm}" }
+    }
+  }
+}

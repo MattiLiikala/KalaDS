@@ -1,5 +1,6 @@
-import { LitElement, html, css, unsafeCSS, type PropertyValues } from 'lit';
+import { LitElement, html, css, unsafeCSS, type CSSResultGroup, type PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -77,7 +78,10 @@ const supportsMask =
  */
 @customElement('kds-button')
 export class KdsButton extends LitElement {
-  static styles = css`
+  /** focus() on the host (e.g. kds-menu returning focus to its trigger) reaches the inner <button>. */
+  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+
+  static styles: CSSResultGroup = css`
     :host {
       display: inline-flex;
     }
@@ -169,6 +173,15 @@ export class KdsButton extends LitElement {
   @property({ reflect: true }) size: ButtonSize = 'md';
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, reflect: true, attribute: 'on-inverse' }) onInverse = false;
+
+  /*
+   * ARIA state set on the host (for example by kds-menu or a consumer) is copied onto the inner <button>,
+   * the element assistive technology actually interacts with. ARIA on the host alone would be lost.
+   */
+  @property({ attribute: 'aria-expanded' }) hostAriaExpanded: string | null = null;
+  @property({ attribute: 'aria-haspopup' }) hostAriaHaspopup: string | null = null;
+  @property({ attribute: 'aria-pressed' }) hostAriaPressed: string | null = null;
+  @property({ attribute: 'aria-label' }) hostAriaLabel: string | null = null;
 
   @query('button') private _button!: HTMLButtonElement;
   @query('slot:not([name])') private _labelSlot?: HTMLSlotElement;
@@ -351,9 +364,22 @@ export class KdsButton extends LitElement {
     });
   }
 
+  /** Accessible name for the inner button. Subclasses without visible text (kds-icon-button) override this. */
+  protected get _accessibleLabel(): string | undefined {
+    return this.hostAriaLabel ?? undefined;
+  }
+
   render() {
     return html`
-      <button part="button" ?disabled=${this.disabled} aria-disabled=${this.disabled}>
+      <button
+        part="button"
+        ?disabled=${this.disabled}
+        aria-disabled=${this.disabled}
+        aria-label=${ifDefined(this._accessibleLabel)}
+        aria-expanded=${ifDefined(this.hostAriaExpanded ?? undefined)}
+        aria-haspopup=${ifDefined(this.hostAriaHaspopup ?? undefined)}
+        aria-pressed=${ifDefined(this.hostAriaPressed ?? undefined)}
+      >
         <slot name="start" @slotchange=${this._scheduleMask}></slot>
         <span class="label" part="label" ?hidden=${!this._hasLabel}>
           <slot @slotchange=${this._onContentChange}></slot>

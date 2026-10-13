@@ -1,0 +1,10 @@
+{
+  "component": {
+    "icon-button": {
+      "icon-size-sm": { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "icon-size-md": { "$type": "dimension",  "$value": "{semantic.spacing.lg}" },
+      "icon-size-lg": { "$type": "dimension",  "$value": "{semantic.spacing.xl}" },
+      "radius":       { "$type": "dimension",  "$value": "{semantic.radius.full}" }
+    }
+  }
+}

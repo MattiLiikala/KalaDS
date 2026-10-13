@@ -3,16 +3,29 @@ import { html } from 'lit';
 import '@kalads/components';
 
 const meta: Meta = {
-  title: 'Components/Card',
+  title: 'Components/Surfaces/Card',
   component: 'kds-card',
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Surface for grouping related content: 1px border and a crisp offset shadow. \`elevation\` sets the shadow
+distance (1 low, 2 medium, 3 high, the default). Interactive cards press down into their shadow on hover,
+moving by the same distance.
+`,
+      },
+    },
+  },
   argTypes: {
+    elevation: { control: 'inline-radio', options: [1, 2, 3] },
     interactive: {
       control: 'boolean',
       description: 'When true, shows hover styles (for clickable cards)',
     },
   },
   args: {
+    elevation: 3,
     interactive: false,
   },
 };
@@ -23,12 +36,22 @@ type Story = StoryObj;
 export const Default: Story = {
   render: (args) => html`
     <div style="max-width: 400px;">
-      <kds-card ?interactive=${args.interactive}>
+      <kds-card elevation=${args.elevation} ?interactive=${args.interactive}>
         <p style="margin:0; color: var(--kds-semantic-text-default); font-family: var(--kds-font-family-base);">
           Card content goes here. This is a surface container for grouping related information.
         </p>
       </kds-card>
     </div>
+  `,
+};
+
+export const Elevations: Story = {
+  render: () => html`
+    <kds-grid min="xs" gap="xl">
+      ${[1, 2, 3].map(
+        (e) => html`<kds-card elevation=${e} interactive><kds-typography variant="label">Elevation ${e}</kds-typography></kds-card>`,
+      )}
+    </kds-grid>
   `,
 };
 

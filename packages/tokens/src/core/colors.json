@@ -33,6 +33,11 @@
       "800": { "$type": "color", "$value": "#31271f" },
       "900": { "$type": "color", "$value": "#20160e" }
     },
+    "neutral-alpha": {
+      "100": { "$type": "color", "$value": "#20160e0f" },
+      "200": { "$type": "color", "$value": "#20160e1a" },
+      "300": { "$type": "color", "$value": "#20160e29" }
+    },
     "danger": {
       "100": { "$type": "color", "$value": "#ffebe9" },
       "200": { "$type": "color", "$value": "#ffcac5" },
@@ -65,6 +70,17 @@
       "700": { "$type": "color", "$value": "#015120" },
       "800": { "$type": "color", "$value": "#00451a" },
       "900": { "$type": "color", "$value": "#013915" }
+    },
+    "info": {
+      "100": { "$type": "color", "$value": "#e7f0fc" },
+      "200": { "$type": "color", "$value": "#c0d8f9" },
+      "300": { "$type": "color", "$value": "#86b7f7" },
+      "400": { "$type": "color", "$value": "#2983eb" },
+      "500": { "$type": "color", "$value": "#0062bf" },
+      "600": { "$type": "color", "$value": "#0151a1" },
+      "700": { "$type": "color", "$value": "#004082" },
+      "800": { "$type": "color", "$value": "#00366e" },
+      "900": { "$type": "color", "$value": "#002c5c" }
     },
     "data1": {
       "100": { "$type": "color", "$value": "#e0f2fe" },

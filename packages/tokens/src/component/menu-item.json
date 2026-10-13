@@ -1,0 +1,19 @@
+{
+  "component": {
+    "menu-item": {
+      "text":          { "$type": "color",      "$value": "{semantic.text.default}" },
+      "text-danger":   { "$type": "color",      "$value": "{semantic.status.danger}" },
+      "text-disabled": { "$type": "color",      "$value": "{semantic.text.muted}" },
+      "bg-hover":      { "$type": "color",      "$value": "{semantic.bg.subtle}" },
+      "bg-active":     { "$type": "color",      "$value": "{semantic.bg.muted}" },
+      "radius":        { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
+      "padding-x":     { "$type": "dimension",  "$value": "{semantic.padding.md}" },
+      "padding-y":     { "$type": "dimension",  "$value": "{semantic.padding.sm}" },
+      "gap":           { "$type": "dimension",  "$value": "{semantic.spacing.sm}" },
+      "icon-size":     { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "ring-focus":    { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-width":    { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
+      "ring-offset":   { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
+    }
+  }
+}

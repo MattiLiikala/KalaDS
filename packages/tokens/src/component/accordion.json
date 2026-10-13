@@ -1,0 +1,7 @@
+{
+  "component": {
+    "accordion": {
+      "gap": { "$type": "dimension",  "$value": "{semantic.spacing.none}" }
+    }
+  }
+}

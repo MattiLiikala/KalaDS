@@ -1,0 +1,18 @@
+{
+  "semantic": {
+    "container": {
+      "sm": { "$type": "dimension", "$value": "{breakpoint.sm}" },
+      "md": { "$type": "dimension", "$value": "{breakpoint.md}" },
+      "lg": { "$type": "dimension", "$value": "{breakpoint.lg}" },
+      "xl": { "$type": "dimension", "$value": "{breakpoint.xl}" }
+    },
+    "size": {
+      "xs":  { "$type": "dimension", "$value": "{size.1000.rem}" },
+      "sm":  { "$type": "dimension", "$value": "{size.1100.rem}" },
+      "md":  { "$type": "dimension", "$value": "{size.1200.rem}" },
+      "lg":  { "$type": "dimension", "$value": "{size.1300.rem}" },
+      "xl":  { "$type": "dimension", "$value": "{size.1400.rem}" },
+      "2xl": { "$type": "dimension", "$value": "{size.1500.rem}" }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "component": {
+    "backdrop": {
+      "bg":      { "$type": "color",      "$value": "{semantic.bg.overlay}" },
+      "opacity": { "$type": "number",     "$value": "{semantic.opacity.overlay}" }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "component": {
+    "box": {
+      "padding":      { "$type": "dimension",  "$value": "{semantic.spacing.none}" },
+      "radius":       { "$type": "dimension",  "$value": "{semantic.radius.none}" },
+      "bg":           { "$type": "color",      "$value": "transparent" },
+      "border":       { "$type": "color",      "$value": "{semantic.border.default}" },
+      "border-width": { "$type": "dimension",  "$value": "{semantic.border-width.default}" }
+    }
+  }
+}

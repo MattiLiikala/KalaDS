@@ -1,0 +1,17 @@
+{
+  "component": {
+    "drawer": {
+      "bg":               { "$type": "color",      "$value": "{semantic.bg.default}" },
+      "text":             { "$type": "color",      "$value": "{semantic.text.default}" },
+      "border":           { "$type": "color",      "$value": "{semantic.border.default}" },
+      "border-width":     { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "padding":          { "$type": "dimension",  "$value": "{semantic.padding.xl}" },
+      "gap":              { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "width-sm":         { "$type": "dimension",  "$value": "{semantic.size.lg}" },
+      "width-md":         { "$type": "dimension",  "$value": "{semantic.size.xl}" },
+      "width-lg":         { "$type": "dimension",  "$value": "{semantic.size.2xl}" },
+      "backdrop":         { "$type": "color",      "$value": "{semantic.bg.overlay}" },
+      "backdrop-opacity": { "$type": "number",     "$value": "{semantic.opacity.overlay}" }
+    }
+  }
+}

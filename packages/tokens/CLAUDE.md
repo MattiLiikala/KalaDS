@@ -15,6 +15,7 @@ Layer 2 → Semantic (references Core only)
   src/semantic/radius.json   — radius.none/sm/md/lg/full
   src/semantic/padding.json  — padding.xs/sm/md/lg/xl
   src/semantic/border-width.json — border-width.default/focus (uses the size .px values)
+  src/semantic/shadow.json   — shadow.crisp.1-3 (offset, no blur: card/paper/notification), shadow.soft.1-3 (blurred: popups, dialogs)
 
 Layer 3 → Component (references Semantic only, never Core directly)
   src/component/button.json

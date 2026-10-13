@@ -1,0 +1,11 @@
+{
+  "component": {
+    "radio-group": {
+      "gap":            { "$type": "dimension",  "$value": "{semantic.spacing.sm}" },
+      "gap-horizontal": { "$type": "dimension",  "$value": "{semantic.spacing.lg}" },
+      "legend-text":    { "$type": "color",      "$value": "{semantic.text.default}" },
+      "helper-text":    { "$type": "color",      "$value": "{semantic.text.subtle}" },
+      "error-text":     { "$type": "color",      "$value": "{semantic.status.danger}" }
+    }
+  }
+}

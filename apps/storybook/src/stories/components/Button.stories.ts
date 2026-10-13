@@ -4,59 +4,16 @@ import '@kalads/components';
 import '@kalads/icons';
 
 const meta: Meta = {
-  title: 'Components/Button',
+  title: 'Components/Inputs/Button',
   component: 'kds-button',
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
         component: `
-Buttons are fully rounded. Solid variants (\`primary\`, \`secondary\`, \`danger\`) render their label and icons as a
-**knockout**: the text is cut out of the button fill with a mask, so the surface behind the button shows
-through the letters. This works on any surface without the component needing to know its colour.
-
-### On inverse surfaces: use \`on-inverse\`
-
-Add the \`on-inverse\` attribute when a button sits on an inverse surface (\`bg-inverse\`). It works with every variant.
-The name is relative to the theme, not to lightness: in the light theme the inverse surface is dark, so \`on-inverse\`
-uses the light fills (the 300 step, getting lighter on hover and press) and the knocked-out text still has strong contrast.
-A dark theme would swap these tokens, so the same markup keeps working.
-
-\`\`\`html
-<kds-button variant="primary" on-inverse>Save</kds-button>
-\`\`\`
-
-### Contrast rule: the button fill must contrast with the surface behind it
-
-Because knockout text *is* the surface colour, text legibility depends entirely on the contrast between
-the button fill and the surface the button sits on.
-
-- The surface directly behind a solid button **must have at least 4.5:1 contrast** with the button fill
-  in every state: default, hover and active (\`bg\`, \`bg-hover\`, \`bg-active\`).
-- On light surfaces use the default fills. On inverse surfaces (\`bg-inverse\`, and other surfaces as dark as neutral 800–900) use \`on-inverse\`.
-- Don't place solid buttons on images, gradients or patterned surfaces. Every pixel behind the label has to pass.
-- Don't place solid buttons on a surface close to the button colour (for example a primary button on a primary-tinted panel).
-- Mid-tone surfaces (around neutral 500–700) pass with neither fill set. Use a ghost button there, or change the surface.
-
-**Default fills on light surfaces**
-
-| Fill | white | \`bg-default\` | \`bg-subtle\` | \`bg-muted\` |
-|---|---|---|---|---|
-| primary \`bg\` / hover / active | 5.75 / 7.50 / 9.71 | 5.50 / 7.17 / 9.29 | 5.32 / 6.93 / 8.97 | 4.65 / 6.06 / 7.85 |
-| secondary \`bg\` / hover / active | 5.70 / 7.11 / 8.51 | 5.45 / 6.80 / 8.14 | 5.26 / 6.57 / 7.86 | 4.60 / 5.74 / 6.88 |
-| danger \`bg\` / hover / active | 6.03 / 7.76 / 10.14 | 5.76 / 7.43 / 9.69 | 5.57 / 7.17 / 9.37 | 4.87 / 6.27 / 8.19 |
-
-**\`on-inverse\` fills on inverse surfaces (light theme)**
-
-| Fill | \`bg-inverse\` (neutral 900) | neutral 800 |
-|---|---|---|
-| primary \`bg\` / hover / active | 8.53 / 12.25 / 15.48 | 7.00 / 10.06 / 12.71 |
-| secondary \`bg\` / hover / active | 7.49 / 11.40 / 15.14 | 6.15 / 9.35 / 12.42 |
-| danger \`bg\` / hover / active | 8.57 / 12.27 / 15.49 | 7.04 / 10.07 / 12.71 |
-
-The default fills fail on inverse surfaces (about 3:1 or lower), so never skip \`on-inverse\` there.
-Ghost buttons use regular text. With \`on-inverse\` their text switches to primary 300 (8.53:1 on \`bg-inverse\`).
-In Windows high-contrast (forced colours) mode, the knockout is turned off and the label uses the system button text colour.
+Fully rounded button. Solid variants (\`primary\`, \`secondary\`, \`danger\`) cut their label out of the fill
+(**knockout**), so the surface behind the button shows through the text. Check where you place them: see
+**Knockout on surfaces** below.
 `,
       },
     },
@@ -188,8 +145,18 @@ const surface = (bg: string, label: string, onInverse = false) => html`
 `;
 
 /**
- * Knockout text shows the surface behind the button. Check that the fill contrasts with every surface you
- * place a solid button on. The last row shows default fills on the inverse surface, which fails the contrast rule.
+ * The knockout label *is* the surface colour, so a solid button is only readable on a surface that
+ * contrasts with its fill in every state.
+ *
+ * | Surface | Default fills | `on-inverse` fills |
+ * |---|---|---|
+ * | white, `bg-default`, `bg-subtle`, `bg-muted` | ✅ | ❌ |
+ * | `bg-inverse`, neutral 800–900 | ❌ | ✅ |
+ * | neutral 500–700, primary/secondary-tinted panels | ❌ | ❌ use `ghost` |
+ * | images, gradients, patterns | ❌ | ❌ |
+ *
+ * Ghost buttons use regular text and work on any light surface (with `on-inverse` on inverse ones).
+ * In forced-colours mode the knockout is turned off and the label uses the system button text colour.
  */
 export const KnockoutOnSurfaces: Story = {
   render: () => html`
@@ -203,7 +170,15 @@ export const KnockoutOnSurfaces: Story = {
   `,
 };
 
-/** Use `on-inverse` whenever a button sits on an inverse surface (`bg-inverse`). */
+/**
+ * Add `on-inverse` whenever a button sits on an inverse surface (`bg-inverse`); it works with every
+ * variant and switches to the light fills. The name is theme-relative, so a dark theme can swap the
+ * tokens and the same markup keeps working.
+ *
+ * ```html
+ * <kds-button variant="primary" on-inverse>Save</kds-button>
+ * ```
+ */
 export const OnInverse: Story = {
   render: () => html`
     <div style="display:flex; flex-direction:column; gap:1rem;">

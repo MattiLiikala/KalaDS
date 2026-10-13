@@ -51,6 +51,8 @@ export class KdsInput extends LitElement {
       border: var(--kds-component-input-border-width) solid var(--_border-color);
       border-radius: var(--kds-component-input-radius);
       padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x);
+      /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */
+      box-shadow: inset 0 0 0 0 var(--_border-color);
       transition: border-color 0.15s ease, box-shadow 0.15s ease;
       outline: none;
     }

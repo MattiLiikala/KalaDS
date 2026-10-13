@@ -2,7 +2,10 @@
   "semantic": {
     "border-width": {
       "default": { "$type": "dimension", "$value": "{size.25.px}" },
-      "focus":   { "$type": "dimension", "$value": "{size.50.px}" }
+      "focus":   { "$type": "dimension", "$value": "{size.50.px}" },
+      "strong":  { "$type": "dimension", "$value": "{size.75.px}" },
+      "ring":    { "$type": "dimension", "$value": "{size.75.px}" },
+      "ring-offset": { "$type": "dimension", "$value": "{size.75.px}" }
     }
   }
 }

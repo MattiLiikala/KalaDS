@@ -1,0 +1,9 @@
+{
+  "component": {
+    "list": {
+      "gap":           { "$type": "dimension",  "$value": "{semantic.spacing.none}" },
+      "padding-y":     { "$type": "dimension",  "$value": "{semantic.spacing.xs}" },
+      "nested-indent": { "$type": "dimension",  "$value": "{semantic.spacing.lg}" }
+    }
+  }
+}

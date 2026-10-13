@@ -1,0 +1,18 @@
+{
+  "component": {
+    "accordion-item": {
+      "border":       { "$type": "color",      "$value": "{semantic.border.default}" },
+      "border-width": { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "title-text":   { "$type": "color",      "$value": "{semantic.text.default}" },
+      "bg-hover":     { "$type": "color",      "$value": "{semantic.bg.subtle}" },
+      "icon":         { "$type": "color",      "$value": "{semantic.text.subtle}" },
+      "content-text": { "$type": "color",      "$value": "{semantic.text.subtle}" },
+      "padding-x":    { "$type": "dimension",  "$value": "{semantic.padding.md}" },
+      "padding-y":    { "$type": "dimension",  "$value": "{semantic.padding.md}" },
+      "radius":       { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
+      "ring-focus":   { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-width":   { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
+      "ring-offset":  { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
+    }
+  }
+}

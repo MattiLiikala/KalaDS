@@ -1,0 +1,7 @@
+{
+  "component": {
+    "stack": {
+      "gap": { "$type": "dimension",  "$value": "{semantic.spacing.md}" }
+    }
+  }
+}

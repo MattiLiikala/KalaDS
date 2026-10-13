@@ -1,0 +1,43 @@
+{
+  "component": {
+    "notification": {
+      "text":         { "$type": "color",      "$value": "{semantic.text.default}" },
+      "title-text":   { "$type": "color",      "$value": "{semantic.text.default}" },
+      "border-width": { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "radius":       { "$type": "dimension",  "$value": "{semantic.radius.md}" },
+      "padding":      { "$type": "dimension",  "$value": "{semantic.padding.lg}" },
+      "gap":          { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "offset-1":     { "$type": "dimension",  "$value": "{semantic.shadow.crisp-offset.1}" },
+      "offset-2":     { "$type": "dimension",  "$value": "{semantic.shadow.crisp-offset.2}" },
+      "offset-3":     { "$type": "dimension",  "$value": "{semantic.shadow.crisp-offset.3}" },
+      "info": {
+        "bg":             { "$type": "color",      "$value": "{semantic.status.info-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.status.info-strong}" },
+        "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-info}" },
+        "close":          { "$type": "color",      "$value": "{semantic.status.info-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.info-subtle-hover}" }
+      },
+      "success": {
+        "bg":             { "$type": "color",      "$value": "{semantic.status.success-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.status.success-strong}" },
+        "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-success}" },
+        "close":          { "$type": "color",      "$value": "{semantic.status.success-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.success-subtle-hover}" }
+      },
+      "warning": {
+        "bg":             { "$type": "color",      "$value": "{semantic.status.warning-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.status.warning-strong}" },
+        "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-warning}" },
+        "close":          { "$type": "color",      "$value": "{semantic.status.warning-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.warning-subtle-hover}" }
+      },
+      "danger": {
+        "bg":             { "$type": "color",      "$value": "{semantic.status.danger-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.status.danger-strong}" },
+        "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-danger}" },
+        "close":          { "$type": "color",      "$value": "{semantic.status.danger-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.danger-subtle-hover}" }
+      }
+    }
+  }
+}

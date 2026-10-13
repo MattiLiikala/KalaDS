@@ -1,0 +1,13 @@
+{
+  "component": {
+    "tooltip": {
+      "bg":        { "$type": "color",      "$value": "{semantic.bg.inverse}" },
+      "text":      { "$type": "color",      "$value": "{semantic.text.inverse}" },
+      "radius":    { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
+      "padding-x": { "$type": "dimension",  "$value": "{semantic.padding.sm}" },
+      "padding-y": { "$type": "dimension",  "$value": "{semantic.padding.xs}" },
+      "offset":    { "$type": "dimension",  "$value": "{semantic.spacing.sm}" },
+      "max-width": { "$type": "dimension",  "$value": "{semantic.size.lg}" }
+    }
+  }
+}

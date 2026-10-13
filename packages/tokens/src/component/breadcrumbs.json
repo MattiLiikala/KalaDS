@@ -1,0 +1,7 @@
+{
+  "component": {
+    "breadcrumbs": {
+      "gap": { "$type": "dimension", "$value": "{semantic.spacing.xs}" }
+    }
+  }
+}

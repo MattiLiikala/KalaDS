@@ -1,0 +1,352 @@
+{
+  "component": {
+    "chip": {
+      "bg": {
+        "$type": "color",
+        "$value": "transparent"
+      },
+      "bg-disabled": {
+        "$type": "color",
+        "$value": "transparent"
+      },
+      "text-disabled": {
+        "$type": "color",
+        "$value": "{semantic.text.muted}"
+      },
+      "border-disabled": {
+        "$type": "color",
+        "$value": "{semantic.border.default}"
+      },
+      "border-width": {
+        "$type": "dimension",
+        "$value": "{semantic.border-width.default}"
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": "{semantic.radius.full}"
+      },
+      "padding-x": {
+        "$type": "dimension",
+        "$value": "{semantic.padding.md}"
+      },
+      "padding-y": {
+        "$type": "dimension",
+        "$value": "{semantic.padding.xs}"
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": "{semantic.spacing.xs}"
+      },
+      "icon-size": {
+        "$type": "dimension",
+        "$value": "{semantic.spacing.md}"
+      },
+      "ring-focus": {
+        "$type": "color",
+        "$value": "{semantic.interactive.focus}"
+      },
+      "ring-width": {
+        "$type": "dimension",
+        "$value": "{semantic.border-width.ring}"
+      },
+      "ring-offset": {
+        "$type": "dimension",
+        "$value": "{semantic.border-width.ring-offset}"
+      },
+      "neutral": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.border.control}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.text.default}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle-hover}"
+        }
+      },
+      "primary": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.accent-subtle-hover}"
+        }
+      },
+      "secondary": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.interactive.secondary-subtle-hover}"
+        }
+      },
+      "danger": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.status.danger}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.danger}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.danger}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.danger-subtle-hover}"
+        }
+      },
+      "warning": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.status.warning}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.warning}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.warning}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.warning-subtle-hover}"
+        }
+      },
+      "success": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.status.success}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.status.success-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.success-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.success}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.success-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.status.success-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.success-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.success}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.success-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.success-subtle-hover}"
+        }
+      },
+      "info": {
+        "border": {
+          "$type": "color",
+          "$value": "{semantic.status.info}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{semantic.status.info-strong}"
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.info-subtle}"
+        },
+        "border-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.info}"
+        },
+        "text-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.info-strong}"
+        },
+        "bg-active": {
+          "$type": "color",
+          "$value": "{semantic.status.info-subtle-hover}"
+        },
+        "bg-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.info-subtle}"
+        },
+        "border-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.info}"
+        },
+        "text-selected": {
+          "$type": "color",
+          "$value": "{semantic.status.info-strong}"
+        },
+        "bg-selected-hover": {
+          "$type": "color",
+          "$value": "{semantic.status.info-subtle-hover}"
+        }
+      }
+    }
+  }
+}

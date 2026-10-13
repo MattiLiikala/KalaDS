@@ -1,0 +1,15 @@
+{
+  "component": {
+    "paper": {
+      "bg":           { "$type": "color",      "$value": "{semantic.bg.default}" },
+      "border":       { "$type": "color",      "$value": "{semantic.border.default}" },
+      "border-width": { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "radius":       { "$type": "dimension",  "$value": "{semantic.radius.lg}" },
+      "padding":      { "$type": "dimension",  "$value": "{semantic.padding.lg}" },
+      "shadow-0":     { "$type": "shadow",     "$value": { "offsetX": "{size.0.px}", "offsetY": "{size.0.px}", "blur": "{size.0.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.crisp-color}" } },
+      "shadow-1":     { "$type": "shadow",     "$value": "{semantic.shadow.crisp.1}" },
+      "shadow-2":     { "$type": "shadow",     "$value": "{semantic.shadow.crisp.2}" },
+      "shadow-3":     { "$type": "shadow",     "$value": "{semantic.shadow.crisp.3}" }
+    }
+  }
+}

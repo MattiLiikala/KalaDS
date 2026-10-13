@@ -1,0 +1,7 @@
+{
+  "semantic": {
+    "opacity": {
+      "overlay": { "$type": "number", "$value": "{opacity.50}" }
+    }
+  }
+}

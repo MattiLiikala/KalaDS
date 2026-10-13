@@ -1,0 +1,11 @@
+{
+  "component": {
+    "divider": {
+      "color":      { "$type": "color",      "$value": "{semantic.border.default}" },
+      "width":      { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
+      "spacing":    { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
+      "label-text": { "$type": "color",      "$value": "{semantic.text.subtle}" },
+      "label-gap":  { "$type": "dimension",  "$value": "{semantic.spacing.md}" }
+    }
+  }
+}

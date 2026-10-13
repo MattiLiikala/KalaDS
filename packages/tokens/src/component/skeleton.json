@@ -1,0 +1,11 @@
+{
+  "component": {
+    "skeleton": {
+      "bg":          { "$type": "color",      "$value": "{semantic.bg.skeleton}" },
+      "highlight":   { "$type": "color",      "$value": "{semantic.bg.skeleton-highlight}" },
+      "radius":      { "$type": "dimension",  "$value": "{semantic.radius.md}" },
+      "radius-text": { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
+      "gap":         { "$type": "dimension",  "$value": "{semantic.spacing.sm}" }
+    }
+  }
+}
