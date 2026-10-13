@@ -4,6 +4,20 @@ import { Meta } from '@storybook/blocks';
 
 # Getting started
 
+KalaDS has one component library per platform, all built on the same tokens and with the same API: the
+same components, props (camelCase in React and React Native), variants and defaults.
+
+<table className="kds-docs-table">
+  <thead><tr><th>Building for</th><th>Use</th></tr></thead>
+  <tbody>
+    <tr><td>Any web page or framework</td><td><code>@kalads/web-components</code>: the <code>{'<kds-*>'}</code> elements (below)</td></tr>
+    <tr><td>React on the web</td><td><code>@kalads/react-components</code> (see <a href="#react">React</a>)</td></tr>
+    <tr><td>iOS and Android</td><td><code>@kalads/react-native-components</code> (see <a href="#react-native">React Native</a>)</td></tr>
+  </tbody>
+</table>
+
+Every component page has a **Code** section with its main example in all three.
+
 ## 1. Add the packages
 
 <table className="kds-docs-table">
@@ -11,11 +25,11 @@ import { Meta } from '@storybook/blocks';
   <tbody>
     <tr><td><code>@kalads/tokens</code></td><td>All design tokens as CSS custom properties (also as JS and JSON)</td><td><code>@kalads/tokens/css</code></td></tr>
     <tr><td><code>@kalads/icons</code></td><td>Icons as <code>{'<kds-icon-*>'}</code> elements</td><td><code>@kalads/icons</code></td></tr>
-    <tr><td><code>@kalads/components</code></td><td>The <code>{'<kds-*>'}</code> components</td><td><code>@kalads/components</code></td></tr>
+    <tr><td><code>@kalads/web-components</code></td><td>The <code>{'<kds-*>'}</code> components</td><td><code>@kalads/web-components</code></td></tr>
   </tbody>
 </table>
 
-Inside this monorepo they are workspace dependencies (`"@kalads/components": "workspace:*"`).
+Inside this monorepo they are workspace dependencies (`"@kalads/web-components": "workspace:*"`).
 
 ## 2. Load tokens, fonts and components
 
@@ -33,7 +47,7 @@ import '@fontsource/parkinsans/500.css';
 import '@fontsource/parkinsans/700.css';
 
 // Registers every <kds-*> element. Icons are included.
-import '@kalads/components';
+import '@kalads/web-components';
 ```
 
 ## 3. Set the page defaults
@@ -81,3 +95,81 @@ so they stay right when the palette changes.
 ```
 
 Every token is listed in **Foundations**. The rules for what not to do are in **Guidelines/For AI Agents**.
+
+## React
+
+`@kalads/react-components` is the same set of components written in React, styled with the same CSS
+variables. Load the tokens CSS and the components' stylesheet once, plus the fonts (as in step 2):
+
+```tsx
+import '@kalads/tokens/css';
+import '@kalads/react-components/styles.css';
+
+import { Button, Input, Stack } from '@kalads/react-components';
+import { PlusIcon } from '@kalads/icons/react';
+
+export function Subscribe() {
+  return (
+    <Stack gap="md">
+      <Input label="Email" type="email" required onChange={(value) => console.log(value)} />
+      <Button variant="primary" start={<PlusIcon />}>
+        Subscribe
+      </Button>
+    </Stack>
+  );
+}
+```
+
+How the web component API maps to React:
+
+- **Attributes** are props in camelCase: `on-inverse` → `onInverse`, `close-label` → `closeLabel`.
+- **Events** are callbacks with the value: `kds-change` → `onChange(value)`, `kds-close` →
+  `onClose(reason)`. Input's `onChange` fires on every edit (`kds-input`); `onCommit` when the value is
+  committed (`kds-change`).
+- **Named slots** are props: `start`, `end`, `header`, `footer`, `actions`, `trigger`, `nested`. The
+  default slot is `children`.
+- **Form controls, Tabs, Accordion, Dialog and Drawer** work controlled (`value`, `checked`, `open` with
+  the callback) or uncontrolled (`defaultValue`, `defaultChecked`, `defaultOpen`).
+- Requires React 19.
+
+## React Native
+
+`@kalads/react-native-components` builds the same components from React Native views. It reads the
+tokens from `@kalads/tokens/native` (dimensions as numbers, shadows as `boxShadow` values), so it needs
+the New Architecture (React Native 0.76 or later; Expo SDK 52 or later).
+
+```sh
+npx expo install react-native-svg react-native-safe-area-context expo-font \
+  @expo-google-fonts/overlock @expo-google-fonts/parkinsans
+```
+
+Load the fonts once at the app root, then use the components:
+
+```tsx
+import { Button, Input, Stack, useKalaFonts } from '@kalads/react-native-components';
+
+export default function App() {
+  const [loaded] = useKalaFonts();
+  if (!loaded) return null;
+  return (
+    <Stack gap="md">
+      <Input label="Email" type="email" required />
+      <Button variant="primary" onPress={() => subscribe()}>
+        Subscribe
+      </Button>
+    </Stack>
+  );
+}
+```
+
+Differences from the web, where the platform needs them:
+
+- Presses are `onPress`. Hover and keyboard focus styles appear where the device has a pointer or
+  keyboard; focus rings show for keyboard focus only.
+- `Select` and `Autocomplete` take `Option` children (React Native has no `<option>`).
+- Dialog, Drawer and Backdrop are modals; the Android back button closes them with reason `'escape'`.
+- Tooltip shows on long press on touch screens; its text is also the trigger's accessibility hint.
+- Text must be inside `Typography` (or a component that takes text, such as Button). Box and Stack lay out
+  views, and Typography inside `Box bg="inverse"` switches to inverse text by itself.
+- Grid has no row spans (`rowSpan`), and form submission props (`name`) don't apply.
+- The surface rules for solid buttons in **Guidelines/Buttons and Surfaces** apply the same way.

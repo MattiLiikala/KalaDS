@@ -1,0 +1,29 @@
+{
+  "name": "@kalads/react-playground",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Every React component next to its web component, for visual parity checks.",
+  "scripts": {
+    "dev": "vite --port 6110",
+    "build": "vite build",
+    "preview": "vite preview --port 6110",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/overlock": "^5.3.0",
+    "@fontsource/parkinsans": "^5.3.0",
+    "@kalads/icons": "workspace:*",
+    "@kalads/react-components": "workspace:*",
+    "@kalads/tokens": "workspace:*",
+    "@kalads/web-components": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "typescript": "^6.0.3",
+    "vite": "^6.3.5"
+  }
+}

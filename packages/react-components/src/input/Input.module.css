@@ -1,0 +1,90 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-size-100-rem);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.label {
+  font-family: var(--kds-font-family-label);
+  font-size: var(--kds-font-size-200);
+  font-weight: var(--kds-font-weight-bold);
+  color: var(--kds-component-input-label-text);
+  line-height: var(--kds-font-line-height-medium);
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  --_border-color: var(--kds-component-input-border);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--kds-font-family-base);
+  font-size: var(--kds-font-size-300);
+  font-weight: var(--kds-font-weight-normal);
+  line-height: var(--kds-font-line-height-medium);
+  color: var(--kds-component-input-text);
+  background-color: var(--kds-component-input-bg);
+  border: var(--kds-component-input-border-width) solid var(--_border-color);
+  border-radius: var(--kds-component-input-radius);
+  padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x);
+  /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */
+  box-shadow: inset 0 0 0 0 var(--_border-color);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--kds-component-input-text-placeholder);
+}
+
+/* Hover never applies while focused, invalid or disabled, so it can't override those states. */
+.input:hover:not(:disabled, :focus, [aria-invalid='true']) {
+  --_border-color: var(--kds-component-input-border-hover);
+}
+
+/*
+ * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra
+ * width is drawn as an inset shadow: browsers snap border widths to whole pixels, so changing the border
+ * itself would resize the field on focus.
+ */
+.input:focus {
+  --_border-color: var(--kds-component-input-border-focus);
+  box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width))
+    var(--_border-color);
+}
+
+.input[aria-invalid='true'] {
+  --_border-color: var(--kds-component-input-border-error);
+}
+
+/* The error colour wins over the focus colour, so focus darkens it to stay visible. */
+.input[aria-invalid='true']:focus {
+  --_border-color: var(--kds-component-input-border-error-focus);
+}
+
+.input:disabled {
+  --_border-color: var(--kds-component-input-border-disabled);
+  background-color: var(--kds-component-input-bg-disabled);
+  color: var(--kds-component-input-text-disabled);
+  cursor: not-allowed;
+}
+
+.helper,
+.error {
+  font-family: var(--kds-font-family-base);
+  font-size: var(--kds-font-size-100);
+  color: var(--kds-component-input-helper-text);
+  line-height: var(--kds-font-line-height-medium);
+}
+
+.error {
+  color: var(--kds-component-input-error-text);
+}

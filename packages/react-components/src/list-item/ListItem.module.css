@@ -1,0 +1,80 @@
+.root {
+  display: block;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--kds-component-list-item-gap);
+  box-sizing: border-box;
+  width: 100%;
+  /* A dense List sets --_kds-list-dense-padding-y, which inherits into its items. */
+  padding: var(--_kds-list-dense-padding-y, var(--kds-component-list-item-padding-y)) var(--kds-component-list-item-padding-x);
+  border: none;
+  border-radius: var(--kds-component-list-item-radius);
+  background: none;
+  color: var(--kds-component-list-item-text);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  text-align: start;
+  text-decoration: none;
+  outline: none;
+}
+
+a.row,
+button.row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+a.row:hover,
+button.row:hover:not(:disabled) {
+  background-color: var(--kds-component-list-item-bg-hover);
+}
+
+a.row:active,
+button.row:active:not(:disabled) {
+  background-color: var(--kds-component-list-item-bg-active);
+}
+
+a.row:focus-visible,
+button.row:focus-visible {
+  outline: var(--kds-component-list-item-ring-width) solid var(--kds-component-list-item-ring-focus);
+  outline-offset: var(--kds-component-list-item-ring-offset);
+}
+
+.root[data-selected] .row {
+  background-color: var(--kds-component-list-item-bg-selected);
+  color: var(--kds-component-list-item-text-selected);
+}
+
+button.row:disabled {
+  color: var(--kds-component-list-item-text-disabled);
+  cursor: not-allowed;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.secondary {
+  font-size: var(--kds-semantic-type-body-sm-size);
+  color: var(--kds-component-list-item-secondary-text);
+}
+
+.root[data-selected] .secondary {
+  color: inherit;
+}
+
+.side {
+  display: inline-flex;
+  flex-shrink: 0;
+}

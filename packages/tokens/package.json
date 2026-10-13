@@ -5,7 +5,11 @@
   "exports": {
     "./css": "./dist/css/variables.css",
     "./js": "./dist/js/tokens.js",
-    "./json": "./dist/json/tokens.json"
+    "./json": "./dist/json/tokens.json",
+    "./native": {
+      "types": "./dist/native/tokens.d.ts",
+      "default": "./dist/native/tokens.js"
+    }
   },
   "scripts": {
     "build": "node sd.config.mjs",

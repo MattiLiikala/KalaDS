@@ -4,6 +4,14 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "default": "./dist/react/index.js"
+    },
+    "./native": {
+      "types": "./dist/native/index.d.ts",
+      "default": "./dist/native/index.js"
+    },
     "./*": "./dist/components/*.js"
   },
   "types": "dist/index.d.ts",
@@ -11,7 +19,7 @@
     "prebuild": "node scripts/build-icons.mjs",
     "build": "tsc --project tsconfig.json",
     "dev": "node scripts/build-icons.mjs --watch",
-    "clean": "rm -rf dist src/components src/index.ts"
+    "clean": "rm -rf dist src/components src/index.ts src/data src/react src/native"
   },
   "dependencies": {
     "lit": "^3.3.3"
@@ -20,9 +28,24 @@
     "chokidar": "^4.0.0",
     "glob": "^11.0.0",
     "svgo": "^4.0.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "@kalads/tokens": "workspace:*",
+    "@types/react": "catalog:",
+    "react": "catalog:",
+    "react-native": "catalog:",
+    "react-native-svg": "catalog:"
   },
   "peerDependencies": {
-    "@kalads/tokens": "workspace:*"
+    "@kalads/tokens": "workspace:*",
+    "react": "catalog:",
+    "react-native-svg": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
   }
 }

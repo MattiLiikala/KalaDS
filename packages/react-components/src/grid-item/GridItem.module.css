@@ -1,0 +1,14 @@
+.root {
+  display: block;
+  min-width: 0;
+  grid-column: span var(--_span, 1);
+  grid-row: span var(--_row-span, 1);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-full] {
+  grid-column: 1 / -1;
+}

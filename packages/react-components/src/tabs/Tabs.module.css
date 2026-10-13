@@ -1,0 +1,17 @@
+.root {
+  display: block;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.tablist {
+  display: flex;
+  gap: var(--kds-component-tabs-gap);
+  overflow-x: auto;
+  border-bottom: var(--kds-component-tabs-border-width) solid var(--kds-component-tabs-border);
+  /* Room for the focus ring and selected indicator, which sit outside the tabs. */
+  padding-inline: var(--kds-semantic-border-width-ring-offset);
+  padding-block-start: calc(var(--kds-semantic-border-width-ring) + var(--kds-semantic-border-width-ring-offset));
+}

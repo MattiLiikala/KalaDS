@@ -5,10 +5,11 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
-    "clean": "rm -rf storybook-static"
+    "clean": "rm -rf storybook-static",
+    "typecheck": "tsc -p tsconfig.snippets-react.json && tsc -p tsconfig.snippets-native.json && node scripts/check-web-snippets.mjs"
   },
   "dependencies": {
-    "@kalads/components": "workspace:*",
+    "@kalads/web-components": "workspace:*",
     "@kalads/icons": "workspace:*",
     "@kalads/tokens": "workspace:*"
   },
@@ -22,11 +23,15 @@
     "@storybook/theming": "8.6.18",
     "@storybook/web-components": "^8.6.18",
     "@storybook/web-components-vite": "^8.6.18",
-    "@types/react": "^19.3.0",
+    "@types/react": "catalog:",
     "lit": "^3.3.3",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "storybook": "^8.6.18",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "@kalads/react-components": "workspace:*",
+    "@kalads/react-native-components": "workspace:*",
+    "react-native": "catalog:",
+    "typescript": "^6.0.3"
   }
 }

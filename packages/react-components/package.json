@@ -1,0 +1,44 @@
+{
+  "name": "@kalads/react-components",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "KalaDS components for React, styled with the KalaDS design tokens.",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "types": "dist/types/index.d.ts",
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "build": "vite build && tsc --project tsconfig.build.json",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@kalads/icons": "workspace:*",
+    "@kalads/spec": "workspace:*",
+    "@kalads/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.0",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "jsdom": "^26.1.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "typescript": "^6.0.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.0"
+  }
+}

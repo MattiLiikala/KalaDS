@@ -1,0 +1,60 @@
+.root {
+  display: block;
+}
+
+.root[data-variant='circle'] {
+  display: inline-block;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-component-skeleton-gap);
+}
+
+.shape {
+  display: block;
+  background-color: var(--kds-component-skeleton-bg);
+  background-image: linear-gradient(90deg, transparent, var(--kds-component-skeleton-highlight), transparent);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  border-radius: var(--kds-component-skeleton-radius);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.rect {
+  height: var(--_height, var(--kds-semantic-size-xs));
+}
+
+.line {
+  /* One line of body text. */
+  height: calc(1em * var(--kds-semantic-type-body-line-height));
+  font-size: var(--kds-semantic-type-body-size);
+  border-radius: var(--kds-component-skeleton-radius-text);
+}
+
+.line.last {
+  width: 60%;
+}
+
+.circle {
+  width: var(--_size, var(--kds-semantic-spacing-2xl));
+  aspect-ratio: 1;
+  border-radius: var(--kds-semantic-radius-full);
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+    background-image: none;
+  }
+}

@@ -1,5 +1,5 @@
 import { setCustomElementsManifest, type Preview } from '@storybook/web-components';
-import manifest from '@kalads/components/custom-elements.json';
+import manifest from '@kalads/web-components/custom-elements.json';
 import { SemanticBgDefault, SemanticBgInverse, SemanticBgMuted, SemanticBgSubtle } from '@kalads/tokens/js';
 import { kaladsTheme } from './kalads-theme';
 import { ComponentDocsPage } from '../src/docs-blocks';
@@ -14,7 +14,7 @@ import '@fontsource/parkinsans/400.css';
 import '@fontsource/parkinsans/500.css';
 import '@fontsource/parkinsans/700.css';
 import '@kalads/tokens/css';
-import '@kalads/components';
+import '@kalads/web-components';
 import './docs.css';
 
 // Props tables (attributes, properties, slots, events, CSS parts) come from the analyser's manifest,
@@ -88,8 +88,8 @@ const preview: Preview = {
   // `!dev` removes a story from the sidebar but keeps it in docs (and reachable by its iframe URL).
   tags: ['!dev'],
   loaders: [
-    // Render stories only once the real fonts are available, so layout and button knockout masks are
-    // never computed against fallback fonts.
+    // Render stories only once the real fonts are available, so layout is never measured against
+    // fallback fonts.
     async () => {
       fontsReady ??= Promise.all(FONTS.map((font) => document.fonts.load(font))).catch(() => undefined);
       await fontsReady;
@@ -120,7 +120,7 @@ const preview: Preview = {
           'Components',
           ['Inputs', 'Data Display', 'Feedback', 'Surfaces', 'Navigation', 'Layout'],
           'Guidelines',
-          ['Accessibility', 'Knockout and Surfaces', 'Writing', 'For AI Agents'],
+          ['Accessibility', 'Buttons and Surfaces', 'Writing', 'For AI Agents'],
         ],
       },
     },

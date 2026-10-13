@@ -1,0 +1,57 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kds-semantic-spacing-sm);
+  margin: 0;
+  padding: var(--kds-component-tab-padding-y) var(--kds-component-tab-padding-x);
+  border: none;
+  border-radius: var(--kds-component-tab-radius) var(--kds-component-tab-radius) 0 0;
+  background: none;
+  color: var(--kds-component-tab-text);
+  font-family: var(--kds-semantic-type-label-family);
+  font-size: var(--kds-semantic-type-label-size);
+  font-weight: var(--kds-semantic-type-label-weight);
+  line-height: var(--kds-semantic-type-body-line-height);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root:hover:not([aria-disabled='true']) {
+  background-color: var(--kds-component-tab-bg-hover);
+}
+
+/* Hover darkens only unselected tabs; the selected tab keeps its accent colour. */
+.root:hover:not([aria-disabled='true'], [aria-selected='true']) {
+  color: var(--kds-component-tab-text-hover);
+}
+
+.root[aria-selected='true'] {
+  color: var(--kds-component-tab-text-selected);
+}
+
+/* Selected indicator along the bottom edge, just above the tab list's border. */
+.root[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--kds-component-tab-indicator-width);
+  background-color: var(--kds-component-tab-indicator);
+}
+
+.root:focus-visible {
+  outline: var(--kds-component-tab-ring-width) solid var(--kds-component-tab-ring-focus);
+  outline-offset: var(--kds-component-tab-ring-offset);
+}
+
+.root[aria-disabled='true'] {
+  cursor: not-allowed;
+  color: var(--kds-component-tab-text-disabled);
+}

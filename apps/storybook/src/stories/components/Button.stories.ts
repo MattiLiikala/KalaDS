@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@kalads/components';
+import '@kalads/web-components';
 import '@kalads/icons';
 
 const meta: Meta = {
@@ -10,8 +10,8 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-Fully rounded button. Solid variants (\`primary\`, \`secondary\`, \`danger\`) cut their label out of the fill
-(**knockout**), so the surface behind the button shows through the text.
+Fully rounded button. Solid variants (\`primary\`, \`secondary\`, \`danger\`) have a filled background;
+\`ghost\` has none. On inverse surfaces, add \`on-inverse\`.
 `,
       },
     },
@@ -146,10 +146,10 @@ const surface = (bg: Surface, label: string, onInverse = false) => html`
 `;
 
 /**
- * The knockout label *is* the surface colour, so a solid button is only readable on a surface that
- * contrasts with its fill. The last row fails. The full rules are in **Guidelines/Knockout and Surfaces**.
+ * A solid button needs a surface its fill stands out from. The last row fails: the default fills blend
+ * into the inverse surface. The full rules are in **Guidelines/Buttons and Surfaces**.
  */
-export const KnockoutOnSurfaces: Story = {
+export const OnSurfaces: Story = {
   render: () => html`
     <kds-stack gap="md">
       ${surface('default', 'bg-default')}

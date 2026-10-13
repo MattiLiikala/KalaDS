@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@kalads/components';
+import '@kalads/web-components';
 import '@kalads/icons';
 
 const meta: Meta = {

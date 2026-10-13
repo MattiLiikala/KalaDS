@@ -1,0 +1,53 @@
+{
+  "name": "@kalads/react-native-components",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "KalaDS components for React Native, styled with the KalaDS design tokens.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "react-native": "dist/index.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --project tsconfig.build.json --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@kalads/icons": "workspace:*",
+    "@kalads/spec": "workspace:*",
+    "@kalads/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "@expo-google-fonts/overlock": "*",
+    "@expo-google-fonts/parkinsans": "*",
+    "expo-font": "catalog:",
+    "react": "catalog:",
+    "react-native": "catalog:",
+    "react-native-safe-area-context": "catalog:",
+    "react-native-svg": "catalog:"
+  },
+  "devDependencies": {
+    "@expo-google-fonts/overlock": "^0.4.1",
+    "@expo-google-fonts/parkinsans": "^0.4.2",
+    "@testing-library/react-native": "^13.3.0",
+    "@types/jest": "^29.5.0",
+    "@types/react": "catalog:",
+    "expo": "catalog:",
+    "expo-font": "catalog:",
+    "jest": "^29.7.0",
+    "jest-expo": "catalog:",
+    "react": "catalog:",
+    "react-native": "catalog:",
+    "react-native-safe-area-context": "catalog:",
+    "react-native-svg": "catalog:",
+    "react-test-renderer": "19.2.3",
+    "typescript": "^6.0.3"
+  }
+}

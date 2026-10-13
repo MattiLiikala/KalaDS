@@ -1,0 +1,56 @@
+/*
+ * The underline is a background line along the bottom of the text, not text-decoration: decorations skip
+ * inline icons, and this one runs under the new-tab icon too. It follows the text across line breaks, and
+ * sits below the descenders.
+ */
+.root {
+  --_underline-width: var(--kds-component-link-underline-width);
+  color: var(--kds-component-link-text);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% var(--_underline-width);
+  outline: none;
+  transition: color 0.15s ease;
+}
+
+.root:hover {
+  --_underline-width: var(--kds-component-link-underline-width-hover);
+  color: var(--kds-component-link-text-hover);
+}
+
+.root:active {
+  color: var(--kds-component-link-text-active);
+}
+
+.root[data-variant='subtle'] {
+  color: var(--kds-component-link-text-subtle);
+}
+
+.root[data-variant='subtle']:hover {
+  color: var(--kds-component-link-text-subtle-hover);
+}
+
+/* Rounded only while focused, for the ring: the radius would also clip the ends of the underline. */
+.root:focus-visible {
+  border-radius: var(--kds-component-link-radius);
+  outline: var(--kds-component-link-ring-width) solid var(--kds-component-link-ring-focus);
+  outline-offset: var(--kds-component-link-ring-offset);
+}
+
+/*
+ * The icon's glyph stands on the text baseline. An inline-block with overflow hidden has its baseline at
+ * its bottom edge, and the Material glyph leaves 3 of its 24 grid units empty below it, so the box is
+ * lowered by 1/8 of its size.
+ */
+.external {
+  --kds-icon-size: var(--kds-component-link-icon-size);
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: calc(var(--kds-component-link-icon-size) / -8);
+  width: var(--kds-component-link-icon-size);
+  height: var(--kds-component-link-icon-size);
+  line-height: 0;
+  margin-inline-start: var(--kds-component-link-icon-gap);
+}

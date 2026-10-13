@@ -10,7 +10,8 @@
     "build:storybook": "turbo run build:storybook",
     "typecheck": "turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,json,css,md,mdx}\"",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "test": "turbo run test && node packages/spec/scripts/check-parity.mjs"
   },
   "devDependencies": {
     "prettier": "^3.8.3",

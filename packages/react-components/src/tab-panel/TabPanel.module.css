@@ -1,0 +1,19 @@
+.root {
+  display: block;
+  padding-block: var(--kds-component-tab-panel-padding-y);
+  border-radius: var(--kds-component-tab-panel-radius);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--kds-component-tab-panel-text);
+  outline: none;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root:focus-visible {
+  outline: var(--kds-component-tab-panel-ring-width) solid var(--kds-component-tab-panel-ring-focus);
+  outline-offset: var(--kds-component-tab-panel-ring-offset);
+}

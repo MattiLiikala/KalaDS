@@ -1,0 +1,97 @@
+/*
+ * Text-field look shared by Select and Autocomplete, matching Input: label, helper and error text, and the
+ * field border states. Each component maps its own tokens onto the --_f-* properties on its root, as the
+ * web components' fieldStyles(prefix) does. Error state keys off aria-invalid="true".
+ */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-semantic-spacing-xs);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.label {
+  font-family: var(--kds-semantic-type-label-family);
+  font-size: var(--kds-semantic-type-label-size);
+  font-weight: var(--kds-semantic-type-label-weight);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--_f-label-text);
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field {
+  --_border-color: var(--_f-border);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  font-weight: var(--kds-semantic-type-body-weight);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--_f-text);
+  background-color: var(--_f-bg);
+  border: var(--_f-border-width) solid var(--_border-color);
+  border-radius: var(--_f-radius);
+  padding: var(--_f-padding-y) var(--_f-padding-x);
+  /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */
+  box-shadow: inset 0 0 0 0 var(--_border-color);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.field::placeholder {
+  color: var(--_f-text-placeholder);
+}
+
+.field:hover:not(:disabled, :focus, [aria-invalid='true']) {
+  --_border-color: var(--_f-border-hover);
+}
+
+/* Thicker focus border drawn as an inset shadow, so the field never resizes. */
+.field:focus {
+  --_border-color: var(--_f-border-focus);
+  box-shadow: inset 0 0 0 calc(var(--_f-border-width-focus) - var(--_f-border-width)) var(--_border-color);
+}
+
+.field[aria-invalid='true'] {
+  --_border-color: var(--_f-border-error);
+}
+
+.field[aria-invalid='true']:focus {
+  --_border-color: var(--_f-border-error-focus);
+}
+
+.field:disabled {
+  --_border-color: var(--_f-border-disabled);
+  background-color: var(--_f-bg-disabled);
+  color: var(--_f-text-disabled);
+  cursor: not-allowed;
+}
+
+.icon {
+  position: absolute;
+  inset-inline-end: var(--_f-padding-x);
+  display: inline-flex;
+  color: var(--_f-icon);
+  pointer-events: none;
+  --kds-icon-size: var(--kds-semantic-spacing-lg);
+}
+
+.helper,
+.error {
+  font-family: var(--kds-semantic-type-caption-family);
+  font-size: var(--kds-semantic-type-caption-size);
+  line-height: var(--kds-semantic-type-caption-line-height);
+  color: var(--_f-helper-text);
+}
+
+.error {
+  color: var(--_f-error-text);
+}

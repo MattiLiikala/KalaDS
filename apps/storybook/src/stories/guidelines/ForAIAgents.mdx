@@ -33,7 +33,7 @@ rules are in `CLAUDE.md` at the repository root.
    font-size: var(--kds-font-size-200);
    ```
 
-3. **Never build a custom `<button>`, `<input>`, or other element** when `@kalads/components` has one. Check the Components section first.
+3. **Never build a custom `<button>`, `<input>`, or other element** when KalaDS has one: `@kalads/web-components` (`kds-*` elements), `@kalads/react-components` in React, `@kalads/react-native-components` in React Native. Check the Components section first.
 
 4. **Never use inline `<svg>` or raw icon files** — use `<kds-icon-*>` web components:
    ```html
@@ -51,9 +51,9 @@ rules are in `CLAUDE.md` at the repository root.
    - A Storybook story in `apps/storybook/src/stories/components/`
 
 7. **Never place a solid button** (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with
-   its fill. The label is cut out of the fill, so it *is* the surface colour. On inverse surfaces always add
-   `on-inverse`; never put solid buttons on images, gradients or surfaces close to the button colour.
-   See **Guidelines/Knockout and Surfaces**.
+   its fill, or the button blends into it. On inverse surfaces always add `on-inverse`; never put solid
+   buttons on images, gradients or surfaces close to the button colour.
+   See **Guidelines/Buttons and Surfaces**.
 
 ### ALWAYS do these things
 
@@ -72,9 +72,18 @@ rules are in `CLAUDE.md` at the repository root.
 
 ---
 
+## Which package
+
+- Plain HTML, Lit, Vue, Angular or any other web stack: `@kalads/web-components` (`<kds-button>`).
+- React on the web: `@kalads/react-components` (`<Button>`), plus `@kalads/react-components/styles.css`.
+- React Native / Expo: `@kalads/react-native-components` (`<Button>`), with `useKalaFonts()` at the root.
+
+The three share one API (`@kalads/spec`): the same component names, props in camelCase, variants and
+defaults. Each component page's **Code** section shows the main example in all three.
+
 ## Before you build
 
 - Check **Components** for an existing element before writing markup.
 - Read the component's docs page: the props table lists every attribute, slot, event and CSS part.
-- Solid buttons cut their label out of the fill: check **Guidelines/Knockout and Surfaces** before placing
-  one on anything other than a light surface.
+- Solid buttons need a surface their fill stands out from: check **Guidelines/Buttons and Surfaces**
+  before placing one on anything other than a light surface.

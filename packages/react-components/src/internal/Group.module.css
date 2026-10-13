@@ -1,0 +1,45 @@
+/*
+ * Labelled option groups (CheckboxGroup, RadioGroup). Each maps its tokens onto --_g-* on the root, as the
+ * web components' group styles use --kds-component-checkbox-group-* / radio-group-*.
+ */
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_g-gap);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.label {
+  font-family: var(--kds-semantic-type-label-family);
+  font-size: var(--kds-semantic-type-label-size);
+  font-weight: var(--kds-semantic-type-label-weight);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--_g-legend-text);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_g-gap);
+}
+
+.root[data-orientation='horizontal'] .options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--_g-gap) var(--_g-gap-horizontal);
+}
+
+.helper,
+.error {
+  font-family: var(--kds-semantic-type-caption-family);
+  font-size: var(--kds-semantic-type-caption-size);
+  line-height: var(--kds-semantic-type-caption-line-height);
+  color: var(--_g-helper-text);
+}
+
+.error {
+  color: var(--_g-error-text);
+}

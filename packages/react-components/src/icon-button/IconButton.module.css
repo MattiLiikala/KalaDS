@@ -1,0 +1,37 @@
+/*
+ * Square, and exactly as tall as a Button of the same size: one line of label text plus the button's
+ * vertical padding (the 1px border is added on top). The icon is centred, so icon buttons and text
+ * buttons line up in a row.
+ */
+.root {
+  --_size: calc(1em * var(--kds-font-line-height-small) + 2 * var(--_padding-y));
+  --_icon-size: var(--kds-component-icon-button-icon-size-md);
+  box-sizing: content-box;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  padding: 0;
+  line-height: 0;
+}
+
+/* Two classes and an attribute: beats the variant shape rules in Button.module.css. */
+.root.root[data-size] {
+  --_radius: var(--kds-component-icon-button-radius);
+}
+
+.root[data-size='sm'] {
+  --_icon-size: var(--kds-component-icon-button-icon-size-sm);
+}
+
+.root[data-size='lg'] {
+  --_icon-size: var(--kds-component-icon-button-icon-size-lg);
+}
+
+/* The icon sits in the label wrapper. */
+.root > span {
+  display: inline-flex;
+}
+
+.root svg {
+  --kds-icon-size: var(--_icon-size);
+}

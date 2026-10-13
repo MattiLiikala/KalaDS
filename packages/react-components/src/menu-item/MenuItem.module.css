@@ -1,0 +1,56 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: var(--kds-component-menu-item-gap);
+  padding: var(--kds-component-menu-item-padding-y) var(--kds-component-menu-item-padding-x);
+  border-radius: var(--kds-component-menu-item-radius);
+  color: var(--kds-component-menu-item-text);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root:hover,
+.root:focus {
+  background-color: var(--kds-component-menu-item-bg-hover);
+}
+
+.root:active {
+  background-color: var(--kds-component-menu-item-bg-active);
+}
+
+.root:focus-visible {
+  outline: var(--kds-component-menu-item-ring-width) solid var(--kds-component-menu-item-ring-focus);
+  outline-offset: var(--kds-component-menu-item-ring-offset);
+}
+
+.root[data-variant='danger'] {
+  color: var(--kds-component-menu-item-text-danger);
+}
+
+.root[aria-disabled='true'] {
+  cursor: not-allowed;
+  color: var(--kds-component-menu-item-text-disabled);
+  background: none;
+}
+
+.label {
+  flex: 1;
+}
+
+.start {
+  display: inline-flex;
+  --kds-icon-size: var(--kds-component-menu-item-icon-size);
+}
+
+.end {
+  color: var(--kds-semantic-text-muted);
+  font-size: var(--kds-semantic-type-caption-size);
+}

@@ -20,10 +20,10 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     config.resolve = config.resolve ?? {};
     const existing = config.resolve.alias ?? [];
-    // Exact matches only, so subpaths such as @kalads/components/custom-elements.json resolve normally.
+    // Exact matches only, so subpaths such as @kalads/web-components/custom-elements.json resolve normally.
     config.resolve.alias = [
       ...(Array.isArray(existing) ? existing : Object.entries(existing).map(([find, replacement]) => ({ find, replacement }))),
-      { find: /^@kalads\/components$/, replacement: resolve(__dirname, '../../../packages/components/src/index.ts') },
+      { find: /^@kalads\/web-components$/, replacement: resolve(__dirname, '../../../packages/web-components/src/index.ts') },
       { find: /^@kalads\/icons$/, replacement: resolve(__dirname, '../../../packages/icons/src/index.ts') },
     ];
     return config;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@kalads/components';
+import '@kalads/web-components';
 import '@kalads/icons';
 
 const meta: Meta = {
@@ -12,8 +12,7 @@ const meta: Meta = {
         component: `
 Round button with only an icon. **\`label\` is required**: it's the button's accessible name.
 
-Built on \`kds-button\`, so it has every variant, \`on-inverse\` and the knockout effect: on solid variants
-the icon is cut out of the fill. Defaults to \`ghost\`. Wrap in \`kds-tooltip\` to show the label on hover.
+Built on \`kds-button\`, so it has every variant and \`on-inverse\`. Defaults to \`ghost\`. Wrap in \`kds-tooltip\` to show the label on hover.
 `,
       },
     },

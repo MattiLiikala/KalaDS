@@ -1,0 +1,52 @@
+.input {
+  padding-inline-end: calc(var(--kds-component-autocomplete-padding-x) * 2 + var(--kds-semantic-spacing-lg));
+}
+
+.listbox {
+  box-sizing: border-box;
+  max-height: var(--kds-component-autocomplete-popup-max-height);
+  overflow-y: auto;
+  padding: var(--kds-component-autocomplete-popup-padding);
+  background-color: var(--kds-component-autocomplete-popup-bg);
+  border: var(--kds-component-autocomplete-popup-border-width) solid var(--kds-component-autocomplete-popup-border);
+  border-radius: var(--kds-component-autocomplete-popup-radius);
+  box-shadow: var(--kds-component-autocomplete-popup-shadow);
+  /* Carries the anchor gap for usePopup (see internal/popup.ts). */
+  scroll-margin-top: var(--kds-component-autocomplete-popup-offset);
+}
+
+.option {
+  padding: var(--kds-component-autocomplete-option-padding-y) var(--kds-component-autocomplete-option-padding-x);
+  border-radius: var(--kds-component-autocomplete-option-radius);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--kds-component-autocomplete-option-text);
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: var(--kds-component-autocomplete-option-bg-hover);
+}
+
+.option[data-active] {
+  background-color: var(--kds-component-autocomplete-option-bg-active);
+  color: var(--kds-component-autocomplete-option-text-active);
+}
+
+.option[aria-disabled='true'] {
+  color: var(--kds-component-autocomplete-option-text-disabled);
+  cursor: not-allowed;
+  background: none;
+}
+
+.option[aria-selected='true'] {
+  font-weight: var(--kds-font-weight-bold);
+}
+
+.empty {
+  padding: var(--kds-component-autocomplete-option-padding-y) var(--kds-component-autocomplete-option-padding-x);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  color: var(--kds-component-autocomplete-empty-text);
+}

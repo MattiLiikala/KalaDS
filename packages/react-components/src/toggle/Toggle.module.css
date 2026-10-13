@@ -1,0 +1,113 @@
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--kds-component-toggle-gap);
+  cursor: pointer;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--kds-component-toggle-label-text);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  /* Centre the track on the first line of label text, like Checkbox. */
+  height: calc(1em * var(--kds-semantic-type-body-line-height));
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* The label text sets the baseline, so the control lines up with surrounding text. */
+.text {
+  align-self: baseline;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.track {
+  --_bg: var(--kds-component-toggle-track-bg);
+  --_border: var(--kds-component-toggle-track-border);
+  --_thumb: var(--kds-component-toggle-thumb);
+  position: relative;
+  box-sizing: border-box;
+  width: var(--kds-component-toggle-track-width);
+  height: var(--kds-component-toggle-track-height);
+  border: var(--kds-component-toggle-border-width) solid var(--_border);
+  border-radius: var(--kds-component-toggle-radius);
+  background-color: var(--_bg);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.thumb {
+  /* Same gap around the thumb on every side: half of what's left of the inner track height. */
+  --_inset: calc(
+    (var(--kds-component-toggle-track-height) - 2 * var(--kds-component-toggle-border-width) - var(--kds-component-toggle-thumb-size)) / 2
+  );
+  position: absolute;
+  top: 50%;
+  left: var(--_inset);
+  width: var(--kds-component-toggle-thumb-size);
+  height: var(--kds-component-toggle-thumb-size);
+  border-radius: var(--kds-component-toggle-radius);
+  background-color: var(--_thumb);
+  translate: 0 -50%;
+  transition: left 0.15s ease, background-color 0.15s ease;
+}
+
+/* left is measured inside the border, so 100% is the inner track width. */
+.root[data-checked] .thumb {
+  left: calc(100% - var(--kds-component-toggle-thumb-size) - var(--_inset));
+}
+
+.root:hover .track {
+  --_bg: var(--kds-component-toggle-track-bg-hover);
+  --_border: var(--kds-component-toggle-track-border-hover);
+  --_thumb: var(--kds-component-toggle-thumb-hover);
+}
+
+.root[data-checked] .track {
+  --_bg: var(--kds-component-toggle-track-bg-checked);
+  --_border: var(--kds-component-toggle-track-border-checked);
+  --_thumb: var(--kds-component-toggle-thumb-checked);
+}
+
+.root[data-checked]:hover .track {
+  --_bg: var(--kds-component-toggle-track-bg-checked-hover);
+  --_border: var(--kds-component-toggle-track-border-checked-hover);
+  --_thumb: var(--kds-component-toggle-thumb-checked);
+}
+
+.input:focus-visible + .track {
+  outline: var(--kds-component-toggle-ring-width) solid var(--kds-component-toggle-ring-focus);
+  outline-offset: var(--kds-component-toggle-ring-offset);
+}
+
+.root[data-disabled] {
+  cursor: not-allowed;
+  color: var(--kds-component-toggle-label-text-disabled);
+}
+
+.root[data-disabled] .track,
+.root[data-disabled]:hover .track {
+  --_bg: var(--kds-component-toggle-track-bg-disabled);
+  --_border: var(--kds-component-toggle-track-border-disabled);
+  --_thumb: var(--kds-component-toggle-thumb-disabled);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .thumb {
+    transition: none;
+  }
+}

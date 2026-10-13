@@ -1,0 +1,26 @@
+.root {
+  display: grid;
+  grid-template-columns: repeat(var(--_columns, 1), minmax(0, 1fr));
+  gap: var(--_row-gap, var(--_gap, var(--kds-component-grid-gap))) var(--_gap, var(--kds-component-grid-gap));
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-min] {
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--_min, var(--kds-component-grid-min-item-width)), 100%), 1fr));
+}
+
+.root[data-align='start'] {
+  align-items: start;
+}
+.root[data-align='center'] {
+  align-items: center;
+}
+.root[data-align='end'] {
+  align-items: end;
+}
+.root[data-align='stretch'] {
+  align-items: stretch;
+}

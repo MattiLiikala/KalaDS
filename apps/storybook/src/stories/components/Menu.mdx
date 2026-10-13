@@ -1,5 +1,8 @@
 import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
-import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import { ComponentHeader, Do, DoDont, Dont, FrameworkTabs } from '../../docs-blocks';
+import webCode from '../../snippets/Menu.web.html?raw';
+import reactCode from '../../snippets/Menu.react.tsx?raw';
+import nativeCode from '../../snippets/Menu.native.tsx?raw';
 import * as MenuStories from './Menu.stories';
 
 <Meta of={MenuStories} />
@@ -13,6 +16,15 @@ import * as MenuStories from './Menu.stories';
 ## Props
 
 <Controls />
+
+## Code
+
+The same example in each library. Components come from `@kalads/web-components`,
+`@kalads/react-components` or `@kalads/react-native-components`, and icons from `@kalads/icons` (`/react`,
+`/native`). React and React Native take the same props in camelCase, callbacks for events (`onChange` for
+`kds-change`) and props for named slots (`start`, `footer`).
+
+<FrameworkTabs web={webCode} react={reactCode} native={nativeCode} />
 
 ## Usage
 

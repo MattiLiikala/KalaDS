@@ -1,0 +1,20 @@
+.root {
+  display: inline-flex;
+}
+
+.tooltip {
+  box-sizing: border-box;
+  max-width: var(--kds-component-tooltip-max-width);
+  padding: var(--kds-component-tooltip-padding-y) var(--kds-component-tooltip-padding-x);
+  border: none;
+  border-radius: var(--kds-component-tooltip-radius);
+  background-color: var(--kds-component-tooltip-bg);
+  color: var(--kds-component-tooltip-text);
+  font-family: var(--kds-semantic-type-label-sm-family);
+  font-size: var(--kds-semantic-type-label-sm-size);
+  font-weight: var(--kds-semantic-type-label-sm-weight);
+  line-height: var(--kds-semantic-type-label-sm-line-height);
+  pointer-events: auto;
+  /* Carries the anchor gap for usePopup (see internal/popup.ts). */
+  scroll-margin-top: var(--kds-component-tooltip-offset);
+}

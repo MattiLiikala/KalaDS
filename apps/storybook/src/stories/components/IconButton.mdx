@@ -1,5 +1,8 @@
 import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
-import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import { ComponentHeader, Do, DoDont, Dont, FrameworkTabs } from '../../docs-blocks';
+import webCode from '../../snippets/IconButton.web.html?raw';
+import reactCode from '../../snippets/IconButton.react.tsx?raw';
+import nativeCode from '../../snippets/IconButton.native.tsx?raw';
 import * as IconButtonStories from './IconButton.stories';
 
 <Meta of={IconButtonStories} />
@@ -14,13 +17,22 @@ import * as IconButtonStories from './IconButton.stories';
 
 <Controls />
 
+## Code
+
+The same example in each library. Components come from `@kalads/web-components`,
+`@kalads/react-components` or `@kalads/react-native-components`, and icons from `@kalads/icons` (`/react`,
+`/native`). React and React Native take the same props in camelCase, callbacks for events (`onChange` for
+`kds-change`) and props for named slots (`start`, `footer`).
+
+<FrameworkTabs web={webCode} react={reactCode} native={nativeCode} />
+
 ## Usage
 
 - Use an icon button only for actions with a widely understood icon: close, search, more, menu.
   Everything else gets a text button.
 - `label` is required: it's the accessible name. Add a `kds-tooltip` with the same text for sighted users.
-- The default `ghost` variant suits toolbars and headers. Solid variants follow the knockout rules in
-  **Guidelines/Knockout and Surfaces**.
+- The default `ghost` variant suits toolbars and headers. Solid variants follow the surface rules in
+  **Guidelines/Buttons and Surfaces**.
 
 <DoDont>
   <Do caption="A well-known icon, with a label and a matching tooltip.">

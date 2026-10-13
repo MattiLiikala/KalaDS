@@ -1,0 +1,92 @@
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--kds-component-checkbox-gap);
+  cursor: pointer;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--kds-component-checkbox-label-text);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  /* Centre the box on the first line of label text. */
+  height: calc(1em * var(--kds-semantic-type-body-line-height));
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/*
+ * The label text sets the baseline, so the control lines up with surrounding text and the line height
+ * doesn't change when the box gets a check icon (an empty box has no baseline of its own).
+ */
+.text {
+  align-self: baseline;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.box {
+  --_bg: var(--kds-component-checkbox-bg);
+  --_border: var(--kds-component-checkbox-border);
+  --kds-icon-size: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--kds-component-checkbox-size);
+  height: var(--kds-component-checkbox-size);
+  border: var(--kds-component-checkbox-border-width) solid var(--_border);
+  border-radius: var(--kds-component-checkbox-radius);
+  background-color: var(--_bg);
+  color: var(--kds-component-checkbox-check);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.root:hover .box {
+  --_bg: var(--kds-component-checkbox-bg-hover);
+  --_border: var(--kds-component-checkbox-border-hover);
+}
+
+.root[data-checked] .box {
+  --_bg: var(--kds-component-checkbox-bg-checked);
+  --_border: var(--kds-component-checkbox-border-checked);
+}
+
+.root[data-checked]:hover .box {
+  --_bg: var(--kds-component-checkbox-bg-checked-hover);
+  --_border: var(--kds-component-checkbox-border-checked-hover);
+}
+
+.input:focus-visible + .box {
+  outline: var(--kds-component-checkbox-ring-width) solid var(--kds-component-checkbox-ring-focus);
+  outline-offset: var(--kds-component-checkbox-ring-offset);
+}
+
+.root[data-disabled] {
+  cursor: not-allowed;
+  color: var(--kds-component-checkbox-label-text-disabled);
+}
+
+.root[data-disabled] .box,
+.root[data-disabled]:hover .box {
+  --_bg: var(--kds-component-checkbox-bg-disabled);
+  --_border: var(--kds-component-checkbox-border-disabled);
+}
+
+.root[data-disabled][data-checked] .box {
+  --_bg: var(--kds-component-checkbox-bg-checked-disabled);
+  color: var(--kds-component-checkbox-check-disabled);
+}

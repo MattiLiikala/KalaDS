@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-component-list-gap);
+  margin: 0;
+  padding: var(--kds-component-list-padding-y) 0;
+  list-style: none;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+/* Inherits into the items (the web component sets the same property for kds-list-item). */
+.root[data-dense] {
+  --_kds-list-dense-padding-y: var(--kds-semantic-spacing-xs);
+}
+
+.root[data-nested] {
+  padding-block: 0;
+  padding-inline-start: var(--kds-component-list-nested-indent);
+}

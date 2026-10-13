@@ -1,0 +1,102 @@
+.dialog {
+  --_width: var(--kds-component-drawer-width-md);
+  --_from: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  width: min(var(--_width), 100vw);
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-inline-start: var(--kds-component-drawer-border-width) solid var(--kds-component-drawer-border);
+  background-color: var(--kds-component-drawer-bg);
+  color: var(--kds-component-drawer-text);
+}
+
+.dialog[data-placement='start'] {
+  --_from: -100%;
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  border-inline-start: none;
+  border-inline-end: var(--kds-component-drawer-border-width) solid var(--kds-component-drawer-border);
+}
+
+.dialog[data-size='sm'] {
+  --_width: var(--kds-component-drawer-width-sm);
+}
+
+.dialog[data-size='lg'] {
+  --_width: var(--kds-component-drawer-width-lg);
+}
+
+.dialog::backdrop {
+  background-color: var(--kds-component-drawer-backdrop);
+  opacity: var(--kds-component-drawer-backdrop-opacity);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: slide-in 0.2s ease;
+}
+
+.header,
+.body,
+.footer {
+  padding-inline: var(--kds-component-drawer-padding);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--kds-component-drawer-gap);
+  padding-block: var(--kds-component-drawer-padding) var(--kds-component-drawer-gap);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--kds-semantic-type-h4-family);
+  font-size: var(--kds-semantic-type-h4-size);
+  font-weight: var(--kds-semantic-type-h4-weight);
+  line-height: var(--kds-semantic-type-h4-line-height);
+}
+
+.close {
+  display: inline-flex;
+  margin-block-start: calc(var(--kds-semantic-spacing-xs) * -1);
+  margin-inline-end: calc(var(--kds-semantic-spacing-xs) * -1);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--kds-semantic-spacing-sm);
+  padding-block: var(--kds-component-drawer-gap) var(--kds-component-drawer-padding);
+}
+
+@keyframes slide-in {
+  from {
+    translate: var(--_from) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}

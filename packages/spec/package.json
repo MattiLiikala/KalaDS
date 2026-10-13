@@ -1,0 +1,23 @@
+{
+  "name": "@kalads/spec",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "The shared component API (prop types, variants, defaults) of the KalaDS web, React and React Native libraries.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "node scripts/generate.mjs",
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "node scripts/generate.mjs && tsc --noEmit",
+    "clean": "rm -rf dist src/generated.ts"
+  },
+  "devDependencies": {
+    "@kalads/web-components": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,194 @@
+/* Each variant maps its tokens onto private custom properties (--_c-*) that the state rules read. */
+.root[data-variant='neutral'] {
+  --_c-border: var(--kds-component-chip-neutral-border);
+  --_c-text: var(--kds-component-chip-neutral-text);
+  --_c-bg-hover: var(--kds-component-chip-neutral-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-neutral-border-hover);
+  --_c-text-hover: var(--kds-component-chip-neutral-text-hover);
+  --_c-bg-active: var(--kds-component-chip-neutral-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-neutral-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-neutral-border-selected);
+  --_c-text-selected: var(--kds-component-chip-neutral-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-neutral-bg-selected-hover);
+}
+.root[data-variant='primary'] {
+  --_c-border: var(--kds-component-chip-primary-border);
+  --_c-text: var(--kds-component-chip-primary-text);
+  --_c-bg-hover: var(--kds-component-chip-primary-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-primary-border-hover);
+  --_c-text-hover: var(--kds-component-chip-primary-text-hover);
+  --_c-bg-active: var(--kds-component-chip-primary-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-primary-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-primary-border-selected);
+  --_c-text-selected: var(--kds-component-chip-primary-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-primary-bg-selected-hover);
+}
+.root[data-variant='secondary'] {
+  --_c-border: var(--kds-component-chip-secondary-border);
+  --_c-text: var(--kds-component-chip-secondary-text);
+  --_c-bg-hover: var(--kds-component-chip-secondary-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-secondary-border-hover);
+  --_c-text-hover: var(--kds-component-chip-secondary-text-hover);
+  --_c-bg-active: var(--kds-component-chip-secondary-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-secondary-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-secondary-border-selected);
+  --_c-text-selected: var(--kds-component-chip-secondary-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-secondary-bg-selected-hover);
+}
+.root[data-variant='danger'] {
+  --_c-border: var(--kds-component-chip-danger-border);
+  --_c-text: var(--kds-component-chip-danger-text);
+  --_c-bg-hover: var(--kds-component-chip-danger-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-danger-border-hover);
+  --_c-text-hover: var(--kds-component-chip-danger-text-hover);
+  --_c-bg-active: var(--kds-component-chip-danger-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-danger-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-danger-border-selected);
+  --_c-text-selected: var(--kds-component-chip-danger-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-danger-bg-selected-hover);
+}
+.root[data-variant='warning'] {
+  --_c-border: var(--kds-component-chip-warning-border);
+  --_c-text: var(--kds-component-chip-warning-text);
+  --_c-bg-hover: var(--kds-component-chip-warning-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-warning-border-hover);
+  --_c-text-hover: var(--kds-component-chip-warning-text-hover);
+  --_c-bg-active: var(--kds-component-chip-warning-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-warning-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-warning-border-selected);
+  --_c-text-selected: var(--kds-component-chip-warning-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-warning-bg-selected-hover);
+}
+.root[data-variant='success'] {
+  --_c-border: var(--kds-component-chip-success-border);
+  --_c-text: var(--kds-component-chip-success-text);
+  --_c-bg-hover: var(--kds-component-chip-success-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-success-border-hover);
+  --_c-text-hover: var(--kds-component-chip-success-text-hover);
+  --_c-bg-active: var(--kds-component-chip-success-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-success-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-success-border-selected);
+  --_c-text-selected: var(--kds-component-chip-success-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-success-bg-selected-hover);
+}
+.root[data-variant='info'] {
+  --_c-border: var(--kds-component-chip-info-border);
+  --_c-text: var(--kds-component-chip-info-text);
+  --_c-bg-hover: var(--kds-component-chip-info-bg-hover);
+  --_c-border-hover: var(--kds-component-chip-info-border-hover);
+  --_c-text-hover: var(--kds-component-chip-info-text-hover);
+  --_c-bg-active: var(--kds-component-chip-info-bg-active);
+  --_c-bg-selected: var(--kds-component-chip-info-bg-selected);
+  --_c-border-selected: var(--kds-component-chip-info-border-selected);
+  --_c-text-selected: var(--kds-component-chip-info-text-selected);
+  --_c-bg-selected-hover: var(--kds-component-chip-info-bg-selected-hover);
+}
+
+.root {
+  --_bg: var(--kds-component-chip-bg);
+  --_border: var(--_c-border);
+  --_text: var(--_c-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kds-component-chip-gap);
+  box-sizing: border-box;
+  border: var(--kds-component-chip-border-width) solid var(--_border);
+  border-radius: var(--kds-component-chip-radius);
+  background-color: var(--_bg);
+  color: var(--_text);
+  font-family: var(--kds-semantic-type-label-family);
+  font-size: var(--kds-semantic-type-label-size);
+  font-weight: var(--kds-semantic-type-label-weight);
+  line-height: var(--kds-semantic-type-label-line-height);
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.body {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kds-component-chip-gap);
+  padding: var(--kds-component-chip-padding-y) var(--kds-component-chip-padding-x);
+  border: none;
+  border-radius: inherit;
+  background: none;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+.root[data-removable] .body {
+  padding-inline-end: 0;
+}
+
+button.body {
+  cursor: pointer;
+}
+
+.start {
+  display: inline-flex;
+  --kds-icon-size: var(--kds-component-chip-icon-size);
+}
+
+.root[data-selectable]:not([data-disabled]):hover {
+  --_bg: var(--_c-bg-hover);
+  --_border: var(--_c-border-hover);
+  --_text: var(--_c-text-hover);
+}
+
+.root[data-selectable]:not([data-disabled]):active {
+  --_bg: var(--_c-bg-active);
+}
+
+.root[data-selected] {
+  --_bg: var(--_c-bg-selected);
+  --_border: var(--_c-border-selected);
+  --_text: var(--_c-text-selected);
+}
+
+.root[data-selected]:not([data-disabled]):hover {
+  --_bg: var(--_c-bg-selected-hover);
+}
+
+.root[data-disabled] {
+  --_bg: var(--kds-component-chip-bg-disabled);
+  --_border: var(--kds-component-chip-border-disabled);
+  --_text: var(--kds-component-chip-text-disabled);
+}
+
+.root[data-disabled] button {
+  cursor: not-allowed;
+}
+
+.body:focus-visible,
+.remove:focus-visible {
+  outline: var(--kds-component-chip-ring-width) solid var(--kds-component-chip-ring-focus);
+  outline-offset: var(--kds-component-chip-ring-offset);
+}
+
+.remove {
+  --kds-icon-size: var(--kds-component-chip-icon-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: var(--kds-component-chip-gap);
+  padding: 0;
+  border: none;
+  border-radius: var(--kds-component-chip-radius);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.remove:hover:not(:disabled) {
+  background-color: var(--_c-bg-active);
+}
+
+.remove:disabled {
+  cursor: not-allowed;
+}

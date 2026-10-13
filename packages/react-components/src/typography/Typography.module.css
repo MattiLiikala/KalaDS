@@ -1,0 +1,54 @@
+.root {
+  /* Phrasing elements (span, strong, em, small) render as blocks too, as kds-typography does. */
+  display: block;
+  margin: 0;
+  color: var(--kds-component-typography-color-default);
+  font-family: var(--_family);
+  font-size: var(--_size);
+  font-weight: var(--_weight);
+  line-height: var(--_line-height);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-variant='overline'] {
+  text-transform: uppercase;
+  letter-spacing: var(--kds-semantic-type-overline-letter-spacing);
+}
+
+.root[data-align='start'] {
+  text-align: start;
+}
+.root[data-align='center'] {
+  text-align: center;
+}
+.root[data-align='end'] {
+  text-align: end;
+}
+
+.root[data-truncate] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.root[data-gutter] {
+  margin-block-end: var(--kds-component-typography-gutter);
+}
+.root[data-color='subtle'] {
+  color: var(--kds-component-typography-color-subtle);
+}
+.root[data-color='muted'] {
+  color: var(--kds-component-typography-color-muted);
+}
+.root[data-color='brand'] {
+  color: var(--kds-component-typography-color-brand);
+}
+.root[data-color='danger'] {
+  color: var(--kds-component-typography-color-danger);
+}
+.root[data-color='inverse'] {
+  color: var(--kds-component-typography-color-inverse);
+}

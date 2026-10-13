@@ -1,0 +1,52 @@
+.root {
+  display: block;
+  --_shadow: var(--kds-component-card-shadow-3);
+  --_offset-hover: var(--kds-component-card-offset-hover-3);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-elevation='1'] {
+  --_shadow: var(--kds-component-card-shadow-1);
+  --_offset-hover: var(--kds-component-card-offset-hover-1);
+}
+
+.root[data-elevation='2'] {
+  --_shadow: var(--kds-component-card-shadow-2);
+  --_offset-hover: var(--kds-component-card-offset-hover-2);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-component-card-gap);
+  padding: var(--kds-component-card-padding);
+  background-color: var(--kds-component-card-bg);
+  border: var(--kds-component-card-border-width) solid var(--kds-component-card-border);
+  border-radius: var(--kds-component-card-radius);
+  box-shadow: var(--_shadow);
+}
+
+.root[data-interactive] .card {
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+/*
+ * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses.
+ * Hover is taken from the root, which doesn't move, so the pointer near the top/left edge can't slip off
+ * the moving card and make it flicker.
+ */
+.root[data-interactive]:hover .card {
+  background-color: var(--kds-component-card-bg-hover);
+  box-shadow: var(--kds-component-card-shadow-hover);
+  transform: translate(var(--_offset-hover), var(--_offset-hover));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root[data-interactive] .card {
+    transition: background-color 0.15s ease;
+  }
+}

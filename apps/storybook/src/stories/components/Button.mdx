@@ -1,5 +1,8 @@
 import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
-import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import { ComponentHeader, Do, DoDont, Dont, FrameworkTabs } from '../../docs-blocks';
+import webCode from '../../snippets/Button.web.html?raw';
+import reactCode from '../../snippets/Button.react.tsx?raw';
+import nativeCode from '../../snippets/Button.native.tsx?raw';
 import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
@@ -14,14 +17,23 @@ import * as ButtonStories from './Button.stories';
 
 <Controls />
 
+## Code
+
+The same example in each library. Components come from `@kalads/web-components`,
+`@kalads/react-components` or `@kalads/react-native-components`, and icons from `@kalads/icons` (`/react`,
+`/native`). React and React Native take the same props in camelCase, callbacks for events (`onChange` for
+`kds-change`) and props for named slots (`start`, `footer`).
+
+<FrameworkTabs web={webCode} react={reactCode} native={nativeCode} />
+
 ## Usage
 
 - Use **one primary button** per view or section, for the main action. Use `secondary` for other
   important actions and `ghost` for the rest (cancel, back, less important choices).
 - Use `danger` only for actions that destroy something, and say what will be destroyed: "Delete project".
 - Use a button for actions. To go somewhere else, use `kds-link`.
-- Solid buttons cut their label out of the fill: check **Guidelines/Knockout and Surfaces** before placing
-  one on anything other than a light surface.
+- Solid buttons need a surface their fill stands out from: check **Guidelines/Buttons and Surfaces**
+  before placing one on anything other than a light surface.
 
 <DoDont>
   <Do caption="One primary action, with a ghost button for the alternative.">

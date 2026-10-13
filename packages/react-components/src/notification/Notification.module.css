@@ -1,0 +1,113 @@
+.root {
+  display: block;
+  --_bg: var(--kds-component-notification-info-bg);
+  --_accent: var(--kds-component-notification-info-accent);
+  --_shadow-color: var(--kds-component-notification-info-shadow-color);
+  --_close: var(--kds-component-notification-info-close);
+  --_close-bg-hover: var(--kds-component-notification-info-close-bg-hover);
+  --_offset: var(--kds-component-notification-offset-3);
+}
+
+.root[data-variant='info'] {
+  --_bg: var(--kds-component-notification-info-bg);
+  --_accent: var(--kds-component-notification-info-accent);
+  --_shadow-color: var(--kds-component-notification-info-shadow-color);
+  --_close: var(--kds-component-notification-info-close);
+  --_close-bg-hover: var(--kds-component-notification-info-close-bg-hover);
+}
+
+.root[data-variant='success'] {
+  --_bg: var(--kds-component-notification-success-bg);
+  --_accent: var(--kds-component-notification-success-accent);
+  --_shadow-color: var(--kds-component-notification-success-shadow-color);
+  --_close: var(--kds-component-notification-success-close);
+  --_close-bg-hover: var(--kds-component-notification-success-close-bg-hover);
+}
+
+.root[data-variant='warning'] {
+  --_bg: var(--kds-component-notification-warning-bg);
+  --_accent: var(--kds-component-notification-warning-accent);
+  --_shadow-color: var(--kds-component-notification-warning-shadow-color);
+  --_close: var(--kds-component-notification-warning-close);
+  --_close-bg-hover: var(--kds-component-notification-warning-close-bg-hover);
+}
+
+.root[data-variant='danger'] {
+  --_bg: var(--kds-component-notification-danger-bg);
+  --_accent: var(--kds-component-notification-danger-accent);
+  --_shadow-color: var(--kds-component-notification-danger-shadow-color);
+  --_close: var(--kds-component-notification-danger-close);
+  --_close-bg-hover: var(--kds-component-notification-danger-close-bg-hover);
+}
+
+.root[data-elevation='1'] {
+  --_offset: var(--kds-component-notification-offset-1);
+}
+
+.root[data-elevation='2'] {
+  --_offset: var(--kds-component-notification-offset-2);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--kds-component-notification-gap);
+  padding: var(--kds-component-notification-padding);
+  background-color: var(--_bg);
+  border: var(--kds-component-notification-border-width) solid var(--_accent);
+  border-radius: var(--kds-component-notification-radius);
+  /* A crisp shadow (semantic.shadow.crisp.*) in the variant's colour. */
+  box-shadow: var(--_offset) var(--_offset) 0 0 var(--_shadow-color);
+  color: var(--kds-component-notification-text);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+}
+
+.icon {
+  --kds-icon-size: var(--kds-semantic-spacing-lg);
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--_accent);
+  /* Centre the icon on the first line of text. */
+  height: calc(1em * var(--kds-semantic-type-body-line-height));
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-semantic-spacing-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.heading {
+  font-family: var(--kds-semantic-type-label-family);
+  font-weight: var(--kds-semantic-type-label-weight);
+  color: var(--kds-component-notification-title-text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kds-semantic-spacing-sm);
+  margin-block-start: var(--kds-semantic-spacing-xs);
+}
+
+/*
+ * The close button is a ghost IconButton. Its ghost tokens are re-pointed for this one button, so the icon
+ * and hover tint follow the notification variant instead of the primary colour.
+ */
+.close {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-block: calc(var(--kds-semantic-spacing-xs) * -1);
+  --kds-component-button-ghost-text: var(--_close);
+  --kds-component-button-ghost-bg-hover: var(--_close-bg-hover);
+  --kds-component-button-ghost-bg-active: var(--_close-bg-hover);
+}

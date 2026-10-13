@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "KalaDS Native",
+    "slug": "kalads-native-playground",
+    "version": "0.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "dev.kalads.playground" },
+    "web": { "bundler": "metro" },
+    "plugins": ["expo-font"]
+  }
+}

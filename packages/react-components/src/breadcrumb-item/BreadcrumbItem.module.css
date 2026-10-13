@@ -1,0 +1,24 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kds-component-breadcrumb-item-gap);
+  font-family: var(--kds-semantic-type-body-sm-family);
+  font-size: var(--kds-semantic-type-body-sm-size);
+  line-height: var(--kds-semantic-type-body-sm-line-height);
+  color: var(--kds-component-breadcrumb-item-text);
+}
+
+.root:first-child .separator {
+  display: none;
+}
+
+.separator {
+  --kds-icon-size: var(--kds-component-breadcrumb-item-separator-size);
+  display: inline-flex;
+  color: var(--kds-component-breadcrumb-item-separator);
+}
+
+.current {
+  color: var(--kds-component-breadcrumb-item-text-current);
+  font-weight: var(--kds-font-weight-bold);
+}

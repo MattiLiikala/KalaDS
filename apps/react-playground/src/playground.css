@@ -1,0 +1,48 @@
+/* Playground chrome only; the cases themselves use KalaDS components. */
+body {
+  margin: 0;
+  font-family: var(--kds-semantic-font-body);
+  color: var(--kds-semantic-text-default);
+  background: var(--kds-semantic-bg-default);
+}
+
+.case {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--kds-semantic-spacing-lg);
+  padding: var(--kds-semantic-spacing-lg);
+  border-bottom: 1px solid var(--kds-semantic-border-default);
+}
+
+.case > h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font: var(--kds-semantic-type-overline-weight) var(--kds-semantic-type-overline-size) var(--kds-semantic-type-overline-family);
+  text-transform: uppercase;
+  letter-spacing: var(--kds-semantic-type-overline-letter-spacing);
+  color: var(--kds-semantic-text-subtle);
+}
+
+.side {
+  min-width: 0;
+}
+
+.side::before {
+  display: block;
+  margin-block-end: var(--kds-semantic-spacing-sm);
+  font: var(--kds-semantic-type-caption-size) var(--kds-semantic-type-caption-family);
+  color: var(--kds-semantic-text-muted);
+}
+
+.side.react::before {
+  content: 'React';
+}
+
+.side.web::before {
+  content: 'Web component';
+}
+
+.inverse {
+  padding: var(--kds-semantic-spacing-md);
+  background: var(--kds-semantic-bg-inverse);
+}

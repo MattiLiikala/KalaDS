@@ -1,0 +1,25 @@
+.root {
+  display: block;
+  box-sizing: border-box;
+  padding-block: var(--_py, var(--_p, var(--kds-component-box-padding)));
+  padding-inline: var(--_px, var(--_p, var(--kds-component-box-padding)));
+  margin-block: var(--_my, 0);
+  background-color: var(--_bg, var(--kds-component-box-bg));
+  border-radius: var(--_radius, var(--kds-component-box-radius));
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-inline] {
+  display: inline-block;
+}
+
+.root[data-border] {
+  border: var(--kds-component-box-border-width) solid var(--kds-component-box-border);
+}
+
+.root[data-bg='inverse'] {
+  color: var(--kds-semantic-text-inverse);
+}

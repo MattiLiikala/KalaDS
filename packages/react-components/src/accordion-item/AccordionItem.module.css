@@ -1,0 +1,76 @@
+.root {
+  display: block;
+  border-bottom: var(--kds-component-accordion-item-border-width) solid var(--kds-component-accordion-item-border);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kds-semantic-spacing-md);
+  padding: var(--kds-component-accordion-item-padding-y) var(--kds-component-accordion-item-padding-x);
+  border-radius: var(--kds-component-accordion-item-radius);
+  color: var(--kds-component-accordion-item-title-text);
+  font-family: var(--kds-semantic-type-label-family);
+  font-size: var(--kds-semantic-type-body-size);
+  font-weight: var(--kds-semantic-type-label-weight);
+  line-height: var(--kds-semantic-type-body-line-height);
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  transition: background-color 0.15s ease;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:hover {
+  background-color: var(--kds-component-accordion-item-bg-hover);
+}
+
+.summary:focus-visible {
+  outline: var(--kds-component-accordion-item-ring-width) solid var(--kds-component-accordion-item-ring-focus);
+  outline-offset: var(--kds-component-accordion-item-ring-offset);
+}
+
+.root[data-disabled] .summary {
+  cursor: not-allowed;
+  background: none;
+  color: var(--kds-semantic-text-muted);
+}
+
+.chevron {
+  --kds-icon-size: var(--kds-semantic-spacing-lg);
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--kds-component-accordion-item-icon);
+  transition: rotate 0.15s ease;
+}
+
+/* Follows the item, not <details>: while closing, <details> stays open until the animation ends. */
+.root[data-open] .chevron {
+  rotate: 180deg;
+}
+
+.panel[data-animating] {
+  overflow: hidden;
+}
+
+.content {
+  padding: 0 var(--kds-component-accordion-item-padding-x) var(--kds-component-accordion-item-padding-y);
+  color: var(--kds-component-accordion-item-content-text);
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

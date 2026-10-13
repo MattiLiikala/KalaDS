@@ -1,0 +1,64 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--kds-font-family-label);
+  font-size: var(--kds-font-size-100);
+  font-weight: var(--kds-font-weight-bold);
+  line-height: var(--kds-font-line-height-small);
+  white-space: nowrap;
+  color: var(--_text);
+  background: none;
+  border: var(--_border-width) solid var(--_border);
+  border-radius: var(--_radius);
+  /* The border sits inside the padding, so badges keep the same outer size as without one. */
+  padding: calc(var(--_padding-y) - var(--_border-width)) calc(var(--_padding-x) - var(--_border-width));
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root[data-variant='default'] {
+  --_text: var(--kds-component-badge-default-text);
+  --_border: var(--kds-component-badge-default-border);
+  --_border-width: var(--kds-component-badge-default-border-width);
+  --_radius: var(--kds-component-badge-default-radius);
+  --_padding-y: var(--kds-component-badge-default-padding-y);
+  --_padding-x: var(--kds-component-badge-default-padding-x);
+}
+
+.root[data-variant='primary'] {
+  --_text: var(--kds-component-badge-primary-text);
+  --_border: var(--kds-component-badge-primary-border);
+  --_border-width: var(--kds-component-badge-primary-border-width);
+  --_radius: var(--kds-component-badge-primary-radius);
+  --_padding-y: var(--kds-component-badge-primary-padding-y);
+  --_padding-x: var(--kds-component-badge-primary-padding-x);
+}
+
+.root[data-variant='danger'] {
+  --_text: var(--kds-component-badge-danger-text);
+  --_border: var(--kds-component-badge-danger-border);
+  --_border-width: var(--kds-component-badge-danger-border-width);
+  --_radius: var(--kds-component-badge-danger-radius);
+  --_padding-y: var(--kds-component-badge-danger-padding-y);
+  --_padding-x: var(--kds-component-badge-danger-padding-x);
+}
+
+.root[data-variant='warning'] {
+  --_text: var(--kds-component-badge-warning-text);
+  --_border: var(--kds-component-badge-warning-border);
+  --_border-width: var(--kds-component-badge-warning-border-width);
+  --_radius: var(--kds-component-badge-warning-radius);
+  --_padding-y: var(--kds-component-badge-warning-padding-y);
+  --_padding-x: var(--kds-component-badge-warning-padding-x);
+}
+
+.root[data-variant='success'] {
+  --_text: var(--kds-component-badge-success-text);
+  --_border: var(--kds-component-badge-success-border);
+  --_border-width: var(--kds-component-badge-success-border-width);
+  --_radius: var(--kds-component-badge-success-radius);
+  --_padding-y: var(--kds-component-badge-success-padding-y);
+  --_padding-x: var(--kds-component-badge-success-padding-x);
+}

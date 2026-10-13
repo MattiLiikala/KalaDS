@@ -1,3 +1,20 @@
 packages:
   - "packages/*"
   - "apps/*"
+
+# One version of React and the React Native stack for the whole monorepo, matched to the Expo SDK the
+# native playground uses (expo/bundledNativeModules.json). Workspace packages are symlinked, so a second
+# copy of React would give components and apps different React instances and break hooks.
+catalog:
+  react: 19.2.3
+  react-dom: 19.2.3
+  "@types/react": ^19.2.0
+  "@types/react-dom": ^19.2.0
+  react-native: 0.86.3
+  react-native-svg: 15.15.4
+  react-native-safe-area-context: ~5.7.0
+  react-native-web: ~0.21.0
+  expo: ~57.0.28
+  expo-font: ~57.0.4
+  expo-status-bar: ~57.0.1
+  jest-expo: ~57.0.6

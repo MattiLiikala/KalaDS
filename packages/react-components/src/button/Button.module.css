@@ -1,0 +1,258 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kds-size-200-rem);
+  font-family: var(--kds-font-family-label);
+  font-weight: var(--kds-font-weight-bold);
+  font-size: var(--kds-font-size-200);
+  line-height: var(--kds-font-line-height-small);
+  cursor: pointer;
+  color: var(--_text);
+  background-color: var(--_bg);
+  border: 1px solid var(--_border);
+  border-radius: var(--_radius);
+  padding: var(--_padding-y) var(--_padding-x);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.root:focus-visible {
+  outline: none;
+}
+
+/* === PRIMARY === */
+.root[data-variant='primary'] {
+  --_radius: var(--kds-component-button-primary-radius);
+  --_padding-y: var(--kds-component-button-primary-padding-y);
+  --_padding-x: var(--kds-component-button-primary-padding-x);
+}
+.root[data-variant='primary'] {
+  --_bg: var(--kds-component-button-primary-bg);
+  --_text: var(--kds-component-button-primary-text);
+  --_border: var(--kds-component-button-primary-border);
+}
+.root[data-variant='primary']:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-primary-bg-hover);
+  --_border: var(--kds-component-button-primary-border-hover);
+}
+.root[data-variant='primary']:active:not(:disabled) {
+  --_bg: var(--kds-component-button-primary-bg-active);
+}
+.root[data-variant='primary']:focus-visible {
+  --_border: var(--kds-component-button-primary-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-primary-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='primary']:disabled {
+  --_bg: var(--kds-component-button-primary-bg-disabled);
+  --_border: var(--kds-component-button-primary-border-disabled);
+  --_text: var(--kds-component-button-primary-text-disabled);
+  cursor: not-allowed;
+}
+.root[data-variant='primary'][data-on-inverse] {
+  --_bg: var(--kds-component-button-primary-on-inverse-bg);
+  --_text: var(--kds-component-button-primary-on-inverse-text);
+  --_border: var(--kds-component-button-primary-on-inverse-border);
+}
+.root[data-variant='primary'][data-on-inverse]:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-primary-on-inverse-bg-hover);
+  --_border: var(--kds-component-button-primary-on-inverse-border-hover);
+}
+.root[data-variant='primary'][data-on-inverse]:active:not(:disabled) {
+  --_bg: var(--kds-component-button-primary-on-inverse-bg-active);
+}
+.root[data-variant='primary'][data-on-inverse]:focus-visible {
+  --_border: var(--kds-component-button-primary-on-inverse-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-primary-on-inverse-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='primary'][data-on-inverse]:disabled {
+  --_bg: var(--kds-component-button-primary-on-inverse-bg-disabled);
+  --_border: var(--kds-component-button-primary-on-inverse-border-disabled);
+  --_text: var(--kds-component-button-primary-on-inverse-text-disabled);
+  cursor: not-allowed;
+}
+
+/* === SECONDARY === */
+.root[data-variant='secondary'] {
+  --_radius: var(--kds-component-button-secondary-radius);
+  --_padding-y: var(--kds-component-button-secondary-padding-y);
+  --_padding-x: var(--kds-component-button-secondary-padding-x);
+}
+.root[data-variant='secondary'] {
+  --_bg: var(--kds-component-button-secondary-bg);
+  --_text: var(--kds-component-button-secondary-text);
+  --_border: var(--kds-component-button-secondary-border);
+}
+.root[data-variant='secondary']:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-secondary-bg-hover);
+  --_border: var(--kds-component-button-secondary-border-hover);
+}
+.root[data-variant='secondary']:active:not(:disabled) {
+  --_bg: var(--kds-component-button-secondary-bg-active);
+}
+.root[data-variant='secondary']:focus-visible {
+  --_border: var(--kds-component-button-secondary-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-secondary-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='secondary']:disabled {
+  --_bg: var(--kds-component-button-secondary-bg-disabled);
+  --_border: var(--kds-component-button-secondary-border-disabled);
+  --_text: var(--kds-component-button-secondary-text-disabled);
+  cursor: not-allowed;
+}
+.root[data-variant='secondary'][data-on-inverse] {
+  --_bg: var(--kds-component-button-secondary-on-inverse-bg);
+  --_text: var(--kds-component-button-secondary-on-inverse-text);
+  --_border: var(--kds-component-button-secondary-on-inverse-border);
+}
+.root[data-variant='secondary'][data-on-inverse]:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-secondary-on-inverse-bg-hover);
+  --_border: var(--kds-component-button-secondary-on-inverse-border-hover);
+}
+.root[data-variant='secondary'][data-on-inverse]:active:not(:disabled) {
+  --_bg: var(--kds-component-button-secondary-on-inverse-bg-active);
+}
+.root[data-variant='secondary'][data-on-inverse]:focus-visible {
+  --_border: var(--kds-component-button-secondary-on-inverse-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-secondary-on-inverse-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='secondary'][data-on-inverse]:disabled {
+  --_bg: var(--kds-component-button-secondary-on-inverse-bg-disabled);
+  --_border: var(--kds-component-button-secondary-on-inverse-border-disabled);
+  --_text: var(--kds-component-button-secondary-on-inverse-text-disabled);
+  cursor: not-allowed;
+}
+
+/* === DANGER === */
+.root[data-variant='danger'] {
+  --_radius: var(--kds-component-button-danger-radius);
+  --_padding-y: var(--kds-component-button-danger-padding-y);
+  --_padding-x: var(--kds-component-button-danger-padding-x);
+}
+.root[data-variant='danger'] {
+  --_bg: var(--kds-component-button-danger-bg);
+  --_text: var(--kds-component-button-danger-text);
+  --_border: var(--kds-component-button-danger-border);
+}
+.root[data-variant='danger']:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-danger-bg-hover);
+  --_border: var(--kds-component-button-danger-border-hover);
+}
+.root[data-variant='danger']:active:not(:disabled) {
+  --_bg: var(--kds-component-button-danger-bg-active);
+}
+.root[data-variant='danger']:focus-visible {
+  --_border: var(--kds-component-button-danger-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-danger-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='danger']:disabled {
+  --_bg: var(--kds-component-button-danger-bg-disabled);
+  --_border: var(--kds-component-button-danger-border-disabled);
+  --_text: var(--kds-component-button-danger-text-disabled);
+  cursor: not-allowed;
+}
+.root[data-variant='danger'][data-on-inverse] {
+  --_bg: var(--kds-component-button-danger-on-inverse-bg);
+  --_text: var(--kds-component-button-danger-on-inverse-text);
+  --_border: var(--kds-component-button-danger-on-inverse-border);
+}
+.root[data-variant='danger'][data-on-inverse]:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-danger-on-inverse-bg-hover);
+  --_border: var(--kds-component-button-danger-on-inverse-border-hover);
+}
+.root[data-variant='danger'][data-on-inverse]:active:not(:disabled) {
+  --_bg: var(--kds-component-button-danger-on-inverse-bg-active);
+}
+.root[data-variant='danger'][data-on-inverse]:focus-visible {
+  --_border: var(--kds-component-button-danger-on-inverse-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-danger-on-inverse-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='danger'][data-on-inverse]:disabled {
+  --_bg: var(--kds-component-button-danger-on-inverse-bg-disabled);
+  --_border: var(--kds-component-button-danger-on-inverse-border-disabled);
+  --_text: var(--kds-component-button-danger-on-inverse-text-disabled);
+  cursor: not-allowed;
+}
+
+/* === GHOST === */
+.root[data-variant='ghost'] {
+  --_radius: var(--kds-component-button-ghost-radius);
+  --_padding-y: var(--kds-component-button-ghost-padding-y);
+  --_padding-x: var(--kds-component-button-ghost-padding-x);
+}
+.root[data-variant='ghost'] {
+  --_bg: var(--kds-component-button-ghost-bg);
+  --_text: var(--kds-component-button-ghost-text);
+  --_border: var(--kds-component-button-ghost-border);
+}
+.root[data-variant='ghost']:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-ghost-bg-hover);
+  --_border: var(--kds-component-button-ghost-border-hover);
+}
+.root[data-variant='ghost']:active:not(:disabled) {
+  --_bg: var(--kds-component-button-ghost-bg-active);
+}
+.root[data-variant='ghost']:focus-visible {
+  --_border: var(--kds-component-button-ghost-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-ghost-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='ghost']:disabled {
+  --_bg: var(--kds-component-button-ghost-bg-disabled);
+  --_border: var(--kds-component-button-ghost-border-disabled);
+  --_text: var(--kds-component-button-ghost-text-disabled);
+  cursor: not-allowed;
+}
+.root[data-variant='ghost'][data-on-inverse] {
+  --_bg: var(--kds-component-button-ghost-on-inverse-bg);
+  --_text: var(--kds-component-button-ghost-on-inverse-text);
+  --_border: var(--kds-component-button-ghost-on-inverse-border);
+}
+.root[data-variant='ghost'][data-on-inverse]:hover:not(:disabled) {
+  --_bg: var(--kds-component-button-ghost-on-inverse-bg-hover);
+  --_border: var(--kds-component-button-ghost-on-inverse-border-hover);
+}
+.root[data-variant='ghost'][data-on-inverse]:active:not(:disabled) {
+  --_bg: var(--kds-component-button-ghost-on-inverse-bg-active);
+}
+.root[data-variant='ghost'][data-on-inverse]:focus-visible {
+  --_border: var(--kds-component-button-ghost-on-inverse-border-focus);
+  /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+  outline: var(--kds-component-button-ring-width) solid var(--kds-component-button-ghost-on-inverse-ring-focus);
+  outline-offset: var(--kds-component-button-ring-offset);
+}
+.root[data-variant='ghost'][data-on-inverse]:disabled {
+  --_bg: var(--kds-component-button-ghost-on-inverse-bg-disabled);
+  --_border: var(--kds-component-button-ghost-on-inverse-border-disabled);
+  --_text: var(--kds-component-button-ghost-on-inverse-text-disabled);
+  cursor: not-allowed;
+}
+
+/* === SIZES === */
+.root[data-size='sm'] {
+  font-size: var(--kds-font-size-100);
+  --_padding-y: var(--kds-size-100-rem);
+  --_padding-x: var(--kds-size-300-rem);
+}
+.root[data-size='lg'] {
+  font-size: var(--kds-font-size-300);
+  --_padding-y: var(--kds-size-300-rem);
+  --_padding-x: var(--kds-size-600-rem);
+}

@@ -1,0 +1,90 @@
+.dialog {
+  --_width: var(--kds-component-dialog-width-md);
+  box-sizing: border-box;
+  width: min(var(--_width), calc(100vw - var(--kds-semantic-spacing-md) * 2));
+  max-width: none;
+  max-height: calc(100vh - var(--kds-semantic-spacing-md) * 2);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--kds-component-dialog-text);
+  overflow: visible;
+}
+
+.dialog[data-size='sm'] {
+  --_width: var(--kds-component-dialog-width-sm);
+}
+
+.dialog[data-size='lg'] {
+  --_width: var(--kds-component-dialog-width-lg);
+}
+
+.dialog::backdrop {
+  background-color: var(--kds-component-dialog-backdrop);
+  opacity: var(--kds-component-dialog-backdrop-opacity);
+}
+
+.dialog[open] .surface {
+  animation: enter 0.15s ease;
+}
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kds-component-dialog-gap);
+  box-sizing: border-box;
+  max-height: inherit;
+  padding: var(--kds-component-dialog-padding);
+  background-color: var(--kds-component-dialog-bg);
+  border: var(--kds-component-dialog-border-width) solid var(--kds-component-dialog-border);
+  border-radius: var(--kds-component-dialog-radius);
+  box-shadow: var(--kds-component-dialog-shadow);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--kds-component-dialog-gap);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--kds-semantic-type-h4-family);
+  font-size: var(--kds-semantic-type-h4-size);
+  font-weight: var(--kds-semantic-type-h4-weight);
+  line-height: var(--kds-semantic-type-h4-line-height);
+}
+
+.close {
+  display: inline-flex;
+  margin-block-start: calc(var(--kds-semantic-spacing-xs) * -1);
+  margin-inline-end: calc(var(--kds-semantic-spacing-xs) * -1);
+}
+
+.body {
+  overflow-y: auto;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--kds-semantic-spacing-sm);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    translate: 0 var(--kds-semantic-spacing-sm);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] .surface {
+    animation: none;
+  }
+}

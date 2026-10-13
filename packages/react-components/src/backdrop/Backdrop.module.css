@@ -1,0 +1,41 @@
+.backdrop {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: none;
+  background: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop:popover-open,
+.backdrop:not([popover]):not([hidden]) {
+  display: flex;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--kds-component-backdrop-bg);
+  opacity: var(--kds-component-backdrop-opacity);
+  animation: fade-in 0.15s ease;
+}
+
+.content {
+  position: relative;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    animation: none;
+  }
+}

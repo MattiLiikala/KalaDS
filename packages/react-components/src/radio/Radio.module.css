@@ -1,0 +1,94 @@
+.root {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--kds-component-radio-gap);
+  cursor: pointer;
+  font-family: var(--kds-semantic-type-body-family);
+  font-size: var(--kds-semantic-type-body-size);
+  line-height: var(--kds-semantic-type-body-line-height);
+  color: var(--kds-component-radio-label-text);
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  height: calc(1em * var(--kds-semantic-type-body-line-height));
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* The label text sets the baseline, so the control lines up with surrounding text. */
+.text {
+  align-self: baseline;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.circle {
+  --_bg: var(--kds-component-radio-bg);
+  --_border: var(--kds-component-radio-border);
+  --_dot: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--kds-component-radio-size);
+  height: var(--kds-component-radio-size);
+  border: var(--kds-component-radio-border-width) solid var(--_border);
+  border-radius: var(--kds-component-radio-radius);
+  background-color: var(--_bg);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.circle::after {
+  content: '';
+  width: var(--kds-component-radio-dot-size);
+  height: var(--kds-component-radio-dot-size);
+  border-radius: var(--kds-component-radio-radius);
+  background-color: var(--_dot);
+}
+
+.root:hover .circle {
+  --_bg: var(--kds-component-radio-bg-hover);
+  --_border: var(--kds-component-radio-border-hover);
+}
+
+.root[data-checked] .circle {
+  --_border: var(--kds-component-radio-border-checked);
+  --_dot: var(--kds-component-radio-dot);
+}
+
+.root[data-checked]:hover .circle {
+  --_border: var(--kds-component-radio-border-checked-hover);
+  --_dot: var(--kds-component-radio-dot-hover);
+}
+
+.input:focus-visible + .circle {
+  outline: var(--kds-component-radio-ring-width) solid var(--kds-component-radio-ring-focus);
+  outline-offset: var(--kds-component-radio-ring-offset);
+}
+
+.root[data-disabled] {
+  cursor: not-allowed;
+  color: var(--kds-component-radio-label-text-disabled);
+}
+
+.root[data-disabled] .circle,
+.root[data-disabled]:hover .circle {
+  --_bg: var(--kds-component-radio-bg-disabled);
+  --_border: var(--kds-component-radio-border-disabled);
+}
+
+.root[data-disabled][data-checked] .circle {
+  --_dot: var(--kds-component-radio-dot-disabled);
+}

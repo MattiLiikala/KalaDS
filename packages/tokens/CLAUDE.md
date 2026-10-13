@@ -62,6 +62,20 @@ Examples:
 All three layers are output into a single `dist/css/variables.css` file.
 All CSS vars are available in `:root` by default.
 
+## Outputs
+
+| Export | File | Used by |
+|---|---|---|
+| `@kalads/tokens/css` | `dist/css/variables.css` | Web components, React components, apps |
+| `@kalads/tokens/js` | `dist/js/tokens.js` | Storybook interface theme (flat `ComponentButtonPrimaryBg` constants) |
+| `@kalads/tokens/json` | `dist/json/tokens.json` | Docs token tables |
+| `@kalads/tokens/native` | `dist/native/tokens.js` + `.d.ts` | React Native components |
+
+The native output (`kds/native/*` in `sd.config.mjs`) is a typed nested object with camelCase keys
+(`tokens.component.button.primary.bgHover`). Dimensions are numbers (px as is, rem × 16), `em` values
+(letter spacing) stay multipliers, font families are the bare family name, and shadows are React Native
+`boxShadow` arrays. New token types need a case in the `kds/native/value` transform.
+
 ## Build
 
 ```bash

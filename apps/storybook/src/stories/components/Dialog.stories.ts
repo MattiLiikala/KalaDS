@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@kalads/components';
+import '@kalads/web-components';
 
 type Openable = HTMLElement & { show(): void; close(reason?: string): void };
 const open = (id: string) => (document.getElementById(id) as Openable).show();

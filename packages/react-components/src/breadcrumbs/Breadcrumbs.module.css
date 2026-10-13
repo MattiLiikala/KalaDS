@@ -1,0 +1,17 @@
+.root {
+  display: block;
+}
+
+.root[hidden] {
+  display: none;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--kds-component-breadcrumbs-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

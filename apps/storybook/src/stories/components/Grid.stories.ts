@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '@kalads/components';
+import '@kalads/web-components';
 
 const tile = (label: string) => html`<kds-box bg="muted" padding="md" radius="md"><kds-typography variant="label">${label}</kds-typography></kds-box>`;
 

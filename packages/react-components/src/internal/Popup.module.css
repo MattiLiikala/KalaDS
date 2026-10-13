@@ -1,0 +1,11 @@
+/* Base styles for popups (see popup.ts): undo the UA popover centring and use fixed positioning. */
+.popup {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  overflow: visible;
+}
+
+.popup[hidden] {
+  display: none;
+}

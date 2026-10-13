@@ -1,0 +1,14 @@
+.select {
+  appearance: none;
+  cursor: pointer;
+  /* Room for the chevron. */
+  padding-inline-end: calc(var(--kds-component-select-padding-x) * 2 + var(--kds-semantic-spacing-lg));
+}
+
+.select[data-placeholder] {
+  color: var(--kds-component-select-text-placeholder);
+}
+
+.select:disabled + .icon {
+  color: var(--kds-component-select-text-disabled);
+}

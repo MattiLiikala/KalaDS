@@ -1,0 +1,24 @@
+.root {
+  display: inline-flex;
+}
+
+.menu {
+  box-sizing: border-box;
+  min-width: var(--kds-component-menu-min-width);
+  max-height: var(--kds-component-menu-popup-max-height);
+  overflow-y: auto;
+  padding: var(--kds-component-menu-popup-padding);
+  background-color: var(--kds-component-menu-popup-bg);
+  border: var(--kds-component-menu-popup-border-width) solid var(--kds-component-menu-popup-border);
+  border-radius: var(--kds-component-menu-popup-radius);
+  box-shadow: var(--kds-component-menu-popup-shadow);
+  color: var(--kds-semantic-text-default);
+  /* Carries the anchor gap for usePopup (see internal/popup.ts). */
+  scroll-margin-top: var(--kds-component-menu-popup-offset);
+}
+
+/* Dividers separating groups of items. */
+.menu > [role='separator'],
+.menu > [aria-hidden='true'] {
+  margin-block: var(--kds-semantic-spacing-xs);
+}

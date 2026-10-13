@@ -387,3 +387,12 @@
   font-size: var(--kds-semantic-type-caption-size);
   color: var(--kds-semantic-text-subtle);
 }
+
+/* Framework code tabs (FrameworkTabs): Web / React / React Native snippets of the main example. */
+.kds-docs-frameworks {
+  margin-block: var(--kds-semantic-spacing-md) var(--kds-semantic-spacing-xl);
+}
+
+.kds-docs-frameworks .docblock-source {
+  margin: 0;
+}
