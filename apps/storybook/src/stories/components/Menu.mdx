@@ -1,0 +1,41 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as MenuStories from './Menu.stories';
+
+<Meta of={MenuStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a menu for a list of actions behind one trigger, usually a button or an icon button.
+- Put destructive actions last, after a decorative divider, with `variant="danger"`.
+- For choosing a value, use `kds-select`. For one or two actions, show them as buttons.
+
+<DoDont>
+  <Do caption="Related actions behind one trigger, the destructive one last.">
+    <kds-menu>
+      <kds-button slot="trigger" variant="secondary">Actions<kds-icon-chevron-down slot="end"></kds-icon-chevron-down></kds-button>
+      <kds-menu-item value="edit">Edit</kds-menu-item>
+      <kds-menu-item value="duplicate">Duplicate</kds-menu-item>
+      <kds-divider flush decorative></kds-divider>
+      <kds-menu-item value="delete" variant="danger">Delete</kds-menu-item>
+    </kds-menu>
+  </Do>
+  <Dont caption="Don't hide a single action in a menu: show it as a button.">
+    <kds-menu>
+      <kds-button slot="trigger" variant="secondary">Options<kds-icon-chevron-down slot="end"></kds-icon-chevron-down></kds-button>
+      <kds-menu-item value="share">Share</kds-menu-item>
+    </kds-menu>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

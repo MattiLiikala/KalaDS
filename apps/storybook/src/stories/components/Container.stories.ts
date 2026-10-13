@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Layout/Container',
   component: 'kds-container',
-  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {

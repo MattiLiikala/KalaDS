@@ -7,7 +7,6 @@ const VARIANTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'body', 'body-sm', 'captio
 const meta: Meta = {
   title: 'Components/Data Display/Typography',
   component: 'kds-typography',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

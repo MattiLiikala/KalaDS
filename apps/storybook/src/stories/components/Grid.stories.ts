@@ -8,7 +8,6 @@ const meta: Meta = {
   title: 'Components/Layout/Grid',
   component: 'kds-grid',
   subcomponents: { 'kds-grid-item': 'kds-grid-item' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

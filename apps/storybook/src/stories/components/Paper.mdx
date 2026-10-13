@@ -1,0 +1,37 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as PaperStories from './Paper.stories';
+
+<Meta of={PaperStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use paper for a plain surface that groups content, without card sections.
+- `elevation` 0–3 sets the crisp shadow. Use `variant="flat"` with `elevation="0"` on a subtle background.
+- For something people open or select, use `kds-card`.
+
+<DoDont>
+  <Do caption="One surface for one group of content.">
+    <kds-paper>
+      <kds-typography variant="label" gutter>Storage</kds-typography>
+      <kds-typography variant="body-sm" color="subtle">12 GB of 50 GB used</kds-typography>
+    </kds-paper>
+  </Do>
+  <Dont caption="Don't stack papers inside papers: the edges and shadows pile up.">
+    <kds-paper elevation="3">
+      <kds-paper elevation="2"><kds-typography variant="body-sm">Nested surface</kds-typography></kds-paper>
+    </kds-paper>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

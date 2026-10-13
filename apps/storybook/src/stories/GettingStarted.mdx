@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started" />
+
+# Getting started
+
+## 1. Add the packages
+
+<table className="kds-docs-table">
+  <thead><tr><th>Package</th><th>What it gives you</th><th>Import</th></tr></thead>
+  <tbody>
+    <tr><td><code>@kalads/tokens</code></td><td>All design tokens as CSS custom properties (also as JS and JSON)</td><td><code>@kalads/tokens/css</code></td></tr>
+    <tr><td><code>@kalads/icons</code></td><td>Icons as <code>{'<kds-icon-*>'}</code> elements</td><td><code>@kalads/icons</code></td></tr>
+    <tr><td><code>@kalads/components</code></td><td>The <code>{'<kds-*>'}</code> components</td><td><code>@kalads/components</code></td></tr>
+  </tbody>
+</table>
+
+Inside this monorepo they are workspace dependencies (`"@kalads/components": "workspace:*"`).
+
+## 2. Load tokens, fonts and components
+
+Load the tokens CSS once, before any component renders. Components read every colour, size and font
+from it.
+
+```ts
+import '@kalads/tokens/css';
+
+// Fonts used by the tokens: Overlock for text, Parkinsans for labels and UI text.
+import '@fontsource/overlock/400.css';
+import '@fontsource/overlock/700.css';
+import '@fontsource/parkinsans/400.css';
+import '@fontsource/parkinsans/500.css';
+import '@fontsource/parkinsans/700.css';
+
+// Registers every <kds-*> element. Icons are included.
+import '@kalads/components';
+```
+
+## 3. Set the page defaults
+
+Give the page the default surface, text colour and body font, so plain text between components matches:
+
+```css
+body {
+  background-color: var(--kds-semantic-bg-default);
+  color: var(--kds-semantic-text-default);
+  font-family: var(--kds-semantic-font-body);
+}
+```
+
+## 4. Use a component
+
+Components are configured with attributes, never with inline styles or CSS overrides:
+
+```html
+<kds-stack gap="md">
+  <kds-input label="Email" type="email" required></kds-input>
+  <kds-button variant="primary">Subscribe</kds-button>
+</kds-stack>
+```
+
+<kds-box padding="lg" bg="subtle" radius="lg">
+  <kds-stack gap="md">
+    <kds-input label="Email" type="email" required></kds-input>
+    <kds-stack direction="row"><kds-button variant="primary">Subscribe</kds-button></kds-stack>
+  </kds-stack>
+</kds-box>
+
+## 5. Use tokens in your own CSS
+
+When you write layout CSS around components, use **semantic** tokens: they say what a value is for,
+so they stay right when the palette changes.
+
+```css
+.sidebar {
+  padding: var(--kds-semantic-padding-lg);
+  gap: var(--kds-semantic-spacing-md);
+  background-color: var(--kds-semantic-bg-subtle);
+  border-inline-end: var(--kds-semantic-border-width-default) solid var(--kds-semantic-border-default);
+}
+```
+
+Every token is listed in **Foundations**. The rules for what not to do are in **Guidelines/For AI Agents**.

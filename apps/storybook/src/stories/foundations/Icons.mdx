@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+import { IconGallery } from '../../docs-blocks';
+
+<Meta title="Foundations/Icons" />
+
+# Icons
+
+Icons are web components from `@kalads/icons`, one element per icon (`<kds-icon-search>`), drawn on a
+24-unit grid. They take the text colour, so they always match the text next to them.
+
+- Use `kds-icon` (`<kds-icon name="search">`) when you want KalaDS sizes (`sm`, `md`, `lg`) and colours,
+  or when the icon name comes from data.
+- Use the element directly (`<kds-icon-search>`) inside components that size icons themselves, such as
+  buttons, chips and notifications.
+- Give an icon a `label` only when it carries meaning on its own. Icons next to text are decorative.
+- Never use inline `<svg>` or image files for icons.
+
+```html
+<kds-icon name="search" size="sm"></kds-icon>
+
+<kds-button variant="primary">
+  <kds-icon-plus slot="start"></kds-icon-plus>
+  Add item
+</kds-button>
+
+<kds-icon-button label="Close dialog"><kds-icon-close></kds-icon-close></kds-icon-button>
+```
+
+## All icons
+
+<IconGallery />
+
+## Adding an icon
+
+1. Add the SVG to `packages/icons/src/svgs/<name>.svg`, drawn on a 24×24 grid. The build removes
+   `width`, `height`, `fill` and `stroke`, so the icon takes the text colour.
+2. Run `pnpm --filter @kalads/icons build`. This generates `<kds-icon-<name>>`, and it appears on this
+   page automatically.

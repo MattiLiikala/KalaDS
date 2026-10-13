@@ -6,7 +6,6 @@ const meta: Meta = {
   title: 'Components/Surfaces/Accordion',
   component: 'kds-accordion',
   subcomponents: { 'kds-accordion-item': 'kds-accordion-item' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

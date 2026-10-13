@@ -6,7 +6,6 @@ import '@kalads/icons';
 const meta: Meta = {
   title: 'Components/Inputs/Icon Button',
   component: 'kds-icon-button',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

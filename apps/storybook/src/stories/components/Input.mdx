@@ -1,0 +1,34 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as InputStories from './Input.stories';
+
+<Meta of={InputStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Always set a `label`. It stays visible above the field and is the field's accessible name.
+- Use `helper` for format or limits, and `error` to say what's wrong and how to fix it. The error
+  replaces the helper while it's shown.
+- Pick the matching `type` (`email`, `tel`, `url`…) so phones show the right keyboard.
+- Size the field to the expected answer: a postcode field doesn't need the full width.
+
+<DoDont>
+  <Do caption="A visible label, with the format in the helper text.">
+    <kds-input label="Phone number" type="tel" helper="Include the country code, like +358 40 123 4567"></kds-input>
+  </Do>
+  <Dont caption="Don't use the placeholder as the label: it disappears as soon as people type.">
+    <kds-input placeholder="Phone number" type="tel"></kds-input>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

@@ -1,0 +1,24 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader } from '../../docs-blocks';
+import * as BackdropStories from './Backdrop.stories';
+
+<Meta of={BackdropStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a backdrop to dim the page while something temporary covers it, such as a loading message.
+- It doesn't trap focus. For anything people interact with, use `kds-dialog` or `kds-drawer`, which have
+  their own backdrop.
+- Keep it short-lived, and always remove it when the work finishes or fails.
+
+<Stories title="Examples" includePrimary={false} />

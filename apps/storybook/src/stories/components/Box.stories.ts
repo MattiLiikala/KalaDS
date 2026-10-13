@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Layout/Box',
   component: 'kds-box',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

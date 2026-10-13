@@ -1,0 +1,36 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a tooltip for a short hint about a control: the name of an icon button, or a keyboard shortcut.
+- Never put essential information or interactive content in a tooltip. It only shows on hover and focus.
+- Wrap something that can take focus, so keyboard users can open it too.
+
+<DoDont>
+  <Do caption="A short hint on a focusable control.">
+    <kds-tooltip content="Search (Ctrl+K)">
+      <kds-icon-button label="Search"><kds-icon-search></kds-icon-search></kds-icon-button>
+    </kds-tooltip>
+  </Do>
+  <Dont caption="Don't hide information people need in a tooltip on plain text: keyboard users can't reach it.">
+    <kds-tooltip content="Refunds take up to 10 days">
+      <kds-typography>Refund policy</kds-typography>
+    </kds-tooltip>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

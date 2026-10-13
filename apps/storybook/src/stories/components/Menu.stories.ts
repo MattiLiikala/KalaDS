@@ -7,7 +7,6 @@ const meta: Meta = {
   title: 'Components/Navigation/Menu',
   component: 'kds-menu',
   subcomponents: { 'kds-menu-item': 'kds-menu-item' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -14,6 +14,8 @@ export type InputType = 'text' | 'email' | 'password' | 'number' | 'search' | 't
  * @attr {string} error - Error message. When set, puts the input in error state.
  * @attr {boolean} disabled - Disables the input
  * @attr {boolean} required - Marks the input as required
+ * @fires kds-input - On every change to the text. `detail: { value }`
+ * @fires kds-change - When the value is committed (the native change event, e.g. on blur). `detail: { value }`
  */
 @customElement('kds-input')
 export class KdsInput extends LitElement {

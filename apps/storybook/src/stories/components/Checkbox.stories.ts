@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Inputs/Checkbox',
   component: 'kds-checkbox',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

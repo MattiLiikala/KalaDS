@@ -178,9 +178,13 @@ export class KdsButton extends LitElement {
    * ARIA state set on the host (for example by kds-menu or a consumer) is copied onto the inner <button>,
    * the element assistive technology actually interacts with. ARIA on the host alone would be lost.
    */
+  /** @internal */
   @property({ attribute: 'aria-expanded' }) hostAriaExpanded: string | null = null;
+  /** @internal */
   @property({ attribute: 'aria-haspopup' }) hostAriaHaspopup: string | null = null;
+  /** @internal */
   @property({ attribute: 'aria-pressed' }) hostAriaPressed: string | null = null;
+  /** @internal */
   @property({ attribute: 'aria-label' }) hostAriaLabel: string | null = null;
 
   @query('button') private _button!: HTMLButtonElement;

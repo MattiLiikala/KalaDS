@@ -1,0 +1,37 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as CheckboxStories from './Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a checkbox for an independent yes/no choice, or to pick any number of options from a list.
+- Group related checkboxes in `kds-checkbox-group` with a `label`. Show errors on the group, never on
+  a single checkbox.
+- For settings that take effect immediately, use `kds-toggle`.
+- Word options positively: "Email me updates", not "Don't email me".
+
+<DoDont>
+  <Do caption="Related options in a labelled group, worded positively.">
+    <kds-checkbox-group label="Notifications">
+      <kds-checkbox checked>Email me when someone comments</kds-checkbox>
+      <kds-checkbox>Email me a weekly summary</kds-checkbox>
+    </kds-checkbox-group>
+  </Do>
+  <Dont caption="Don't word options negatively: checking a box to turn something off is confusing.">
+    <kds-checkbox>Don't send me emails</kds-checkbox>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

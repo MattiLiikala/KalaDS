@@ -2,104 +2,58 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Introduction" />
 
-# KalaDS Design System
+<div className="kds-docs-hero">
+  <span className="kds-docs-overline">KalaDS design system</span>
+  <kds-typography variant="h1" as="h1">Warm, clear interfaces from one set of parts</kds-typography>
+  <kds-typography variant="body" color="subtle">
+    KalaDS is a set of design tokens, icons and web components. They work in any framework or none, and
+    every example on these pages is the real component.
+  </kds-typography>
+  <kds-stack direction="row" gap="sm" wrap>
+    <kds-badge variant="primary">Lit web components</kds-badge>
+    <kds-badge variant="success">Contrast-checked colours</kds-badge>
+    <kds-badge>Style Dictionary tokens</kds-badge>
+  </kds-stack>
+</div>
 
-KalaDS is a design system built with **Lit web components** and **Style Dictionary** tokens.
-It is the single source of truth for UI in all KalaDS-based applications.
+<kds-grid min="sm" gap="lg" className="kds-docs-cards">
+  <a href="./?path=/docs/getting-started--docs" target="_top">
+    <kds-card interactive elevation="2">
+      <kds-typography variant="h4" gutter>Getting started</kds-typography>
+      <kds-typography color="subtle">Install the packages, load tokens and fonts, and use your first component.</kds-typography>
+    </kds-card>
+  </a>
+  <a href="./?path=/docs/foundations-colors--docs" target="_top">
+    <kds-card interactive elevation="2">
+      <kds-typography variant="h4" gutter>Foundations</kds-typography>
+      <kds-typography color="subtle">Colours, typography, spacing, shadows and icons: the tokens everything is built from.</kds-typography>
+    </kds-card>
+  </a>
+  <a href="./?path=/docs/components-inputs-button--docs" target="_top">
+    <kds-card interactive elevation="2">
+      <kds-typography variant="h4" gutter>Components</kds-typography>
+      <kds-typography color="subtle">Inputs, data display, feedback, surfaces, navigation and layout, each with live examples and props.</kds-typography>
+    </kds-card>
+  </a>
+  <a href="./?path=/docs/guidelines-accessibility--docs" target="_top">
+    <kds-card interactive elevation="2">
+      <kds-typography variant="h4" gutter>Guidelines</kds-typography>
+      <kds-typography color="subtle">Accessibility, knockout buttons and surfaces, writing, and the rules for AI agents.</kds-typography>
+    </kds-card>
+  </a>
+</kds-grid>
 
----
+## How it fits together
 
-## For AI Agents — Read This First
+- **`@kalads/tokens`**: every colour, size, font and shadow as CSS custom properties, in three layers:
+  core values, semantic names (what a value is for) and component tokens.
+- **`@kalads/icons`**: SVG icons as `<kds-icon-*>` elements that take the text colour.
+- **`@kalads/components`**: `<kds-*>` web components built from the tokens. Change a token and every
+  component follows.
 
-**These rules are non-negotiable. Follow them in every code change.**
+## Using these docs
 
-### NEVER do these things
-
-1. **Never add inline styles** to `<kds-*>` elements:
-   ```html
-   <!-- WRONG -->
-   <kds-button style="color: red; padding: 8px;">Click</kds-button>
-
-   <!-- RIGHT -->
-   <kds-button variant="danger">Click</kds-button>
-   ```
-
-2. **Never hardcode color, spacing, or typography values** — always use CSS custom properties from `@kalads/tokens`:
-   ```css
-   /* WRONG */
-   color: #2563eb;
-   padding: 12px 16px;
-   font-size: 14px;
-
-   /* RIGHT */
-   color: var(--kds-semantic-text-brand);
-   padding: var(--kds-semantic-padding-sm) var(--kds-semantic-padding-lg);
-   font-size: var(--kds-font-size-200);
-   ```
-
-3. **Never build a custom `<button>`, `<input>`, or other element** when `@kalads/components` has one. Check the Components section first.
-
-4. **Never use inline `<svg>` or raw icon files** — use `<kds-icon-*>` web components:
-   ```html
-   <!-- WRONG -->
-   <svg>...</svg>
-
-   <!-- RIGHT -->
-   <kds-icon-arrow-left label="Go back"></kds-icon-arrow-left>
-   ```
-
-5. **Never override component internals with CSS** — Shadow DOM prevents it anyway. Use the component's `variant`, `size`, and other documented attributes.
-
-6. **Never add new components** without also adding:
-   - Component tokens in `packages/tokens/src/component/<name>.json`
-   - A Storybook story in `apps/storybook/src/stories/components/`
-
-### ALWAYS do these things
-
-1. **Use semantic tokens for layout values** — spacing, color, typography:
-   - `--kds-semantic-spacing-*` for margins and gaps
-   - `--kds-semantic-bg-*` for background colors
-   - `--kds-semantic-text-*` for text colors
-   - `--kds-semantic-border-*` for borders
-   - `--kds-semantic-radius-*` for border radius
-   - `--kds-semantic-padding-*` for component padding
-
-2. **Use component tokens for component-specific values** — these are already wired in component CSS:
-   - `--kds-component-button-primary-bg` etc.
-
-3. **Use core tokens only** for data visualization colors (`--kds-color-data1-500` etc.) and for defining new semantic tokens.
-
----
-
-## Quick Start
-
-```html
-<!-- 1. Load the token CSS -->
-<link rel="stylesheet" href="node_modules/@kalads/tokens/dist/css/variables.css">
-
-<!-- 2. Import components (registers all custom elements) -->
-<script type="module">
-  import '@kalads/components';
-</script>
-
-<!-- 3. Use components -->
-<kds-button variant="primary">Hello KalaDS</kds-button>
-<kds-badge variant="success">Active</kds-badge>
-```
-
-Or with bundler imports:
-```ts
-import '@kalads/tokens/css';        // CSS custom properties
-import '@kalads/components';         // all web components
-import '@kalads/icons';              // all icon components
-```
-
----
-
-## Package Overview
-
-| Package | Purpose | Import |
-|---|---|---|
-| `@kalads/tokens` | All CSS custom properties | `@kalads/tokens/css` |
-| `@kalads/icons` | SVG icons as `<kds-icon-*>` web components | `@kalads/icons` |
-| `@kalads/components` | UI components (`<kds-button>`, `<kds-input>`, etc.) | `@kalads/components` |
+- **Designers:** start with Foundations and the Usage section on each component page.
+- **Developers:** each component page has a props table (attributes, slots, events and CSS parts) and
+  copyable code under every example.
+- **AI agents:** read Guidelines/For AI Agents before changing any UI code.

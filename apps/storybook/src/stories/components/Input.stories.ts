@@ -5,24 +5,25 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Inputs/Input',
   component: 'kds-input',
-  tags: ['autodocs'],
-  argTypes: {
-    label: { control: 'text', description: 'Visible label text' },
-    placeholder: { control: 'text', description: 'Placeholder text' },
-    value: { control: 'text', description: 'Current value' },
-    type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
-      description: 'Input type',
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Single-line text field with a visible label, optional helper text and an error message. It wraps a native
+\`<input>\` but isn't part of form submission yet: read the value from the \`kds-input\` (every keystroke)
+or \`kds-change\` (when committed, e.g. on blur) events, both with \`detail.value\`.
+`,
+      },
     },
-    helper: { control: 'text', description: 'Helper text below the input' },
-    error: { control: 'text', description: 'Error message (sets error state when non-empty)' },
-    disabled: { control: 'boolean' },
-    required: { control: 'boolean' },
+  },
+  // Fields fill their container; keep examples at a realistic form width.
+  decorators: [(story) => html`<div style="max-width: var(--kds-semantic-size-xl)">${story()}</div>`],
+  argTypes: {
+    type: { control: 'select', options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'] },
   },
   args: {
     label: 'Email address',
-    placeholder: 'Enter your email',
+    placeholder: 'name@example.com',
     type: 'email',
     helper: '',
     error: '',
@@ -36,64 +37,32 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: (args) => html`
-    <div style="max-width: 400px;">
-      <kds-input
-        label=${args.label}
-        placeholder=${args.placeholder}
-        type=${args.type}
-        helper=${args.helper}
-        error=${args.error}
-        ?disabled=${args.disabled}
-        ?required=${args.required}
-      ></kds-input>
-    </div>
+    <kds-input
+      label=${args.label}
+      placeholder=${args.placeholder}
+      type=${args.type}
+      helper=${args.helper}
+      error=${args.error}
+      ?disabled=${args.disabled}
+      ?required=${args.required}
+    ></kds-input>
   `,
 };
 
 export const WithHelper: Story = {
-  render: () => html`
-    <div style="max-width: 400px;">
-      <kds-input
-        label="Username"
-        placeholder="Enter username"
-        helper="Must be 3-20 characters, letters and numbers only"
-      ></kds-input>
-    </div>
-  `,
+  render: () => html`<kds-input label="Username" helper="3 to 20 characters: letters and numbers only"></kds-input>`,
 };
 
 export const WithError: Story = {
   render: () => html`
-    <div style="max-width: 400px;">
-      <kds-input
-        label="Email"
-        value="invalid-email"
-        error="Please enter a valid email address"
-      ></kds-input>
-    </div>
+    <kds-input label="Email" type="email" value="anna@" error="Enter a full email address, like name@example.com."></kds-input>
   `,
 };
 
 export const Disabled: Story = {
-  render: () => html`
-    <div style="max-width: 400px;">
-      <kds-input
-        label="Read-only field"
-        value="Cannot be changed"
-        disabled
-      ></kds-input>
-    </div>
-  `,
+  render: () => html`<kds-input label="Account ID" value="KDS-20931" disabled></kds-input>`,
 };
 
 export const Required: Story = {
-  render: () => html`
-    <div style="max-width: 400px;">
-      <kds-input
-        label="Full name"
-        placeholder="Required field"
-        required
-      ></kds-input>
-    </div>
-  `,
+  render: () => html`<kds-input label="Full name" required></kds-input>`,
 };

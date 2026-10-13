@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Feedback/Skeleton',
   component: 'kds-skeleton',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

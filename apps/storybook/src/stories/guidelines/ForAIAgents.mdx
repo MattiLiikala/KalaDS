@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guidelines/For AI Agents" />
+
+# For AI agents
+
+The rules for building UI with KalaDS, for coding agents and for people reviewing their work. The same
+rules are in `CLAUDE.md` at the repository root.
+
+**These rules are non-negotiable. Follow them in every code change.**
+
+### NEVER do these things
+
+1. **Never add inline styles** to `<kds-*>` elements:
+   ```html
+   <!-- WRONG -->
+   <kds-button style="color: red; padding: 8px;">Click</kds-button>
+
+   <!-- RIGHT -->
+   <kds-button variant="danger">Click</kds-button>
+   ```
+
+2. **Never hardcode color, spacing, or typography values** — always use CSS custom properties from `@kalads/tokens`:
+   ```css
+   /* WRONG */
+   color: #2563eb;
+   padding: 12px 16px;
+   font-size: 14px;
+
+   /* RIGHT */
+   color: var(--kds-semantic-text-brand);
+   padding: var(--kds-semantic-padding-sm) var(--kds-semantic-padding-lg);
+   font-size: var(--kds-font-size-200);
+   ```
+
+3. **Never build a custom `<button>`, `<input>`, or other element** when `@kalads/components` has one. Check the Components section first.
+
+4. **Never use inline `<svg>` or raw icon files** — use `<kds-icon-*>` web components:
+   ```html
+   <!-- WRONG -->
+   <svg>...</svg>
+
+   <!-- RIGHT -->
+   <kds-icon-arrow-left label="Go back"></kds-icon-arrow-left>
+   ```
+
+5. **Never override component internals with CSS** — Shadow DOM prevents it anyway. Use the component's `variant`, `size`, and other documented attributes.
+
+6. **Never add new components** without also adding:
+   - Component tokens in `packages/tokens/src/component/<name>.json`
+   - A Storybook story in `apps/storybook/src/stories/components/`
+
+7. **Never place a solid button** (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with
+   its fill. The label is cut out of the fill, so it *is* the surface colour. On inverse surfaces always add
+   `on-inverse`; never put solid buttons on images, gradients or surfaces close to the button colour.
+   See **Guidelines/Knockout and Surfaces**.
+
+### ALWAYS do these things
+
+1. **Use semantic tokens for layout values** — spacing, color, typography:
+   - `--kds-semantic-spacing-*` for margins and gaps
+   - `--kds-semantic-bg-*` for background colors
+   - `--kds-semantic-text-*` for text colors
+   - `--kds-semantic-border-*` for borders
+   - `--kds-semantic-radius-*` for border radius
+   - `--kds-semantic-padding-*` for component padding
+
+2. **Use component tokens for component-specific values** — these are already wired in component CSS:
+   - `--kds-component-button-primary-bg` etc.
+
+3. **Use core tokens only** for data visualization colors (`--kds-color-data1-500` etc.) and for defining new semantic tokens.
+
+---
+
+## Before you build
+
+- Check **Components** for an existing element before writing markup.
+- Read the component's docs page: the props table lists every attribute, slot, event and CSS part.
+- Solid buttons cut their label out of the fill: check **Guidelines/Knockout and Surfaces** before placing
+  one on anything other than a light surface.

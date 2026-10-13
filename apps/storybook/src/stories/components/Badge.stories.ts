@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Data Display/Badge',
   component: 'kds-badge',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
@@ -39,35 +38,34 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => html`
-    <div style="display:flex; gap: var(--kds-semantic-spacing-sm); flex-wrap:wrap; align-items:center;">
+    <kds-stack direction="row" gap="sm" align="center" wrap>
       <kds-badge variant="default">Default</kds-badge>
       <kds-badge variant="primary">Primary</kds-badge>
       <kds-badge variant="danger">Danger</kds-badge>
       <kds-badge variant="warning">Warning</kds-badge>
       <kds-badge variant="success">Success</kds-badge>
-    </div>
+    </kds-stack>
   `,
 };
 
+const STATUSES = [
+  ['Server status', 'success', 'Online'],
+  ['Deployment', 'warning', 'Pending'],
+  ['Build', 'danger', 'Failed'],
+  ['Version', 'primary', 'v2.4.1'],
+];
+
 export const StatusExamples: Story = {
   render: () => html`
-    <div style="display:flex; flex-direction:column; gap: var(--kds-semantic-spacing-md);">
-      <div style="display:flex; align-items:center; gap: var(--kds-semantic-spacing-sm);">
-        <span style="font-family: var(--kds-font-family-base); color: var(--kds-semantic-text-default);">Server status</span>
-        <kds-badge variant="success">Online</kds-badge>
-      </div>
-      <div style="display:flex; align-items:center; gap: var(--kds-semantic-spacing-sm);">
-        <span style="font-family: var(--kds-font-family-base); color: var(--kds-semantic-text-default);">Deployment</span>
-        <kds-badge variant="warning">Pending</kds-badge>
-      </div>
-      <div style="display:flex; align-items:center; gap: var(--kds-semantic-spacing-sm);">
-        <span style="font-family: var(--kds-font-family-base); color: var(--kds-semantic-text-default);">Build</span>
-        <kds-badge variant="danger">Failed</kds-badge>
-      </div>
-      <div style="display:flex; align-items:center; gap: var(--kds-semantic-spacing-sm);">
-        <span style="font-family: var(--kds-font-family-base); color: var(--kds-semantic-text-default);">Version</span>
-        <kds-badge variant="primary">v2.4.1</kds-badge>
-      </div>
-    </div>
+    <kds-stack gap="md">
+      ${STATUSES.map(
+        ([label, variant, value]) => html`
+          <kds-stack direction="row" gap="sm" align="center">
+            <kds-typography>${label}</kds-typography>
+            <kds-badge variant=${variant}>${value}</kds-badge>
+          </kds-stack>
+        `,
+      )}
+    </kds-stack>
   `,
 };

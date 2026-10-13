@@ -26,7 +26,6 @@ const ICONS = [
 const meta: Meta = {
   title: 'Components/Data Display/Icon',
   component: 'kds-icon',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -1,0 +1,44 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use tabs to switch between views of the same thing, such as a project's overview, activity and settings.
+- Keep labels to one or two words. Each `kds-tab` needs a `kds-tab-panel` with the same `value`.
+- Don't use tabs for steps people must take in order.
+
+<DoDont>
+  <Do caption="Views of one project, with short labels.">
+    <kds-tabs label="Project" value="overview">
+      <kds-tab value="overview">Overview</kds-tab>
+      <kds-tab value="activity">Activity</kds-tab>
+      <kds-tab-panel value="overview">A summary of the project.</kds-tab-panel>
+      <kds-tab-panel value="activity">Recent changes.</kds-tab-panel>
+    </kds-tabs>
+  </Do>
+  <Dont caption="Don't use tabs for a sequence: people can skip ahead and miss steps.">
+    <kds-tabs label="Checkout" value="details">
+      <kds-tab value="details">1. Details</kds-tab>
+      <kds-tab value="payment">2. Payment</kds-tab>
+      <kds-tab value="confirm">3. Confirm</kds-tab>
+      <kds-tab-panel value="details">Your details</kds-tab-panel>
+      <kds-tab-panel value="payment">Payment</kds-tab-panel>
+      <kds-tab-panel value="confirm">Confirm</kds-tab-panel>
+    </kds-tabs>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

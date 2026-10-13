@@ -6,7 +6,6 @@ const meta: Meta = {
   title: 'Components/Inputs/Radio Group',
   component: 'kds-radio-group',
   subcomponents: { 'kds-radio': 'kds-radio' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

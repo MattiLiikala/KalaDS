@@ -6,7 +6,6 @@ const meta: Meta = {
   title: 'Components/Data Display/List',
   component: 'kds-list',
   subcomponents: { 'kds-list-item': 'kds-list-item' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

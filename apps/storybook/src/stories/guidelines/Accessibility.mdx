@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/blocks';
+import { Do, DoDont, Dont } from '../../docs-blocks';
+
+<Meta title="Guidelines/Accessibility" />
+
+# Accessibility
+
+KalaDS components handle the hard parts (roles, keyboard support, focus and contrast) when they are used
+as documented. This page lists what the components do for you and what is still up to you.
+
+## Colour and contrast
+
+- `text-default`, `text-subtle` and `text-brand` pass **4.5:1** on every light surface (`bg-default`,
+  `bg-subtle`, `bg-muted`). `text-muted` passes only on `bg-default`: keep it for placeholders, disabled
+  text and hints, never for content people need to read. The palette
+  swatches in **Foundations/Colors** are labelled with what each step can carry: **Text** (4.5:1) or
+  **UI** (3:1, for borders, icons and large text).
+- In every status palette, steps 600 and up pass 4.5:1 for text. Components use the strong (700) step for
+  status text and icons, and the 100–200 steps only as backgrounds.
+- Never use colour alone to carry meaning: pair it with text or an icon. Notifications, badges and chips
+  always have a text label.
+- Solid buttons depend on the surface behind them: see **Guidelines/Knockout and Surfaces**.
+
+## Focus
+
+- Every interactive component shows a visible focus ring when reached with the keyboard: a 2px outline in
+  the focus colour, offset from the element. Text fields thicken their border instead.
+- Don't remove focus styles or hide elements that can take focus.
+- Dialogs and drawers move focus inside when they open, keep it there, and return it to the element that
+  opened them.
+
+## Keyboard
+
+<table className="kds-docs-table">
+  <thead><tr><th>Component</th><th>Keys</th></tr></thead>
+  <tbody>
+    <tr><td>Button, link, chip, checkbox, toggle</td><td>Tab to reach; Enter or Space to activate</td></tr>
+    <tr><td>Radio group</td><td>Tab into the group; arrow keys move and select, skipping disabled options</td></tr>
+    <tr><td>Tabs</td><td>Arrow keys move between tabs; Home and End jump to the first and last</td></tr>
+    <tr><td>Menu</td><td>Enter, Space or arrow keys open it; arrows move; Escape closes and returns focus</td></tr>
+    <tr><td>Autocomplete</td><td>Type to filter; arrows move through options; Enter selects; Escape closes</td></tr>
+    <tr><td>Accordion</td><td>Enter or Space opens and closes a section</td></tr>
+    <tr><td>Dialog, drawer</td><td>Escape closes, unless the dialog is <code>persistent</code></td></tr>
+    <tr><td>Tooltip</td><td>Shows on keyboard focus as well as hover; Escape hides it</td></tr>
+  </tbody>
+</table>
+
+## Labels and names
+
+<DoDont>
+  <Do caption="Give every icon button a label: it's the only name screen readers get.">
+    <kds-icon-button label="Close dialog"><kds-icon-close></kds-icon-close></kds-icon-button>
+  </Do>
+  <Dont caption="Don't rely on a tooltip to name an icon button. Tooltips describe; they don't label.">
+    <kds-tooltip content="Close"><kds-icon-button><kds-icon-close></kds-icon-close></kds-icon-button></kds-tooltip>
+  </Dont>
+</DoDont>
+
+- Every form field needs a visible `label`. Placeholders disappear when people type, so they are not labels.
+- Put errors on the **group** for checkboxes and radios (`kds-checkbox-group`, `kds-radio-group`), not on
+  single options.
+- Write link text that makes sense on its own: "Read the billing guide", not "click here".
+
+## Motion
+
+Animations (accordion sections, card press, toggle, dialogs, drawers and skeleton shimmer) are turned off
+when the user has **reduce motion** enabled. Don't add motion that can't be turned off this way.
+
+## Forced colours
+
+In Windows high-contrast mode, solid buttons drop their knockout label and use the system button text
+colour, so they stay readable.

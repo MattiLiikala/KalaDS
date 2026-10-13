@@ -7,7 +7,6 @@ type Backdrop = HTMLElement & { open: boolean };
 const meta: Meta = {
   title: 'Components/Feedback/Backdrop',
   component: 'kds-backdrop',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

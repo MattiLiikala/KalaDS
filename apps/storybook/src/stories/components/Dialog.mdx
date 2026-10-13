@@ -1,0 +1,40 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as DialogStories from './Dialog.stories';
+
+<Meta of={DialogStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a dialog for a short, focused task or a decision people must make before going on.
+- `heading` names the task ("Delete project?") and is the dialog's accessible name.
+- Put the actions in the `footer` slot: a ghost button to back out, then the main action, labelled with what
+  it does.
+- Use `persistent` only when a choice is required: it removes the close button and Escape.
+
+<DoDont>
+  <Do caption="Footer actions that say what happens.">
+    <kds-stack direction="row" gap="sm" justify="end">
+      <kds-button variant="ghost">Keep project</kds-button>
+      <kds-button variant="danger">Delete project</kds-button>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't use generic actions: 'OK' doesn't say what will happen.">
+    <kds-stack direction="row" gap="sm" justify="end">
+      <kds-button variant="ghost">Cancel</kds-button>
+      <kds-button variant="danger">OK</kds-button>
+    </kds-stack>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

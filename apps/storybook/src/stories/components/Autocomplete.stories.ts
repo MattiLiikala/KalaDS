@@ -7,7 +7,6 @@ const fruits = ['Apple', 'Apricot', 'Banana', 'Blueberry', 'Cherry', 'Grape', 'L
 const meta: Meta = {
   title: 'Components/Inputs/Autocomplete',
   component: 'kds-autocomplete',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -1,0 +1,35 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as SkeletonStories from './Skeleton.stories';
+
+<Meta of={SkeletonStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use skeletons while content loads, shaped like the content that will replace them.
+- Mark the loading region with `aria-busy="true"`; skeletons are hidden from screen readers.
+- For very short waits (under about a second), show nothing: a flash of skeleton is worse than none.
+
+<DoDont>
+  <Do caption="Shapes that match the content: an avatar and two lines of text.">
+    <kds-stack direction="row" gap="md" align="center">
+      <kds-skeleton variant="circle"></kds-skeleton>
+      <kds-skeleton lines="2" width="12rem"></kds-skeleton>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't use one big block for everything: it doesn't hint at what's coming.">
+    <kds-skeleton variant="rect" height="6rem"></kds-skeleton>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

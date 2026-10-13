@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Surfaces/Paper',
   component: 'kds-paper',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

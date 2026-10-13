@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/blocks';
+import { Do, DoDont, Dont } from '../../docs-blocks';
+
+<Meta title="Guidelines/Knockout and Surfaces" />
+
+# Knockout and surfaces
+
+Solid buttons (`primary`, `secondary`, `danger`) and solid icon buttons cut their label out of the fill:
+the text is a hole, so it **is** the colour of the surface behind the button. The button is only readable
+when that surface contrasts with the fill in every state (default, hover and pressed).
+
+## Where solid buttons work
+
+<table className="kds-docs-table">
+  <thead><tr><th>Surface</th><th>Default fills</th><th>With <code>on-inverse</code></th></tr></thead>
+  <tbody>
+    <tr><td>white, <code>bg-default</code>, <code>bg-subtle</code>, <code>bg-muted</code></td><td>✅ Yes</td><td>❌ No</td></tr>
+    <tr><td><code>bg-inverse</code>, neutral 800–900</td><td>❌ No</td><td>✅ Yes</td></tr>
+    <tr><td>neutral 500–700, primary- or secondary-tinted panels</td><td>❌ No</td><td>❌ No: use a <code>ghost</code> button</td></tr>
+    <tr><td>images, gradients, patterns</td><td>❌ No</td><td>❌ No</td></tr>
+  </tbody>
+</table>
+
+Ghost buttons use ordinary text, so they work on any light surface (and on inverse surfaces with
+`on-inverse`). In forced-colours mode (Windows high contrast) the knockout is turned off and the label uses
+the system button text colour.
+
+## Examples
+
+<DoDont>
+  <Do caption="Use solid buttons on the light surfaces: default, subtle and muted.">
+    <kds-box bg="muted" padding="lg" radius="md">
+      <kds-stack direction="row" gap="sm">
+        <kds-button variant="primary">Save</kds-button>
+        <kds-button variant="ghost">Cancel</kds-button>
+      </kds-stack>
+    </kds-box>
+  </Do>
+  <Dont caption="Don't use the default fills on an inverse surface: the label turns dark on a dark fill.">
+    <kds-box bg="inverse" padding="lg" radius="md">
+      <kds-stack direction="row" gap="sm">
+        <kds-button variant="primary">Save</kds-button>
+        <kds-button variant="ghost">Cancel</kds-button>
+      </kds-stack>
+    </kds-box>
+  </Dont>
+</DoDont>
+
+<DoDont>
+  <Do caption="On inverse surfaces, add on-inverse to every button: it switches to the light fills.">
+    <kds-box bg="inverse" padding="lg" radius="md">
+      <kds-stack direction="row" gap="sm">
+        <kds-button variant="primary" on-inverse>Save</kds-button>
+        <kds-button variant="ghost" on-inverse>Cancel</kds-button>
+      </kds-stack>
+    </kds-box>
+  </Do>
+  <Dont caption="Don't put on-inverse buttons on light surfaces: the light fill disappears into the page.">
+    <kds-box bg="default" padding="lg" radius="md" border>
+      <kds-stack direction="row" gap="sm">
+        <kds-button variant="primary" on-inverse>Save</kds-button>
+        <kds-button variant="ghost" on-inverse>Cancel</kds-button>
+      </kds-stack>
+    </kds-box>
+  </Dont>
+</DoDont>
+
+```html
+<!-- On an inverse surface -->
+<kds-button variant="primary" on-inverse>Save</kds-button>
+```
+
+`on-inverse` is named after the theme, not lightness: in a dark theme the inverse surface is light, and
+the same markup keeps working when the tokens are swapped.

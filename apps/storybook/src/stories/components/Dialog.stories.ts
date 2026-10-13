@@ -9,7 +9,6 @@ const close = (id: string) => (document.getElementById(id) as Openable).close();
 const meta: Meta = {
   title: 'Components/Feedback/Dialog',
   component: 'kds-dialog',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

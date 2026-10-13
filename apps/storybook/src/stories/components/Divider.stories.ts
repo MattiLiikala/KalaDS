@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Data Display/Divider',
   component: 'kds-divider',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

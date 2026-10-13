@@ -1,0 +1,38 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as AccordionStories from './Accordion.stories';
+
+<Meta of={AccordionStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use an accordion for long, optional detail that people scan by heading: FAQs, advanced settings.
+- Keep headings short and specific, so people can find the section they need.
+- By default one section is open at a time; add `multiple` when people compare sections.
+- Don't hide content that everyone needs.
+
+<DoDont>
+  <Do caption="Optional detail behind clear headings.">
+    <kds-accordion>
+      <kds-accordion-item heading="Can I change my plan later?">Yes, at any time from Billing.</kds-accordion-item>
+      <kds-accordion-item heading="How do refunds work?">Refunds reach your card within 10 days.</kds-accordion-item>
+    </kds-accordion>
+  </Do>
+  <Dont caption="Don't collapse the one thing everyone needs to read.">
+    <kds-accordion>
+      <kds-accordion-item heading="Price">29 € per month</kds-accordion-item>
+    </kds-accordion>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

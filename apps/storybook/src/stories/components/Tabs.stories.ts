@@ -6,7 +6,6 @@ const meta: Meta = {
   title: 'Components/Navigation/Tabs',
   component: 'kds-tabs',
   subcomponents: { 'kds-tab': 'kds-tab', 'kds-tab-panel': 'kds-tab-panel' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

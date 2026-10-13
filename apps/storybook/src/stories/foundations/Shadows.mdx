@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+import { TokenTable } from '../../docs-blocks';
+
+<Meta title="Foundations/Shadows" />
+
+# Shadows
+
+Two shadow families, three levels each.
+
+- **Crisp** shadows are offset diagonally with no blur, in `neutral-300`. They are for surfaces that sit
+  in the page: **card**, **paper** and **notification**, chosen with their `elevation` attribute.
+  Notifications use the crisp shadow in their own status colour.
+- **Soft** shadows are blurred, in semi-transparent `neutral-900`. They are for things that float above
+  the page: **menus**, **autocomplete popups** and **dialogs**.
+
+Offsets and blurs use the px size values, so edges stay sharp at any font size.
+
+## Crisp
+
+<kds-grid min="xs" gap="xl">
+  <kds-paper elevation="1"><kds-typography variant="label">Elevation 1</kds-typography></kds-paper>
+  <kds-paper elevation="2"><kds-typography variant="label">Elevation 2</kds-typography></kds-paper>
+  <kds-paper elevation="3"><kds-typography variant="label">Elevation 3</kds-typography></kds-paper>
+</kds-grid>
+
+<TokenTable path="semantic.shadow.crisp" preview="shadow" />
+
+The offsets are also tokens of their own. An interactive card moves by its level's offset on hover, so it
+presses down into its shadow.
+
+<TokenTable path="semantic.shadow.crisp-offset" />
+
+## Soft
+
+Menus and autocomplete popups use level 2, dialogs level 3.
+
+<TokenTable path="semantic.shadow.soft" preview="shadow" />
+
+## Shadow colours
+
+<TokenTable path="semantic.shadow" only={['crisp-color', 'crisp-color-danger', 'crisp-color-warning', 'crisp-color-success', 'crisp-color-info']} preview="color" />

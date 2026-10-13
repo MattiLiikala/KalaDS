@@ -1,0 +1,32 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as ToggleStories from './Toggle.stories';
+
+<Meta of={ToggleStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a toggle for a setting that takes effect immediately, like turning notifications on.
+- In a form that's submitted later, use a checkbox instead.
+- The label names the setting, not its state: "Show notifications", not "On".
+
+<DoDont>
+  <Do caption="The label names the setting; the toggle shows its state.">
+    <kds-toggle checked>Show notifications</kds-toggle>
+  </Do>
+  <Dont caption="Don't label the state: 'On' doesn't say what is on.">
+    <kds-toggle checked>On</kds-toggle>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

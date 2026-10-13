@@ -11,14 +11,21 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  staticDirs: ['../public'],
+  staticDirs: [
+    '../public',
+    // Font files for Storybook's own interface (see manager-head.html).
+    { from: '../node_modules/@fontsource/overlock/files', to: '/fonts/overlock' },
+    { from: '../node_modules/@fontsource/parkinsans/files', to: '/fonts/parkinsans' },
+  ],
   viteFinal: async (config) => {
     config.resolve = config.resolve ?? {};
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@kalads/components': resolve(__dirname, '../../../packages/components/src/index.ts'),
-      '@kalads/icons': resolve(__dirname, '../../../packages/icons/src/index.ts'),
-    };
+    const existing = config.resolve.alias ?? [];
+    // Exact matches only, so subpaths such as @kalads/components/custom-elements.json resolve normally.
+    config.resolve.alias = [
+      ...(Array.isArray(existing) ? existing : Object.entries(existing).map(([find, replacement]) => ({ find, replacement }))),
+      { find: /^@kalads\/components$/, replacement: resolve(__dirname, '../../../packages/components/src/index.ts') },
+      { find: /^@kalads\/icons$/, replacement: resolve(__dirname, '../../../packages/icons/src/index.ts') },
+    ];
     return config;
   },
 };

@@ -18,6 +18,7 @@ Source files: `src/components/<name>/kds-<name>.ts`
 - [ ] Exported from `src/index.ts`
 - [ ] Component tokens in `packages/tokens/src/component/<name>.json`
 - [ ] Storybook story in `apps/storybook/src/stories/components/<Name>.stories.ts`
+- [ ] Docs page with a Usage section in `apps/storybook/src/stories/components/<Name>.mdx`
 
 ## Styling Rules
 

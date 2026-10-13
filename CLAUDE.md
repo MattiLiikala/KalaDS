@@ -73,7 +73,7 @@ Solid buttons render their label as knockout text cut out of the fill, so the la
 The surface behind the button must have at least 4.5:1 contrast with the button fill in every state
 (`bg`, `bg-hover`, `bg-active`). On inverse surfaces (`var(--kds-semantic-bg-inverse)`) always add the `on-inverse` attribute:
 `<kds-button variant="primary" on-inverse>`. Never put solid buttons on images, gradients or surfaces close to
-the button colour. See the surface table in the Button story ("Knockout on surfaces").
+the button colour. See **Guidelines/Knockout and Surfaces** in Storybook.
 
 ### ALWAYS do these things:
 
@@ -128,5 +128,26 @@ pnpm typecheck            # TypeScript type checking
 2. Create component tokens `packages/tokens/src/component/<name>.json` (include all states: default, hover, active, disabled, focus)
 3. Build tokens: `cd packages/tokens && pnpm build`
 4. Build components: `cd packages/components && pnpm build`
-5. Create story: `apps/storybook/src/stories/components/<Name>.stories.ts`
+5. Create story: `apps/storybook/src/stories/components/<Name>.stories.ts` (no `autodocs` tag), and its docs
+   page `<Name>.mdx` next to it with a Usage section (copy any existing page, e.g. `Chip.mdx`).
+   Document every attribute, slot, event and CSS part in the component's JSDoc: the docs page's props table
+   is generated from it. Keep the story's `docs.description.component` to a short paragraph.
 6. Export from `packages/components/src/index.ts`
+
+## Documentation (Storybook)
+
+`apps/storybook` is themed with KalaDS itself. Sections: Introduction, Getting Started, Foundations
+(token pages), Components, Guidelines (Accessibility, Knockout and Surfaces, Writing, For AI Agents).
+
+- **Component pages:** every component has `<Name>.mdx` next to its stories, using `<Meta of={...} />`, the
+  header block, and a Usage section with `Do` / `Dont` examples built from real components. Usage text
+  must match what the component actually does: check the source before writing it.
+  Page order is fixed: header, description, main example, **Props** (right below it, so control changes
+  are visible), Usage, then the other examples.
+- **Sidebar:** one page per component. Stories are tagged `!dev` globally (`preview.ts`), so they render on
+  the docs page but don't get sidebar entries of their own.
+- **Token pages** are generated from `@kalads/tokens/json` with `TokenTable` and `ColorScale`. Never write
+  token values into docs by hand.
+- **Docs styling** lives only in `.storybook/docs.css` (tokens only); the Storybook interface theme in
+  `.storybook/kalads-theme.ts` reads `@kalads/tokens/js`.
+- In stories, build layouts with `kds-stack`, `kds-box`, `kds-grid` and `kds-typography`, not styled `<div>`s.

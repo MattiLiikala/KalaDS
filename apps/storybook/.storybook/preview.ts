@@ -1,4 +1,8 @@
-import type { Preview } from '@storybook/web-components';
+import { setCustomElementsManifest, type Preview } from '@storybook/web-components';
+import manifest from '@kalads/components/custom-elements.json';
+import { SemanticBgDefault, SemanticBgInverse, SemanticBgMuted, SemanticBgSubtle } from '@kalads/tokens/js';
+import { kaladsTheme } from './kalads-theme';
+import { ComponentDocsPage } from '../src/docs-blocks';
 // Self-hosted fonts matching the font.family tokens, so Storybook never falls back to system fonts.
 // Weights follow font.weight (300 / 400 / 500 / 700). Overlock has no 300 or 500, so those render at 400.
 import '@fontsource/overlock/400.css';
@@ -11,6 +15,29 @@ import '@fontsource/parkinsans/500.css';
 import '@fontsource/parkinsans/700.css';
 import '@kalads/tokens/css';
 import '@kalads/components';
+import './docs.css';
+
+// Props tables (attributes, properties, slots, events, CSS parts) come from the analyser's manifest,
+// which is generated from each component's JSDoc on every components build.
+setCustomElementsManifest(publicApi(manifest));
+
+/**
+ * The analyser lists every class member, including private state (`_hasHeader`), static Lit config
+ * (`styles`, `shadowRootOptions`) and protected helpers. Keep only the public API in the props tables.
+ */
+function publicApi(cem: typeof manifest): typeof manifest {
+  type Member = { name: string; static?: boolean; privacy?: string };
+  const isPublic = (m: Member) => !m.static && !m.privacy && !m.name.startsWith('_') && !m.name.startsWith('#');
+  return {
+    ...cem,
+    modules: cem.modules.map((mod) => ({
+      ...mod,
+      declarations: mod.declarations?.map((d) =>
+        'members' in d && Array.isArray(d.members) ? { ...d, members: (d.members as Member[]).filter(isPublic) } : d,
+      ),
+    })),
+  } as typeof manifest;
+}
 
 // Page defaults from the semantic tokens, as an app using KalaDS would set them. Without this, text that
 // inherits its font (kds-link outside a kds-typography, slotted labels) falls back to the browser's serif.
@@ -23,14 +50,15 @@ baseStyles.textContent = `
 `;
 document.head.append(baseStyles);
 
-// Example links in stories (href="#" and the like) must not navigate the preview iframe away from the story.
+// Example links in stories and Do / Don't examples (href="#" and the like) must not navigate the preview
+// iframe away from the page.
 // Links inside shadow roots are found through the composed path. Links opening a new tab still work, and
 // the docs page's own links (table of contents) are left alone.
 document.addEventListener(
   'click',
   (e) => {
     const path = e.composedPath();
-    const inStory = path.some((n) => n instanceof Element && n.matches('#storybook-root, .docs-story'));
+    const inStory = path.some((n) => n instanceof Element && n.matches('#storybook-root, .docs-story, .kds-docs-example'));
     const link = path.find((n): n is HTMLAnchorElement => n instanceof HTMLAnchorElement && n.hasAttribute('href'));
     if (inStory && link && link.target !== '_blank') e.preventDefault();
   },
@@ -52,6 +80,9 @@ const FONTS = [
 let fontsReady: Promise<unknown> | undefined;
 
 const preview: Preview = {
+  // Stories render on their component's docs page only: the sidebar lists one page per component.
+  // `!dev` removes a story from the sidebar but keeps it in docs (and reachable by its iframe URL).
+  tags: ['!dev'],
   loaders: [
     // Render stories only once the real fonts are available, so layout and button knockout masks are
     // never computed against fallback fonts.
@@ -62,15 +93,37 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    // Canvas backgrounds are the semantic surfaces. Values come from the JS tokens because the toolbar
+    // swatches render outside the story iframe, where CSS variables don't exist.
     backgrounds: {
-      default: 'light',
+      default: 'default',
       values: [
-        { name: 'light', value: '#f8fafc' },
-        { name: 'dark', value: '#0f172a' },
-        { name: 'white', value: '#ffffff' },
+        { name: 'default', value: SemanticBgDefault },
+        { name: 'subtle', value: SemanticBgSubtle },
+        { name: 'muted', value: SemanticBgMuted },
+        { name: 'inverse', value: SemanticBgInverse },
       ],
     },
+    options: {
+      storySort: {
+        // Sections in this order; pages inside a section alphabetically.
+        method: 'alphabetical',
+        order: [
+          'Introduction',
+          'Getting Started',
+          'Foundations',
+          ['Colors', 'Typography', 'Spacing', 'Shadows', 'Icons'],
+          'Components',
+          ['Inputs', 'Data Display', 'Feedback', 'Surfaces', 'Navigation', 'Layout'],
+          'Guidelines',
+          ['Accessibility', 'Knockout and Surfaces', 'Writing', 'For AI Agents'],
+        ],
+      },
+    },
     docs: {
+      theme: kaladsTheme,
+      // Generated component pages share one layout (src/docs-blocks/ComponentDocsPage.tsx).
+      page: ComponentDocsPage,
       toc: true,
       source: {
         // The code snippet is serialised from the rendered DOM, where boolean attributes read `interactive=""`.

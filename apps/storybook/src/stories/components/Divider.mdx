@@ -1,0 +1,43 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as DividerStories from './Divider.stories';
+
+<Meta of={DividerStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a divider to separate groups of content when spacing alone isn't enough. Try spacing first.
+- Add `decorative` when the line is purely visual (for example between menu items), so it's hidden from
+  screen readers.
+- A divider with text labels a break between sections: "or", "Older".
+
+<DoDont>
+  <Do caption="One divider between two different groups.">
+    <kds-stack gap="md">
+      <kds-typography>Profile and account</kds-typography>
+      <kds-divider></kds-divider>
+      <kds-typography color="danger">Delete account</kds-typography>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't put a divider between every item: spacing already separates them.">
+    <kds-stack gap="sm">
+      <kds-typography>Name</kds-typography>
+      <kds-divider></kds-divider>
+      <kds-typography>Email</kds-typography>
+      <kds-divider></kds-divider>
+      <kds-typography>Phone</kds-typography>
+    </kds-stack>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

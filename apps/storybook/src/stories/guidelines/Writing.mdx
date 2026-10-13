@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/blocks';
+import { Do, DoDont, Dont } from '../../docs-blocks';
+
+<Meta title="Guidelines/Writing" />
+
+# Writing
+
+Interface text is part of the design. Keep it short, specific and in sentence case.
+
+## Buttons
+
+Start with a verb that says what happens: "Save changes", "Delete project", "Send invite".
+
+<DoDont>
+  <Do caption="Say what the button does. The person knows what will happen before they press it.">
+    <kds-stack direction="row" gap="sm">
+      <kds-button variant="danger">Delete project</kds-button>
+      <kds-button variant="ghost">Keep project</kds-button>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't use vague labels. 'Yes' and 'No' only make sense next to the question.">
+    <kds-stack direction="row" gap="sm">
+      <kds-button variant="danger">Yes</kds-button>
+      <kds-button variant="ghost">No</kds-button>
+    </kds-stack>
+  </Dont>
+</DoDont>
+
+## Form labels and helper text
+
+- Labels are nouns: "Email", "Billing address". Don't end them with a colon.
+- Use helper text for format or limits ("At least 12 characters"), not to repeat the label.
+- Don't put essential information in placeholders: they disappear when people type.
+
+## Error messages
+
+Say what went wrong and how to fix it, in the person's terms.
+
+<DoDont>
+  <Do caption="Name the problem and the fix.">
+    <kds-input label="Email" value="anna@" error="Enter a full email address, like name@example.com."></kds-input>
+  </Do>
+  <Dont caption="Don't blame, shout or use codes. 'Invalid input' doesn't say what to change.">
+    <kds-input label="Email" value="anna@" error="ERROR: Invalid input."></kds-input>
+  </Dont>
+</DoDont>
+
+## Notifications
+
+- The heading says what happened, in a few words: "Payment failed", "Changes saved".
+- The message adds what to do next, if anything.
+- Use `danger` and `warning` only when people need to act: those are announced immediately by screen
+  readers.
+
+## Links
+
+Link text says where the link goes: "Read the billing guide", not "click here" or "more".
+
+## Style
+
+- Sentence case everywhere, including buttons and headings: "Create account", not "Create Account".
+- Use numerals for numbers: "3 files", not "three files".
+- Leave out "please" and "successfully": "Changes saved", not "Your changes were successfully saved".

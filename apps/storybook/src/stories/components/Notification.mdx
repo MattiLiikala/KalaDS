@@ -1,0 +1,38 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as NotificationStories from './Notification.stories';
+
+<Meta of={NotificationStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Pick the variant by what people need to do: `info` for news, `success` to confirm, `warning` when
+  something needs attention soon, `danger` when something failed or is blocked.
+- The `heading` says what happened in a few words; the message says what to do next.
+- Use `danger` and `warning` sparingly: they are announced immediately and interrupt screen reader users.
+- Make a notification `dismissible` unless people must act on it first.
+
+<DoDont>
+  <Do caption="A short heading that says what happened, and a message with the next step.">
+    <kds-notification variant="danger" heading="Payment failed">
+      Your card was declined. Update your billing details to keep your plan.
+    </kds-notification>
+  </Do>
+  <Dont caption="Don't use danger for good news or routine information: the colour and announcement don't match.">
+    <kds-notification variant="danger" heading="Welcome back!">
+      You have 3 new messages.
+    </kds-notification>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

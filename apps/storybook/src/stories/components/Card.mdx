@@ -1,0 +1,40 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a card for one self-contained thing: a project, a person, a summary. Use `kds-paper` for a plain
+  surface without header and footer sections.
+- Keep one elevation for cards that sit side by side. Raise a card only to show it's more important.
+- An `interactive` card must be wrapped in a link so it can be reached with the keyboard. Put at most one
+  main action in the footer.
+
+<DoDont>
+  <Do caption="Cards in a grid share one elevation and one layout.">
+    <kds-grid columns="2" gap="md">
+      <kds-card elevation="2"><kds-typography variant="label" gutter>Reports</kds-typography><kds-typography variant="body-sm" color="subtle">12 new</kds-typography></kds-card>
+      <kds-card elevation="2"><kds-typography variant="label" gutter>Projects</kds-typography><kds-typography variant="body-sm" color="subtle">4 active</kds-typography></kds-card>
+    </kds-grid>
+  </Do>
+  <Dont caption="Don't nest cards: the shadows stack up and the hierarchy gets lost.">
+    <kds-card elevation="3">
+      <kds-typography variant="label" gutter>Projects</kds-typography>
+      <kds-card elevation="2"><kds-typography variant="body-sm">Website redesign</kds-typography></kds-card>
+    </kds-card>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

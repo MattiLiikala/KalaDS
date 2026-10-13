@@ -6,7 +6,6 @@ const meta: Meta = {
   title: 'Components/Navigation/Breadcrumbs',
   component: 'kds-breadcrumbs',
   subcomponents: { 'kds-breadcrumb-item': 'kds-breadcrumb-item' },
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

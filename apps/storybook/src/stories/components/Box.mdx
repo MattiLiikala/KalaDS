@@ -1,0 +1,37 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as BoxStories from './Box.stories';
+
+<Meta of={BoxStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a box for spacing and a simple background around content, without writing CSS.
+- Every attribute takes a token name (`padding="lg"`, `bg="subtle"`), so values stay on the scale.
+- Use `bg="inverse"` for dark sections; buttons inside need `on-inverse`.
+- Don't build cards or panels from boxes: use `kds-card` or `kds-paper`.
+
+<DoDont>
+  <Do caption="A subtle section with padding from the scale.">
+    <kds-box bg="subtle" padding="lg" radius="md">
+      <kds-typography>Your trial ends in 5 days.</kds-typography>
+    </kds-box>
+  </Do>
+  <Dont caption="Don't fake a card with a box: kds-card has the elevation, spacing and hover state.">
+    <kds-box border radius="lg" padding="xl">
+      <kds-typography variant="label">Reports</kds-typography>
+    </kds-box>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

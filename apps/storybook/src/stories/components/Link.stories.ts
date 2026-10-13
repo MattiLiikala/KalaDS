@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Navigation/Link',
   component: 'kds-link',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

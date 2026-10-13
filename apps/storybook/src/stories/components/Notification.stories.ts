@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Feedback/Notification',
   component: 'kds-notification',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -1,0 +1,39 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as ListStories from './List.stories';
+
+<Meta of={ListStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a list for a column of similar items: people, files, settings, navigation.
+- Give the list a `label` when there's no visible heading. Use the `secondary` slot for a second line.
+- Make items `interactive` (or give them an `href`) only when the whole row does one thing.
+
+<DoDont>
+  <Do caption="Similar items, each with a short second line.">
+    <kds-list label="Team">
+      <kds-list-item>Alex Rivera<span slot="secondary">Design</span></kds-list-item>
+      <kds-list-item>Sam Lee<span slot="secondary">Engineering</span></kds-list-item>
+    </kds-list>
+  </Do>
+  <Dont caption="Don't mix clickable and static rows in one list: people can't tell which ones do something.">
+    <kds-list label="Settings">
+      <kds-list-item interactive>Profile</kds-list-item>
+      <kds-list-item>Version 2.4.1</kds-list-item>
+      <kds-list-item interactive>Security</kds-list-item>
+    </kds-list>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

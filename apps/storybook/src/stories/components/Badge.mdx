@@ -1,0 +1,35 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a badge for a short status or count next to something: "Online", "Beta", "3 new".
+- Keep it to one or two words. Badges aren't interactive: for filters or removable tags use `kds-chip`.
+- Use badges on light surfaces only.
+
+<DoDont>
+  <Do caption="A short status next to what it describes.">
+    <kds-stack direction="row" gap="sm" align="center">
+      <kds-typography>Build</kds-typography>
+      <kds-badge variant="success">Passed</kds-badge>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't put sentences in a badge: it's for a word or two.">
+    <kds-badge variant="warning">Your storage is almost full, consider upgrading</kds-badge>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

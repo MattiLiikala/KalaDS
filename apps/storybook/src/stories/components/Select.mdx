@@ -1,0 +1,41 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a select to pick one option from about 5 to 15. For fewer, a radio group shows them without a
+  click; for more, use `kds-autocomplete`.
+- Options are `<option>` (and `<optgroup>`) children.
+- Use `placeholder` ("Choose a country") when there's no sensible default.
+
+<DoDont>
+  <Do caption="A medium-length list with a placeholder.">
+    <kds-select label="Country" placeholder="Choose a country">
+      <option value="fi">Finland</option>
+      <option value="se">Sweden</option>
+      <option value="no">Norway</option>
+      <option value="dk">Denmark</option>
+    </kds-select>
+  </Do>
+  <Dont caption="Don't use a select for two options: a toggle or radio group shows the choice at once.">
+    <kds-select label="Newsletter">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </kds-select>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

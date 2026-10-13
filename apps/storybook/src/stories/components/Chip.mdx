@@ -1,0 +1,37 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as ChipStories from './Chip.stories';
+
+<Meta of={ChipStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use chips for filters (`selectable`), entered values such as tags or recipients (`removable`), or
+  static tags.
+- Keep labels short and lay chips out in a wrapping row (`kds-stack direction="row" wrap`).
+- Chips aren't buttons: for actions use `kds-button`.
+
+<DoDont>
+  <Do caption="Selectable chips as filters in a wrapping row.">
+    <kds-stack direction="row" gap="sm" wrap>
+      <kds-chip selectable selected>All</kds-chip>
+      <kds-chip selectable>Open</kds-chip>
+      <kds-chip selectable>Closed</kds-chip>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't use a chip as a call to action: use a button.">
+    <kds-chip selectable variant="primary">Buy now</kds-chip>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

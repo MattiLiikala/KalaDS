@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/blocks';
+import { TokenTable } from '../../docs-blocks';
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing and sizes
+
+One size scale feeds all spacing, padding, corner radius, border widths and layout widths. Use the
+semantic names in product code; they say what a value is for.
+
+## Core size scale
+
+Every step has a **rem** and a **px** value. Use rem for anything that should grow with the user's font
+size (spacing, padding, radius). Use px where a size must stay fixed, such as borders and crisp shadows.
+The 25, 50 and 75 steps are hairlines for borders.
+
+<TokenTable path="size" pairUnits preview="size" />
+
+## Spacing
+
+For margins and gaps between elements.
+
+<TokenTable path="semantic.spacing" preview="size" />
+
+## Padding
+
+For space inside a component.
+
+<TokenTable path="semantic.padding" preview="size" />
+
+## Corner radius
+
+<TokenTable path="semantic.radius" preview="radius" />
+
+## Border widths
+
+In px, so borders stay crisp and don't grow with the font size.
+
+<TokenTable path="semantic.border-width" preview="border-width" />
+
+## Layout widths
+
+**Container** widths limit page content (`kds-container`). **Size** widths are for elements such as
+dialogs, drawers, menus and tooltips.
+
+<TokenTable path="semantic.container" />
+<TokenTable path="semantic.size" />
+
+## Breakpoints
+
+<TokenTable path="breakpoint" />

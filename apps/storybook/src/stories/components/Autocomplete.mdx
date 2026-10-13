@@ -1,0 +1,42 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as AutocompleteStories from './Autocomplete.stories';
+
+<Meta of={AutocompleteStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use an autocomplete when there are many options (more than about 15) and people know what they're
+  looking for, such as a country or a colleague. For shorter lists use `kds-select` or a radio group.
+- Options are `<option>` children. The field filters them as people type.
+- Set `empty-text` to say what to do when nothing matches.
+
+<DoDont>
+  <Do caption="A long list that people search by name.">
+    <kds-autocomplete label="Country" placeholder="Start typing">
+      <option value="fi">Finland</option>
+      <option value="fr">France</option>
+      <option value="de">Germany</option>
+      <option value="gr">Greece</option>
+    </kds-autocomplete>
+  </Do>
+  <Dont caption="Don't use an autocomplete for a handful of options: a radio group shows them all at once.">
+    <kds-autocomplete label="Size">
+      <option value="s">Small</option>
+      <option value="m">Medium</option>
+      <option value="l">Large</option>
+    </kds-autocomplete>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

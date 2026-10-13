@@ -7,7 +7,6 @@ const tile = (label: string) => html`<kds-box bg="muted" padding="md" radius="md
 const meta: Meta = {
   title: 'Components/Layout/Stack',
   component: 'kds-stack',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

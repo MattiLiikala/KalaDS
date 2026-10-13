@@ -1,0 +1,25 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader } from '../../docs-blocks';
+import * as DrawerStories from './Drawer.stories';
+
+<Meta of={DrawerStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a drawer for navigation or a secondary task that keeps the page in view, such as filters or details.
+- `placement` sets the side (`start` or `end`) and `size` the width.
+- Like a dialog, a drawer is modal: focus stays inside and Escape closes it. Use `persistent` only when a
+  choice is required.
+- For a short decision, use `kds-dialog`.
+
+<Stories title="Examples" includePrimary={false} />

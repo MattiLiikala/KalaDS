@@ -6,7 +6,6 @@ import '@kalads/icons';
 const meta: Meta = {
   title: 'Components/Data Display/Tooltip',
   component: 'kds-tooltip',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

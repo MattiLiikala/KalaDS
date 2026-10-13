@@ -1,0 +1,36 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as TypographyStories from './Typography.stories';
+
+<Meta of={TypographyStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use `variant` for the look and `as` for the element, so the document outline stays correct: a section
+  title can look like an h4 and still be an h2.
+- Use one h1 per page, and don't skip heading levels.
+- Use `color="subtle"` for secondary text. `muted` is for hints and placeholders only.
+
+<DoDont>
+  <Do caption="The look comes from variant, the outline from as.">
+    <kds-stack gap="xs">
+      <kds-typography variant="h4" as="h2">Billing</kds-typography>
+      <kds-typography color="subtle">Invoices and payment methods.</kds-typography>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't use a heading variant just to make text big: it adds a false heading to the outline.">
+    <kds-typography variant="h2">Total: 42 €</kds-typography>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

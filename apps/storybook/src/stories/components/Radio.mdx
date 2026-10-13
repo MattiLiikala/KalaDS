@@ -1,0 +1,39 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as RadioStories from './Radio.stories';
+
+<Meta of={RadioStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a radio group to pick exactly one option from 2 to 5 that should all be visible. For more
+  options use `kds-select`.
+- Always put radios in a `kds-radio-group` with a `label`. Errors go on the group.
+- Preselect the most common option when there's a sensible default.
+
+<DoDont>
+  <Do caption="A labelled group with a sensible default selected.">
+    <kds-radio-group label="Delivery" value="standard">
+      <kds-radio value="standard">Standard (3–5 days)</kds-radio>
+      <kds-radio value="express">Express (1–2 days)</kds-radio>
+      <kds-radio value="pickup">Pick up in store</kds-radio>
+    </kds-radio-group>
+  </Do>
+  <Dont caption="Don't use a single radio: once selected it can't be cleared. Use a checkbox.">
+    <kds-radio-group label="Terms">
+      <kds-radio value="agree">I agree to the terms</kds-radio>
+    </kds-radio-group>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

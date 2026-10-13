@@ -1,0 +1,42 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use **one primary button** per view or section, for the main action. Use `secondary` for other
+  important actions and `ghost` for the rest (cancel, back, less important choices).
+- Use `danger` only for actions that destroy something, and say what will be destroyed: "Delete project".
+- Use a button for actions. To go somewhere else, use `kds-link`.
+- Solid buttons cut their label out of the fill: check **Guidelines/Knockout and Surfaces** before placing
+  one on anything other than a light surface.
+
+<DoDont>
+  <Do caption="One primary action, with a ghost button for the alternative.">
+    <kds-stack direction="row" gap="sm">
+      <kds-button variant="primary">Publish</kds-button>
+      <kds-button variant="ghost">Save draft</kds-button>
+    </kds-stack>
+  </Do>
+  <Dont caption="Don't put several primary buttons side by side: nothing stands out.">
+    <kds-stack direction="row" gap="sm">
+      <kds-button variant="primary">Publish</kds-button>
+      <kds-button variant="primary">Save draft</kds-button>
+      <kds-button variant="primary">Preview</kds-button>
+    </kds-stack>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

@@ -10,7 +10,6 @@ const close = (id: string) => (document.getElementById(id) as Openable).close();
 const meta: Meta = {
   title: 'Components/Navigation/Drawer',
   component: 'kds-drawer',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

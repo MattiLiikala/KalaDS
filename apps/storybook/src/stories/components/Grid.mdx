@@ -1,0 +1,40 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as GridStories from './Grid.stories';
+
+<Meta of={GridStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a grid for two-dimensional layouts: cards, tiles, form columns.
+- `min` gives a responsive grid without breakpoints: as many columns as fit, each at least that wide.
+  Use `columns` for a fixed count.
+- For a single row or column, use `kds-stack`.
+
+<DoDont>
+  <Do caption="A responsive grid: columns fit the space.">
+    <kds-grid min="xs" gap="md">
+      <kds-paper><kds-typography variant="label">One</kds-typography></kds-paper>
+      <kds-paper><kds-typography variant="label">Two</kds-typography></kds-paper>
+      <kds-paper><kds-typography variant="label">Three</kds-typography></kds-paper>
+    </kds-grid>
+  </Do>
+  <Dont caption="Don't use a grid for a single row of buttons: a stack is simpler.">
+    <kds-grid columns="2" gap="sm">
+      <kds-button variant="ghost">Cancel</kds-button>
+      <kds-button>Save</kds-button>
+    </kds-grid>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

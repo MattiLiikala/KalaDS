@@ -6,7 +6,6 @@ import '@kalads/icons';
 const meta: Meta = {
   title: 'Components/Data Display/Chip',
   component: 'kds-chip',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

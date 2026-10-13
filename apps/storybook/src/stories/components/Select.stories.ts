@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Inputs/Select',
   component: 'kds-select',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

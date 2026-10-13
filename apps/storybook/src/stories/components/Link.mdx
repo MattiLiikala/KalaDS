@@ -1,0 +1,33 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a link to go somewhere. For actions on the page, use `kds-button`.
+- Link text says where it goes: "Read the billing guide", not "click here".
+- Use `target="_blank"` only when leaving would lose work; the link then shows an icon and tells screen
+  readers it opens a new tab.
+
+<DoDont>
+  <Do caption="Link text that makes sense on its own.">
+    <kds-typography>Read the <kds-link href="#">billing guide</kds-link> to change your plan.</kds-typography>
+  </Do>
+  <Dont caption="Don't use vague link text: 'here' says nothing out of context.">
+    <kds-typography>To change your plan, click <kds-link href="#">here</kds-link>.</kds-typography>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

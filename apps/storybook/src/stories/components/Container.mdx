@@ -1,0 +1,23 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader } from '../../docs-blocks';
+import * as ContainerStories from './Container.stories';
+
+<Meta of={ContainerStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use one container per page section to centre content and limit line length.
+- `size` sets the maximum width: `md` suits reading, `lg` (default) most app pages, `xl` dashboards.
+- Use `flush` when the content brings its own side padding.
+
+<Stories title="Examples" includePrimary={false} />

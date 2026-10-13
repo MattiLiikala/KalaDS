@@ -5,7 +5,6 @@ import '@kalads/components';
 const meta: Meta = {
   title: 'Components/Inputs/Toggle',
   component: 'kds-toggle',
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -1,0 +1,32 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont } from '../../docs-blocks';
+import * as StackStories from './Stack.stories';
+
+<Meta of={StackStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use a stack to lay out children in one row or column with even spacing from the scale.
+- `direction="row"` with `wrap` for button groups and chips, `justify="end"` for form actions.
+- For two-dimensional layouts, use `kds-grid`.
+
+<DoDont>
+  <Do caption="Form actions at the end of a row, spaced from the scale.">
+    <kds-stack direction="row" gap="sm" justify="end">
+      <kds-button variant="ghost">Cancel</kds-button>
+      <kds-button>Save</kds-button>
+    </kds-stack>
+  </Do>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />

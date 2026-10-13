@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+import { TokenTable } from '../../docs-blocks';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+Two typefaces:
+
+- **Overlock** for headings and body text: warm and rounded.
+- **Parkinsans** for labels, buttons, overlines and other UI text.
+
+Apps load both from `@fontsource/overlock` and `@fontsource/parkinsans`: Overlock 400 and 700,
+Parkinsans 300, 400, 500 and 700.
+
+## Type scale
+
+Use `kds-typography` with a `variant`, or the `semantic.type.<variant>.*` tokens in component CSS.
+Every value comes from the tokens below.
+
+<kds-stack gap="md">
+  <kds-typography variant="h1">h1 Design systems</kds-typography>
+  <kds-typography variant="h2">h2 Design systems</kds-typography>
+  <kds-typography variant="h3">h3 Design systems</kds-typography>
+  <kds-typography variant="h4">h4 Design systems</kds-typography>
+  <kds-typography variant="h5">h5 Design systems</kds-typography>
+  <kds-typography variant="h6">h6 Design systems</kds-typography>
+  <kds-typography variant="body">body: The quick brown fox jumps over the lazy dog.</kds-typography>
+  <kds-typography variant="body-sm">body-sm: The quick brown fox jumps over the lazy dog.</kds-typography>
+  <kds-typography variant="caption">caption: The quick brown fox jumps over the lazy dog.</kds-typography>
+  <kds-typography variant="label">label: Save changes</kds-typography>
+  <kds-typography variant="overline">overline: Section title</kds-typography>
+</kds-stack>
+
+## Font families
+
+<TokenTable path="font.family" preview="font-family" />
+
+## Font sizes
+
+<TokenTable path="font.size" preview="font-size" />
+
+## Font weights
+
+Overlock has no 300 or 500 weight, so those render at 400 in Overlock. Use them with Parkinsans.
+
+<TokenTable path="font.weight" preview="font-weight" />
+
+## Line heights
+
+<TokenTable path="font.lineHeight" preview="line-height" />
+
+## Letter spacing
+
+<TokenTable path="font.letterSpacing" />

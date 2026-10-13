@@ -1,0 +1,38 @@
+import { Controls, Description, Meta, Primary, Stories } from '@storybook/blocks';
+import { ComponentHeader, Do, DoDont, Dont } from '../../docs-blocks';
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+
+<Meta of={BreadcrumbsStories} />
+
+<ComponentHeader />
+
+<Description />
+
+<Primary />
+
+## Props
+
+<Controls />
+
+## Usage
+
+- Use breadcrumbs to show where a page sits in a hierarchy, and to go back up it.
+- The last item is the current page and has no `href`.
+- Don't use breadcrumbs on top-level pages or in flat sites: one item isn't a trail.
+
+<DoDont>
+  <Do caption="A trail from the top level to the current page.">
+    <kds-breadcrumbs>
+      <kds-breadcrumb-item href="#">Projects</kds-breadcrumb-item>
+      <kds-breadcrumb-item href="#">KalaDS</kds-breadcrumb-item>
+      <kds-breadcrumb-item>Settings</kds-breadcrumb-item>
+    </kds-breadcrumbs>
+  </Do>
+  <Dont caption="Don't show a single breadcrumb: it repeats the page title.">
+    <kds-breadcrumbs>
+      <kds-breadcrumb-item>Projects</kds-breadcrumb-item>
+    </kds-breadcrumbs>
+  </Dont>
+</DoDont>
+
+<Stories title="Examples" includePrimary={false} />
