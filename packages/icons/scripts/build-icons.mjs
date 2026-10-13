@@ -39,10 +39,22 @@ function generateComponent(name, optimizedSvg) {
   const className = `KdsIcon${toPascalCase(name)}`;
   const tagName = `kds-icon-${name}`;
 
+  // The <svg> is always hidden from assistive technology; the host carries the role and name instead.
+  const svg = optimizedSvg.replace('<svg', '<svg aria-hidden="true" focusable="false"');
+
   return `import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 
+/**
+ * @element ${tagName}
+ * @summary The "${name}" icon. Takes the text colour; size with --kds-icon-size.
+ *
+ * Decorative by default (hidden from assistive technology). Set the label attribute when the icon
+ * carries meaning on its own: it is then announced as an image with that name.
+ *
+ * @attr {string} label - Accessible name. Leave empty for decorative icons.
+ */
 @customElement('${tagName}')
 export class ${className} extends LitElement {
   static styles = css\`
@@ -62,10 +74,17 @@ export class ${className} extends LitElement {
     }
   \`;
 
-  @property({ reflect: true }) label = '${name.replace(/-/g, ' ')}';
+  @property({ reflect: true }) label = '';
+
+  private _internals = this.attachInternals();
+
+  protected updated() {
+    this._internals.role = this.label ? 'img' : null;
+    this._internals.ariaLabel = this.label || null;
+  }
 
   render() {
-    return html\`\${unsafeSVG(\`${optimizedSvg}\`)}\`;
+    return html\`\${unsafeSVG(\`${svg}\`)}\`;
   }
 }
 

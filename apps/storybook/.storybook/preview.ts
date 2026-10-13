@@ -50,6 +50,10 @@ baseStyles.textContent = `
 `;
 document.head.append(baseStyles);
 
+// Storybook's containers for the story and the docs page have no landmark role. Only one is shown at a
+// time (the other is display: none), so each page gets exactly one main landmark.
+for (const id of ['storybook-root', 'storybook-docs']) document.getElementById(id)?.setAttribute('role', 'main');
+
 // Example links in stories and Do / Don't examples (href="#" and the like) must not navigate the preview
 // iframe away from the page.
 // Links inside shadow roots are found through the composed path. Links opening a new tab still work, and

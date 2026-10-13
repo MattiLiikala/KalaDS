@@ -31,7 +31,9 @@ function variantStyles(variant: ButtonVariant, hosts: string[]) {
       }
       ${host(':focus-visible')} {
         --_border: ${t('border-focus')};
-        box-shadow: 0 0 0 3px ${t('ring-focus')};
+        /* Offset outline: the gap keeps the ring visible against a fill of the same colour. */
+        outline: var(--kds-component-button-ring-width) solid ${t('ring-focus')};
+        outline-offset: var(--kds-component-button-ring-offset);
       }
       ${host(':disabled')} {
         --_bg: ${t('bg-disabled')};

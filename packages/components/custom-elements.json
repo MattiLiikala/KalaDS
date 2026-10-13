@@ -1021,93 +1021,26 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/badge/kds-badge.ts",
+      "path": "src/components/backdrop/kds-backdrop.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsBadge",
-          "slots": [
-            {
-              "description": "Default slot: badge text content",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: inline-flex; } span { display: inline-flex; align-items: center; font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-100); font-weight: var(--kds-font-weight-bold); line-height: var(--kds-font-line-height-small); white-space: nowrap; color: var(--_text); background: none; border: var(--_border-width) solid var(--_border); border-radius: var(--_radius); /* The border sits inside the padding, so badges keep the same outer size as without one. */ padding: calc(var(--_padding-y) - var(--_border-width)) calc(var(--_padding-x) - var(--_border-width)); } :host(:not([variant])) span, :host([variant='default']) span { --_text: var(--kds-component-badge-default-text); --_border: var(--kds-component-badge-default-border); --_border-width: var(--kds-component-badge-default-border-width); --_radius: var(--kds-component-badge-default-radius); --_padding-y: var(--kds-component-badge-default-padding-y); --_padding-x: var(--kds-component-badge-default-padding-x); } :host([variant='primary']) span { --_text: var(--kds-component-badge-primary-text); --_border: var(--kds-component-badge-primary-border); --_border-width: var(--kds-component-badge-primary-border-width); --_radius: var(--kds-component-badge-primary-radius); --_padding-y: var(--kds-component-badge-primary-padding-y); --_padding-x: var(--kds-component-badge-primary-padding-x); } :host([variant='danger']) span { --_text: var(--kds-component-badge-danger-text); --_border: var(--kds-component-badge-danger-border); --_border-width: var(--kds-component-badge-danger-border-width); --_radius: var(--kds-component-badge-danger-radius); --_padding-y: var(--kds-component-badge-danger-padding-y); --_padding-x: var(--kds-component-badge-danger-padding-x); } :host([variant='warning']) span { --_text: var(--kds-component-badge-warning-text); --_border: var(--kds-component-badge-warning-border); --_border-width: var(--kds-component-badge-warning-border-width); --_radius: var(--kds-component-badge-warning-radius); --_padding-y: var(--kds-component-badge-warning-padding-y); --_padding-x: var(--kds-component-badge-warning-padding-x); } :host([variant='success']) span { --_text: var(--kds-component-badge-success-text); --_border: var(--kds-component-badge-success-border); --_border-width: var(--kds-component-badge-success-border-width); --_radius: var(--kds-component-badge-success-radius); --_padding-y: var(--kds-component-badge-success-padding-y); --_padding-x: var(--kds-component-badge-success-padding-x); } `"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "BadgeVariant"
-              },
-              "default": "'default'"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "default|primary|danger|warning|success"
-              },
-              "description": "Visual style variant",
-              "name": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-badge",
-          "customElement": true,
-          "summary": "Small status label for categorization or state indication.\n\nBadges are outlined: no fill, with a 1px border in the same colour as the text. They take the surface\ncolour behind them, so the text colour must contrast with that surface (at least 4.5:1)."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsBadge",
-          "declaration": {
-            "name": "KdsBadge",
-            "module": "src/components/badge/kds-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion-item/kds-accordion-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsAccordionItem",
+          "name": "KdsBackdrop",
           "cssParts": [
             {
-              "description": "The clickable heading row",
-              "name": "summary"
+              "description": "The dimming layer",
+              "name": "overlay"
             },
             {
-              "description": "The content wrapper",
+              "description": "The centred content wrapper",
               "name": "content"
             }
           ],
           "slots": [
             {
-              "description": "Section content",
+              "description": "Content centred above the overlay",
               "name": ""
-            },
-            {
-              "description": "Rich heading content (alternative to the `heading` attribute)",
-              "name": "heading"
             }
           ],
           "members": [
@@ -1115,15 +1048,7 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: block; border-bottom: var(--kds-component-accordion-item-border-width) solid var(--kds-component-accordion-item-border); } :host([hidden]) { display: none; } summary { display: flex; align-items: center; justify-content: space-between; gap: var(--kds-semantic-spacing-md); padding: var(--kds-component-accordion-item-padding-y) var(--kds-component-accordion-item-padding-x); border-radius: var(--kds-component-accordion-item-radius); color: var(--kds-component-accordion-item-title-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-body-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); cursor: pointer; list-style: none; outline: none; transition: background-color 0.15s ease; } summary::-webkit-details-marker { display: none; } summary:hover { background-color: var(--kds-component-accordion-item-bg-hover); } summary:focus-visible { ${unsafeCSS(focusRing('accordion-item'))} } :host([disabled]) summary { cursor: not-allowed; background: none; color: var(--kds-semantic-text-muted); } .chevron { display: inline-flex; flex-shrink: 0; color: var(--kds-component-accordion-item-icon); transition: rotate 0.15s ease; --kds-icon-size: var(--kds-semantic-spacing-lg); } /* Follows the item, not <details>: while closing, <details> stays open until the animation ends. */ :host([open]) .chevron { rotate: 180deg; } .panel.animating { overflow: hidden; } .content { padding: 0 var(--kds-component-accordion-item-padding-x) var(--kds-component-accordion-item-padding-y); color: var(--kds-component-accordion-item-content-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); } @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } } `"
-            },
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
+              "default": "css` :host { display: contents; } .backdrop { ${POPUP_RESET} inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; padding: 0; border: none; background: none; align-items: center; justify-content: center; } .backdrop:popover-open, .backdrop:not([popover]):not([hidden]) { display: flex; } .backdrop[hidden] { display: none; } .overlay { position: absolute; inset: 0; background-color: var(--kds-component-backdrop-bg); opacity: var(--kds-component-backdrop-opacity); animation: fade-in 0.15s ease; } .content { position: relative; } @keyframes fade-in { from { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .overlay { animation: none; } } `"
             },
             {
               "kind": "field",
@@ -1135,33 +1060,9 @@
             },
             {
               "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_details",
-              "type": {
-                "text": "HTMLDetailsElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_panel",
+              "name": "_backdrop",
               "type": {
                 "text": "HTMLElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_animation",
-              "type": {
-                "text": "Animation | undefined"
               },
               "privacy": "private"
             },
@@ -1173,48 +1074,14 @@
                 {
                   "name": "changed",
                   "type": {
-                    "text": "PropertyValues"
+                    "text": "PropertyValues<this>"
                   }
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "_animate",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "open",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "Animates the panel height to open or closed. <details> is opened first (so the content renders and\ncan be measured) and only closed once the closing animation ends. Reversing mid-way starts from the\ncurrent height."
-            },
-            {
-              "kind": "method",
-              "name": "_onSummaryClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ],
-              "description": "The summary click is handled here instead of natively, so opening and closing can animate."
-            },
-            {
-              "kind": "method",
-              "name": "_onToggle",
-              "privacy": "private",
-              "description": "Syncs `open` when <details> is toggled some other way (for example find-in-page)."
-            },
-            {
-              "kind": "method",
-              "name": "_dispatchToggle",
+              "name": "_onOverlayClick",
               "privacy": "private"
             },
             {
@@ -1224,52 +1091,38 @@
           ],
           "events": [
             {
-              "name": "kds-toggle",
+              "name": "kds-close",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "When the user expands or collapses the section. `detail: { open }`"
+              "description": "When the overlay is clicked"
             }
           ],
           "attributes": [
             {
               "type": {
-                "text": "string"
-              },
-              "description": "Heading text",
-              "name": "heading"
-            },
-            {
-              "type": {
                 "text": "boolean"
               },
-              "description": "Whether the section is expanded",
+              "description": "Shows the backdrop",
               "name": "open"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Prevents expanding or collapsing",
-              "name": "disabled"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-accordion-item",
+          "tagName": "kds-backdrop",
           "customElement": true,
-          "summary": "One expandable section of a kds-accordion.\n\nBuilt on native <details>/<summary>, so it's keyboard operable and announced as expandable. Opening and\nclosing animate the height (skipped with prefers-reduced-motion)."
+          "summary": "Dims the page behind temporary content, e.g. while something loads.\n\nCovers the viewport with the overlay colour. Content in the default slot (a spinner, a message) is\ncentred above it. It's shown in the browser's top layer, so it covers everything without z-index.\nkds-dialog and kds-drawer have their own backdrop; use this one for custom overlays.\nThe backdrop doesn't trap focus: for anything the user must interact with, use kds-dialog."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsAccordionItem",
+          "name": "KdsBackdrop",
           "declaration": {
-            "name": "KdsAccordionItem",
-            "module": "src/components/accordion-item/kds-accordion-item.ts"
+            "name": "KdsBackdrop",
+            "module": "src/components/backdrop/kds-backdrop.ts"
           }
         }
       ]
@@ -1678,26 +1531,30 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/backdrop/kds-backdrop.ts",
+      "path": "src/components/accordion-item/kds-accordion-item.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsBackdrop",
+          "name": "KdsAccordionItem",
           "cssParts": [
             {
-              "description": "The dimming layer",
-              "name": "overlay"
+              "description": "The clickable heading row",
+              "name": "summary"
             },
             {
-              "description": "The centred content wrapper",
+              "description": "The content wrapper",
               "name": "content"
             }
           ],
           "slots": [
             {
-              "description": "Content centred above the overlay",
+              "description": "Section content",
               "name": ""
+            },
+            {
+              "description": "Rich heading content (alternative to the `heading` attribute)",
+              "name": "heading"
             }
           ],
           "members": [
@@ -1705,7 +1562,15 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: contents; } .backdrop { ${POPUP_RESET} inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; padding: 0; border: none; background: none; align-items: center; justify-content: center; } .backdrop:popover-open, .backdrop:not([popover]):not([hidden]) { display: flex; } .backdrop[hidden] { display: none; } .overlay { position: absolute; inset: 0; background-color: var(--kds-component-backdrop-bg); opacity: var(--kds-component-backdrop-opacity); animation: fade-in 0.15s ease; } .content { position: relative; } @keyframes fade-in { from { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .overlay { animation: none; } } `"
+              "default": "css` :host { display: block; border-bottom: var(--kds-component-accordion-item-border-width) solid var(--kds-component-accordion-item-border); } :host([hidden]) { display: none; } summary { display: flex; align-items: center; justify-content: space-between; gap: var(--kds-semantic-spacing-md); padding: var(--kds-component-accordion-item-padding-y) var(--kds-component-accordion-item-padding-x); border-radius: var(--kds-component-accordion-item-radius); color: var(--kds-component-accordion-item-title-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-body-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); cursor: pointer; list-style: none; outline: none; transition: background-color 0.15s ease; } summary::-webkit-details-marker { display: none; } summary:hover { background-color: var(--kds-component-accordion-item-bg-hover); } summary:focus-visible { ${unsafeCSS(focusRing('accordion-item'))} } :host([disabled]) summary { cursor: not-allowed; background: none; color: var(--kds-semantic-text-muted); } .chevron { display: inline-flex; flex-shrink: 0; color: var(--kds-component-accordion-item-icon); transition: rotate 0.15s ease; --kds-icon-size: var(--kds-semantic-spacing-lg); } /* Follows the item, not <details>: while closing, <details> stays open until the animation ends. */ :host([open]) .chevron { rotate: 180deg; } .panel.animating { overflow: hidden; } .content { padding: 0 var(--kds-component-accordion-item-padding-x) var(--kds-component-accordion-item-padding-y); color: var(--kds-component-accordion-item-content-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); } @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } } `"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
             },
             {
               "kind": "field",
@@ -1717,9 +1582,33 @@
             },
             {
               "kind": "field",
-              "name": "_backdrop",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_details",
+              "type": {
+                "text": "HTMLDetailsElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_panel",
               "type": {
                 "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_animation",
+              "type": {
+                "text": "Animation | undefined"
               },
               "privacy": "private"
             },
@@ -1731,14 +1620,48 @@
                 {
                   "name": "changed",
                   "type": {
-                    "text": "PropertyValues<this>"
+                    "text": "PropertyValues"
                   }
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "_onOverlayClick",
+              "name": "_animate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Animates the panel height to open or closed. <details> is opened first (so the content renders and\ncan be measured) and only closed once the closing animation ends. Reversing mid-way starts from the\ncurrent height."
+            },
+            {
+              "kind": "method",
+              "name": "_onSummaryClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "The summary click is handled here instead of natively, so opening and closing can animate."
+            },
+            {
+              "kind": "method",
+              "name": "_onToggle",
+              "privacy": "private",
+              "description": "Syncs `open` when <details> is toggled some other way (for example find-in-page)."
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchToggle",
               "privacy": "private"
             },
             {
@@ -1748,38 +1671,115 @@
           ],
           "events": [
             {
-              "name": "kds-close",
+              "name": "kds-toggle",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "When the overlay is clicked"
+              "description": "When the user expands or collapses the section. `detail: { open }`"
             }
           ],
           "attributes": [
             {
               "type": {
+                "text": "string"
+              },
+              "description": "Heading text",
+              "name": "heading"
+            },
+            {
+              "type": {
                 "text": "boolean"
               },
-              "description": "Shows the backdrop",
+              "description": "Whether the section is expanded",
               "name": "open"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Prevents expanding or collapsing",
+              "name": "disabled"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-backdrop",
+          "tagName": "kds-accordion-item",
           "customElement": true,
-          "summary": "Dims the page behind temporary content, e.g. while something loads.\n\nCovers the viewport with the overlay colour. Content in the default slot (a spinner, a message) is\ncentred above it. It's shown in the browser's top layer, so it covers everything without z-index.\nkds-dialog and kds-drawer have their own backdrop; use this one for custom overlays.\nThe backdrop doesn't trap focus: for anything the user must interact with, use kds-dialog."
+          "summary": "One expandable section of a kds-accordion.\n\nBuilt on native <details>/<summary>, so it's keyboard operable and announced as expandable. Opening and\nclosing animate the height (skipped with prefers-reduced-motion)."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsBackdrop",
+          "name": "KdsAccordionItem",
           "declaration": {
-            "name": "KdsBackdrop",
-            "module": "src/components/backdrop/kds-backdrop.ts"
+            "name": "KdsAccordionItem",
+            "module": "src/components/accordion-item/kds-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/badge/kds-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsBadge",
+          "slots": [
+            {
+              "description": "Default slot: badge text content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; } span { display: inline-flex; align-items: center; font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-100); font-weight: var(--kds-font-weight-bold); line-height: var(--kds-font-line-height-small); white-space: nowrap; color: var(--_text); background: none; border: var(--_border-width) solid var(--_border); border-radius: var(--_radius); /* The border sits inside the padding, so badges keep the same outer size as without one. */ padding: calc(var(--_padding-y) - var(--_border-width)) calc(var(--_padding-x) - var(--_border-width)); } :host(:not([variant])) span, :host([variant='default']) span { --_text: var(--kds-component-badge-default-text); --_border: var(--kds-component-badge-default-border); --_border-width: var(--kds-component-badge-default-border-width); --_radius: var(--kds-component-badge-default-radius); --_padding-y: var(--kds-component-badge-default-padding-y); --_padding-x: var(--kds-component-badge-default-padding-x); } :host([variant='primary']) span { --_text: var(--kds-component-badge-primary-text); --_border: var(--kds-component-badge-primary-border); --_border-width: var(--kds-component-badge-primary-border-width); --_radius: var(--kds-component-badge-primary-radius); --_padding-y: var(--kds-component-badge-primary-padding-y); --_padding-x: var(--kds-component-badge-primary-padding-x); } :host([variant='danger']) span { --_text: var(--kds-component-badge-danger-text); --_border: var(--kds-component-badge-danger-border); --_border-width: var(--kds-component-badge-danger-border-width); --_radius: var(--kds-component-badge-danger-radius); --_padding-y: var(--kds-component-badge-danger-padding-y); --_padding-x: var(--kds-component-badge-danger-padding-x); } :host([variant='warning']) span { --_text: var(--kds-component-badge-warning-text); --_border: var(--kds-component-badge-warning-border); --_border-width: var(--kds-component-badge-warning-border-width); --_radius: var(--kds-component-badge-warning-radius); --_padding-y: var(--kds-component-badge-warning-padding-y); --_padding-x: var(--kds-component-badge-warning-padding-x); } :host([variant='success']) span { --_text: var(--kds-component-badge-success-text); --_border: var(--kds-component-badge-success-border); --_border-width: var(--kds-component-badge-success-border-width); --_radius: var(--kds-component-badge-success-radius); --_padding-y: var(--kds-component-badge-success-padding-y); --_padding-x: var(--kds-component-badge-success-padding-x); } `"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "'default'"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "default|primary|danger|warning|success"
+              },
+              "description": "Visual style variant",
+              "name": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-badge",
+          "customElement": true,
+          "summary": "Small status label for categorization or state indication.\n\nBadges are outlined: no fill, with a 1px border in the same colour as the text. They take the surface\ncolour behind them, so the text colour must contrast with that surface (at least 4.5:1)."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsBadge",
+          "declaration": {
+            "name": "KdsBadge",
+            "module": "src/components/badge/kds-badge.ts"
           }
         }
       ]
@@ -2424,6 +2424,142 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/card/kds-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsCard",
+          "cssParts": [
+            {
+              "description": "The card surface",
+              "name": "card"
+            },
+            {
+              "description": "Header section (rendered only when the header slot has content)",
+              "name": "header"
+            },
+            {
+              "description": "Body section",
+              "name": "body"
+            },
+            {
+              "description": "Footer section (rendered only when the footer slot has content)",
+              "name": "footer"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot: card content",
+              "name": ""
+            },
+            {
+              "description": "Optional card header area",
+              "name": "header"
+            },
+            {
+              "description": "Optional card footer area",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; --_shadow: var(--kds-component-card-shadow-3); --_offset-hover: var(--kds-component-card-offset-hover-3); } :host([elevation='1']) { --_shadow: var(--kds-component-card-shadow-1); --_offset-hover: var(--kds-component-card-offset-hover-1); } :host([elevation='2']) { --_shadow: var(--kds-component-card-shadow-2); --_offset-hover: var(--kds-component-card-offset-hover-2); } .card { display: flex; flex-direction: column; gap: var(--kds-component-card-gap); padding: var(--kds-component-card-padding); background-color: var(--kds-component-card-bg); border: var(--kds-component-card-border-width) solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--_shadow); } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; } /* * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses. * Hover is taken from the host, which doesn't move, so the pointer near the top/left edge can't * slip off the moving card and make it flicker. */ :host([interactive]:hover) .card { background-color: var(--kds-component-card-bg-hover); box-shadow: var(--kds-component-card-shadow-hover); transform: translate(var(--_offset-hover), var(--_offset-hover)); } @media (prefers-reduced-motion: reduce) { :host([interactive]) .card { transition: background-color 0.15s ease; } } [hidden] { display: none; } `"
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "type": {
+                "text": "1 | 2 | 3"
+              },
+              "default": "3"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "description": "A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content."
+            },
+            {
+              "kind": "field",
+              "name": "_hasFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "1|2|3"
+              },
+              "description": "Crisp shadow level: 1 low, 2 medium, 3 high (default 3)",
+              "name": "elevation"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When set, the card shows hover styles (use for clickable cards): it presses down into its shadow on hover",
+              "name": "interactive"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-card",
+          "customElement": true,
+          "summary": "Surface container for grouping related content.\n\nCards have a 1px border and a crisp, unblurred offset shadow whose distance is set by `elevation`.\nThere are no divider lines: header, body and footer are separated by spacing only."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsCard",
+          "declaration": {
+            "name": "KdsCard",
+            "module": "src/components/card/kds-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/checkbox/kds-checkbox.ts",
       "declarations": [
         {
@@ -2634,280 +2770,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/checkbox-group/kds-checkbox-group.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsCheckboxGroup",
-          "cssParts": [
-            {
-              "description": "The group label",
-              "name": "label"
-            },
-            {
-              "description": "Wrapper around the options",
-              "name": "options"
-            }
-          ],
-          "slots": [
-            {
-              "description": "kds-checkbox elements",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .group { display: flex; flex-direction: column; gap: var(--kds-component-checkbox-group-gap); } .label { font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-checkbox-group-legend-text); } .options { display: flex; flex-direction: column; gap: var(--kds-component-checkbox-group-gap); } :host([orientation='horizontal']) .options { flex-direction: row; flex-wrap: wrap; gap: var(--kds-component-checkbox-group-gap) var(--kds-component-checkbox-group-gap-horizontal); } .helper, .error { font-family: var(--kds-semantic-type-caption-family); font-size: var(--kds-semantic-type-caption-size); line-height: var(--kds-semantic-type-caption-line-height); color: var(--kds-component-checkbox-group-helper-text); } .error { color: var(--kds-component-checkbox-group-error-text); } `"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "'vertical' | 'horizontal'"
-              },
-              "default": "'vertical'"
-            },
-            {
-              "kind": "field",
-              "name": "helper",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_id",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Visible group label. Required for accessibility.",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "vertical|horizontal"
-              },
-              "description": "Layout of the options (default vertical)",
-              "name": "orientation"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Helper text below the options",
-              "name": "helper"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Error message. When set, shows the error state.",
-              "name": "error"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Marks the group as required (shows an asterisk)",
-              "name": "required"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-checkbox-group",
-          "customElement": true,
-          "summary": "Labelled group of related kds-checkbox elements.\n\nGives the checkboxes a shared label (announced as a group), shared helper or error text, and the\nlayout. Each checkbox keeps its own name, value and state."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsCheckboxGroup",
-          "declaration": {
-            "name": "KdsCheckboxGroup",
-            "module": "src/components/checkbox-group/kds-checkbox-group.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/card/kds-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsCard",
-          "cssParts": [
-            {
-              "description": "The card surface",
-              "name": "card"
-            },
-            {
-              "description": "Header section (rendered only when the header slot has content)",
-              "name": "header"
-            },
-            {
-              "description": "Body section",
-              "name": "body"
-            },
-            {
-              "description": "Footer section (rendered only when the footer slot has content)",
-              "name": "footer"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot: card content",
-              "name": ""
-            },
-            {
-              "description": "Optional card header area",
-              "name": "header"
-            },
-            {
-              "description": "Optional card footer area",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; --_shadow: var(--kds-component-card-shadow-3); --_offset-hover: var(--kds-component-card-offset-hover-3); } :host([elevation='1']) { --_shadow: var(--kds-component-card-shadow-1); --_offset-hover: var(--kds-component-card-offset-hover-1); } :host([elevation='2']) { --_shadow: var(--kds-component-card-shadow-2); --_offset-hover: var(--kds-component-card-offset-hover-2); } .card { display: flex; flex-direction: column; gap: var(--kds-component-card-gap); padding: var(--kds-component-card-padding); background-color: var(--kds-component-card-bg); border: var(--kds-component-card-border-width) solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--_shadow); } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; } /* * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses. * Hover is taken from the host, which doesn't move, so the pointer near the top/left edge can't * slip off the moving card and make it flicker. */ :host([interactive]:hover) .card { background-color: var(--kds-component-card-bg-hover); box-shadow: var(--kds-component-card-shadow-hover); transform: translate(var(--_offset-hover), var(--_offset-hover)); } @media (prefers-reduced-motion: reduce) { :host([interactive]) .card { transition: background-color 0.15s ease; } } [hidden] { display: none; } `"
-            },
-            {
-              "kind": "field",
-              "name": "elevation",
-              "type": {
-                "text": "1 | 2 | 3"
-              },
-              "default": "3"
-            },
-            {
-              "kind": "field",
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_hasHeader",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false",
-              "description": "A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content."
-            },
-            {
-              "kind": "field",
-              "name": "_hasFooter",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "_onSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "1|2|3"
-              },
-              "description": "Crisp shadow level: 1 low, 2 medium, 3 high (default 3)",
-              "name": "elevation"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "When set, the card shows hover styles (use for clickable cards): it presses down into its shadow on hover",
-              "name": "interactive"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-card",
-          "customElement": true,
-          "summary": "Surface container for grouping related content.\n\nCards have a 1px border and a crisp, unblurred offset shadow whose distance is set by `elevation`.\nThere are no divider lines: header, body and footer are separated by spacing only."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsCard",
-          "declaration": {
-            "name": "KdsCard",
-            "module": "src/components/card/kds-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/chip/kds-chip.ts",
       "declarations": [
         {
@@ -3089,15 +2951,25 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/container/kds-container.ts",
+      "path": "src/components/checkbox-group/kds-checkbox-group.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsContainer",
+          "name": "KdsCheckboxGroup",
+          "cssParts": [
+            {
+              "description": "The group label",
+              "name": "label"
+            },
+            {
+              "description": "Wrapper around the options",
+              "name": "options"
+            }
+          ],
           "slots": [
             {
-              "description": "Content",
+              "description": "kds-checkbox elements",
               "name": ""
             }
           ],
@@ -3106,23 +2978,52 @@
               "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: block; box-sizing: border-box; width: 100%; max-width: var(--kds-component-container-max-width-lg); margin-inline: auto; padding-inline: var(--kds-component-container-padding-x); } :host([hidden]) { display: none; } :host([size='sm']) { max-width: var(--kds-component-container-max-width-sm); } :host([size='md']) { max-width: var(--kds-component-container-max-width-md); } :host([size='xl']) { max-width: var(--kds-component-container-max-width-xl); } :host([size='full']) { max-width: none; } :host([flush]) { padding-inline: 0; } `"
+              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .group { display: flex; flex-direction: column; gap: var(--kds-component-checkbox-group-gap); } .label { font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-checkbox-group-legend-text); } .options { display: flex; flex-direction: column; gap: var(--kds-component-checkbox-group-gap); } :host([orientation='horizontal']) .options { flex-direction: row; flex-wrap: wrap; gap: var(--kds-component-checkbox-group-gap) var(--kds-component-checkbox-group-gap-horizontal); } .helper, .error { font-family: var(--kds-semantic-type-caption-family); font-size: var(--kds-semantic-type-caption-size); line-height: var(--kds-semantic-type-caption-line-height); color: var(--kds-component-checkbox-group-helper-text); } .error { color: var(--kds-component-checkbox-group-error-text); } `"
             },
             {
               "kind": "field",
-              "name": "size",
+              "name": "label",
               "type": {
-                "text": "'sm' | 'md' | 'lg' | 'xl' | 'full'"
+                "text": "string"
               },
-              "default": "'lg'"
+              "default": "''"
             },
             {
               "kind": "field",
-              "name": "flush",
+              "name": "orientation",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "default": "'vertical'"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "required",
               "type": {
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -3132,35 +3033,56 @@
           "attributes": [
             {
               "type": {
-                "text": "sm|md|lg|xl|full"
+                "text": "string"
               },
-              "description": "Maximum width (default lg): sm 640px, md 768px, lg 1024px, xl 1280px",
-              "name": "size"
+              "description": "Visible group label. Required for accessibility.",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "vertical|horizontal"
+              },
+              "description": "Layout of the options (default vertical)",
+              "name": "orientation"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Helper text below the options",
+              "name": "helper"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message. When set, shows the error state.",
+              "name": "error"
             },
             {
               "type": {
                 "text": "boolean"
               },
-              "description": "Removes the horizontal padding",
-              "name": "flush"
+              "description": "Marks the group as required (shows an asterisk)",
+              "name": "required"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-container",
+          "tagName": "kds-checkbox-group",
           "customElement": true,
-          "summary": "Centres content horizontally and limits its width. Layout only: no visuals of its own."
+          "summary": "Labelled group of related kds-checkbox elements.\n\nGives the checkboxes a shared label (announced as a group), shared helper or error text, and the\nlayout. Each checkbox keeps its own name, value and state."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsContainer",
+          "name": "KdsCheckboxGroup",
           "declaration": {
-            "name": "KdsContainer",
-            "module": "src/components/container/kds-container.ts"
+            "name": "KdsCheckboxGroup",
+            "module": "src/components/checkbox-group/kds-checkbox-group.ts"
           }
         }
       ]
@@ -3485,6 +3407,84 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/container/kds-container.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsContainer",
+          "slots": [
+            {
+              "description": "Content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; box-sizing: border-box; width: 100%; max-width: var(--kds-component-container-max-width-lg); margin-inline: auto; padding-inline: var(--kds-component-container-padding-x); } :host([hidden]) { display: none; } :host([size='sm']) { max-width: var(--kds-component-container-max-width-sm); } :host([size='md']) { max-width: var(--kds-component-container-max-width-md); } :host([size='xl']) { max-width: var(--kds-component-container-max-width-xl); } :host([size='full']) { max-width: none; } :host([flush]) { padding-inline: 0; } `"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg' | 'xl' | 'full'"
+              },
+              "default": "'lg'"
+            },
+            {
+              "kind": "field",
+              "name": "flush",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "sm|md|lg|xl|full"
+              },
+              "description": "Maximum width (default lg): sm 640px, md 768px, lg 1024px, xl 1280px",
+              "name": "size"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Removes the horizontal padding",
+              "name": "flush"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-container",
+          "customElement": true,
+          "summary": "Centres content horizontally and limits its width. Layout only: no visuals of its own."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsContainer",
+          "declaration": {
+            "name": "KdsContainer",
+            "module": "src/components/container/kds-container.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/divider/kds-divider.ts",
       "declarations": [
         {
@@ -3609,6 +3609,128 @@
           "declaration": {
             "name": "KdsDivider",
             "module": "src/components/divider/kds-divider.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/grid/kds-grid.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsGrid",
+          "slots": [
+            {
+              "description": "Grid children",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ css` :host { display: grid; grid-template-columns: repeat(var(--_columns, 1), minmax(0, 1fr)); gap: var(--_row-gap, var(--_gap, var(--kds-component-grid-gap))) var(--_gap, var(--kds-component-grid-gap)); } :host([hidden]) { display: none; } :host([min]) { grid-template-columns: repeat(auto-fill, minmax(min(var(--_min, var(--kds-component-grid-min-item-width)), 100%), 1fr)); } :host([align='start']) { align-items: start; } :host([align='center']) { align-items: center; } :host([align='end']) { align-items: end; } :host([align='stretch']) { align-items: stretch; } `, spacingAttr('gap', '--_gap'), spacingAttr('row-gap', '--_row-gap'), namedAttr('min', '--_min', MIN, '--kds-semantic-size-'), numberAttr('columns', '--_columns'), ]"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "(typeof MIN)[number] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "gap",
+              "type": {
+                "text": "Spacing | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rowGap",
+              "type": {
+                "text": "Spacing | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "'start' | 'center' | 'end' | 'stretch' | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of equal columns (1–12)",
+              "name": "columns"
+            },
+            {
+              "type": {
+                "text": "xs|sm|md|lg|xl|2xl"
+              },
+              "description": "Minimum column width for auto-fitting columns (overrides columns)",
+              "name": "min"
+            },
+            {
+              "type": {
+                "text": "none|xs|sm|md|lg|xl|2xl"
+              },
+              "description": "Space between cells (default md)",
+              "name": "gap"
+            },
+            {
+              "type": {
+                "text": "none|xs|sm|md|lg|xl|2xl"
+              },
+              "description": "Vertical space between rows (overrides gap)",
+              "name": "row-gap"
+            },
+            {
+              "type": {
+                "text": "start|center|end|stretch"
+              },
+              "description": "Vertical alignment of cells",
+              "name": "align"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-grid",
+          "customElement": true,
+          "summary": "CSS grid with a fixed number of columns, or responsive columns with a minimum width.\n\nSet `columns` for a fixed grid, or `min` for as many columns as fit, each at least that wide\n(responsive without breakpoints). Use kds-grid-item to span several columns."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsGrid",
+          "declaration": {
+            "name": "KdsGrid",
+            "module": "src/components/grid/kds-grid.ts"
           }
         }
       ]
@@ -3944,15 +4066,15 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/grid/kds-grid.ts",
+      "path": "src/components/grid-item/kds-grid-item.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsGrid",
+          "name": "KdsGridItem",
           "slots": [
             {
-              "description": "Grid children",
+              "description": "Content",
               "name": ""
             }
           ],
@@ -3964,11 +4086,11 @@
                 "text": "array"
               },
               "static": true,
-              "default": "[ css` :host { display: grid; grid-template-columns: repeat(var(--_columns, 1), minmax(0, 1fr)); gap: var(--_row-gap, var(--_gap, var(--kds-component-grid-gap))) var(--_gap, var(--kds-component-grid-gap)); } :host([hidden]) { display: none; } :host([min]) { grid-template-columns: repeat(auto-fill, minmax(min(var(--_min, var(--kds-component-grid-min-item-width)), 100%), 1fr)); } :host([align='start']) { align-items: start; } :host([align='center']) { align-items: center; } :host([align='end']) { align-items: end; } :host([align='stretch']) { align-items: stretch; } `, spacingAttr('gap', '--_gap'), spacingAttr('row-gap', '--_row-gap'), namedAttr('min', '--_min', MIN, '--kds-semantic-size-'), numberAttr('columns', '--_columns'), ]"
+              "default": "[ css` :host { display: block; min-width: 0; grid-column: span var(--_span, 1); grid-row: span var(--_row-span, 1); } :host([hidden]) { display: none; } :host([full]) { grid-column: 1 / -1; } `, numberAttr('span', '--_span'), numberAttr('row-span', '--_row-span'), ]"
             },
             {
               "kind": "field",
-              "name": "columns",
+              "name": "span",
               "type": {
                 "text": "number"
               },
@@ -3976,31 +4098,19 @@
             },
             {
               "kind": "field",
-              "name": "min",
+              "name": "rowSpan",
               "type": {
-                "text": "(typeof MIN)[number] | undefined"
-              }
+                "text": "number"
+              },
+              "default": "1"
             },
             {
               "kind": "field",
-              "name": "gap",
+              "name": "full",
               "type": {
-                "text": "Spacing | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "rowGap",
-              "type": {
-                "text": "Spacing | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "align",
-              "type": {
-                "text": "'start' | 'center' | 'end' | 'stretch' | undefined"
-              }
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "method",
@@ -4012,54 +4122,40 @@
               "type": {
                 "text": "number"
               },
-              "description": "Number of equal columns (1–12)",
-              "name": "columns"
+              "description": "Columns to span (1–12)",
+              "name": "span"
             },
             {
               "type": {
-                "text": "xs|sm|md|lg|xl|2xl"
+                "text": "boolean"
               },
-              "description": "Minimum column width for auto-fitting columns (overrides columns)",
-              "name": "min"
+              "description": "Spans the full row",
+              "name": "full"
             },
             {
               "type": {
-                "text": "none|xs|sm|md|lg|xl|2xl"
+                "text": "number"
               },
-              "description": "Space between cells (default md)",
-              "name": "gap"
-            },
-            {
-              "type": {
-                "text": "none|xs|sm|md|lg|xl|2xl"
-              },
-              "description": "Vertical space between rows (overrides gap)",
-              "name": "row-gap"
-            },
-            {
-              "type": {
-                "text": "start|center|end|stretch"
-              },
-              "description": "Vertical alignment of cells",
-              "name": "align"
+              "description": "Rows to span",
+              "name": "row-span"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-grid",
+          "tagName": "kds-grid-item",
           "customElement": true,
-          "summary": "CSS grid with a fixed number of columns, or responsive columns with a minimum width.\n\nSet `columns` for a fixed grid, or `min` for as many columns as fit, each at least that wide\n(responsive without breakpoints). Use kds-grid-item to span several columns."
+          "summary": "Cell in a kds-grid that spans several columns or rows. Uses the kds-grid tokens.\n\nPlain children of kds-grid take one cell; wrap content in kds-grid-item only when it should span."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsGrid",
+          "name": "KdsGridItem",
           "declaration": {
-            "name": "KdsGrid",
-            "module": "src/components/grid/kds-grid.ts"
+            "name": "KdsGridItem",
+            "module": "src/components/grid-item/kds-grid-item.ts"
           }
         }
       ]
@@ -4173,19 +4269,244 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/grid-item/kds-grid-item.ts",
+      "path": "src/components/input/kds-input.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsGridItem",
+          "name": "KdsInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100-rem); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { --_border-color: var(--kds-component-input-border); width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: var(--kds-component-input-border-width) solid var(--_border-color); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */ box-shadow: inset 0 0 0 0 var(--_border-color); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } /* Hover never applies while focused, invalid or disabled, so it can't override those states. */ input:hover:not(:disabled, :focus, [aria-invalid='true']) { --_border-color: var(--kds-component-input-border-hover); } /* * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels * (1.5px often renders as 1px), so changing the border itself would resize the field on focus. */ input:focus { --_border-color: var(--kds-component-input-border-focus); box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width)) var(--_border-color); } /* * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an * empty error still sets error=\"\", which would otherwise put every input in the error state. */ input[aria-invalid='true'] { --_border-color: var(--kds-component-input-border-error); } /* The error colour wins over the focus colour, so focus darkens it to stay visible. */ input[aria-invalid='true']:focus { --_border-color: var(--kds-component-input-border-error-focus); } input:disabled { --_border-color: var(--kds-component-input-border-disabled); background-color: var(--kds-component-input-bg-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "InputType"
+              },
+              "default": "'text'"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_inputId",
+              "privacy": "private",
+              "default": "`kds-input-${Math.random().toString(36).slice(2, 9)}`"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "On every change to the text. `detail: { value }`"
+            },
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the value is committed (the native change event, e.g. on blur). `detail: { value }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible label text",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Current value",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text",
+              "name": "placeholder"
+            },
+            {
+              "type": {
+                "text": "text|email|password|number|search|tel|url"
+              },
+              "description": "Input type",
+              "name": "type"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Helper text displayed below the input",
+              "name": "helper"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message. When set, puts the input in error state.",
+              "name": "error"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the input",
+              "name": "disabled"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Marks the input as required",
+              "name": "required"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-input",
+          "customElement": true,
+          "summary": "Text input field. Always use this instead of a raw <input> with manual styling."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsInput",
+          "declaration": {
+            "name": "KdsInput",
+            "module": "src/components/input/kds-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/link/kds-link.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsLink",
+          "cssParts": [
+            {
+              "description": "The anchor element",
+              "name": "link"
+            }
+          ],
           "slots": [
             {
-              "description": "Content",
+              "description": "Link text",
               "name": ""
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+            },
             {
               "kind": "field",
               "name": "styles",
@@ -4193,31 +4514,55 @@
                 "text": "array"
               },
               "static": true,
-              "default": "[ css` :host { display: block; min-width: 0; grid-column: span var(--_span, 1); grid-row: span var(--_row-span, 1); } :host([hidden]) { display: none; } :host([full]) { grid-column: 1 / -1; } `, numberAttr('span', '--_span'), numberAttr('row-span', '--_row-span'), ]"
+              "default": "[ visuallyHidden, css` :host { display: inline; } /* * The underline is a background line along the bottom of the text, not text-decoration: decorations * skip inline icons, and this one runs under the new-tab icon too. It follows the text across line * breaks, and sits below the descenders. */ a { --_underline-width: var(--kds-component-link-underline-width); color: var(--kds-component-link-text); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 100% var(--_underline-width); outline: none; transition: color 0.15s ease; } a:hover { --_underline-width: var(--kds-component-link-underline-width-hover); color: var(--kds-component-link-text-hover); } a:active { color: var(--kds-component-link-text-active); } :host([variant='subtle']) a { color: var(--kds-component-link-text-subtle); } :host([variant='subtle']) a:hover { color: var(--kds-component-link-text-subtle-hover); } /* Rounded only while focused, for the ring: the radius would also clip the ends of the underline. */ a:focus-visible { border-radius: var(--kds-component-link-radius); ${unsafeCSS(focusRing('link'))} } /* * The icon's glyph stands on the text baseline. An inline-block with overflow hidden has its baseline * at its bottom edge, and the Material glyph leaves 3 of its 24 grid units empty below it, so the box * is lowered by 1/8 of its size. */ .external { display: inline-block; overflow: hidden; vertical-align: calc(var(--kds-component-link-icon-size) / -8); width: var(--kds-component-link-icon-size); height: var(--kds-component-link-icon-size); line-height: 0; margin-inline-start: var(--kds-component-link-icon-gap); --kds-icon-size: var(--kds-component-link-icon-size); } `, ]"
             },
             {
               "kind": "field",
-              "name": "span",
+              "name": "href",
               "type": {
-                "text": "number"
+                "text": "string"
               },
-              "default": "1"
+              "default": "''"
             },
             {
               "kind": "field",
-              "name": "rowSpan",
+              "name": "target",
               "type": {
-                "text": "number"
+                "text": "string"
               },
-              "default": "1"
+              "default": "''"
             },
             {
               "kind": "field",
-              "name": "full",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "download",
               "type": {
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'default' | 'subtle'"
+              },
+              "default": "'default'"
+            },
+            {
+              "kind": "field",
+              "name": "newTabLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'(opens in new tab)'"
             },
             {
               "kind": "method",
@@ -4227,42 +4572,63 @@
           "attributes": [
             {
               "type": {
-                "text": "number"
+                "text": "string"
               },
-              "description": "Columns to span (1–12)",
-              "name": "span"
+              "description": "Destination",
+              "name": "href"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Browsing context, e.g. \"_blank\"",
+              "name": "target"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Link relationship (noopener noreferrer is added for _blank)",
+              "name": "rel"
             },
             {
               "type": {
                 "text": "boolean"
               },
-              "description": "Spans the full row",
-              "name": "full"
+              "description": "Downloads the destination instead of navigating",
+              "name": "download"
             },
             {
               "type": {
-                "text": "number"
+                "text": "default|subtle"
               },
-              "description": "Rows to span",
-              "name": "row-span"
+              "description": "default (accent colour) or subtle (text colour, accent on hover)",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Screen-reader note for new-tab links (default \"(opens in new tab)\")",
+              "name": "new-tab-label"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-grid-item",
+          "tagName": "kds-link",
           "customElement": true,
-          "summary": "Cell in a kds-grid that spans several columns or rows. Uses the kds-grid tokens.\n\nPlain children of kds-grid take one cell; wrap content in kds-grid-item only when it should span."
+          "summary": "Text link for navigation. Use kds-button for actions.\n\nUnderlined so it's recognisable without relying on colour. Links that open in a new tab\n(target=\"_blank\") get an icon and a screen-reader note, and rel=\"noopener noreferrer\"."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsGridItem",
+          "name": "KdsLink",
           "declaration": {
-            "name": "KdsGridItem",
-            "module": "src/components/grid-item/kds-grid-item.ts"
+            "name": "KdsLink",
+            "module": "src/components/link/kds-link.ts"
           }
         }
       ]
@@ -4732,455 +5098,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/link/kds-link.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsLink",
-          "cssParts": [
-            {
-              "description": "The anchor element",
-              "name": "link"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Link text",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "shadowRootOptions",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
-            },
-            {
-              "kind": "field",
-              "name": "styles",
-              "type": {
-                "text": "array"
-              },
-              "static": true,
-              "default": "[ visuallyHidden, css` :host { display: inline; } /* * The underline is a background line along the bottom of the text, not text-decoration: decorations * skip inline icons, and this one runs under the new-tab icon too. It follows the text across line * breaks, and sits below the descenders. */ a { --_underline-width: var(--kds-component-link-underline-width); color: var(--kds-component-link-text); text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 100% var(--_underline-width); outline: none; transition: color 0.15s ease; } a:hover { --_underline-width: var(--kds-component-link-underline-width-hover); color: var(--kds-component-link-text-hover); } a:active { color: var(--kds-component-link-text-active); } :host([variant='subtle']) a { color: var(--kds-component-link-text-subtle); } :host([variant='subtle']) a:hover { color: var(--kds-component-link-text-subtle-hover); } /* Rounded only while focused, for the ring: the radius would also clip the ends of the underline. */ a:focus-visible { border-radius: var(--kds-component-link-radius); ${unsafeCSS(focusRing('link'))} } /* * The icon's glyph stands on the text baseline. An inline-block with overflow hidden has its baseline * at its bottom edge, and the Material glyph leaves 3 of its 24 grid units empty below it, so the box * is lowered by 1/8 of its size. */ .external { display: inline-block; overflow: hidden; vertical-align: calc(var(--kds-component-link-icon-size) / -8); width: var(--kds-component-link-icon-size); height: var(--kds-component-link-icon-size); line-height: 0; margin-inline-start: var(--kds-component-link-icon-gap); --kds-icon-size: var(--kds-component-link-icon-size); } `, ]"
-            },
-            {
-              "kind": "field",
-              "name": "href",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "rel",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "download",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'default' | 'subtle'"
-              },
-              "default": "'default'"
-            },
-            {
-              "kind": "field",
-              "name": "newTabLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'(opens in new tab)'"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Destination",
-              "name": "href"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Browsing context, e.g. \"_blank\"",
-              "name": "target"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Link relationship (noopener noreferrer is added for _blank)",
-              "name": "rel"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Downloads the destination instead of navigating",
-              "name": "download"
-            },
-            {
-              "type": {
-                "text": "default|subtle"
-              },
-              "description": "default (accent colour) or subtle (text colour, accent on hover)",
-              "name": "variant"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Screen-reader note for new-tab links (default \"(opens in new tab)\")",
-              "name": "new-tab-label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-link",
-          "customElement": true,
-          "summary": "Text link for navigation. Use kds-button for actions.\n\nUnderlined so it's recognisable without relying on colour. Links that open in a new tab\n(target=\"_blank\") get an icon and a screen-reader note, and rel=\"noopener noreferrer\"."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsLink",
-          "declaration": {
-            "name": "KdsLink",
-            "module": "src/components/link/kds-link.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/input/kds-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100-rem); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { --_border-color: var(--kds-component-input-border); width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: var(--kds-component-input-border-width) solid var(--_border-color); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */ box-shadow: inset 0 0 0 0 var(--_border-color); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } /* Hover never applies while focused, invalid or disabled, so it can't override those states. */ input:hover:not(:disabled, :focus, [aria-invalid='true']) { --_border-color: var(--kds-component-input-border-hover); } /* * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels * (1.5px often renders as 1px), so changing the border itself would resize the field on focus. */ input:focus { --_border-color: var(--kds-component-input-border-focus); box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width)) var(--_border-color); } /* * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an * empty error still sets error=\"\", which would otherwise put every input in the error state. */ input[aria-invalid='true'] { --_border-color: var(--kds-component-input-border-error); } /* The error colour wins over the focus colour, so focus darkens it to stay visible. */ input[aria-invalid='true']:focus { --_border-color: var(--kds-component-input-border-error-focus); } input:disabled { --_border-color: var(--kds-component-input-border-disabled); background-color: var(--kds-component-input-bg-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "InputType"
-              },
-              "default": "'text'"
-            },
-            {
-              "kind": "field",
-              "name": "helper",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_inputId",
-              "privacy": "private",
-              "default": "`kds-input-${Math.random().toString(36).slice(2, 9)}`"
-            },
-            {
-              "kind": "method",
-              "name": "_handleInput",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "On every change to the text. `detail: { value }`"
-            },
-            {
-              "name": "kds-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the value is committed (the native change event, e.g. on blur). `detail: { value }`"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Visible label text",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Current value",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Placeholder text",
-              "name": "placeholder"
-            },
-            {
-              "type": {
-                "text": "text|email|password|number|search|tel|url"
-              },
-              "description": "Input type",
-              "name": "type"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Helper text displayed below the input",
-              "name": "helper"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Error message. When set, puts the input in error state.",
-              "name": "error"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the input",
-              "name": "disabled"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Marks the input as required",
-              "name": "required"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-input",
-          "customElement": true,
-          "summary": "Text input field. Always use this instead of a raw <input> with manual styling."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsInput",
-          "declaration": {
-            "name": "KdsInput",
-            "module": "src/components/input/kds-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/list/kds-list.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsList",
-          "slots": [
-            {
-              "description": "kds-list-item elements",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-component-list-gap); padding-block: var(--kds-component-list-padding-y); } :host([hidden]) { display: none; } :host([dense]) { --_kds-list-dense-padding-y: var(--kds-semantic-spacing-xs); } :host([slot='nested']) { padding-block: 0; padding-inline-start: var(--kds-component-list-nested-indent); } `"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "dense",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name for the list (optional)",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Tighter item spacing",
-              "name": "dense"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-list",
-          "customElement": true,
-          "summary": "Vertical list of kds-list-item elements.\n\nSets role=\"list\" on itself so that kds-list-item children (role=\"listitem\") form a proper list for\nassistive technology. A kds-list inside a list item's `nested` slot is indented."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsList",
-          "declaration": {
-            "name": "KdsList",
-            "module": "src/components/list/kds-list.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/list-item/kds-list-item.ts",
       "declarations": [
         {
@@ -5356,6 +5273,89 @@
           "declaration": {
             "name": "KdsListItem",
             "module": "src/components/list-item/kds-list-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/list/kds-list.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsList",
+          "slots": [
+            {
+              "description": "kds-list-item elements",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-component-list-gap); padding-block: var(--kds-component-list-padding-y); } :host([hidden]) { display: none; } :host([dense]) { --_kds-list-dense-padding-y: var(--kds-semantic-spacing-xs); } :host([slot='nested']) { padding-block: 0; padding-inline-start: var(--kds-component-list-nested-indent); } `"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "dense",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the list (optional)",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Tighter item spacing",
+              "name": "dense"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-list",
+          "customElement": true,
+          "summary": "Vertical list of kds-list-item elements.\n\nSets role=\"list\" on itself so that kds-list-item children (role=\"listitem\") form a proper list for\nassistive technology. A kds-list inside a list item's `nested` slot is indented."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsList",
+          "declaration": {
+            "name": "KdsList",
+            "module": "src/components/list/kds-list.ts"
           }
         }
       ]
@@ -5603,118 +5603,6 @@
           "declaration": {
             "name": "KdsMenu",
             "module": "src/components/menu/kds-menu.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/menu-item/kds-menu-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsMenuItem",
-          "cssParts": [
-            {
-              "description": "The item row",
-              "name": "item"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Item text",
-              "name": ""
-            },
-            {
-              "description": "Leading icon",
-              "name": "start"
-            },
-            {
-              "description": "Trailing content, e.g. a keyboard shortcut",
-              "name": "end"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; border-radius: var(--kds-component-menu-item-radius); outline: none; cursor: pointer; } :host([hidden]) { display: none; } .item { display: flex; align-items: center; gap: var(--kds-component-menu-item-gap); padding: var(--kds-component-menu-item-padding-y) var(--kds-component-menu-item-padding-x); border-radius: inherit; color: var(--kds-component-menu-item-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); white-space: nowrap; } :host(:hover) .item, :host(:focus) .item { background-color: var(--kds-component-menu-item-bg-hover); } :host(:active) .item { background-color: var(--kds-component-menu-item-bg-active); } :host(:focus-visible) { ${unsafeCSS(focusRing('menu-item'))} } :host([variant='danger']) .item { color: var(--kds-component-menu-item-text-danger); } :host([disabled]) { cursor: not-allowed; } :host([disabled]) .item { color: var(--kds-component-menu-item-text-disabled); background: none; } .label { flex: 1; } ::slotted([slot='start']) { --kds-icon-size: var(--kds-component-menu-item-icon-size); } ::slotted([slot='end']) { color: var(--kds-semantic-text-muted); font-size: var(--kds-semantic-type-caption-size); } `"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'default' | 'danger'"
-              },
-              "default": "'default'"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Value reported in the menu's kds-select event",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "default|danger"
-              },
-              "description": "danger for destructive actions",
-              "name": "variant"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the item (still focusable, as the menu pattern recommends)",
-              "name": "disabled"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-menu-item",
-          "customElement": true,
-          "summary": "One action in a kds-menu.\n\nThe item itself is the focusable role=\"menuitem\" element; kds-menu moves focus between items with\nthe arrow keys."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsMenuItem",
-          "declaration": {
-            "name": "KdsMenuItem",
-            "module": "src/components/menu-item/kds-menu-item.ts"
           }
         }
       ]
@@ -5979,51 +5867,38 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/radio-group/kds-radio-group.ts",
+      "path": "src/components/menu-item/kds-menu-item.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsRadioGroup",
+          "name": "KdsMenuItem",
           "cssParts": [
             {
-              "description": "The group label",
-              "name": "label"
-            },
-            {
-              "description": "Wrapper around the options",
-              "name": "options"
+              "description": "The item row",
+              "name": "item"
             }
           ],
           "slots": [
             {
-              "description": "kds-radio elements",
+              "description": "Item text",
               "name": ""
+            },
+            {
+              "description": "Leading icon",
+              "name": "start"
+            },
+            {
+              "description": "Trailing content, e.g. a keyboard shortcut",
+              "name": "end"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "formAssociated",
-              "type": {
-                "text": "boolean"
-              },
-              "static": true,
-              "default": "true"
-            },
-            {
-              "kind": "field",
               "name": "styles",
               "static": true,
-              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .group { display: flex; flex-direction: column; gap: var(--kds-component-radio-group-gap); } .label { font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-radio-group-legend-text); } .options { display: flex; flex-direction: column; gap: var(--kds-component-radio-group-gap); } :host([orientation='horizontal']) .options { flex-direction: row; flex-wrap: wrap; gap: var(--kds-component-radio-group-gap) var(--kds-component-radio-group-gap-horizontal); } .helper, .error { font-family: var(--kds-semantic-type-caption-family); font-size: var(--kds-semantic-type-caption-size); line-height: var(--kds-semantic-type-caption-line-height); color: var(--kds-component-radio-group-helper-text); } .error { color: var(--kds-component-radio-group-error-text); } `"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
+              "default": "css` :host { display: block; border-radius: var(--kds-component-menu-item-radius); outline: none; cursor: pointer; } :host([hidden]) { display: none; } .item { display: flex; align-items: center; gap: var(--kds-component-menu-item-gap); padding: var(--kds-component-menu-item-padding-y) var(--kds-component-menu-item-padding-x); border-radius: inherit; color: var(--kds-component-menu-item-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); white-space: nowrap; } :host(:hover) .item, :host(:focus) .item { background-color: var(--kds-component-menu-item-bg-hover); } :host(:active) .item { background-color: var(--kds-component-menu-item-bg-active); } :host(:focus-visible) { ${unsafeCSS(focusRing('menu-item'))} } :host([variant='danger']) .item { color: var(--kds-component-menu-item-text-danger); } :host([disabled]) { cursor: not-allowed; } :host([disabled]) .item { color: var(--kds-component-menu-item-text-disabled); background: none; } .label { flex: 1; } ::slotted([slot='start']) { --kds-icon-size: var(--kds-component-menu-item-icon-size); } ::slotted([slot='end']) { color: var(--kds-semantic-text-muted); font-size: var(--kds-semantic-type-caption-size); } `"
             },
             {
               "kind": "field",
@@ -6035,43 +5910,11 @@
             },
             {
               "kind": "field",
-              "name": "name",
+              "name": "variant",
               "type": {
-                "text": "string"
+                "text": "'default' | 'danger'"
               },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "'vertical' | 'horizontal'"
-              },
-              "default": "'vertical'"
-            },
-            {
-              "kind": "field",
-              "name": "helper",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
+              "default": "'default'"
             },
             {
               "kind": "field",
@@ -6082,100 +5925,13 @@
               "default": "false"
             },
             {
-              "kind": "field",
-              "name": "_radios",
-              "type": {
-                "text": "KdsRadio[]"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_internals",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_id",
-              "privacy": "private"
-            },
-            {
               "kind": "method",
               "name": "updated",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "_changed",
-                  "type": {
-                    "text": "PropertyValues<this>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "formResetCallback"
-            },
-            {
-              "kind": "method",
-              "name": "_enabled",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_syncRadios",
-              "privacy": "private",
-              "description": "Mirrors the group value onto the radios and keeps exactly one of them in the tab order."
-            },
-            {
-              "kind": "method",
-              "name": "_select",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "radio",
-                  "type": {
-                    "text": "KdsRadio"
-                  }
-                },
-                {
-                  "name": "focus",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "_onRadioSelect",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_onKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
+              "privacy": "protected"
             },
             {
               "kind": "method",
               "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the user selects an option. `detail: { value }`"
             }
           ],
           "attributes": [
@@ -6183,56 +5939,21 @@
               "type": {
                 "text": "string"
               },
-              "description": "Visible group label (legend). Required for accessibility.",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Value of the selected radio",
+              "description": "Value reported in the menu's kds-select event",
               "name": "value"
             },
             {
               "type": {
-                "text": "string"
+                "text": "default|danger"
               },
-              "description": "Form field name",
-              "name": "name"
-            },
-            {
-              "type": {
-                "text": "vertical|horizontal"
-              },
-              "description": "Layout of the options (default vertical)",
-              "name": "orientation"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Helper text below the options",
-              "name": "helper"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Error message. When set, shows the error state.",
-              "name": "error"
+              "description": "danger for destructive actions",
+              "name": "variant"
             },
             {
               "type": {
                 "text": "boolean"
               },
-              "description": "Requires a selection for form submission",
-              "name": "required"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables every option",
+              "description": "Disables the item (still focusable, as the menu pattern recommends)",
               "name": "disabled"
             }
           ],
@@ -6240,18 +5961,18 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-radio-group",
+          "tagName": "kds-menu-item",
           "customElement": true,
-          "summary": "Group of kds-radio options where exactly one can be selected.\n\nHandles selection, keyboard navigation (arrow keys move and select, Tab enters and leaves the group),\nand submits the selected value with forms."
+          "summary": "One action in a kds-menu.\n\nThe item itself is the focusable role=\"menuitem\" element; kds-menu moves focus between items with\nthe arrow keys."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsRadioGroup",
+          "name": "KdsMenuItem",
           "declaration": {
-            "name": "KdsRadioGroup",
-            "module": "src/components/radio-group/kds-radio-group.ts"
+            "name": "KdsMenuItem",
+            "module": "src/components/menu-item/kds-menu-item.ts"
           }
         }
       ]
@@ -6421,336 +6142,6 @@
           "declaration": {
             "name": "KdsRadio",
             "module": "src/components/radio/kds-radio.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/skeleton/kds-skeleton.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsSkeleton",
-          "cssParts": [
-            {
-              "description": "Each skeleton shape",
-              "name": "shape"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; } :host([variant='circle']) { display: inline-block; } .stack { display: flex; flex-direction: column; gap: var(--kds-component-skeleton-gap); } .shape { display: block; background-color: var(--kds-component-skeleton-bg); background-image: linear-gradient( 90deg, transparent, var(--kds-component-skeleton-highlight), transparent ); background-size: 200% 100%; background-repeat: no-repeat; border-radius: var(--kds-component-skeleton-radius); animation: shimmer 1.4s ease-in-out infinite; } .line { /* One line of body text. */ height: calc(1em * var(--kds-semantic-type-body-line-height)); font-size: var(--kds-semantic-type-body-size); border-radius: var(--kds-component-skeleton-radius-text); } .line.last { width: 60%; } .circle { aspect-ratio: 1; border-radius: var(--kds-semantic-radius-full); } @keyframes shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } } @media (prefers-reduced-motion: reduce) { .shape { animation: none; background-image: none; } } `"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'text' | 'rect' | 'circle'"
-              },
-              "default": "'text'"
-            },
-            {
-              "kind": "field",
-              "name": "lines",
-              "type": {
-                "text": "number"
-              },
-              "default": "1"
-            },
-            {
-              "kind": "field",
-              "name": "width",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "text|rect|circle"
-              },
-              "description": "Shape (default text)",
-              "name": "variant"
-            },
-            {
-              "type": {
-                "text": "number"
-              },
-              "description": "Number of text lines (text variant; the last line is shorter)",
-              "name": "lines"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "CSS width, e.g. \"12rem\" or \"60%\" (default: full width; circle: spacing.2xl)",
-              "name": "width"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "CSS height (rect and circle)",
-              "name": "height"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-skeleton",
-          "customElement": true,
-          "summary": "Placeholder shape shown while content loads.\n\nHidden from assistive technology: mark the loading region itself with aria-busy=\"true\" (and announce\ncompletion if it matters). The shimmer animation stops when the user prefers reduced motion."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsSkeleton",
-          "declaration": {
-            "name": "KdsSkeleton",
-            "module": "src/components/skeleton/kds-skeleton.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/stack/kds-stack.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsStack",
-          "slots": [
-            {
-              "description": "Children",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "type": {
-                "text": "array"
-              },
-              "static": true,
-              "default": "[ css` :host { display: flex; flex-direction: column; gap: var(--_gap, var(--kds-component-stack-gap)); } :host([hidden]) { display: none; } :host([inline]) { display: inline-flex; } :host([direction='row']) { flex-direction: row; } :host([wrap]) { flex-wrap: wrap; } :host([align='start']) { align-items: flex-start; } :host([align='center']) { align-items: center; } :host([align='end']) { align-items: flex-end; } :host([align='stretch']) { align-items: stretch; } :host([align='baseline']) { align-items: baseline; } :host([justify='start']) { justify-content: flex-start; } :host([justify='center']) { justify-content: center; } :host([justify='end']) { justify-content: flex-end; } :host([justify='between']) { justify-content: space-between; } :host([justify='around']) { justify-content: space-around; } :host([justify='evenly']) { justify-content: space-evenly; } `, spacingAttr('gap', '--_gap'), ]"
-            },
-            {
-              "kind": "field",
-              "name": "direction",
-              "type": {
-                "text": "'column' | 'row'"
-              },
-              "default": "'column'"
-            },
-            {
-              "kind": "field",
-              "name": "gap",
-              "type": {
-                "text": "Spacing | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "align",
-              "type": {
-                "text": "'start' | 'center' | 'end' | 'stretch' | 'baseline' | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "justify",
-              "type": {
-                "text": "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "wrap",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "inline",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "column|row"
-              },
-              "description": "Main axis (default column)",
-              "name": "direction"
-            },
-            {
-              "type": {
-                "text": "none|xs|sm|md|lg|xl|2xl"
-              },
-              "description": "Space between children (default md)",
-              "name": "gap"
-            },
-            {
-              "type": {
-                "text": "start|center|end|stretch|baseline"
-              },
-              "description": "Cross-axis alignment",
-              "name": "align"
-            },
-            {
-              "type": {
-                "text": "start|center|end|between|around|evenly"
-              },
-              "description": "Main-axis distribution",
-              "name": "justify"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Lets children wrap onto new lines",
-              "name": "wrap"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Inline instead of block",
-              "name": "inline"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-stack",
-          "customElement": true,
-          "summary": "Lays children out in a column or row with token-based spacing."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsStack",
-          "declaration": {
-            "name": "KdsStack",
-            "module": "src/components/stack/kds-stack.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tab/kds-tab.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsTab",
-          "cssParts": [
-            {
-              "description": "The tab label row",
-              "name": "tab"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Tab label",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: inline-flex; position: relative; border-radius: var(--kds-component-tab-radius) var(--kds-component-tab-radius) 0 0; outline: none; cursor: pointer; } :host([hidden]) { display: none; } .tab { display: inline-flex; align-items: center; gap: var(--kds-semantic-spacing-sm); padding: var(--kds-component-tab-padding-y) var(--kds-component-tab-padding-x); border-radius: inherit; color: var(--kds-component-tab-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); white-space: nowrap; transition: color 0.15s ease, background-color 0.15s ease; } :host(:hover:not([disabled])) .tab { background-color: var(--kds-component-tab-bg-hover); } /* Hover darkens only unselected tabs; the selected tab keeps its accent colour. */ :host(:hover:not([disabled], [aria-selected='true'])) .tab { color: var(--kds-component-tab-text-hover); } :host([aria-selected='true']) .tab { color: var(--kds-component-tab-text-selected); } /* Selected indicator along the bottom edge, just above the tab list's border. */ :host([aria-selected='true'])::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: var(--kds-component-tab-indicator-width); background-color: var(--kds-component-tab-indicator); } :host(:focus-visible) { ${unsafeCSS(focusRing('tab'))} } :host([disabled]) { cursor: not-allowed; } :host([disabled]) .tab { color: var(--kds-component-tab-text-disabled); } `"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Matches the `value` of the kds-tab-panel it controls",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the tab",
-              "name": "disabled"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-tab",
-          "customElement": true,
-          "summary": "One tab in kds-tabs. kds-tabs sets its role, selection and keyboard behaviour."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsTab",
-          "declaration": {
-            "name": "KdsTab",
-            "module": "src/components/tab/kds-tab.ts"
           }
         }
       ]
@@ -7038,6 +6429,369 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/radio-group/kds-radio-group.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsRadioGroup",
+          "cssParts": [
+            {
+              "description": "The group label",
+              "name": "label"
+            },
+            {
+              "description": "Wrapper around the options",
+              "name": "options"
+            }
+          ],
+          "slots": [
+            {
+              "description": "kds-radio elements",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .group { display: flex; flex-direction: column; gap: var(--kds-component-radio-group-gap); } .label { font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-radio-group-legend-text); } .options { display: flex; flex-direction: column; gap: var(--kds-component-radio-group-gap); } :host([orientation='horizontal']) .options { flex-direction: row; flex-wrap: wrap; gap: var(--kds-component-radio-group-gap) var(--kds-component-radio-group-gap-horizontal); } .helper, .error { font-family: var(--kds-semantic-type-caption-family); font-size: var(--kds-semantic-type-caption-size); line-height: var(--kds-semantic-type-caption-line-height); color: var(--kds-component-radio-group-helper-text); } .error { color: var(--kds-component-radio-group-error-text); } `"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "default": "'vertical'"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_radios",
+              "type": {
+                "text": "KdsRadio[]"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_internals",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "_changed",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formResetCallback"
+            },
+            {
+              "kind": "method",
+              "name": "_enabled",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_syncRadios",
+              "privacy": "private",
+              "description": "Mirrors the group value onto the radios and keeps exactly one of them in the tab order."
+            },
+            {
+              "kind": "method",
+              "name": "_select",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "radio",
+                  "type": {
+                    "text": "KdsRadio"
+                  }
+                },
+                {
+                  "name": "focus",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_onRadioSelect",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_onKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the user selects an option. `detail: { value }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible group label (legend). Required for accessibility.",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Value of the selected radio",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Form field name",
+              "name": "name"
+            },
+            {
+              "type": {
+                "text": "vertical|horizontal"
+              },
+              "description": "Layout of the options (default vertical)",
+              "name": "orientation"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Helper text below the options",
+              "name": "helper"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message. When set, shows the error state.",
+              "name": "error"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Requires a selection for form submission",
+              "name": "required"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables every option",
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-radio-group",
+          "customElement": true,
+          "summary": "Group of kds-radio options where exactly one can be selected.\n\nHandles selection, keyboard navigation (arrow keys move and select, Tab enters and leaves the group),\nand submits the selected value with forms."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsRadioGroup",
+          "declaration": {
+            "name": "KdsRadioGroup",
+            "module": "src/components/radio-group/kds-radio-group.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tab/kds-tab.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsTab",
+          "cssParts": [
+            {
+              "description": "The tab label row",
+              "name": "tab"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Tab label",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; position: relative; border-radius: var(--kds-component-tab-radius) var(--kds-component-tab-radius) 0 0; outline: none; cursor: pointer; } :host([hidden]) { display: none; } .tab { display: inline-flex; align-items: center; gap: var(--kds-semantic-spacing-sm); padding: var(--kds-component-tab-padding-y) var(--kds-component-tab-padding-x); border-radius: inherit; color: var(--kds-component-tab-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-label-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); white-space: nowrap; transition: color 0.15s ease, background-color 0.15s ease; } :host(:hover:not([disabled])) .tab { background-color: var(--kds-component-tab-bg-hover); } /* Hover darkens only unselected tabs; the selected tab keeps its accent colour. */ :host(:hover:not([disabled], [aria-selected='true'])) .tab { color: var(--kds-component-tab-text-hover); } :host([aria-selected='true']) .tab { color: var(--kds-component-tab-text-selected); } /* Selected indicator along the bottom edge, just above the tab list's border. */ :host([aria-selected='true'])::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: var(--kds-component-tab-indicator-width); background-color: var(--kds-component-tab-indicator); } :host(:focus-visible) { ${unsafeCSS(focusRing('tab'))} } :host([disabled]) { cursor: not-allowed; } :host([disabled]) .tab { color: var(--kds-component-tab-text-disabled); } `"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Matches the `value` of the kds-tab-panel it controls",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the tab",
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-tab",
+          "customElement": true,
+          "summary": "One tab in kds-tabs. kds-tabs sets its role, selection and keyboard behaviour."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsTab",
+          "declaration": {
+            "name": "KdsTab",
+            "module": "src/components/tab/kds-tab.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tab-panel/kds-tab-panel.ts",
       "declarations": [
         {
@@ -7107,195 +6861,15 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tabs/kds-tabs.ts",
+      "path": "src/components/stack/kds-stack.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "KdsTabs",
-          "cssParts": [
-            {
-              "description": "The tab list",
-              "name": "tablist"
-            }
-          ],
+          "name": "KdsStack",
           "slots": [
             {
-              "description": "kds-tab and kds-tab-panel elements (tabs are moved into the tab list automatically)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .tablist { display: flex; gap: var(--kds-component-tabs-gap); overflow-x: auto; border-bottom: var(--kds-component-tabs-border-width) solid var(--kds-component-tabs-border); /* Room for the focus ring and selected indicator, which sit outside the tabs. */ padding-inline: var(--kds-semantic-border-width-ring-offset); padding-block-start: calc(var(--kds-semantic-border-width-ring) + var(--kds-semantic-border-width-ring-offset)); } `"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "_id",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_tabs",
-              "type": {
-                "text": "KdsTab[]"
-              },
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "_panels",
-              "type": {
-                "text": "KdsTabPanel[]"
-              },
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "_changed",
-                  "type": {
-                    "text": "PropertyValues<this>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "_sync",
-              "privacy": "private",
-              "description": "Assigns roles, ids, selection state and roving tabindex to the tabs and panels."
-            },
-            {
-              "kind": "method",
-              "name": "_select",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tab",
-                  "type": {
-                    "text": "KdsTab"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_onClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_onKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the user selects a tab. `detail: { value }`"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Value of the selected tab (defaults to the first enabled tab)",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible name of the tab list",
-              "name": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-tabs",
-          "customElement": true,
-          "summary": "Switches between related panels of content (WAI-ARIA tabs).\n\nChildren are kds-tab and kds-tab-panel elements, matched by `value`. The tab list is one Tab stop;\narrow keys, Home and End move between tabs and select them (automatic activation). Each tab is\nlinked to its panel with aria-controls / aria-labelledby."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsTabs",
-          "declaration": {
-            "name": "KdsTabs",
-            "module": "src/components/tabs/kds-tabs.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/typography/kds-typography.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsTypography",
-          "cssParts": [
-            {
-              "description": "The rendered text element",
-              "name": "text"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Text content",
+              "description": "Children",
               "name": ""
             }
           ],
@@ -7307,42 +6881,40 @@
                 "text": "array"
               },
               "static": true,
-              "default": "[ css` :host { display: block; } :host([hidden]) { display: none; } .text { margin: 0; color: var(--kds-component-typography-color-default); } :host([variant='overline']) .text { text-transform: uppercase; letter-spacing: var(--kds-semantic-type-overline-letter-spacing); } :host([align='start']) .text { text-align: start; } :host([align='center']) .text { text-align: center; } :host([align='end']) .text { text-align: end; } :host([truncate]) .text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } :host([gutter]) .text { margin-block-end: var(--kds-component-typography-gutter); } `, variantStyles, ]"
+              "default": "[ css` :host { display: flex; flex-direction: column; gap: var(--_gap, var(--kds-component-stack-gap)); } :host([hidden]) { display: none; } :host([inline]) { display: inline-flex; } :host([direction='row']) { flex-direction: row; } :host([wrap]) { flex-wrap: wrap; } :host([align='start']) { align-items: flex-start; } :host([align='center']) { align-items: center; } :host([align='end']) { align-items: flex-end; } :host([align='stretch']) { align-items: stretch; } :host([align='baseline']) { align-items: baseline; } :host([justify='start']) { justify-content: flex-start; } :host([justify='center']) { justify-content: center; } :host([justify='end']) { justify-content: flex-end; } :host([justify='between']) { justify-content: space-between; } :host([justify='around']) { justify-content: space-around; } :host([justify='evenly']) { justify-content: space-evenly; } `, spacingAttr('gap', '--_gap'), ]"
             },
             {
               "kind": "field",
-              "name": "variant",
+              "name": "direction",
               "type": {
-                "text": "TypographyVariant"
+                "text": "'column' | 'row'"
               },
-              "default": "'body'"
+              "default": "'column'"
             },
             {
               "kind": "field",
-              "name": "as",
+              "name": "gap",
               "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "TypographyColor"
-              },
-              "default": "'default'"
+                "text": "Spacing | undefined"
+              }
             },
             {
               "kind": "field",
               "name": "align",
               "type": {
-                "text": "'start' | 'center' | 'end' | undefined"
+                "text": "'start' | 'center' | 'end' | 'stretch' | 'baseline' | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "truncate",
+              "name": "justify",
+              "type": {
+                "text": "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrap",
               "type": {
                 "text": "boolean"
               },
@@ -7350,7 +6922,7 @@
             },
             {
               "kind": "field",
-              "name": "gutter",
+              "name": "inline",
               "type": {
                 "text": "boolean"
               },
@@ -7364,63 +6936,171 @@
           "attributes": [
             {
               "type": {
-                "text": "h1|h2|h3|h4|h5|h6|body|body-sm|caption|label|overline"
+                "text": "column|row"
               },
-              "description": "Type style (default body)",
-              "name": "variant"
+              "description": "Main axis (default column)",
+              "name": "direction"
             },
             {
               "type": {
-                "text": "string"
+                "text": "none|xs|sm|md|lg|xl|2xl"
               },
-              "description": "Element to render (h1–h6, p, span, div, label, strong, em, small)",
-              "name": "as"
+              "description": "Space between children (default md)",
+              "name": "gap"
             },
             {
               "type": {
-                "text": "default|subtle|muted|brand|danger|inverse"
+                "text": "start|center|end|stretch|baseline"
               },
-              "description": "Text colour (default default)",
-              "name": "color"
-            },
-            {
-              "type": {
-                "text": "start|center|end"
-              },
-              "description": "Text alignment",
+              "description": "Cross-axis alignment",
               "name": "align"
             },
             {
               "type": {
-                "text": "boolean"
+                "text": "start|center|end|between|around|evenly"
               },
-              "description": "Single line, cut off with an ellipsis",
-              "name": "truncate"
+              "description": "Main-axis distribution",
+              "name": "justify"
             },
             {
               "type": {
                 "text": "boolean"
               },
-              "description": "Adds space below the text",
-              "name": "gutter"
+              "description": "Lets children wrap onto new lines",
+              "name": "wrap"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Inline instead of block",
+              "name": "inline"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "kds-typography",
+          "tagName": "kds-stack",
           "customElement": true,
-          "summary": "Text in the KalaDS type scale: headings, body, caption, label and overline.\n\nRenders the matching element for the variant (h1–h6, p, span). Use `as` to change the element without\nchanging the look, e.g. a visual h4 that is an h2 in the document outline."
+          "summary": "Lays children out in a column or row with token-based spacing."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "KdsTypography",
+          "name": "KdsStack",
           "declaration": {
-            "name": "KdsTypography",
-            "module": "src/components/typography/kds-typography.ts"
+            "name": "KdsStack",
+            "module": "src/components/stack/kds-stack.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/skeleton/kds-skeleton.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsSkeleton",
+          "cssParts": [
+            {
+              "description": "Each skeleton shape",
+              "name": "shape"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } :host([variant='circle']) { display: inline-block; } .stack { display: flex; flex-direction: column; gap: var(--kds-component-skeleton-gap); } .shape { display: block; background-color: var(--kds-component-skeleton-bg); background-image: linear-gradient( 90deg, transparent, var(--kds-component-skeleton-highlight), transparent ); background-size: 200% 100%; background-repeat: no-repeat; border-radius: var(--kds-component-skeleton-radius); animation: shimmer 1.4s ease-in-out infinite; } .line { /* One line of body text. */ height: calc(1em * var(--kds-semantic-type-body-line-height)); font-size: var(--kds-semantic-type-body-size); border-radius: var(--kds-component-skeleton-radius-text); } .line.last { width: 60%; } .circle { aspect-ratio: 1; border-radius: var(--kds-semantic-radius-full); } @keyframes shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } } @media (prefers-reduced-motion: reduce) { .shape { animation: none; background-image: none; } } `"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'text' | 'rect' | 'circle'"
+              },
+              "default": "'text'"
+            },
+            {
+              "kind": "field",
+              "name": "lines",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "text|rect|circle"
+              },
+              "description": "Shape (default text)",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of text lines (text variant; the last line is shorter)",
+              "name": "lines"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "CSS width, e.g. \"12rem\" or \"60%\" (default: full width; circle: spacing.2xl)",
+              "name": "width"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "CSS height (rect and circle)",
+              "name": "height"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-skeleton",
+          "customElement": true,
+          "summary": "Placeholder shape shown while content loads.\n\nHidden from assistive technology: mark the loading region itself with aria-busy=\"true\" (and announce\ncompletion if it matters). The shimmer animation stops when the user prefers reduced motion."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsSkeleton",
+          "declaration": {
+            "name": "KdsSkeleton",
+            "module": "src/components/skeleton/kds-skeleton.ts"
           }
         }
       ]
@@ -7605,6 +7285,180 @@
           "declaration": {
             "name": "KdsToggle",
             "module": "src/components/toggle/kds-toggle.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/kds-tabs.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsTabs",
+          "cssParts": [
+            {
+              "description": "The tab list",
+              "name": "tablist"
+            }
+          ],
+          "slots": [
+            {
+              "description": "kds-tab and kds-tab-panel elements (tabs are moved into the tab list automatically)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .tablist { display: flex; gap: var(--kds-component-tabs-gap); overflow-x: auto; border-bottom: var(--kds-component-tabs-border-width) solid var(--kds-component-tabs-border); /* Room for the focus ring and selected indicator, which sit outside the tabs. */ padding-inline: var(--kds-semantic-border-width-ring-offset); padding-block-start: calc(var(--kds-semantic-border-width-ring) + var(--kds-semantic-border-width-ring-offset)); } `"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "_id",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_tabs",
+              "type": {
+                "text": "KdsTab[]"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_panels",
+              "type": {
+                "text": "KdsTabPanel[]"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "_changed",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_sync",
+              "privacy": "private",
+              "description": "Assigns roles, ids, selection state and roving tabindex to the tabs and panels."
+            },
+            {
+              "kind": "method",
+              "name": "_select",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tab",
+                  "type": {
+                    "text": "KdsTab"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the user selects a tab. `detail: { value }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Value of the selected tab (defaults to the first enabled tab)",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name of the tab list",
+              "name": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-tabs",
+          "customElement": true,
+          "summary": "Switches between related panels of content (WAI-ARIA tabs).\n\nChildren are kds-tab and kds-tab-panel elements, matched by `value`. The tab list is one Tab stop;\narrow keys, Home and End move between tabs and select them (automatic activation). Each tab is\nlinked to its panel with aria-controls / aria-labelledby."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsTabs",
+          "declaration": {
+            "name": "KdsTabs",
+            "module": "src/components/tabs/kds-tabs.ts"
           }
         }
       ]
@@ -7832,6 +7686,152 @@
           "declaration": {
             "name": "KdsTooltip",
             "module": "src/components/tooltip/kds-tooltip.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/typography/kds-typography.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsTypography",
+          "cssParts": [
+            {
+              "description": "The rendered text element",
+              "name": "text"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Text content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "type": {
+                "text": "array"
+              },
+              "static": true,
+              "default": "[ css` :host { display: block; } :host([hidden]) { display: none; } .text { margin: 0; color: var(--kds-component-typography-color-default); } :host([variant='overline']) .text { text-transform: uppercase; letter-spacing: var(--kds-semantic-type-overline-letter-spacing); } :host([align='start']) .text { text-align: start; } :host([align='center']) .text { text-align: center; } :host([align='end']) .text { text-align: end; } :host([truncate]) .text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } :host([gutter]) .text { margin-block-end: var(--kds-component-typography-gutter); } `, variantStyles, ]"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "TypographyVariant"
+              },
+              "default": "'body'"
+            },
+            {
+              "kind": "field",
+              "name": "as",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "TypographyColor"
+              },
+              "default": "'default'"
+            },
+            {
+              "kind": "field",
+              "name": "align",
+              "type": {
+                "text": "'start' | 'center' | 'end' | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "truncate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "gutter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "h1|h2|h3|h4|h5|h6|body|body-sm|caption|label|overline"
+              },
+              "description": "Type style (default body)",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Element to render (h1–h6, p, span, div, label, strong, em, small)",
+              "name": "as"
+            },
+            {
+              "type": {
+                "text": "default|subtle|muted|brand|danger|inverse"
+              },
+              "description": "Text colour (default default)",
+              "name": "color"
+            },
+            {
+              "type": {
+                "text": "start|center|end"
+              },
+              "description": "Text alignment",
+              "name": "align"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Single line, cut off with an ellipsis",
+              "name": "truncate"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Adds space below the text",
+              "name": "gutter"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-typography",
+          "customElement": true,
+          "summary": "Text in the KalaDS type scale: headings, body, caption, label and overline.\n\nRenders the matching element for the variant (h1–h6, p, span). Use `as` to change the element without\nchanging the look, e.g. a visual h4 that is an h2 in the document outline."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsTypography",
+          "declaration": {
+            "name": "KdsTypography",
+            "module": "src/components/typography/kds-typography.ts"
           }
         }
       ]

@@ -42,7 +42,7 @@
       "info-subtle-hover":    { "$type": "color", "$value": "{color.info.200}" }
     },
     "interactive": {
-      "focus":    { "$type": "color", "$value": "{color.primary.300}" },
+      "focus":    { "$type": "color", "$value": "{color.primary.500}" },
       "accent":         { "$type": "color", "$value": "{color.primary.500}" },
       "accent-hover":   { "$type": "color", "$value": "{color.primary.600}" },
       "accent-active":  { "$type": "color", "$value": "{color.primary.700}" },

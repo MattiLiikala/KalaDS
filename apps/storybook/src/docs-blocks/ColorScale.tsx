@@ -7,14 +7,14 @@ interface Props {
 }
 
 /**
- * One palette as a row of swatches, generated from the token build. Each swatch shows its step, hex value
- * and what it can be used for on the default page background (bg-default):
+ * One palette as a row of swatches, generated from the token build. Each swatch is a colour block with its
+ * step, hex value and what it can be used for on the default page background (bg-default) below it:
  * "Text" at 4.5:1 or more, "UI" (borders, icons, large text) at 3:1 or more.
+ *
+ * The labels sit on the page background, not on the colour, so they are readable for every step.
  */
 export function ColorScale({ path }: Props) {
   const page = tokenValue('semantic.bg.default');
-  const dark = tokenValue('semantic.text.default');
-  const light = tokenValue('semantic.text.inverse');
   return (
     <div className="kds-docs-scale">
       <div className="kds-docs-scale-name">{path.split('.').pop()}</div>
@@ -24,9 +24,9 @@ export function ColorScale({ path }: Props) {
           const opaque = /^#[0-9a-f]{6}$/i.test(row.value);
           const ratio = opaque ? contrast(row.value, page) : 0;
           const usage = ratio >= 4.5 ? 'Text' : ratio >= 3 ? 'UI' : '';
-          const ink = !opaque || contrast(row.value, dark) >= contrast(row.value, light) ? dark : light;
           return (
-            <div key={row.path} className="kds-docs-swatch" style={{ backgroundColor: row.css, color: ink }}>
+            <div key={row.path} className="kds-docs-swatch">
+              <span className="kds-docs-swatch-color" style={{ backgroundColor: row.css }} />
               <span className="kds-docs-swatch-step">{row.path.split('.').pop()}</span>
               <span className="kds-docs-swatch-hex">{row.value}</span>
               {usage && <span className="kds-docs-swatch-usage">{usage}</span>}

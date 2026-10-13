@@ -1,6 +1,8 @@
 {
   "component": {
     "button": {
+      "ring-width":  { "$type": "dimension", "$value": "{semantic.border-width.ring}" },
+      "ring-offset": { "$type": "dimension", "$value": "{semantic.border-width.ring-offset}" },
       "primary": {
         "bg":              { "$type": "color",     "$value": "{color.primary.500}" },
         "bg-hover":        { "$type": "color",     "$value": "{color.primary.600}" },
@@ -12,7 +14,7 @@
         "border-hover":    { "$type": "color",     "$value": "{color.primary.600}" },
         "border-focus":    { "$type": "color",     "$value": "{color.primary.300}" },
         "border-disabled": { "$type": "color",     "$value": "{color.neutral.300}" },
-        "ring-focus":      { "$type": "color",     "$value": "{color.primary.200}" },
+        "ring-focus":      { "$type": "color",     "$value": "{semantic.interactive.focus}" },
         "radius":          { "$type": "dimension", "$value": "{semantic.radius.full}" },
         "padding-x":       { "$type": "dimension", "$value": "{semantic.padding.lg}" },
         "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },
@@ -41,7 +43,7 @@
         "border-hover":    { "$type": "color",     "$value": "{color.secondary.600}" },
         "border-focus":    { "$type": "color",     "$value": "{color.secondary.300}" },
         "border-disabled": { "$type": "color",     "$value": "{color.neutral.300}" },
-        "ring-focus":      { "$type": "color",     "$value": "{color.secondary.200}" },
+        "ring-focus":      { "$type": "color",     "$value": "{semantic.interactive.focus}" },
         "radius":          { "$type": "dimension", "$value": "{semantic.radius.full}" },
         "padding-x":       { "$type": "dimension", "$value": "{semantic.padding.lg}" },
         "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },
@@ -70,7 +72,7 @@
         "border-hover":    { "$type": "color",     "$value": "{color.danger.600}" },
         "border-focus":    { "$type": "color",     "$value": "{color.danger.300}" },
         "border-disabled": { "$type": "color",     "$value": "{color.neutral.300}" },
-        "ring-focus":      { "$type": "color",     "$value": "{color.danger.200}" },
+        "ring-focus":      { "$type": "color",     "$value": "{semantic.interactive.focus}" },
         "radius":          { "$type": "dimension", "$value": "{semantic.radius.full}" },
         "padding-x":       { "$type": "dimension", "$value": "{semantic.padding.lg}" },
         "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },
@@ -99,7 +101,7 @@
         "border-hover":    { "$type": "color",     "$value": "transparent" },
         "border-focus":    { "$type": "color",     "$value": "{color.primary.300}" },
         "border-disabled": { "$type": "color",     "$value": "transparent" },
-        "ring-focus":      { "$type": "color",     "$value": "{color.primary.200}" },
+        "ring-focus":      { "$type": "color",     "$value": "{semantic.interactive.focus}" },
         "radius":          { "$type": "dimension", "$value": "{semantic.radius.full}" },
         "padding-x":       { "$type": "dimension", "$value": "{semantic.padding.lg}" },
         "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },

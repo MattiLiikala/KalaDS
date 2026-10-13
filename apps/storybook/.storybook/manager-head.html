@@ -37,3 +37,10 @@
     font-family: 'Parkinsans', sans-serif;
   }
 </style>
+
+<script>
+  // Storybook's viewport tag sets maximum-scale=1, which stops people zooming on touch devices (WCAG 1.4.4).
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('meta[name="viewport"]')?.setAttribute('content', 'width=device-width, initial-scale=1');
+  });
+</script>

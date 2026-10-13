@@ -234,20 +234,25 @@
 .kds-docs-scale-swatches {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--kds-semantic-spacing-2xl), 1fr));
-  border-radius: var(--kds-semantic-radius-md);
-  overflow: hidden;
-  border: var(--kds-semantic-border-width-default) solid var(--kds-semantic-border-default);
+  gap: var(--kds-semantic-spacing-xs);
 }
 
+/* Colour block on top; step, hex and usage below it on the page background, so labels always pass. */
 .kds-docs-swatch {
   display: flex;
   flex-direction: column;
   gap: var(--kds-semantic-spacing-xs);
-  min-height: var(--kds-semantic-spacing-2xl);
-  padding: var(--kds-semantic-padding-sm);
   font-family: var(--kds-semantic-type-caption-family);
   font-size: var(--kds-semantic-type-caption-size);
   line-height: var(--kds-semantic-type-caption-line-height);
+  color: var(--kds-semantic-text-default);
+}
+
+.kds-docs-swatch-color {
+  display: block;
+  height: var(--kds-semantic-spacing-2xl);
+  border: var(--kds-semantic-border-width-default) solid var(--kds-semantic-border-default);
+  border-radius: var(--kds-semantic-radius-md);
 }
 
 .kds-docs-swatch-step {
@@ -255,9 +260,12 @@
   font-weight: var(--kds-semantic-type-label-weight);
 }
 
+.kds-docs-swatch-hex {
+  color: var(--kds-semantic-text-subtle);
+}
+
 .kds-docs-swatch-usage {
   align-self: flex-start;
-  margin-block-start: auto;
   padding-inline: var(--kds-semantic-padding-xs);
   border: var(--kds-semantic-border-width-default) solid currentColor;
   border-radius: var(--kds-semantic-radius-sm);
@@ -338,6 +346,15 @@
   height: 100%;
   color: inherit;
   text-decoration: none;
+}
+
+/*
+ * Keyboard focus in Storybook's own blocks (props table buttons and controls, "Show code", toolbars).
+ * Storybook removes their outline without a replacement; this restores the KalaDS focus ring.
+ */
+.sbdocs-wrapper :is(button, input, select, textarea, a, [tabindex]):focus-visible {
+  outline: var(--kds-semantic-border-width-ring) solid var(--kds-semantic-interactive-focus);
+  outline-offset: var(--kds-semantic-border-width-ring-offset);
 }
 
 /* Native radios and checkboxes in the controls column */
