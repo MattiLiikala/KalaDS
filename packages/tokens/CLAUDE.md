@@ -86,6 +86,7 @@ colours and the component tokens built on them, so a themed subtree resolves the
 |---|---|---|
 | `@kalads/tokens/css` | `dist/css/variables.css` | Web components, React components, apps |
 | `@kalads/tokens/js`, `/js/dark` | `dist/js/tokens.js`, `dark.js` | Storybook interface theme (flat `ComponentButtonPrimaryBg` constants, same names per theme) |
+| `@kalads/tokens/vars` | `dist/vars/vars.js` + `.d.ts` | React apps: the semantic tokens as typed `var(--kds-semantic-…)` references (`vars.spacing.md`, camelCase keys like native) |
 | `@kalads/tokens/json`, `/json/dark` | `dist/json/tokens.json`, `dark.json` | Docs token tables, the skills' tokens page |
 | `@kalads/tokens/native` | `dist/native/tokens.js` + `.d.ts` | React Native: `tokens` (light) and `themes.light` / `themes.dark` |
 
@@ -98,7 +99,7 @@ The native output (`kds/native/*` in `sd.config.mjs`) is a typed nested object w
 
 ```bash
 pnpm build    # generate dist/ from src/ — always run after modifying tokens
-pnpm test     # contrast of the component colour pairs, light and dark
+pnpm test     # contrast of the component colour pairs (light and dark), and the vars export
 pnpm dev      # watch mode (chokidar-based, restarts on any src/**/*.json change)
 ```
 

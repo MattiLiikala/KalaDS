@@ -73,9 +73,10 @@ const RULES = {
 3. **Lay out with \`Stack\`, \`Grid\`, \`Container\` and \`Box\`**, and put text in \`Typography\` — not styled
    \`<div>\`s and \`<span>\`s.
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own CSS use the semantic
-   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. They follow dark mode;
-   core palette tokens (\`--kds-color-*\`) and literal colours don't, so never use them (semantic tokens
-   for data visualisation will come later). See [references/tokens.md](references/tokens.md).
+   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`; in style objects, the same
+   tokens from \`import { vars } from '@kalads/tokens/vars'\` (\`vars.spacing.md\`, \`vars.bg.subtle\`). They follow
+   dark mode; core palette tokens (\`--kds-color-*\`) and literal colours don't, so never use them (semantic
+   tokens for data visualisation will come later). See [references/tokens.md](references/tokens.md).
 5. **Icons come from \`@kalads/icons/react\`** (\`<PlusIcon />\`), or \`<Icon name="plus" />\`. Never inline
    \`<svg>\` or icon image files. Give an icon a \`label\` when it carries meaning on its own.
 6. **Solid buttons need a surface they stand out from.** Inside \`<Box bg="inverse">\` add \`onInverse\` to every

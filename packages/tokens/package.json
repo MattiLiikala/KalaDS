@@ -8,6 +8,10 @@
     "./js/dark": "./dist/js/dark.js",
     "./json": "./dist/json/tokens.json",
     "./json/dark": "./dist/json/dark.json",
+    "./vars": {
+      "types": "./dist/vars/vars.d.ts",
+      "default": "./dist/vars/vars.js"
+    },
     "./native": {
       "types": "./dist/native/tokens.d.ts",
       "default": "./dist/native/tokens.js"

@@ -116,9 +116,18 @@ In React and React Native, most layout values are component props, so you rarely
   then `{ gap: s.spacing.md, backgroundColor: s.bg.subtle }`. Colours from `useTokens()` follow the theme;
   sizes and spacing are also available as `tokens.semantic.*` from `@kalads/tokens/native`, for
   `StyleSheet.create`.
-- **React and the web:** use the CSS custom properties, in a CSS module or as a value in a `style` object
-  on your own elements: `style={{ gap: 'var(--kds-semantic-spacing-md)' }}`. Never put `style` on a
-  KalaDS component.
+- **React:** for style objects on your own elements, import `vars` from `@kalads/tokens/vars`. It has
+  every semantic token, typed, with the same names as in React Native, and each value is the token's CSS
+  variable, so it follows the theme. Never put `style` on a KalaDS component.
+
+```tsx
+import { vars } from '@kalads/tokens/vars';
+
+<div style={{ display: 'flex', gap: vars.spacing.md, backgroundColor: vars.bg.subtle }} />;
+// gap: 'var(--kds-semantic-spacing-md)', backgroundColor: 'var(--kds-semantic-bg-subtle)'
+```
+
+- **CSS:** use the custom properties directly, as in step 5.
 
 ## Rules
 

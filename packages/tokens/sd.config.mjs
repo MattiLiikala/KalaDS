@@ -118,6 +118,44 @@ StyleDictionary.registerFormat({
   format: ({ dictionary }) => `${HEADER}export const darkTokens = ${JSON.stringify(nativeTree(dictionary), null, 2)};\n`,
 });
 
+/**
+ * The semantic tokens as CSS variable references, for React style objects:
+ * `vars.spacing.md` is `'var(--kds-semantic-spacing-md)'`. Keys are camelCase, as in the React Native
+ * tree (`s.spacing.md`). The values are references, so they follow `data-kds-theme`. Only semantic tokens:
+ * core and component tokens aren't for app code.
+ */
+function varsTree(dictionary) {
+  const tree = {};
+  for (const token of dictionary.allTokens) {
+    if (token.path[0] !== 'semantic') continue;
+    const keys = token.path.slice(1).map(camel);
+    let node = tree;
+    for (const key of keys.slice(0, -1)) node = node[key] ??= {};
+    node[keys.at(-1)] = `var(--${token.name})`;
+  }
+  return tree;
+}
+
+/** The type of varsTree: every value is its literal `var(--…)` string. */
+function varsType(value, indent) {
+  if (typeof value === 'string') return `'${value}'`;
+  const pad = '  '.repeat(indent + 1);
+  const key = (k) => (/^[a-z_$][\w$]*$/i.test(k) ? k : JSON.stringify(k));
+  const body = Object.entries(value).map(([k, v]) => `${pad}readonly ${key(k)}: ${varsType(v, indent + 1)};`).join('\n');
+  return `{\n${body}\n${'  '.repeat(indent)}}`;
+}
+
+StyleDictionary.registerFormat({
+  name: 'kds/vars/js',
+  format: ({ dictionary }) => `${HEADER}export const vars = ${JSON.stringify(varsTree(dictionary), null, 2)};\n\nexport default vars;\n`,
+});
+
+StyleDictionary.registerFormat({
+  name: 'kds/vars/dts',
+  format: ({ dictionary }) =>
+    `${HEADER}/** The semantic tokens as CSS variable references (\`vars.spacing.md\` → \`var(--kds-semantic-spacing-md)\`). Needs @kalads/tokens/css. */\nexport type Vars = ${varsType(varsTree(dictionary), 0)};\n\nexport declare const vars: Vars;\n\nexport default vars;\n`,
+});
+
 /** Names of the tokens whose value differs between the themes, filled in before the builds run. */
 const themed = new Set();
 
@@ -160,6 +198,16 @@ const light = new StyleDictionary({
       files: [
         { destination: 'tokens.js', format: 'javascript/es6' },
         { destination: 'tokens.d.ts', format: 'typescript/es6-declarations' },
+      ],
+    },
+    // React (web): the semantic tokens as var(--…) references in a typed object.
+    vars: {
+      transformGroup: 'css',
+      prefix: 'kds',
+      buildPath: 'dist/vars/',
+      files: [
+        { destination: 'vars.js', format: 'kds/vars/js' },
+        { destination: 'vars.d.ts', format: 'kds/vars/dts' },
       ],
     },
     // React Native: resolved values, dimensions as numbers, shadows as boxShadow objects.

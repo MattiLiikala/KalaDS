@@ -113,6 +113,15 @@ Use semantic tokens. They describe what a value is for, so they follow the theme
 }
 ```
 
+In React style objects, use the typed `vars` export: each value is the token's CSS variable, so it
+follows the theme too.
+
+```tsx
+import { vars } from '@kalads/tokens/vars';
+
+<div style={{ gap: vars.spacing.md, backgroundColor: vars.bg.subtle }} />;
+```
+
 ### Coding agents
 
 Each component package ships an agent skill with the components, tokens and usage rules. In your app,

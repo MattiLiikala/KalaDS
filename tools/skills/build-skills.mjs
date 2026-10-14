@@ -234,7 +234,10 @@ function tokensPage(platform) {
     '',
     native
       ? 'Use these in your own styles. Dimensions are numbers (density-independent pixels), colours are strings, shadows are `boxShadow` values. Read colours and shadows inside a component with `const { s } = useTokens()` (`s.bg.subtle`), so they follow dark mode; sizes and spacing can also come from `import { tokens } from \'@kalads/tokens/native\'` (`tokens.semantic.spacing.md`).'
-      : 'Use these CSS custom properties in your own CSS, for the layout around components. They are defined by `@kalads/tokens/css`. Colours and shadows have a value per theme: the **Dark** column is what the token resolves to inside `data-kds-theme="dark"`.',
+      : 'Use these CSS custom properties in your own CSS, for the layout around components. They are defined by `@kalads/tokens/css`. Colours and shadows have a value per theme: the **Dark** column is what the token resolves to inside `data-kds-theme="dark"`.' +
+        (platform === 'react'
+          ? " In style objects, use the same tokens from `import { vars } from '@kalads/tokens/vars'`: the path in camelCase (`--kds-semantic-text-link-hover` is `vars.text.linkHover`), and each value is the variable, so it follows the theme."
+          : ''),
     '',
     'Use the **semantic** tokens: they say what a value is for, so they stay right when the palette changes. Never use core palette tokens (`color.*`): they stay the same in dark mode. Semantic tokens for data visualisation will come later.',
     '',
