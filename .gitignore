@@ -13,3 +13,18 @@ packages/spec/src/generated.ts
 packages/*/skills/
 apps/*/.claude/skills/
 apps/*/.agents/skills/
+
+# Expo: machine-local state and logs (.expo), native projects from `expo prebuild`, web export
+.expo/
+apps/native-playground/ios/
+apps/native-playground/android/
+web-build/
+
+# Local environment, logs, test coverage, editor and agent settings
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+.idea/
+.claude/settings.local.json
