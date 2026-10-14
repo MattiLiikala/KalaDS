@@ -1,0 +1,26 @@
+{
+  "name": "@kalads/skills-builder",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Generates the agent skills shipped in the KalaDS component packages (skills/kalads-<platform>/).",
+  "exports": {
+    "./markup": {
+      "types": "./lib/markup.d.ts",
+      "default": "./lib/markup.mjs"
+    }
+  },
+  "scripts": {
+    "build": "node build-skills.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "@kalads/icons": "workspace:*",
+    "@kalads/react-components": "workspace:*",
+    "@kalads/react-native-components": "workspace:*",
+    "@kalads/spec": "workspace:*",
+    "@kalads/tokens": "workspace:*",
+    "@kalads/web-components": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}

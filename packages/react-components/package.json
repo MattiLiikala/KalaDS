@@ -8,7 +8,16 @@
       "types": "./dist/types/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./skills/*": "./skills/*"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "bin"
+  ],
+  "bin": {
+    "kalads-skills": "./bin/kalads-skills.mjs"
   },
   "types": "dist/types/index.d.ts",
   "sideEffects": ["**/*.css"],
@@ -17,7 +26,8 @@
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepack": "node ../../tools/skills/build-skills.mjs"
   },
   "dependencies": {
     "@kalads/icons": "workspace:*",

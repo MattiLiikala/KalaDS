@@ -120,7 +120,7 @@ const preview: Preview = {
           'Components',
           ['Inputs', 'Data Display', 'Feedback', 'Surfaces', 'Navigation', 'Layout'],
           'Guidelines',
-          ['Accessibility', 'Buttons and Surfaces', 'Writing', 'For AI Agents'],
+          ['Accessibility', 'Buttons and Surfaces', 'Writing', 'For AI Agents', 'Agent Skills'],
         ],
       },
     },

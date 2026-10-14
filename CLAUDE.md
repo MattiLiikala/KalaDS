@@ -19,6 +19,7 @@ packages/react-native-components/ @kalads/react-native-components — The same c
 apps/storybook/                   @kalads/storybook               — Documentation (Storybook), one page per component for all three
 apps/react-playground/            @kalads/react-playground        — Every React component next to its web component (visual parity)
 apps/native-playground/           @kalads/native-playground       — Expo app with every React Native component (iOS, Android, web)
+tools/skills/                     @kalads/skills-builder          — Generates the agent skills shipped in the component packages (private)
 ```
 
 The web components are the reference: their attributes (custom-elements.json) generate `@kalads/spec`,
@@ -114,7 +115,7 @@ pnpm dev                  # Start all packages in watch mode + Storybook
 pnpm storybook            # Start Storybook only (packages must be built first)
 pnpm build:storybook      # Static Storybook build
 pnpm typecheck            # TypeScript type checking (includes the docs' code snippets)
-pnpm test                 # Unit tests: React (Vitest + Testing Library), React Native (jest-expo)
+pnpm test                 # Unit tests: React (Vitest), React Native (jest-expo), the agent skills, API parity
 ```
 
 ## Adding a New Token
@@ -151,10 +152,25 @@ pnpm test                 # Unit tests: React (Vitest + Testing Library), React 
 8. Add `apps/storybook/src/snippets/<Name>.web.html`, `<Name>.react.tsx` and `<Name>.native.tsx` for the
    docs page's Code section: the same example in all three.
 
+## Agent skills (`tools/skills`)
+
+Each component package publishes an agent skill (`skills/kalads-web`, `kalads-react`, `kalads-react-native`)
+and the `kalads-skills` command (`bin/`) that links it into an app. `pnpm build` generates the skills from
+the manifest, the type declarations, the tokens, the icons and the docs (snippets, Usage sections,
+Guidelines); only `SKILL.md`'s rules and `setup.md` are written by hand, in `tools/skills/templates/`.
+
+- **Skills are for people building apps with KalaDS.** Never put contributor rules (this file, component
+  checklists, tokens per component, stories, `@property`, `part`) into a skill or its templates.
+- Docs text that reaches the skills (component descriptions, Usage sections, Guidelines pages) must read
+  correctly outside Storybook: no "this page", "the props table", "the story below".
+- After changing the generator or templates: `pnpm build`, then `pnpm --filter @kalads/skills-builder test`.
+- The playgrounds use the skills like any app: `AGENTS.md` there is written by `pnpm exec kalads-skills`
+  (run it in the app after a version change); the `.claude/skills` / `.agents/skills` links are gitignored.
+
 ## Documentation (Storybook)
 
 `apps/storybook` is themed with KalaDS itself. Sections: Introduction, Getting Started, Foundations
-(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Writing, For AI Agents).
+(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Writing, For AI Agents, Agent Skills).
 
 - **Component pages:** every component has `<Name>.mdx` next to its stories, using `<Meta of={...} />`, the
   header block, and a Usage section with `Do` / `Dont` examples built from real components. Usage text

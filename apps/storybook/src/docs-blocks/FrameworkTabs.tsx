@@ -1,5 +1,6 @@
 import React from 'react';
 import { Source } from '@storybook/blocks';
+import { markup } from '@kalads/skills-builder/markup';
 
 interface Props {
   /** The web snippet (src/snippets/<Name>.web.html, imported with ?raw). */
@@ -8,18 +9,6 @@ interface Props {
   react: string;
   /** The React Native snippet's source (src/snippets/<Name>.native.tsx, imported with ?raw). */
   native: string;
-}
-
-/**
- * The markup a React or React Native snippet returns, dedented. The files are whole components so they
- * type-check; the page shows only the usage, like the web snippet.
- */
-export function markup(code: string) {
-  const match = code.match(/\n([ \t]*)return \(\n([\s\S]*?)\n\1\);\n/);
-  if (!match) throw new Error('FrameworkTabs: a snippet must return its markup as `return (\n…\n);`');
-  const lines = match[2].split('\n');
-  const indent = Math.min(...lines.filter((l) => l.trim()).map((l) => l.match(/^ */)![0].length));
-  return lines.map((l) => l.slice(indent)).join('\n');
 }
 
 /**

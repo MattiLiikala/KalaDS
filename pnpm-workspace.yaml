@@ -1,6 +1,7 @@
 packages:
   - "packages/*"
   - "apps/*"
+  - "tools/*"
 
 # One version of React and the React Native stack for the whole monorepo, matched to the Expo SDK the
 # native playground uses (expo/bundledNativeModules.json). Workspace packages are symlinked, so a second

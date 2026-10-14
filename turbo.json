@@ -16,6 +16,12 @@
         "dist/**"
       ]
     },
+    "@kalads/skills-builder#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
     "dev": {
       "dependsOn": [
         "^build"
@@ -59,6 +65,17 @@
         "src/**",
         "*.config.*",
         "jest.config.cjs"
+      ]
+    },
+    "@kalads/skills-builder#test": {
+      "dependsOn": [
+        "@kalads/skills-builder#build"
+      ],
+      "inputs": [
+        "test/**",
+        "templates/**",
+        "lib/**",
+        "build-skills.mjs"
       ]
     }
   }

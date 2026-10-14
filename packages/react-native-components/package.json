@@ -7,7 +7,16 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./skills/*": "./skills/*"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "bin"
+  ],
+  "bin": {
+    "kalads-skills": "./bin/kalads-skills.mjs"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +26,8 @@
     "dev": "tsc --project tsconfig.build.json --watch",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepack": "node ../../tools/skills/build-skills.mjs"
   },
   "dependencies": {
     "@kalads/icons": "workspace:*",

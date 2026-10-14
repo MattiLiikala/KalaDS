@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guidelines/Agent Skills" />
+
+# Agent skills
+
+Every KalaDS component package ships an **agent skill**: a folder of instructions that coding agents
+(Claude Code, Codex, Cursor and others) read before they write UI code. With the skill enabled, an agent
+uses KalaDS components instead of raw elements, sets props instead of styles, takes values from tokens
+and follows the guidelines on these pages.
+
+## What's in a skill
+
+<table className="kds-docs-table">
+  <thead><tr><th>Package</th><th>Skill</th><th>For</th></tr></thead>
+  <tbody>
+    <tr><td><code>@kalads/web-components</code></td><td><code>kalads-web</code></td><td>HTML or any framework using the <code>{'<kds-*>'}</code> elements</td></tr>
+    <tr><td><code>@kalads/react-components</code></td><td><code>kalads-react</code></td><td>React apps</td></tr>
+    <tr><td><code>@kalads/react-native-components</code></td><td><code>kalads-react-native</code></td><td>React Native and Expo apps</td></tr>
+  </tbody>
+</table>
+
+Each skill has:
+
+- the rules for building with KalaDS on that platform (`SKILL.md`);
+- a reference for every component: its props with types and defaults, an example and the usage guidance;
+- the semantic tokens, every icon, and setup instructions;
+- the Buttons and Surfaces, Accessibility and Writing guidelines;
+- a checker script (`scripts/check.mjs`) that flags rule breaks in your code.
+
+A skill is generated from the package it ships in, so it always describes the version you have
+installed. When you update KalaDS, the skill updates with it.
+
+## Enable the skills
+
+**1. Install KalaDS** as usual (see **Getting Started**).
+
+**2. Link the skills into your project.** Run this in the project root, where your `package.json` is:
+
+```sh
+pnpm exec kalads-skills
+```
+
+It finds every KalaDS component package you have installed and:
+
+- links its skill into `.claude/skills/` (read by Claude Code) and `.agents/skills/` (read by other agents);
+- adds a short KalaDS section to `AGENTS.md` (between `<!-- kalads-skills:start -->` and
+  `<!-- kalads-skills:end -->`) that points agents without skill support to the skill. The rest of your `AGENTS.md` is left as it is.
+
+Running it again is safe: it replaces the links and the section instead of adding more.
+
+**3. Check that it worked.**
+
+```sh
+pnpm exec kalads-skills --check
+```
+
+It prints the linked skills, or what's missing. Agents that support skills find them in those folders
+when they start, and load the KalaDS skill by themselves when you ask for UI work.
+
+## Keep the skills up to date
+
+The links point into `node_modules`, so a `pnpm update` updates the skills too. Only the version noted in
+`AGENTS.md` needs refreshing, so run the command again after updating KalaDS. The easiest way is to run it
+from your project's own `postinstall` script (pnpm runs your project's scripts, unlike those of
+dependencies):
+
+```json
+{
+  "scripts": {
+    "postinstall": "kalads-skills"
+  }
+}
+```
+
+In CI, add `pnpm exec kalads-skills --check`: it fails when the links are missing or `AGENTS.md` is out
+of date.
+
+## What to commit
+
+- **Commit `AGENTS.md`**, so every agent and teammate gets the pointer.
+- **Don't commit the links.** They point into `node_modules` and only work after install, so add them to
+  `.gitignore`:
+
+```text
+.claude/skills/kalads-*
+.agents/skills/kalads-*
+```
+
+If your setup can't use symlinks (some Windows and container setups), copy the skills instead with
+`pnpm exec kalads-skills --copy`, and run it again after every update.
+
+## Monorepos
+
+The command reads the packages installed in the current folder's `node_modules`. In a monorepo, run it
+in each app that uses KalaDS, so each app gets the skill for its own platform and version:
+
+```sh
+pnpm --filter my-web-app exec kalads-skills
+pnpm --filter my-mobile-app exec kalads-skills
+```
+
+## Check your code
+
+Agents run the skill's checker before they finish a change. You can run it too, on any files or folders:
+
+```sh
+node .agents/skills/kalads-react/scripts/check.mjs src
+```
+
+It reports problems as `file:line` with a fix, and exits with an error when it finds any. That makes it
+usable as a lint step. It can't judge everything (good copy, the right component for the job), so review
+still matters.
+
+## Troubleshooting
+
+<table className="kds-docs-table">
+  <thead><tr><th>Message or symptom</th><th>Fix</th></tr></thead>
+  <tbody>
+    <tr><td><code>no KalaDS skills found</code></td><td>Run the command in the folder whose <code>node_modules</code> has <code>@kalads</code> packages, after <code>pnpm install</code>.</td></tr>
+    <tr><td><code>out of date</code> from <code>--check</code></td><td>Run <code>pnpm exec kalads-skills</code> again (usually after updating KalaDS).</td></tr>
+    <tr><td>The agent doesn't use the skill</td><td>Check that <code>{'.claude/skills/kalads-*'}</code> or <code>{'.agents/skills/kalads-*'}</code> exists and isn't a broken link (run <code>pnpm install</code> first). For agents without skill support, check that <code>AGENTS.md</code> has the KalaDS section.</td></tr>
+  </tbody>
+</table>

@@ -176,6 +176,9 @@ importers:
       '@kalads/react-native-components':
         specifier: workspace:*
         version: link:../../packages/react-native-components
+      '@kalads/skills-builder':
+        specifier: workspace:*
+        version: link:../../tools/skills
       '@storybook/addon-essentials':
         specifier: ^8.6.18
         version: 8.6.18(@types/react@19.3.0)(storybook@8.6.18(prettier@3.8.3))
@@ -402,6 +405,30 @@ importers:
       vite:
         specifier: ^6.3.5
         version: 6.4.3(@types/node@26.6.5)(lightningcss@1.33.0)(terser@5.51.2)(yaml@2.9.0)
+
+  tools/skills:
+    devDependencies:
+      '@kalads/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
+      '@kalads/react-components':
+        specifier: workspace:*
+        version: link:../../packages/react-components
+      '@kalads/react-native-components':
+        specifier: workspace:*
+        version: link:../../packages/react-native-components
+      '@kalads/spec':
+        specifier: workspace:*
+        version: link:../../packages/spec
+      '@kalads/tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
+      '@kalads/web-components':
+        specifier: workspace:*
+        version: link:../../packages/web-components
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
 
 packages:
 
@@ -7041,9 +7068,7 @@ snapshots:
       metro-runtime: 0.84.6
     transitivePeerDependencies:
       - '@babel/core'
-      - bufferutil
       - supports-color
-      - utf-8-validate
     optional: true
 
   '@react-native/normalize-colors@0.74.89': {}
