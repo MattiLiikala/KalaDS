@@ -56,8 +56,8 @@ const RULES = {
    \`kds-typography\` — not styled \`<div>\`s and \`<span>\`s.
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own CSS use the semantic
    tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. They follow dark mode;
-   core palette tokens (\`--kds-color-*\`) and literal colours don't, so use them only for data
-   visualisation. See [references/tokens.md](references/tokens.md).
+   core palette tokens (\`--kds-color-*\`) and literal colours don't, so never use them (semantic tokens
+   for data visualisation will come later). See [references/tokens.md](references/tokens.md).
 5. **Icons are \`<kds-icon-*>\` elements** (\`<kds-icon-plus>\`). Never inline \`<svg>\` or icon image files.
    Give an icon a \`label\` when it carries meaning on its own; decorative icons need none.
 6. **Solid buttons need a surface they stand out from.** On \`bg="inverse"\` surfaces add \`on-inverse\` to
@@ -74,8 +74,8 @@ const RULES = {
    \`<div>\`s and \`<span>\`s.
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own CSS use the semantic
    tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. They follow dark mode;
-   core palette tokens (\`--kds-color-*\`) and literal colours don't, so use them only for data
-   visualisation. See [references/tokens.md](references/tokens.md).
+   core palette tokens (\`--kds-color-*\`) and literal colours don't, so never use them (semantic tokens
+   for data visualisation will come later). See [references/tokens.md](references/tokens.md).
 5. **Icons come from \`@kalads/icons/react\`** (\`<PlusIcon />\`), or \`<Icon name="plus" />\`. Never inline
    \`<svg>\` or icon image files. Give an icon a \`label\` when it carries meaning on its own.
 6. **Solid buttons need a surface they stand out from.** Inside \`<Box bg="inverse">\` add \`onInverse\` to every
@@ -97,8 +97,8 @@ const RULES = {
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own styles use the semantic
    tokens. Read colours and shadows inside the component with \`useTokens()\` (\`const { s } = useTokens();\`
    then \`s.bg.subtle\`), so they follow dark mode; sizes and spacing can also come from \`tokens.semantic\`
-   in \`@kalads/tokens/native\` (\`tokens.semantic.spacing.md\`). Core palette tokens (\`tokens.color.*\`) are
-   only for data visualisation. See [references/tokens.md](references/tokens.md).
+   in \`@kalads/tokens/native\` (\`tokens.semantic.spacing.md\`). Never use core palette tokens
+   (\`tokens.color.*\`). See [references/tokens.md](references/tokens.md).
 5. **Icons come from \`@kalads/icons/native\`** (\`<PlusIcon />\`), or \`<Icon name="plus" />\`. Never draw
    icons with react-native-svg or image files. Give an icon a \`label\` when it carries meaning on its own.
 6. **Solid buttons need a surface they stand out from.** Inside \`<Box bg="inverse">\` add \`onInverse\` to every

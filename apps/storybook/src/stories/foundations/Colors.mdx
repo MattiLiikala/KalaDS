@@ -5,34 +5,18 @@ import { ColorScale, TokenTable } from '../../docs-blocks';
 
 # Colors
 
-Colour tokens come in two layers. **Palettes** (`color.*`) are the raw scales. **Semantic tokens**
-(`semantic.*`) give them a job, such as a page background, body text or a danger border. Use semantic
-tokens in product code, and palettes only for data visualisation.
+Colour tokens come in two layers. **Semantic tokens** (`semantic.*`) name a colour by its job, such as a
+page background, body text or a danger border. **Palettes** (`color.*`, the core tokens) are the raw
+scales the semantic tokens point to.
 
-Semantic tokens have a value per theme: the tables below list the palette step each one uses in the light
-and the dark theme (see **Guidelines/Dark Mode**). Palettes are the same in both.
-
-Each swatch shows what it can carry on the default page background: **Text** passes 4.5:1 for body text,
-**UI** passes 3:1 for borders, icons and large text. Swatches without a label are for backgrounds and
-fills only.
-
-## Brand and neutral
-
-<ColorScale path="color.primary" />
-<ColorScale path="color.secondary" />
-<ColorScale path="color.neutral" />
-
-## Status
-
-In every status palette, steps 600 and up pass 4.5:1 for text. Components use the 700 step (the semantic
-`*-strong` tokens) for status text and icons, and 100–200 for tinted backgrounds.
-
-<ColorScale path="color.danger" />
-<ColorScale path="color.warning" />
-<ColorScale path="color.success" />
-<ColorScale path="color.info" />
+**Use only semantic tokens** in your code, in components, layouts and docs alike. They keep their meaning
+in both themes, while a palette step stays the same colour and breaks in one of them. Semantic tokens for
+data visualisation (charts, data grids) will come in a later release.
 
 ## Semantic tokens
+
+The tokens to use in your code. Each table lists the palette step a token uses in the light and the dark
+theme (see **Guidelines/Dark Mode**).
 
 ### Backgrounds
 
@@ -59,9 +43,32 @@ a **subtle** step for backgrounds, and a **subtle-hover** step.
 
 <TokenTable path="semantic.status" preview="color" />
 
-## Data visualisation
+## Palettes
 
-For charts and graphs only, never for UI.
+The core scales behind the semantic tokens, for reference. They are the same in both themes.
+
+Where a swatch has a label, it shows what the colour can carry on the default page background: **Text**
+passes 4.5:1 for body text, **UI** passes 3:1 for borders, icons and large text.
+
+### Brand and neutral
+
+<ColorScale path="color.primary" usage={false} />
+<ColorScale path="color.secondary" usage={false} />
+<ColorScale path="color.neutral" />
+
+### Status
+
+In every status palette, steps 600 and up pass 4.5:1 for text. Components use the 700 step (the semantic
+`*-strong` tokens) for status text and icons, and 100–200 for tinted backgrounds.
+
+<ColorScale path="color.danger" />
+<ColorScale path="color.warning" />
+<ColorScale path="color.success" />
+<ColorScale path="color.info" />
+
+### Data visualisation
+
+The palettes reserved for charts and graphs. Their semantic tokens will come in a later release.
 
 <ColorScale path="color.data1" />
 <ColorScale path="color.data2" />

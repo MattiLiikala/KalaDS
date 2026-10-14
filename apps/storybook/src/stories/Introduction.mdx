@@ -3,17 +3,13 @@ import { Meta } from '@storybook/blocks';
 <Meta title="Introduction" />
 
 <div className="kds-docs-hero">
-  <span className="kds-docs-overline">KalaDS design system</span>
-  <kds-typography variant="h1" as="h1">Warm, clear interfaces from one set of parts</kds-typography>
+  <kds-typography variant="h1" as="h1">KalaDS – a multiplatform design system</kds-typography>
   <kds-typography variant="body" color="subtle">
-    KalaDS is a set of design tokens, icons and web components. They work in any framework or none, and
-    every example on these pages is the real component.
+    KalaDS is one set of design tokens and icons with a component library for each platform: web
+    components for any web page or framework, React, and React Native for iOS and Android. The libraries
+    share the same components, props, variants and defaults, so a design works the same everywhere. Every
+    example on these pages is the real component.
   </kds-typography>
-  <kds-stack direction="row" gap="sm" wrap>
-    <kds-badge variant="primary">Lit web components</kds-badge>
-    <kds-badge variant="success">Contrast-checked colours</kds-badge>
-    <kds-badge>Style Dictionary tokens</kds-badge>
-  </kds-stack>
 </div>
 
 <kds-grid min="sm" gap="lg" className="kds-docs-cards">
@@ -38,22 +34,34 @@ import { Meta } from '@storybook/blocks';
   <a href="./?path=/docs/guidelines-accessibility--docs" target="_top">
     <kds-card interactive elevation="2">
       <kds-typography variant="h4" gutter>Guidelines</kds-typography>
-      <kds-typography color="subtle">Accessibility, buttons on surfaces, dark mode, writing, the rules for AI agents, and agent skills.</kds-typography>
+      <kds-typography color="subtle">Accessibility, buttons on surfaces, dark mode, writing, and agent skills for coding agents.</kds-typography>
     </kds-card>
   </a>
 </kds-grid>
 
 ## How it fits together
 
-- **`@kalads/tokens`**: every colour, size, font and shadow as CSS custom properties, in three layers:
-  core values, semantic names (what a value is for) and component tokens.
-- **`@kalads/icons`**: SVG icons as `<kds-icon-*>` elements that take the text colour.
-- **`@kalads/web-components`**: `<kds-*>` web components built from the tokens. Change a token and every
-  component follows.
+The **tokens** (`@kalads/tokens`) hold every colour, size, font and shadow, in three layers:
+
+- **Core tokens:** the primitive values, such as `color.primary.500` or `color.danger.200`.
+- **Semantic tokens:** tokens named for their purpose, such as `semantic.text.link-hover` or
+  `semantic.interactive.accent`. Use these in your own code; they also switch with the theme.
+- **Component tokens:** every component is fully tokenised (`component.button.primary.bg-hover`), so the
+  same design can be delivered to different environments: tech stacks and devices.
+
+On top of the tokens:
+
+- **Icons** (`@kalads/icons`): `<kds-icon-*>` elements for the web, and icon components for React and
+  React Native.
+- **Components:** `@kalads/web-components` (`<kds-*>` elements), `@kalads/react-components` and
+  `@kalads/react-native-components`. They are built from the component tokens: change a token and every
+  library follows.
 
 ## Using these docs
 
 - **Designers:** start with Foundations and the Usage section on each component page.
-- **Developers:** each component page has a props table (attributes, slots, events and CSS parts) and
-  copyable code under every example.
-- **AI agents:** read Guidelines/For AI Agents before changing any UI code.
+- **Developers:** start with Getting Started. Each component page has a props table and its code in all
+  three libraries.
+- **Coding agents:** install the agent skill that ships with the component packages
+  (`pnpm exec kalads-skills`, see **Guidelines/Agent Skills**). It has these docs' rules, components and
+  tokens in the agent's own platform terms.

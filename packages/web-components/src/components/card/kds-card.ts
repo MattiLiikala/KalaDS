@@ -37,7 +37,10 @@ export class KdsCard extends LitElement {
       --_offset-hover: var(--kds-component-card-offset-hover-2);
     }
 
+    /* Fills the height the layout gives the card (a grid row), so cards in a row line up. */
     .card {
+      box-sizing: border-box;
+      height: 100%;
       display: flex;
       flex-direction: column;
       gap: var(--kds-component-card-gap);

@@ -236,7 +236,7 @@ function tokensPage(platform) {
       ? 'Use these in your own styles. Dimensions are numbers (density-independent pixels), colours are strings, shadows are `boxShadow` values. Read colours and shadows inside a component with `const { s } = useTokens()` (`s.bg.subtle`), so they follow dark mode; sizes and spacing can also come from `import { tokens } from \'@kalads/tokens/native\'` (`tokens.semantic.spacing.md`).'
       : 'Use these CSS custom properties in your own CSS, for the layout around components. They are defined by `@kalads/tokens/css`. Colours and shadows have a value per theme: the **Dark** column is what the token resolves to inside `data-kds-theme="dark"`.',
     '',
-    'Use the **semantic** tokens: they say what a value is for, so they stay right when the palette changes. Core palette tokens (`color.*`) are only for data visualisation.',
+    'Use the **semantic** tokens: they say what a value is for, so they stay right when the palette changes. Never use core palette tokens (`color.*`): they stay the same in dark mode. Semantic tokens for data visualisation will come later.',
     '',
     `Layout components take the token steps directly as props: \`gap="md"\`, \`padding="lg"\`, \`bg="subtle"\`, \`radius="md"\` — prefer them to writing styles.`,
   ];
@@ -258,10 +258,6 @@ function tokensPage(platform) {
     }
   }
   out.push('', '## Text styles', '', 'Use `Typography` variants (`h1`–`h6`, `body`, `body-sm`, `label`, `caption`, `overline`) instead of setting font sizes.'.replace('`Typography`', platform === 'web' ? '`<kds-typography>`' : '`Typography`'));
-  const data = Object.keys(tokensJson.color ?? {}).filter((k) => k.startsWith('data'));
-  if (data.length) {
-    out.push('', '## Data visualisation', '', `Palettes: ${data.map((d) => `\`${d}\``).join(', ')}, each with steps 100–900 (${native ? '`tokens.color.data1[500]`' : '`var(--kds-color-data1-500)`'}). Only for charts and data, never for interface elements.`);
-  }
   return out.join('\n') + '\n';
 }
 

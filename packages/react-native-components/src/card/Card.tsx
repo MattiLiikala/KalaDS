@@ -51,6 +51,7 @@ export function Card({ elevation = CardDefaults.elevation, interactive, header, 
     </>
   );
   if (!interactive) return <View style={[surface(false), style]}>{content}</View>;
+  // flexGrow: the surface fills the Pressable, so interactive cards stretched by a row line up.
   return (
     <Pressable
       role={onPress ? 'link' : undefined}
@@ -60,7 +61,7 @@ export function Card({ elevation = CardDefaults.elevation, interactive, header, 
       onHoverOut={() => setHovered(false)}
       style={style}
     >
-      {({ pressed }) => <View style={surface(pressed || hovered)}>{content}</View>}
+      {({ pressed }) => <View style={[surface(pressed || hovered), { flexGrow: 1 }]}>{content}</View>}
     </Pressable>
   );
 }

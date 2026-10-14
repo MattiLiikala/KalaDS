@@ -80,7 +80,8 @@ font-size: var(--kds-font-size-200);
    - A Storybook story in `apps/storybook/src/stories/components/`
 
 **7. Never use palette (`--kds-color-*`) tokens or literal colours for UI**, in components or docs: only
-semantic tokens change with the theme (light / dark, `data-kds-theme`). Palettes are for data visualisation.
+semantic tokens change with the theme (light / dark, `data-kds-theme`). This includes charts: semantic
+data-visualisation tokens will come in a later release.
 
 **8. Never place a solid button (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with its fill.**
 The label colour tokens keep the label readable on the fill, but the button itself must stand out: the surface
@@ -99,7 +100,8 @@ the button colour. See **Guidelines/Buttons and Surfaces** in Storybook.
 - `var(--kds-semantic-radius-*)` — border radius
 - `var(--kds-semantic-padding-*)` — component internal padding
 
-**2. Use core tokens only for data visualization** — `var(--kds-color-data1-500)` etc.
+**2. Reference core tokens only from semantic tokens** (`packages/tokens/src/semantic/`), never in components,
+apps or docs.
 
 **3. Add `declare global { interface HTMLElementTagNameMap { ... } }` to every new component.**
 
@@ -180,9 +182,13 @@ Guidelines); only `SKILL.md`'s rules and `setup.md` are written by hand, in `too
 ## Documentation (Storybook)
 
 `apps/storybook` is themed with KalaDS itself. Sections: Introduction, Getting Started, Foundations
-(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Dark Mode, Writing, For AI Agents, Agent
+(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Dark Mode, Writing, Agent
 Skills). The toolbar's Theme switch (`preview.ts` / `manager.ts`) sets `data-kds-theme` on the preview and
 switches Storybook's own interface and the docs frame (`ThemedDocsContainer`).
+
+- **Write every page for everyone** (designers, developers and coding agents alike), with no
+  agent-only pages or sections. Agents get the same content through the agent skills; the docs point
+  them there (`pnpm exec kalads-skills`, Guidelines/Agent Skills).
 
 - **Component pages:** every component has `<Name>.mdx` next to its stories, using `<Meta of={...} />`, the
   header block, and a Usage section with `Do` / `Dont` examples built from real components. Usage text

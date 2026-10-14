@@ -23,16 +23,21 @@ for your platform (see **Guidelines/Agent Skills**).
 
 ## 1. Add the packages
 
+Every app needs the tokens and icons, plus the component library for its platform:
+
 <table className="kds-docs-table">
   <thead><tr><th>Package</th><th>What it gives you</th><th>Import</th></tr></thead>
   <tbody>
-    <tr><td><code>@kalads/tokens</code></td><td>All design tokens as CSS custom properties (also as JS and JSON)</td><td><code>@kalads/tokens/css</code></td></tr>
-    <tr><td><code>@kalads/icons</code></td><td>Icons as <code>{'<kds-icon-*>'}</code> elements</td><td><code>@kalads/icons</code></td></tr>
-    <tr><td><code>@kalads/web-components</code></td><td>The <code>{'<kds-*>'}</code> components</td><td><code>@kalads/web-components</code></td></tr>
+    <tr><td><code>@kalads/tokens</code></td><td>All design tokens: CSS custom properties, and JS, JSON and React Native values</td><td><code>@kalads/tokens/css</code></td></tr>
+    <tr><td><code>@kalads/icons</code></td><td>Icons: <code>{'<kds-icon-*>'}</code> elements, and components for React and React Native</td><td><code>@kalads/icons</code>, <code>/react</code>, <code>/native</code></td></tr>
+    <tr><td><code>@kalads/web-components</code></td><td>The <code>{'<kds-*>'}</code> components, for any web page or framework</td><td><code>@kalads/web-components</code></td></tr>
+    <tr><td><code>@kalads/react-components</code></td><td>The components for React on the web</td><td><code>@kalads/react-components</code></td></tr>
+    <tr><td><code>@kalads/react-native-components</code></td><td>The components for React Native (iOS and Android)</td><td><code>@kalads/react-native-components</code></td></tr>
   </tbody>
 </table>
 
-Inside this monorepo they are workspace dependencies (`"@kalads/web-components": "workspace:*"`).
+Inside this monorepo they are workspace dependencies (`"@kalads/web-components": "workspace:*"`). Steps 2–5
+set up the web components; React and React Native follow below.
 
 ## 2. Load tokens, fonts and components
 
@@ -100,7 +105,36 @@ so they stay right when the palette changes.
 }
 ```
 
-Every token is listed in **Foundations**. The rules for what not to do are in **Guidelines/For AI Agents**.
+Every token is listed in **Foundations**.
+
+### Tokens in JavaScript
+
+In React and React Native, most layout values are component props, so you rarely need a token in code:
+`<Stack gap="md">`, `<Box padding="lg" bg="subtle">`, `<Typography color="subtle">`.
+
+- **React Native:** for your own styles, read tokens from `useTokens()`: `const { s } = useTokens();`,
+  then `{ gap: s.spacing.md, backgroundColor: s.bg.subtle }`. Colours from `useTokens()` follow the theme;
+  sizes and spacing are also available as `tokens.semantic.*` from `@kalads/tokens/native`, for
+  `StyleSheet.create`.
+- **React and the web:** use the CSS custom properties, in a CSS module or as a value in a `style` object
+  on your own elements: `style={{ gap: 'var(--kds-semantic-spacing-md)' }}`. Never put `style` on a
+  KalaDS component.
+
+## Rules
+
+These keep an app consistent with KalaDS and working in both themes. The agent skills check the same rules
+in code (see **Guidelines/Agent Skills**).
+
+- **Configure components with their props**, never with inline styles or CSS that overrides them.
+- **Use a KalaDS component** instead of your own `<button>`, `<input>` or card when one exists. Check the
+  Components section first.
+- **Take every value from semantic tokens:** colours, spacing, radii, font sizes. No hard-coded values, and
+  no core tokens (`--kds-color-*`): only semantic tokens change with the theme.
+- **Use icon components** (`<kds-icon-*>`, or `@kalads/icons/react` / `/native`), never inline `<svg>` or
+  image files.
+- **Put solid buttons only on surfaces they stand out from**, and add `on-inverse` on inverse surfaces
+  (see **Guidelines/Buttons and Surfaces**).
+- **Follow Guidelines/Accessibility and Guidelines/Writing** for labels, focus and interface text.
 
 ## React
 

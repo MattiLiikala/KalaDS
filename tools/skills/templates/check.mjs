@@ -118,11 +118,11 @@ function checkNativeImports(file, code) {
 /** Colours that stay the same in dark mode: palette tokens in UI, React Native colours read without useTokens(). */
 function checkThemed(file, code) {
   if (PLATFORM === 'native') {
-    for (const m of code.matchAll(/\btokens\.(semantic\.(bg|text|border|status|interactive|shadow)|component\.[\w.]*(bg|text|color|border|shadow)\w*|color\.(?!data\d))/gi))
+    for (const m of code.matchAll(/\btokens\.(semantic\.(bg|text|border|status|interactive|shadow)|component\.[\w.]*(bg|text|color|border|shadow)\w*|color\.)/gi))
       report(file, code, m.index, `static colour token \`tokens.${m[1]}\`: read colours from useTokens() so they follow dark mode`);
   } else {
-    for (const m of code.matchAll(/--kds-color-(?!data\d)[\w-]+/g))
-      report(file, code, m.index, `palette token \`${m[0]}\` doesn't follow dark mode: use a semantic token (var(--kds-semantic-…))`);
+    for (const m of code.matchAll(/--kds-color-[\w-]+/g))
+      report(file, code, m.index, `palette token \`${m[0]}\`: use a semantic token (var(--kds-semantic-…)), which follows dark mode`);
   }
 }
 

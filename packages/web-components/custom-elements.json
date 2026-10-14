@@ -1021,6 +1021,306 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion-item/kds-accordion-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsAccordionItem",
+          "cssParts": [
+            {
+              "description": "The clickable heading row",
+              "name": "summary"
+            },
+            {
+              "description": "The content wrapper",
+              "name": "content"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Section content",
+              "name": ""
+            },
+            {
+              "description": "Rich heading content (alternative to the `heading` attribute)",
+              "name": "heading"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; border-bottom: var(--kds-component-accordion-item-border-width) solid var(--kds-component-accordion-item-border); } :host([hidden]) { display: none; } summary { display: flex; align-items: center; justify-content: space-between; gap: var(--kds-semantic-spacing-md); padding: var(--kds-component-accordion-item-padding-y) var(--kds-component-accordion-item-padding-x); border-radius: var(--kds-component-accordion-item-radius); color: var(--kds-component-accordion-item-title-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-body-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); cursor: pointer; list-style: none; outline: none; transition: background-color 0.15s ease; } summary::-webkit-details-marker { display: none; } summary:hover { background-color: var(--kds-component-accordion-item-bg-hover); } summary:focus-visible { ${unsafeCSS(focusRing('accordion-item'))} } :host([disabled]) summary { cursor: not-allowed; background: none; color: var(--kds-semantic-text-muted); } .chevron { display: inline-flex; flex-shrink: 0; color: var(--kds-component-accordion-item-icon); transition: rotate 0.15s ease; --kds-icon-size: var(--kds-semantic-spacing-lg); } /* Follows the item, not <details>: while closing, <details> stays open until the animation ends. */ :host([open]) .chevron { rotate: 180deg; } .panel.animating { overflow: hidden; } .content { padding: 0 var(--kds-component-accordion-item-padding-x) var(--kds-component-accordion-item-padding-y); color: var(--kds-component-accordion-item-content-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); } @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } } `"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_details",
+              "type": {
+                "text": "HTMLDetailsElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_panel",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_animation",
+              "type": {
+                "text": "Animation | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_animate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "Animates the panel height to open or closed. <details> is opened first (so the content renders and\ncan be measured) and only closed once the closing animation ends. Reversing mid-way starts from the\ncurrent height."
+            },
+            {
+              "kind": "method",
+              "name": "_onSummaryClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "The summary click is handled here instead of natively, so opening and closing can animate."
+            },
+            {
+              "kind": "method",
+              "name": "_onToggle",
+              "privacy": "private",
+              "description": "Syncs `open` when <details> is toggled some other way (for example find-in-page)."
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchToggle",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the user expands or collapses the section. `detail: { open }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Heading text",
+              "name": "heading"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the section is expanded",
+              "name": "open"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Prevents expanding or collapsing",
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-accordion-item",
+          "customElement": true,
+          "summary": "One expandable section of a kds-accordion.\n\nBuilt on native <details>/<summary>, so it's keyboard operable and announced as expandable. Opening and\nclosing animate the height (skipped with prefers-reduced-motion)."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsAccordionItem",
+          "declaration": {
+            "name": "KdsAccordionItem",
+            "module": "src/components/accordion-item/kds-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/backdrop/kds-backdrop.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsBackdrop",
+          "cssParts": [
+            {
+              "description": "The dimming layer",
+              "name": "overlay"
+            },
+            {
+              "description": "The centred content wrapper",
+              "name": "content"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content centred above the overlay",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: contents; } .backdrop { ${POPUP_RESET} inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; padding: 0; border: none; background: none; align-items: center; justify-content: center; } .backdrop:popover-open, .backdrop:not([popover]):not([hidden]) { display: flex; } .backdrop[hidden] { display: none; } .overlay { position: absolute; inset: 0; background-color: var(--kds-component-backdrop-bg); opacity: var(--kds-component-backdrop-opacity); animation: fade-in 0.15s ease; } .content { position: relative; } @keyframes fade-in { from { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .overlay { animation: none; } } `"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_backdrop",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "changed",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onOverlayClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-close",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the overlay is clicked"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Shows the backdrop",
+              "name": "open"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-backdrop",
+          "customElement": true,
+          "summary": "Dims the page behind temporary content, e.g. while something loads.\n\nCovers the viewport with the overlay colour. Content in the default slot (a spinner, a message) is\ncentred above it. It's shown in the browser's top layer, so it covers everything without z-index.\nkds-dialog and kds-drawer have their own backdrop; use this one for custom overlays.\nThe backdrop doesn't trap focus: for anything the user must interact with, use kds-dialog."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsBackdrop",
+          "declaration": {
+            "name": "KdsBackdrop",
+            "module": "src/components/backdrop/kds-backdrop.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/autocomplete/kds-autocomplete.ts",
       "declarations": [
         {
@@ -1486,306 +1786,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/backdrop/kds-backdrop.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsBackdrop",
-          "cssParts": [
-            {
-              "description": "The dimming layer",
-              "name": "overlay"
-            },
-            {
-              "description": "The centred content wrapper",
-              "name": "content"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content centred above the overlay",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: contents; } .backdrop { ${POPUP_RESET} inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; padding: 0; border: none; background: none; align-items: center; justify-content: center; } .backdrop:popover-open, .backdrop:not([popover]):not([hidden]) { display: flex; } .backdrop[hidden] { display: none; } .overlay { position: absolute; inset: 0; background-color: var(--kds-component-backdrop-bg); opacity: var(--kds-component-backdrop-opacity); animation: fade-in 0.15s ease; } .content { position: relative; } @keyframes fade-in { from { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .overlay { animation: none; } } `"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_backdrop",
-              "type": {
-                "text": "HTMLElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "changed",
-                  "type": {
-                    "text": "PropertyValues<this>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_onOverlayClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-close",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the overlay is clicked"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Shows the backdrop",
-              "name": "open"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-backdrop",
-          "customElement": true,
-          "summary": "Dims the page behind temporary content, e.g. while something loads.\n\nCovers the viewport with the overlay colour. Content in the default slot (a spinner, a message) is\ncentred above it. It's shown in the browser's top layer, so it covers everything without z-index.\nkds-dialog and kds-drawer have their own backdrop; use this one for custom overlays.\nThe backdrop doesn't trap focus: for anything the user must interact with, use kds-dialog."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsBackdrop",
-          "declaration": {
-            "name": "KdsBackdrop",
-            "module": "src/components/backdrop/kds-backdrop.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion-item/kds-accordion-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsAccordionItem",
-          "cssParts": [
-            {
-              "description": "The clickable heading row",
-              "name": "summary"
-            },
-            {
-              "description": "The content wrapper",
-              "name": "content"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Section content",
-              "name": ""
-            },
-            {
-              "description": "Rich heading content (alternative to the `heading` attribute)",
-              "name": "heading"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; border-bottom: var(--kds-component-accordion-item-border-width) solid var(--kds-component-accordion-item-border); } :host([hidden]) { display: none; } summary { display: flex; align-items: center; justify-content: space-between; gap: var(--kds-semantic-spacing-md); padding: var(--kds-component-accordion-item-padding-y) var(--kds-component-accordion-item-padding-x); border-radius: var(--kds-component-accordion-item-radius); color: var(--kds-component-accordion-item-title-text); font-family: var(--kds-semantic-type-label-family); font-size: var(--kds-semantic-type-body-size); font-weight: var(--kds-semantic-type-label-weight); line-height: var(--kds-semantic-type-body-line-height); cursor: pointer; list-style: none; outline: none; transition: background-color 0.15s ease; } summary::-webkit-details-marker { display: none; } summary:hover { background-color: var(--kds-component-accordion-item-bg-hover); } summary:focus-visible { ${unsafeCSS(focusRing('accordion-item'))} } :host([disabled]) summary { cursor: not-allowed; background: none; color: var(--kds-semantic-text-muted); } .chevron { display: inline-flex; flex-shrink: 0; color: var(--kds-component-accordion-item-icon); transition: rotate 0.15s ease; --kds-icon-size: var(--kds-semantic-spacing-lg); } /* Follows the item, not <details>: while closing, <details> stays open until the animation ends. */ :host([open]) .chevron { rotate: 180deg; } .panel.animating { overflow: hidden; } .content { padding: 0 var(--kds-component-accordion-item-padding-x) var(--kds-component-accordion-item-padding-y); color: var(--kds-component-accordion-item-content-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); } @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } } `"
-            },
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_details",
-              "type": {
-                "text": "HTMLDetailsElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_panel",
-              "type": {
-                "text": "HTMLElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_animation",
-              "type": {
-                "text": "Animation | undefined"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "changed",
-                  "type": {
-                    "text": "PropertyValues"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_animate",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "open",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ],
-              "description": "Animates the panel height to open or closed. <details> is opened first (so the content renders and\ncan be measured) and only closed once the closing animation ends. Reversing mid-way starts from the\ncurrent height."
-            },
-            {
-              "kind": "method",
-              "name": "_onSummaryClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ],
-              "description": "The summary click is handled here instead of natively, so opening and closing can animate."
-            },
-            {
-              "kind": "method",
-              "name": "_onToggle",
-              "privacy": "private",
-              "description": "Syncs `open` when <details> is toggled some other way (for example find-in-page)."
-            },
-            {
-              "kind": "method",
-              "name": "_dispatchToggle",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the user expands or collapses the section. `detail: { open }`"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Heading text",
-              "name": "heading"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Whether the section is expanded",
-              "name": "open"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Prevents expanding or collapsing",
-              "name": "disabled"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-accordion-item",
-          "customElement": true,
-          "summary": "One expandable section of a kds-accordion.\n\nBuilt on native <details>/<summary>, so it's keyboard operable and announced as expandable. Opening and\nclosing animate the height (skipped with prefers-reduced-motion)."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsAccordionItem",
-          "declaration": {
-            "name": "KdsAccordionItem",
-            "module": "src/components/accordion-item/kds-accordion-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/box/kds-box.ts",
       "declarations": [
         {
@@ -2108,6 +2108,142 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/card/kds-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsCard",
+          "cssParts": [
+            {
+              "description": "The card surface",
+              "name": "card"
+            },
+            {
+              "description": "Header section (rendered only when the header slot has content)",
+              "name": "header"
+            },
+            {
+              "description": "Body section",
+              "name": "body"
+            },
+            {
+              "description": "Footer section (rendered only when the footer slot has content)",
+              "name": "footer"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot: card content",
+              "name": ""
+            },
+            {
+              "description": "Optional card header area",
+              "name": "header"
+            },
+            {
+              "description": "Optional card footer area",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; --_shadow: var(--kds-component-card-shadow-3); --_offset-hover: var(--kds-component-card-offset-hover-3); } :host([elevation='1']) { --_shadow: var(--kds-component-card-shadow-1); --_offset-hover: var(--kds-component-card-offset-hover-1); } :host([elevation='2']) { --_shadow: var(--kds-component-card-shadow-2); --_offset-hover: var(--kds-component-card-offset-hover-2); } /* Fills the height the layout gives the card (a grid row), so cards in a row line up. */ .card { box-sizing: border-box; height: 100%; display: flex; flex-direction: column; gap: var(--kds-component-card-gap); padding: var(--kds-component-card-padding); background-color: var(--kds-component-card-bg); border: var(--kds-component-card-border-width) solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--_shadow); } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; } /* * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses. * Hover is taken from the host, which doesn't move, so the pointer near the top/left edge can't * slip off the moving card and make it flicker. */ :host([interactive]:hover) .card { background-color: var(--kds-component-card-bg-hover); box-shadow: var(--kds-component-card-shadow-hover); transform: translate(var(--_offset-hover), var(--_offset-hover)); } @media (prefers-reduced-motion: reduce) { :host([interactive]) .card { transition: background-color 0.15s ease; } } [hidden] { display: none; } `"
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "type": {
+                "text": "1 | 2 | 3"
+              },
+              "default": "3"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false",
+              "description": "A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content."
+            },
+            {
+              "kind": "field",
+              "name": "_hasFooter",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "1|2|3"
+              },
+              "description": "Crisp shadow level: 1 low, 2 medium, 3 high (default 3)",
+              "name": "elevation"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When set, the card shows hover styles (use for clickable cards): it presses down into its shadow on hover",
+              "name": "interactive"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-card",
+          "customElement": true,
+          "summary": "Surface container for grouping related content.\n\nCards have a 1px border and a crisp, unblurred offset shadow whose distance is set by `elevation`.\nThere are no divider lines: header, body and footer are separated by spacing only."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsCard",
+          "declaration": {
+            "name": "KdsCard",
+            "module": "src/components/card/kds-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/button/kds-button.ts",
       "declarations": [
         {
@@ -2282,142 +2418,6 @@
           "declaration": {
             "name": "KdsButton",
             "module": "src/components/button/kds-button.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/card/kds-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsCard",
-          "cssParts": [
-            {
-              "description": "The card surface",
-              "name": "card"
-            },
-            {
-              "description": "Header section (rendered only when the header slot has content)",
-              "name": "header"
-            },
-            {
-              "description": "Body section",
-              "name": "body"
-            },
-            {
-              "description": "Footer section (rendered only when the footer slot has content)",
-              "name": "footer"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot: card content",
-              "name": ""
-            },
-            {
-              "description": "Optional card header area",
-              "name": "header"
-            },
-            {
-              "description": "Optional card footer area",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; --_shadow: var(--kds-component-card-shadow-3); --_offset-hover: var(--kds-component-card-offset-hover-3); } :host([elevation='1']) { --_shadow: var(--kds-component-card-shadow-1); --_offset-hover: var(--kds-component-card-offset-hover-1); } :host([elevation='2']) { --_shadow: var(--kds-component-card-shadow-2); --_offset-hover: var(--kds-component-card-offset-hover-2); } .card { display: flex; flex-direction: column; gap: var(--kds-component-card-gap); padding: var(--kds-component-card-padding); background-color: var(--kds-component-card-bg); border: var(--kds-component-card-border-width) solid var(--kds-component-card-border); border-radius: var(--kds-component-card-radius); box-shadow: var(--_shadow); } :host([interactive]) .card { cursor: pointer; transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; } /* * Hover presses the card down into its shadow: it moves by the shadow offset as the shadow collapses. * Hover is taken from the host, which doesn't move, so the pointer near the top/left edge can't * slip off the moving card and make it flicker. */ :host([interactive]:hover) .card { background-color: var(--kds-component-card-bg-hover); box-shadow: var(--kds-component-card-shadow-hover); transform: translate(var(--_offset-hover), var(--_offset-hover)); } @media (prefers-reduced-motion: reduce) { :host([interactive]) .card { transition: background-color 0.15s ease; } } [hidden] { display: none; } `"
-            },
-            {
-              "kind": "field",
-              "name": "elevation",
-              "type": {
-                "text": "1 | 2 | 3"
-              },
-              "default": "3"
-            },
-            {
-              "kind": "field",
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_hasHeader",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false",
-              "description": "A wrapper containing a <slot> never matches :empty, so section visibility is tracked from slot content."
-            },
-            {
-              "kind": "field",
-              "name": "_hasFooter",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "_onSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "1|2|3"
-              },
-              "description": "Crisp shadow level: 1 low, 2 medium, 3 high (default 3)",
-              "name": "elevation"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "When set, the card shows hover styles (use for clickable cards): it presses down into its shadow on hover",
-              "name": "interactive"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-card",
-          "customElement": true,
-          "summary": "Surface container for grouping related content.\n\nCards have a 1px border and a crisp, unblurred offset shadow whose distance is set by `elevation`.\nThere are no divider lines: header, body and footer are separated by spacing only."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsCard",
-          "declaration": {
-            "name": "KdsCard",
-            "module": "src/components/card/kds-card.ts"
           }
         }
       ]
@@ -3349,6 +3349,136 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/divider/kds-divider.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsDivider",
+          "cssParts": [
+            {
+              "description": "Each line segment",
+              "name": "line"
+            },
+            {
+              "description": "The label wrapper",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Optional label (horizontal dividers only)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; margin-block: var(--kds-component-divider-spacing); } :host([orientation='vertical']) { display: inline-block; align-self: stretch; margin-block: 0; margin-inline: var(--kds-component-divider-spacing); } :host([flush]) { margin: 0; } :host([hidden]) { display: none; } .divider { display: flex; align-items: center; gap: var(--kds-component-divider-label-gap); height: 100%; } .line { flex: 1; border-top: var(--kds-component-divider-width) solid var(--kds-component-divider-color); } :host([orientation='vertical']) .line { border-top: none; border-inline-start: var(--kds-component-divider-width) solid var(--kds-component-divider-color); height: 100%; } .label { font-family: var(--kds-semantic-type-body-sm-family); font-size: var(--kds-semantic-type-body-sm-size); line-height: var(--kds-semantic-type-body-sm-line-height); color: var(--kds-component-divider-label-text); } .label[hidden], .line[hidden] { display: none; } `"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'"
+            },
+            {
+              "kind": "field",
+              "name": "flush",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hasLabel",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "horizontal|vertical"
+              },
+              "description": "Direction of the line (default horizontal)",
+              "name": "orientation"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Removes the spacing around the divider",
+              "name": "flush"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the divider from assistive technology",
+              "name": "decorative"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-divider",
+          "customElement": true,
+          "summary": "Thin line separating groups of content, horizontally or vertically.\n\nOptional label text sits in the middle of a horizontal divider (\"or\"). Purely decorative dividers can\nset `decorative` to hide them from assistive technology."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsDivider",
+          "declaration": {
+            "name": "KdsDivider",
+            "module": "src/components/divider/kds-divider.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/drawer/kds-drawer.ts",
       "declarations": [
         {
@@ -3678,136 +3808,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/divider/kds-divider.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsDivider",
-          "cssParts": [
-            {
-              "description": "Each line segment",
-              "name": "line"
-            },
-            {
-              "description": "The label wrapper",
-              "name": "label"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Optional label (horizontal dividers only)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; margin-block: var(--kds-component-divider-spacing); } :host([orientation='vertical']) { display: inline-block; align-self: stretch; margin-block: 0; margin-inline: var(--kds-component-divider-spacing); } :host([flush]) { margin: 0; } :host([hidden]) { display: none; } .divider { display: flex; align-items: center; gap: var(--kds-component-divider-label-gap); height: 100%; } .line { flex: 1; border-top: var(--kds-component-divider-width) solid var(--kds-component-divider-color); } :host([orientation='vertical']) .line { border-top: none; border-inline-start: var(--kds-component-divider-width) solid var(--kds-component-divider-color); height: 100%; } .label { font-family: var(--kds-semantic-type-body-sm-family); font-size: var(--kds-semantic-type-body-sm-size); line-height: var(--kds-semantic-type-body-sm-line-height); color: var(--kds-component-divider-label-text); } .label[hidden], .line[hidden] { display: none; } `"
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "'horizontal' | 'vertical'"
-              },
-              "default": "'horizontal'"
-            },
-            {
-              "kind": "field",
-              "name": "flush",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "decorative",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_hasLabel",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected"
-            },
-            {
-              "kind": "method",
-              "name": "_onSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "horizontal|vertical"
-              },
-              "description": "Direction of the line (default horizontal)",
-              "name": "orientation"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Removes the spacing around the divider",
-              "name": "flush"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Hides the divider from assistive technology",
-              "name": "decorative"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-divider",
-          "customElement": true,
-          "summary": "Thin line separating groups of content, horizontally or vertically.\n\nOptional label text sits in the middle of a horizontal divider (\"or\"). Purely decorative dividers can\nset `decorative` to hide them from assistive technology."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsDivider",
-          "declaration": {
-            "name": "KdsDivider",
-            "module": "src/components/divider/kds-divider.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/grid/kds-grid.ts",
       "declarations": [
         {
@@ -4127,6 +4127,216 @@
           "declaration": {
             "name": "KdsIcon",
             "module": "src/components/icon/kds-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/input/kds-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100-rem); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { --_border-color: var(--kds-component-input-border); width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: var(--kds-component-input-border-width) solid var(--_border-color); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */ box-shadow: inset 0 0 0 0 var(--_border-color); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } /* Hover never applies while focused, invalid or disabled, so it can't override those states. */ input:hover:not(:disabled, :focus, [aria-invalid='true']) { --_border-color: var(--kds-component-input-border-hover); } /* * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels * (1.5px often renders as 1px), so changing the border itself would resize the field on focus. */ input:focus { --_border-color: var(--kds-component-input-border-focus); box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width)) var(--_border-color); } /* * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an * empty error still sets error=\"\", which would otherwise put every input in the error state. */ input[aria-invalid='true'] { --_border-color: var(--kds-component-input-border-error); } /* The error colour wins over the focus colour, so focus darkens it to stay visible. */ input[aria-invalid='true']:focus { --_border-color: var(--kds-component-input-border-error-focus); } input:disabled { --_border-color: var(--kds-component-input-border-disabled); background-color: var(--kds-component-input-bg-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "InputType"
+              },
+              "default": "'text'"
+            },
+            {
+              "kind": "field",
+              "name": "helper",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_inputId",
+              "privacy": "private",
+              "default": "`kds-input-${Math.random().toString(36).slice(2, 9)}`"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "On every change to the text. `detail: { value }`"
+            },
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the value is committed (the native change event, e.g. on blur). `detail: { value }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Visible label text",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Current value",
+              "name": "value"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text",
+              "name": "placeholder"
+            },
+            {
+              "type": {
+                "text": "text|email|password|number|search|tel|url"
+              },
+              "description": "Input type",
+              "name": "type"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Helper text displayed below the input",
+              "name": "helper"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message. When set, puts the input in error state.",
+              "name": "error"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the input",
+              "name": "disabled"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Marks the input as required",
+              "name": "required"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-input",
+          "customElement": true,
+          "summary": "Text input field. Always use this instead of a raw <input> with manual styling."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsInput",
+          "declaration": {
+            "name": "KdsInput",
+            "module": "src/components/input/kds-input.ts"
           }
         }
       ]
@@ -4651,397 +4861,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/input/kds-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: flex; flex-direction: column; gap: var(--kds-size-100-rem); } label { font-family: var(--kds-font-family-label); font-size: var(--kds-font-size-200); font-weight: var(--kds-font-weight-bold); color: var(--kds-component-input-label-text); line-height: var(--kds-font-line-height-medium); } .input-wrapper { position: relative; display: flex; align-items: center; } input { --_border-color: var(--kds-component-input-border); width: 100%; box-sizing: border-box; font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-300); font-weight: var(--kds-font-weight-normal); line-height: var(--kds-font-line-height-medium); color: var(--kds-component-input-text); background-color: var(--kds-component-input-bg); border: var(--kds-component-input-border-width) solid var(--_border-color); border-radius: var(--kds-component-input-radius); padding: var(--kds-component-input-padding-y) var(--kds-component-input-padding-x); /* A zero-width shadow in the border colour, so focus animates only the width, never from black. */ box-shadow: inset 0 0 0 0 var(--_border-color); transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none; } input::placeholder { color: var(--kds-component-input-text-placeholder); } /* Hover never applies while focused, invalid or disabled, so it can't override those states. */ input:hover:not(:disabled, :focus, [aria-invalid='true']) { --_border-color: var(--kds-component-input-border-hover); } /* * Focus thickens the border to border-width-focus. The real border stays at border-width and the extra * width is drawn as an inset shadow in the border colour. Browsers snap border widths to whole pixels * (1.5px often renders as 1px), so changing the border itself would resize the field on focus. */ input:focus { --_border-color: var(--kds-component-input-border-focus); box-shadow: inset 0 0 0 calc(var(--kds-component-input-border-width-focus) - var(--kds-component-input-border-width)) var(--_border-color); } /* * Error styles key off aria-invalid (set only for a non-empty error), not :host([error]): binding an * empty error still sets error=\"\", which would otherwise put every input in the error state. */ input[aria-invalid='true'] { --_border-color: var(--kds-component-input-border-error); } /* The error colour wins over the focus colour, so focus darkens it to stay visible. */ input[aria-invalid='true']:focus { --_border-color: var(--kds-component-input-border-error-focus); } input:disabled { --_border-color: var(--kds-component-input-border-disabled); background-color: var(--kds-component-input-bg-disabled); color: var(--kds-component-input-text-disabled); cursor: not-allowed; } .helper { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-helper-text); line-height: var(--kds-font-line-height-medium); } .error-message { font-family: var(--kds-font-family-base); font-size: var(--kds-font-size-100); color: var(--kds-component-input-error-text); line-height: var(--kds-font-line-height-medium); } `"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "InputType"
-              },
-              "default": "'text'"
-            },
-            {
-              "kind": "field",
-              "name": "helper",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_inputId",
-              "privacy": "private",
-              "default": "`kds-input-${Math.random().toString(36).slice(2, 9)}`"
-            },
-            {
-              "kind": "method",
-              "name": "_handleInput",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-input",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "On every change to the text. `detail: { value }`"
-            },
-            {
-              "name": "kds-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the value is committed (the native change event, e.g. on blur). `detail: { value }`"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Visible label text",
-              "name": "label"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Current value",
-              "name": "value"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Placeholder text",
-              "name": "placeholder"
-            },
-            {
-              "type": {
-                "text": "text|email|password|number|search|tel|url"
-              },
-              "description": "Input type",
-              "name": "type"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Helper text displayed below the input",
-              "name": "helper"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Error message. When set, puts the input in error state.",
-              "name": "error"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the input",
-              "name": "disabled"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Marks the input as required",
-              "name": "required"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-input",
-          "customElement": true,
-          "summary": "Text input field. Always use this instead of a raw <input> with manual styling."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsInput",
-          "declaration": {
-            "name": "KdsInput",
-            "module": "src/components/input/kds-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/list-item/kds-list-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsListItem",
-          "cssParts": [
-            {
-              "description": "The row (link, button or div)",
-              "name": "row"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Primary text",
-              "name": ""
-            },
-            {
-              "description": "Secondary (description) text",
-              "name": "secondary"
-            },
-            {
-              "description": "Leading content: icon, avatar, checkbox",
-              "name": "start"
-            },
-            {
-              "description": "Trailing content: meta text, badge, action",
-              "name": "end"
-            },
-            {
-              "description": "A nested kds-list",
-              "name": "nested"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .row { display: flex; align-items: center; gap: var(--kds-component-list-item-gap); box-sizing: border-box; width: 100%; /* kds-list[dense] sets --_kds-list-dense-padding-y; it inherits into items (Firefox has no :host-context). */ padding: var(--_kds-list-dense-padding-y, var(--kds-component-list-item-padding-y)) var(--kds-component-list-item-padding-x); border: none; border-radius: var(--kds-component-list-item-radius); background: none; color: var(--kds-component-list-item-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); text-align: start; text-decoration: none; outline: none; } a.row, button.row { cursor: pointer; transition: background-color 0.15s ease; } a.row:hover, button.row:hover:not(:disabled) { background-color: var(--kds-component-list-item-bg-hover); } a.row:active, button.row:active:not(:disabled) { background-color: var(--kds-component-list-item-bg-active); } a.row:focus-visible, button.row:focus-visible { ${unsafeCSS(focusRing('list-item'))} } :host([selected]) .row { background-color: var(--kds-component-list-item-bg-selected); color: var(--kds-component-list-item-text-selected); } button.row:disabled { color: var(--kds-component-list-item-text-disabled); cursor: not-allowed; } .text { display: flex; flex-direction: column; flex: 1; min-width: 0; } .secondary { font-size: var(--kds-semantic-type-body-sm-size); color: var(--kds-component-list-item-secondary-text); } :host([selected]) .secondary { color: inherit; } .secondary[hidden] { display: none; } ::slotted([slot='start']), ::slotted([slot='end']) { flex-shrink: 0; } `"
-            },
-            {
-              "kind": "field",
-              "name": "href",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "target",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_hasSecondary",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "_onSecondaryChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_onClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-select",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When an interactive row is activated"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Makes the row a link",
-              "name": "href"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Link target",
-              "name": "target"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Makes the row a button (fires kds-select)",
-              "name": "interactive"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Highlights the row as current or selected (sets aria-current)",
-              "name": "selected"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables an interactive row",
-              "name": "disabled"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-list-item",
-          "customElement": true,
-          "summary": "One row in a kds-list: primary text, optional secondary text, leading and trailing content.\n\nStatic by default. With `href` the row is a link; with `interactive` it's a button that fires\nkds-select. Put a kds-list in the `nested` slot for a sub-list."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsListItem",
-          "declaration": {
-            "name": "KdsListItem",
-            "module": "src/components/list-item/kds-list-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/menu/kds-menu.ts",
       "declarations": [
         {
@@ -5289,6 +5108,187 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/list-item/kds-list-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsListItem",
+          "cssParts": [
+            {
+              "description": "The row (link, button or div)",
+              "name": "row"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Primary text",
+              "name": ""
+            },
+            {
+              "description": "Secondary (description) text",
+              "name": "secondary"
+            },
+            {
+              "description": "Leading content: icon, avatar, checkbox",
+              "name": "start"
+            },
+            {
+              "description": "Trailing content: meta text, badge, action",
+              "name": "end"
+            },
+            {
+              "description": "A nested kds-list",
+              "name": "nested"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .row { display: flex; align-items: center; gap: var(--kds-component-list-item-gap); box-sizing: border-box; width: 100%; /* kds-list[dense] sets --_kds-list-dense-padding-y; it inherits into items (Firefox has no :host-context). */ padding: var(--_kds-list-dense-padding-y, var(--kds-component-list-item-padding-y)) var(--kds-component-list-item-padding-x); border: none; border-radius: var(--kds-component-list-item-radius); background: none; color: var(--kds-component-list-item-text); font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); text-align: start; text-decoration: none; outline: none; } a.row, button.row { cursor: pointer; transition: background-color 0.15s ease; } a.row:hover, button.row:hover:not(:disabled) { background-color: var(--kds-component-list-item-bg-hover); } a.row:active, button.row:active:not(:disabled) { background-color: var(--kds-component-list-item-bg-active); } a.row:focus-visible, button.row:focus-visible { ${unsafeCSS(focusRing('list-item'))} } :host([selected]) .row { background-color: var(--kds-component-list-item-bg-selected); color: var(--kds-component-list-item-text-selected); } button.row:disabled { color: var(--kds-component-list-item-text-disabled); cursor: not-allowed; } .text { display: flex; flex-direction: column; flex: 1; min-width: 0; } .secondary { font-size: var(--kds-semantic-type-body-sm-size); color: var(--kds-component-list-item-secondary-text); } :host([selected]) .secondary { color: inherit; } .secondary[hidden] { display: none; } ::slotted([slot='start']), ::slotted([slot='end']) { flex-shrink: 0; } `"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_hasSecondary",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_onSecondaryChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-select",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When an interactive row is activated"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Makes the row a link",
+              "name": "href"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Link target",
+              "name": "target"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Makes the row a button (fires kds-select)",
+              "name": "interactive"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Highlights the row as current or selected (sets aria-current)",
+              "name": "selected"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables an interactive row",
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-list-item",
+          "customElement": true,
+          "summary": "One row in a kds-list: primary text, optional secondary text, leading and trailing content.\n\nStatic by default. With `href` the row is a link; with `interactive` it's a button that fires\nkds-select. Put a kds-list in the `nested` slot for a sub-list."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsListItem",
+          "declaration": {
+            "name": "KdsListItem",
+            "module": "src/components/list-item/kds-list-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/menu-item/kds-menu-item.ts",
       "declarations": [
         {
@@ -5395,104 +5395,6 @@
           "declaration": {
             "name": "KdsMenuItem",
             "module": "src/components/menu-item/kds-menu-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/paper/kds-paper.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsPaper",
-          "cssParts": [
-            {
-              "description": "The surface",
-              "name": "paper"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Content",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .paper { box-sizing: border-box; height: 100%; padding: var(--_padding, var(--kds-component-paper-padding)); background-color: var(--kds-component-paper-bg); border: var(--kds-component-paper-border-width) solid var(--kds-component-paper-border); border-radius: var(--kds-component-paper-radius); box-shadow: var(--kds-component-paper-shadow-1); } :host([variant='flat']) .paper { border-color: transparent; } :host([elevation='0']) .paper { box-shadow: var(--kds-component-paper-shadow-0); } :host([elevation='2']) .paper { box-shadow: var(--kds-component-paper-shadow-2); } :host([elevation='3']) .paper { box-shadow: var(--kds-component-paper-shadow-3); } :host([padding='none']) { --_padding: 0; } :host([padding='xs']) { --_padding: var(--kds-semantic-padding-xs); } :host([padding='sm']) { --_padding: var(--kds-semantic-padding-sm); } :host([padding='md']) { --_padding: var(--kds-semantic-padding-md); } :host([padding='lg']) { --_padding: var(--kds-semantic-padding-lg); } :host([padding='xl']) { --_padding: var(--kds-semantic-padding-xl); } `"
-            },
-            {
-              "kind": "field",
-              "name": "elevation",
-              "type": {
-                "text": "0 | 1 | 2 | 3"
-              },
-              "default": "1"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'outlined' | 'flat'"
-              },
-              "default": "'outlined'"
-            },
-            {
-              "kind": "field",
-              "name": "padding",
-              "type": {
-                "text": "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "0|1|2|3"
-              },
-              "description": "Crisp shadow level: 0 none, 1 low, 2 medium, 3 high (like kds-card) (default 1)",
-              "name": "elevation"
-            },
-            {
-              "type": {
-                "text": "outlined|flat"
-              },
-              "description": "outlined (border) or flat (no border) (default outlined)",
-              "name": "variant"
-            },
-            {
-              "type": {
-                "text": "none|xs|sm|md|lg|xl"
-              },
-              "description": "Inner padding (default lg)",
-              "name": "padding"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-paper",
-          "customElement": true,
-          "summary": "Plain surface for grouping content, with optional elevation.\n\nThe basic building block behind cards and panels: background, 1px border and a crisp offset shadow\nwhose distance grows with `elevation`. Use kds-card when you need header/body/footer sections."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsPaper",
-          "declaration": {
-            "name": "KdsPaper",
-            "module": "src/components/paper/kds-paper.ts"
           }
         }
       ]
@@ -5822,6 +5724,104 @@
           "declaration": {
             "name": "KdsRadio",
             "module": "src/components/radio/kds-radio.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/paper/kds-paper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsPaper",
+          "cssParts": [
+            {
+              "description": "The surface",
+              "name": "paper"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: block; } :host([hidden]) { display: none; } .paper { box-sizing: border-box; height: 100%; padding: var(--_padding, var(--kds-component-paper-padding)); background-color: var(--kds-component-paper-bg); border: var(--kds-component-paper-border-width) solid var(--kds-component-paper-border); border-radius: var(--kds-component-paper-radius); box-shadow: var(--kds-component-paper-shadow-1); } :host([variant='flat']) .paper { border-color: transparent; } :host([elevation='0']) .paper { box-shadow: var(--kds-component-paper-shadow-0); } :host([elevation='2']) .paper { box-shadow: var(--kds-component-paper-shadow-2); } :host([elevation='3']) .paper { box-shadow: var(--kds-component-paper-shadow-3); } :host([padding='none']) { --_padding: 0; } :host([padding='xs']) { --_padding: var(--kds-semantic-padding-xs); } :host([padding='sm']) { --_padding: var(--kds-semantic-padding-sm); } :host([padding='md']) { --_padding: var(--kds-semantic-padding-md); } :host([padding='lg']) { --_padding: var(--kds-semantic-padding-lg); } :host([padding='xl']) { --_padding: var(--kds-semantic-padding-xl); } `"
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "type": {
+                "text": "0 | 1 | 2 | 3"
+              },
+              "default": "1"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'outlined' | 'flat'"
+              },
+              "default": "'outlined'"
+            },
+            {
+              "kind": "field",
+              "name": "padding",
+              "type": {
+                "text": "'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "0|1|2|3"
+              },
+              "description": "Crisp shadow level: 0 none, 1 low, 2 medium, 3 high (like kds-card) (default 1)",
+              "name": "elevation"
+            },
+            {
+              "type": {
+                "text": "outlined|flat"
+              },
+              "description": "outlined (border) or flat (no border) (default outlined)",
+              "name": "variant"
+            },
+            {
+              "type": {
+                "text": "none|xs|sm|md|lg|xl"
+              },
+              "description": "Inner padding (default lg)",
+              "name": "padding"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-paper",
+          "customElement": true,
+          "summary": "Plain surface for grouping content, with optional elevation.\n\nThe basic building block behind cards and panels: background, 1px border and a crisp offset shadow\nwhose distance grows with `elevation`. Use kds-card when you need header/body/footer sections."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsPaper",
+          "declaration": {
+            "name": "KdsPaper",
+            "module": "src/components/paper/kds-paper.ts"
           }
         }
       ]
@@ -6787,6 +6787,190 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/toggle/kds-toggle.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "KdsToggle",
+          "cssParts": [
+            {
+              "description": "The switch track",
+              "name": "track"
+            },
+            {
+              "description": "The moving thumb",
+              "name": "thumb"
+            },
+            {
+              "description": "The label text wrapper",
+              "name": "label"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Label text",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "default": "css` :host { display: inline-flex; } :host([hidden]) { display: none; } label { display: inline-flex; align-items: flex-start; gap: var(--kds-component-toggle-gap); cursor: pointer; font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-toggle-label-text); } .control { position: relative; display: inline-flex; /* Centre the track on the first line of label text, like kds-checkbox. */ height: calc(1em * var(--kds-semantic-type-body-line-height)); align-items: center; flex-shrink: 0; } /* * The label text sets the baseline, so the control lines up with surrounding text and the line height * doesn't change when the box gets a check icon (an empty box has no baseline of its own). */ .text { align-self: baseline; } input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; } .track { --_bg: var(--kds-component-toggle-track-bg); --_border: var(--kds-component-toggle-track-border); --_thumb: var(--kds-component-toggle-thumb); position: relative; box-sizing: border-box; width: var(--kds-component-toggle-track-width); height: var(--kds-component-toggle-track-height); border: var(--kds-component-toggle-border-width) solid var(--_border); border-radius: var(--kds-component-toggle-radius); background-color: var(--_bg); transition: background-color 0.15s ease, border-color 0.15s ease; } .thumb { /* Same gap around the thumb on every side: half of what's left of the inner track height. */ --_inset: calc( (var(--kds-component-toggle-track-height) - 2 * var(--kds-component-toggle-border-width) - var(--kds-component-toggle-thumb-size)) / 2 ); position: absolute; top: 50%; left: var(--_inset); width: var(--kds-component-toggle-thumb-size); height: var(--kds-component-toggle-thumb-size); border-radius: var(--kds-component-toggle-radius); background-color: var(--_thumb); translate: 0 -50%; transition: left 0.15s ease, background-color 0.15s ease; } /* left is measured inside the border, so 100% is the inner track width. */ :host([checked]) .thumb { left: calc(100% - var(--kds-component-toggle-thumb-size) - var(--_inset)); } label:hover .track { --_bg: var(--kds-component-toggle-track-bg-hover); --_border: var(--kds-component-toggle-track-border-hover); --_thumb: var(--kds-component-toggle-thumb-hover); } :host([checked]) .track { --_bg: var(--kds-component-toggle-track-bg-checked); --_border: var(--kds-component-toggle-track-border-checked); --_thumb: var(--kds-component-toggle-thumb-checked); } :host([checked]) label:hover .track { --_bg: var(--kds-component-toggle-track-bg-checked-hover); --_border: var(--kds-component-toggle-track-border-checked-hover); --_thumb: var(--kds-component-toggle-thumb-checked); } input:focus-visible + .track { ${unsafeCSS(focusRing('toggle'))} } :host([disabled]) label { cursor: not-allowed; color: var(--kds-component-toggle-label-text-disabled); } :host([disabled]) .track, :host([disabled]) label:hover .track { --_bg: var(--kds-component-toggle-track-bg-disabled); --_border: var(--kds-component-toggle-track-border-disabled); --_thumb: var(--kds-component-toggle-thumb-disabled); } @media (prefers-reduced-motion: reduce) { .track, .thumb { transition: none; } } `"
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'"
+            },
+            {
+              "kind": "field",
+              "name": "_input",
+              "type": {
+                "text": "HTMLInputElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_internals",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "_changed",
+                  "type": {
+                    "text": "PropertyValues<this>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "formResetCallback"
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "events": [
+            {
+              "name": "kds-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "When the user flips the switch. `detail: { checked }`"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the switch is on",
+              "name": "checked"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the switch",
+              "name": "disabled"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Form field name",
+              "name": "name"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Value submitted when on (default \"on\")",
+              "name": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "kds-toggle",
+          "customElement": true,
+          "summary": "On/off switch for settings that take effect immediately.\n\nA native checkbox with role=\"switch\". Off is an outlined track; on fills the track with the accent\ncolour. Use a checkbox instead when the choice only applies after a form is submitted."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "KdsToggle",
+          "declaration": {
+            "name": "KdsToggle",
+            "module": "src/components/toggle/kds-toggle.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/tabs/kds-tabs.ts",
       "declarations": [
         {
@@ -7182,190 +7366,6 @@
           "declaration": {
             "name": "KdsTooltip",
             "module": "src/components/tooltip/kds-tooltip.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/toggle/kds-toggle.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "KdsToggle",
-          "cssParts": [
-            {
-              "description": "The switch track",
-              "name": "track"
-            },
-            {
-              "description": "The moving thumb",
-              "name": "thumb"
-            },
-            {
-              "description": "The label text wrapper",
-              "name": "label"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Label text",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "formAssociated",
-              "type": {
-                "text": "boolean"
-              },
-              "static": true,
-              "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "shadowRootOptions",
-              "type": {
-                "text": "object"
-              },
-              "static": true,
-              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true }"
-            },
-            {
-              "kind": "field",
-              "name": "styles",
-              "static": true,
-              "default": "css` :host { display: inline-flex; } :host([hidden]) { display: none; } label { display: inline-flex; align-items: flex-start; gap: var(--kds-component-toggle-gap); cursor: pointer; font-family: var(--kds-semantic-type-body-family); font-size: var(--kds-semantic-type-body-size); line-height: var(--kds-semantic-type-body-line-height); color: var(--kds-component-toggle-label-text); } .control { position: relative; display: inline-flex; /* Centre the track on the first line of label text, like kds-checkbox. */ height: calc(1em * var(--kds-semantic-type-body-line-height)); align-items: center; flex-shrink: 0; } /* * The label text sets the baseline, so the control lines up with surrounding text and the line height * doesn't change when the box gets a check icon (an empty box has no baseline of its own). */ .text { align-self: baseline; } input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; } .track { --_bg: var(--kds-component-toggle-track-bg); --_border: var(--kds-component-toggle-track-border); --_thumb: var(--kds-component-toggle-thumb); position: relative; box-sizing: border-box; width: var(--kds-component-toggle-track-width); height: var(--kds-component-toggle-track-height); border: var(--kds-component-toggle-border-width) solid var(--_border); border-radius: var(--kds-component-toggle-radius); background-color: var(--_bg); transition: background-color 0.15s ease, border-color 0.15s ease; } .thumb { /* Same gap around the thumb on every side: half of what's left of the inner track height. */ --_inset: calc( (var(--kds-component-toggle-track-height) - 2 * var(--kds-component-toggle-border-width) - var(--kds-component-toggle-thumb-size)) / 2 ); position: absolute; top: 50%; left: var(--_inset); width: var(--kds-component-toggle-thumb-size); height: var(--kds-component-toggle-thumb-size); border-radius: var(--kds-component-toggle-radius); background-color: var(--_thumb); translate: 0 -50%; transition: left 0.15s ease, background-color 0.15s ease; } /* left is measured inside the border, so 100% is the inner track width. */ :host([checked]) .thumb { left: calc(100% - var(--kds-component-toggle-thumb-size) - var(--_inset)); } label:hover .track { --_bg: var(--kds-component-toggle-track-bg-hover); --_border: var(--kds-component-toggle-track-border-hover); --_thumb: var(--kds-component-toggle-thumb-hover); } :host([checked]) .track { --_bg: var(--kds-component-toggle-track-bg-checked); --_border: var(--kds-component-toggle-track-border-checked); --_thumb: var(--kds-component-toggle-thumb-checked); } :host([checked]) label:hover .track { --_bg: var(--kds-component-toggle-track-bg-checked-hover); --_border: var(--kds-component-toggle-track-border-checked-hover); --_thumb: var(--kds-component-toggle-thumb-checked); } input:focus-visible + .track { ${unsafeCSS(focusRing('toggle'))} } :host([disabled]) label { cursor: not-allowed; color: var(--kds-component-toggle-label-text-disabled); } :host([disabled]) .track, :host([disabled]) label:hover .track { --_bg: var(--kds-component-toggle-track-bg-disabled); --_border: var(--kds-component-toggle-track-border-disabled); --_thumb: var(--kds-component-toggle-thumb-disabled); } @media (prefers-reduced-motion: reduce) { .track, .thumb { transition: none; } } `"
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'"
-            },
-            {
-              "kind": "field",
-              "name": "_input",
-              "type": {
-                "text": "HTMLInputElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_internals",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "updated",
-              "privacy": "protected",
-              "parameters": [
-                {
-                  "name": "_changed",
-                  "type": {
-                    "text": "PropertyValues<this>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "formResetCallback"
-            },
-            {
-              "kind": "method",
-              "name": "_onChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "events": [
-            {
-              "name": "kds-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "When the user flips the switch. `detail: { checked }`"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Whether the switch is on",
-              "name": "checked"
-            },
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Disables the switch",
-              "name": "disabled"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Form field name",
-              "name": "name"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Value submitted when on (default \"on\")",
-              "name": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "kds-toggle",
-          "customElement": true,
-          "summary": "On/off switch for settings that take effect immediately.\n\nA native checkbox with role=\"switch\". Off is an outlined track; on fills the track with the accent\ncolour. Use a checkbox instead when the choice only applies after a form is submitted."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "KdsToggle",
-          "declaration": {
-            "name": "KdsToggle",
-            "module": "src/components/toggle/kds-toggle.ts"
           }
         }
       ]

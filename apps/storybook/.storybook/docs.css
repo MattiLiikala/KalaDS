@@ -354,7 +354,7 @@
 }
 
 .kds-docs-cards a {
-  display: block;
+  display: grid; /* the card stretches to the row height, so all cards line up */
   height: 100%;
   color: inherit;
   text-decoration: none;
@@ -393,6 +393,13 @@
   border-radius: var(--kds-semantic-radius-md);
   background-color: var(--kds-semantic-bg-default);
   color: var(--kds-semantic-text-default);
+}
+
+.kds-docs-icon figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kds-semantic-spacing-xs);
 }
 
 .kds-docs-icon code {

@@ -1,30 +1,36 @@
 import { Meta } from '@storybook/blocks';
-import { IconGallery } from '../../docs-blocks';
+import { FrameworkTabs, IconGallery } from '../../docs-blocks';
+import webCode from '../../snippets/Icons.web.html?raw';
+import reactCode from '../../snippets/Icons.react.tsx?raw';
+import nativeCode from '../../snippets/Icons.native.tsx?raw';
 
 <Meta title="Foundations/Icons" />
 
 # Icons
 
-Icons are web components from `@kalads/icons`, one element per icon (`<kds-icon-search>`), drawn on a
-24-unit grid. They take the text colour, so they always match the text next to them.
+Icons come from `@kalads/icons`, drawn on a 24-unit grid, with the same names on every platform:
 
-- Use `kds-icon` (`<kds-icon name="search">`) when you want KalaDS sizes (`sm`, `md`, `lg`) and colours,
-  or when the icon name comes from data.
-- Use the element directly (`<kds-icon-search>`) inside components that size icons themselves, such as
-  buttons, chips and notifications.
+<table className="kds-docs-table">
+  <thead><tr><th>Platform</th><th>Import</th><th>An icon</th></tr></thead>
+  <tbody>
+    <tr><td>Web components</td><td><code>@kalads/icons</code> (included in <code>@kalads/web-components</code>)</td><td><code>{'<kds-icon-search>'}</code></td></tr>
+    <tr><td>React</td><td><code>@kalads/icons/react</code></td><td><code>{'<SearchIcon />'}</code></td></tr>
+    <tr><td>React Native</td><td><code>@kalads/icons/native</code></td><td><code>{'<SearchIcon />'}</code></td></tr>
+  </tbody>
+</table>
+
+Icons take the colour and size of where they are, so they match the text or component around them: the
+text colour on the web, and the colour and size a component passes down in React Native.
+
+- Use the **Icon** component (`<kds-icon name="search">`, `<Icon name="search" />`) when you want
+  KalaDS sizes (`sm`, `md`, `lg`) and colours, or when the icon name comes from data.
+- Use the icon itself (`<kds-icon-plus>`, `<PlusIcon />`) inside components that size icons themselves,
+  such as buttons, chips and notifications: in a button's `start` or `end` slot (the `start` and `end`
+  props in React and React Native), or inside an icon button.
 - Give an icon a `label` only when it carries meaning on its own. Icons next to text are decorative.
 - Never use inline `<svg>` or image files for icons.
 
-```html
-<kds-icon name="search" size="sm"></kds-icon>
-
-<kds-button variant="primary">
-  <kds-icon-plus slot="start"></kds-icon-plus>
-  Add item
-</kds-button>
-
-<kds-icon-button label="Close dialog"><kds-icon-close></kds-icon-close></kds-icon-button>
-```
+<FrameworkTabs web={webCode} react={reactCode} native={nativeCode} />
 
 ## All icons
 
@@ -34,5 +40,5 @@ Icons are web components from `@kalads/icons`, one element per icon (`<kds-icon-
 
 1. Add the SVG to `packages/icons/src/svgs/<name>.svg`, drawn on a 24×24 grid. The build removes
    `width`, `height`, `fill` and `stroke`, so the icon takes the text colour.
-2. Run `pnpm --filter @kalads/icons build`. This generates `<kds-icon-<name>>`, and it appears on this
-   page automatically.
+2. Run `pnpm --filter @kalads/icons build`. This generates `<kds-icon-<name>>` and the React and React
+   Native components (`<Name>Icon`), and the icon appears on this page automatically.
