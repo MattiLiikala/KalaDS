@@ -2,7 +2,7 @@ import { useContext, useState, type ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { IconContext } from '@kalads/icons/native';
 import { MenuItemDefaults, type MenuItemSpec } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { isText } from '../internal/children.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
@@ -19,6 +19,7 @@ export interface MenuItemProps extends MenuItemSpec {
 
 /** One action in a Menu. Disabled items stay visible and announced, but can't be picked. */
 export function MenuItem({ value = '', variant = MenuItemDefaults.variant, disabled, start, end, children }: MenuItemProps) {
+  const { c, s } = useTokens();
   const menu = useContext(MenuContext);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

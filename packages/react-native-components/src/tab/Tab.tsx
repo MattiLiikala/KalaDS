@@ -1,7 +1,7 @@
 import { useContext, useState, type ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { TabSpec } from '@kalads/spec';
-import { c, s, t } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { textStyle } from '../internal/text.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
 import { TabsContext } from '../tabs/context.js';
@@ -13,6 +13,7 @@ export interface TabProps extends TabSpec {
 
 /** One tab in Tabs. Tabs sets its selection. */
 export function Tab({ value = '', disabled, children }: TabProps) {
+  const { c, s, t } = useTokens();
   const tabs = useContext(TabsContext);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

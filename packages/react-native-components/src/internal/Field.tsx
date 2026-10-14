@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import { s, t } from './theme.js';
+import { useTokens } from './theme.js';
 import { textStyle, typeStyle } from './text.js';
 
 /** The field tokens Input, Select and Autocomplete share (component.input / select / autocomplete). */
@@ -75,6 +75,7 @@ interface FieldProps {
 
 /** Label, control and helper / error text, laid out as the web fields are. */
 export function Field({ tokens: f, label, required, helper, error, labelStyle = 'field', nativeID, style, children }: FieldProps) {
+  const { s, t } = useTokens();
   const labelText =
     labelStyle === 'input'
       ? textStyle(t.font.family.label, t.font.size['200'], t.font.weight.bold, t.font.lineHeight.medium)

@@ -11,7 +11,7 @@
       "border-focus":       { "$type": "color",      "$value": "{semantic.interactive.accent}" },
       "border-error":       { "$type": "color",      "$value": "{semantic.status.danger}" },
       "border-error-focus": { "$type": "color",      "$value": "{semantic.status.danger}" },
-      "border-disabled":    { "$type": "color",      "$value": "{semantic.border.subtle}" },
+      "border-disabled":    { "$type": "color",      "$value": "{semantic.border.disabled}" },
       "border-width":       { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
       "border-width-focus": { "$type": "dimension",  "$value": "{semantic.border-width.focus}" },
       "radius":             { "$type": "dimension",  "$value": "{semantic.radius.md}" },

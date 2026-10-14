@@ -2,7 +2,7 @@ import { useContext, useEffect, useId, useRef, useState, type ReactNode } from '
 import { Animated, Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ChevronDownIcon } from '@kalads/icons/native';
 import type { AccordionItemSpec } from '@kalads/spec';
-import { c, s, t } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { textStyle, typeStyle } from '../internal/text.js';
 import { isText } from '../internal/children.js';
 import { useControllable } from '../internal/controllable.js';
@@ -28,6 +28,7 @@ const DURATION = 200;
  * opening and closing animate the height (skipped with reduced motion).
  */
 export function AccordionItem({ heading, open, defaultOpen = false, disabled, onToggle, children, style }: AccordionItemProps) {
+  const { c, s, t } = useTokens();
   const id = useId();
   const accordion = useContext(AccordionContext);
   const [isOpen, setOpen] = useControllable(open, defaultOpen);

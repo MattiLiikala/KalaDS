@@ -1,8 +1,9 @@
 import { setCustomElementsManifest, type Preview } from '@storybook/web-components';
+import { addons } from 'storybook/internal/preview-api';
+import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';
 import manifest from '@kalads/web-components/custom-elements.json';
-import { SemanticBgDefault, SemanticBgInverse, SemanticBgMuted, SemanticBgSubtle } from '@kalads/tokens/js';
-import { kaladsTheme } from './kalads-theme';
-import { ComponentDocsPage } from '../src/docs-blocks';
+import { kaladsThemes, themeName, THEME_GLOBAL } from './kalads-theme';
+import { ComponentDocsPage, ThemedDocsContainer } from '../src/docs-blocks';
 // Self-hosted fonts matching the font.family tokens, so Storybook never falls back to system fonts.
 // Weights follow font.weight (300 / 400 / 500 / 700). Overlock has no 300 or 500, so those render at 400.
 import '@fontsource/overlock/400.css';
@@ -46,9 +47,22 @@ baseStyles.textContent = `
   body {
     font-family: var(--kds-semantic-font-body);
     color: var(--kds-semantic-text-default);
+    background: var(--kds-semantic-bg-default);
   }
 `;
 document.head.append(baseStyles);
+
+/*
+ * Dark mode, as an app turns it on: data-kds-theme on <html>. The toolbar switch sets the `theme` global;
+ * the globals events reach every page, including docs pages without stories, where no decorator runs.
+ * The manager (manager.ts) and the docs frame (ThemedDocsContainer) follow the same global.
+ */
+const applyTheme = (globals?: Record<string, unknown>) => {
+  document.documentElement.dataset.kdsTheme = themeName(globals?.[THEME_GLOBAL]);
+};
+applyTheme();
+addons.getChannel().on(SET_GLOBALS, ({ globals }) => applyTheme(globals));
+addons.getChannel().on(GLOBALS_UPDATED, ({ globals }) => applyTheme(globals));
 
 // Storybook's containers for the story and the docs page have no landmark role. Only one is shown at a
 // time (the other is display: none), so each page gets exactly one main landmark.
@@ -87,6 +101,27 @@ const preview: Preview = {
   // Stories render on their component's docs page only: the sidebar lists one page per component.
   // `!dev` removes a story from the sidebar but keeps it in docs (and reachable by its iframe URL).
   tags: ['!dev'],
+  globalTypes: {
+    [THEME_GLOBAL]: {
+      description: 'Colour theme of the components, the docs and the Storybook interface',
+      toolbar: {
+        title: 'Theme',
+        icon: 'sun',
+        items: [
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: { [THEME_GLOBAL]: 'light' },
+  decorators: [
+    (story, context) => {
+      applyTheme(context.globals);
+      return story();
+    },
+  ],
   loaders: [
     // Render stories only once the real fonts are available, so layout is never measured against
     // fallback fonts.
@@ -97,17 +132,9 @@ const preview: Preview = {
     },
   ],
   parameters: {
-    // Canvas backgrounds are the semantic surfaces. Values come from the JS tokens because the toolbar
-    // swatches render outside the story iframe, where CSS variables don't exist.
-    backgrounds: {
-      default: 'default',
-      values: [
-        { name: 'default', value: SemanticBgDefault },
-        { name: 'subtle', value: SemanticBgSubtle },
-        { name: 'muted', value: SemanticBgMuted },
-        { name: 'inverse', value: SemanticBgInverse },
-      ],
-    },
+    // Canvas backgrounds follow the theme (the page background is bg.default); use kds-box for other
+    // surfaces in a story.
+    backgrounds: { disable: true },
     options: {
       storySort: {
         // Sections in this order; pages inside a section alphabetically.
@@ -120,12 +147,13 @@ const preview: Preview = {
           'Components',
           ['Inputs', 'Data Display', 'Feedback', 'Surfaces', 'Navigation', 'Layout'],
           'Guidelines',
-          ['Accessibility', 'Buttons and Surfaces', 'Writing', 'For AI Agents', 'Agent Skills'],
+          ['Accessibility', 'Buttons and Surfaces', 'Dark Mode', 'Writing', 'For AI Agents', 'Agent Skills'],
         ],
       },
     },
     docs: {
-      theme: kaladsTheme,
+      theme: kaladsThemes.light,
+      container: ThemedDocsContainer,
       // Generated component pages share one layout (src/docs-blocks/ComponentDocsPage.tsx).
       page: ComponentDocsPage,
       toc: true,

@@ -1,3 +1,5 @@
+// Theme: wrap the app root in KalaThemeProvider for dark mode (scheme="dark" or "auto"); light without it.
+export { KalaThemeProvider, useTokens, type KalaScheme, type KalaThemeProviderProps } from './internal/theme.js';
 // Fonts: call useKalaFonts() once at the app root and render KalaDS components after it returns true.
 export { useKalaFonts, fontFamily } from './internal/fonts.js';
 export { typeStyle, type TypeVariant } from './internal/text.js';

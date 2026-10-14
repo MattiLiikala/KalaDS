@@ -1,7 +1,7 @@
 import { cloneElement, useRef, type ReactElement, type ReactNode } from 'react';
 import { ScrollView, View } from 'react-native';
 import { MenuDefaults, type MenuSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { textOf } from '../internal/children.js';
 import { useControllable } from '../internal/controllable.js';
 import { Popup } from '../internal/Popup.js';
@@ -26,6 +26,7 @@ export interface MenuProps extends MenuSpec {
  * picking an item or tapping outside closes it (also the Android back button).
  */
 export function Menu({ open, defaultOpen = false, label, placement = MenuDefaults.placement, trigger, onOpenChange, onSelect, children }: MenuProps) {
+  const { c } = useTokens();
   const [isOpen, setOpen] = useControllable(open, defaultOpen);
   const anchor = useRef<View>(null);
   const k = c.menu;

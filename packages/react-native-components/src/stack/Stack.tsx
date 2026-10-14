@@ -1,6 +1,6 @@
 import { View, type FlexAlignType, type ViewProps, type ViewStyle } from 'react-native';
 import { StackDefaults, type StackSpec } from '@kalads/spec';
-import { c, space } from '../internal/theme.js';
+import { space, useTokens } from '../internal/theme.js';
 
 export interface StackProps extends StackSpec, ViewProps {}
 
@@ -23,6 +23,7 @@ const JUSTIFY: Record<NonNullable<StackSpec['justify']>, ViewStyle['justifyConte
 
 /** Lays children out in a column or row with token-based spacing. */
 export function Stack({ direction = StackDefaults.direction, gap, align, justify, wrap, inline, style, ...rest }: StackProps) {
+  const { c } = useTokens();
   const layout: ViewStyle = {
     flexDirection: direction,
     gap: space(gap) ?? c.stack.gap,

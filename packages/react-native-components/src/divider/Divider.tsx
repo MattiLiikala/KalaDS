@@ -1,6 +1,6 @@
 import { Text, View, type ViewProps } from 'react-native';
 import { DividerDefaults, type DividerSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { hasContent } from '../internal/children.js';
 import { typeStyle } from '../internal/text.js';
 
@@ -11,6 +11,7 @@ export interface DividerProps extends DividerSpec, ViewProps {}
  * middle of a horizontal divider ("or"). Decorative dividers are hidden from assistive technology.
  */
 export function Divider({ orientation = DividerDefaults.orientation, flush, decorative, style, children, ...rest }: DividerProps) {
+  const { c } = useTokens();
   const vertical = orientation === 'vertical';
   const line = vertical
     ? { width: c.divider.width, flex: 1, backgroundColor: c.divider.color }

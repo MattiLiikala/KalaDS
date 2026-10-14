@@ -98,9 +98,9 @@ for (const [platform, p] of Object.entries(PLATFORMS)) {
     const bad = run(join(fixtures, 'bad'));
     assert.equal(bad.code, 1);
     const expected = {
-      web: ['hardcoded size', 'hardcoded colour', 'inverse surface', 'inline style', 'native <button>', 'raw SVG'],
-      react: ['hardcoded number', 'hardcoded colour', 'inverse surface', 'style sets backgroundColor', 'native <button>', 'native <input>'],
-      native: ['hardcoded number', 'hardcoded colour', 'inverse surface', '`TouchableOpacity`', '`Text`'],
+      web: ['hardcoded size', 'hardcoded colour', 'inverse surface', 'inline style', 'native <button>', 'raw SVG', "palette token `--kds-color-neutral-200` doesn't follow dark mode"],
+      react: ['hardcoded number', 'hardcoded colour', 'inverse surface', 'style sets backgroundColor', 'native <button>', 'native <input>', "palette token `--kds-color-primary-500` doesn't follow dark mode"],
+      native: ['hardcoded number', 'hardcoded colour', 'inverse surface', '`TouchableOpacity`', '`Text`', 'static colour token `tokens.semantic.border`'],
     }[platform];
     for (const message of expected) assert.ok(bad.out.includes(message), `expected "${message}" in:\n${bad.out}`);
   });

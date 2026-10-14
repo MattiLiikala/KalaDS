@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import { TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 import { AutocompleteDefaults, type AutocompleteSpec } from '@kalads/spec';
 import { ChevronDownIcon } from '@kalads/icons/native';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useControllable } from '../internal/controllable.js';
 import { Field, fieldBox, fieldText } from '../internal/Field.js';
 import { Listbox } from '../internal/Listbox.js';
@@ -36,6 +36,7 @@ export function Autocomplete({
   children,
   style,
 }: AutocompleteProps) {
+  const { c, s } = useTokens();
   const id = useId();
   const options = useMemo(() => readOptions(children), [children]);
   const [current, setCurrent] = useControllable(value, defaultValue);

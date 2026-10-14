@@ -2,7 +2,7 @@ import { useId, type ReactNode } from 'react';
 import { Animated, Modal, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 import { CloseIcon } from '@kalads/icons/native';
 import { DialogDefaults, type CloseReason, type DialogSpec } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { c, useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { hasContent, isText } from '../internal/children.js';
 import { useModal } from '../internal/modal.js';
@@ -40,6 +40,7 @@ export function Dialog({
   children,
   style,
 }: DialogProps) {
+  const { c, s } = useTokens();
   const id = useId();
   const screen = useWindowDimensions();
   const { visible, progress, requestClose } = useModal({ open, defaultOpen, persistent, onOpen, onClose, duration: 150 });

@@ -1,6 +1,6 @@
 import { useId, type ReactNode } from 'react';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import { t } from './theme.js';
+import { useTokens } from './theme.js';
 import { typeStyle } from './text.js';
 
 /** Tokens of a labelled option group (component.checkbox-group / radio-group). */
@@ -26,6 +26,7 @@ interface GroupProps {
 
 /** A labelled group of options with helper or error text, as the web checkbox and radio groups. */
 export function Group({ tokens: g, role, label, orientation, helper, error, required, style, children }: GroupProps) {
+  const { t } = useTokens();
   const id = useId();
   const legend = { ...typeStyle('label'), lineHeight: Math.round(t.semantic.type.label.size * t.semantic.type.body.lineHeight) };
   const caption = typeStyle('caption');

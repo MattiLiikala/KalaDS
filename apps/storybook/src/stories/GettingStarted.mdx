@@ -65,6 +65,9 @@ body {
 }
 ```
 
+For dark mode, add `data-kds-theme="dark"` (or `"auto"`, to follow the device) to `<html>`; see
+**Guidelines/Dark Mode**.
+
 ## 4. Use a component
 
 Components are configured with attributes, never with inline styles or CSS overrides:
@@ -164,6 +167,8 @@ export default function App() {
   );
 }
 ```
+
+For dark mode, wrap the app in `KalaThemeProvider scheme="dark"` (or `"auto"`); see **Guidelines/Dark Mode**.
 
 Differences from the web, where the platform needs them:
 

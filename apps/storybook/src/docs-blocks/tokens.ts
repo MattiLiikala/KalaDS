@@ -1,4 +1,5 @@
 import tokens from '@kalads/tokens/json';
+import darkTokens from '@kalads/tokens/json/dark';
 
 /** A resolved token value as it appears in the nested JSON build: a string, number, shadow or shadow list. */
 type Shadow = { offsetX: string; offsetY: string; blur: string; spread: string; color: string };
@@ -12,6 +13,8 @@ export interface TokenRow {
   cssVar: string;
   /** Display value, e.g. "1rem", "#c50277", or "1rem / 16px" for paired size steps. */
   value: string;
+  /** The dark theme's value, when it differs from `value`. */
+  dark?: string;
   /** CSS value for previews: the custom property itself, so previews show the live token. */
   css: string;
 }
@@ -27,12 +30,20 @@ const shadowCss = (s: Shadow) => `${s.offsetX} ${s.offsetY} ${s.blur} ${s.spread
 const format = (v: TokenValue): string =>
   Array.isArray(v) ? v.map(shadowCss).join(', ') : isShadow(v) ? shadowCss(v) : String(v);
 
-function node(path: string): TokenTree | TokenValue | undefined {
+function node(path: string, tree: TokenTree = tokens as TokenTree): TokenTree | TokenValue | undefined {
   return path.split('.').reduce<TokenTree | TokenValue | undefined>(
     (n, key) => (n && typeof n === 'object' && !Array.isArray(n) && !isShadow(n) ? (n as TokenTree)[key] : undefined),
-    tokens as TokenTree,
+    tree,
   );
 }
+
+/** Palette step of a colour value ("#20160e" → "neutral.900"), so themed values show which core colour they use. */
+const PALETTE = new Map<string, string>();
+for (const [palette, steps] of Object.entries((tokens as TokenTree).color as TokenTree)) {
+  if (palette.startsWith('data')) continue;
+  for (const [step, value] of Object.entries(steps as TokenTree)) if (typeof value === 'string' && !PALETTE.has(value)) PALETTE.set(value, `${palette}.${step}`);
+}
+export const paletteName = (value: string) => PALETTE.get(value);
 
 /**
  * Every token under `path`, in source order. With `pairUnits`, size steps that have both a `rem` and a
@@ -45,7 +56,9 @@ export function getTokens(path: string, { pairUnits = false } = {}): TokenRow[] 
   const walk = (n: TokenTree | TokenValue, keys: string[]) => {
     if (isLeaf(n)) {
       const cssVar = cssVarFor(keys);
-      rows.push({ path: keys.join('.'), cssVar, value: format(n), css: `var(${cssVar})` });
+      const value = format(n);
+      const dark = node(keys.join('.'), darkTokens as TokenTree);
+      rows.push({ path: keys.join('.'), cssVar, value, dark: dark !== undefined && isLeaf(dark) && format(dark) !== value ? format(dark) : undefined, css: `var(${cssVar})` });
       return;
     }
     const tree = n as TokenTree;

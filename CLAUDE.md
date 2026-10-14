@@ -79,7 +79,10 @@ font-size: var(--kds-font-size-200);
    - Component tokens in `packages/tokens/src/component/<name>.json`
    - A Storybook story in `apps/storybook/src/stories/components/`
 
-**7. Never place a solid button (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with its fill.**
+**7. Never use palette (`--kds-color-*`) tokens or literal colours for UI**, in components or docs: only
+semantic tokens change with the theme (light / dark, `data-kds-theme`). Palettes are for data visualisation.
+
+**8. Never place a solid button (`primary`, `secondary`, `danger`) on a surface that doesn't contrast with its fill.**
 The label colour tokens keep the label readable on the fill, but the button itself must stand out: the surface
 behind it needs at least 3:1 contrast with the button fill in every state (`bg`, `bg-hover`, `bg-active`).
 On inverse surfaces (`var(--kds-semantic-bg-inverse)`) always add the `on-inverse` attribute:
@@ -104,6 +107,11 @@ the button colour. See **Guidelines/Buttons and Surfaces** in Storybook.
 
 **5. Expose `part="..."` on interactive elements** for legitimate external CSS targeting.
 
+**6. Point every component colour token at a semantic token with the same meaning** (a fill at a fill, a
+label on a fill at that fill's `on-*` token, a border at a border), never at a core colour. The tokens
+build checks this (`packages/tokens/scripts/check-sources.mjs`): two tokens that share a value in one theme
+can differ in the other.
+
 ---
 
 ## Development Commands
@@ -115,17 +123,19 @@ pnpm dev                  # Start all packages in watch mode + Storybook
 pnpm storybook            # Start Storybook only (packages must be built first)
 pnpm build:storybook      # Static Storybook build
 pnpm typecheck            # TypeScript type checking (includes the docs' code snippets)
-pnpm test                 # Unit tests: React (Vitest), React Native (jest-expo), the agent skills, API parity
+pnpm test                 # Unit tests: token contrast (both themes), React (Vitest), React Native (jest-expo), the agent skills, API parity
 ```
 
 ## Adding a New Token
 
 1. Edit the appropriate file in `packages/tokens/src/`
    - Core values → `src/core/`
-   - Semantic aliases → `src/semantic/`
-   - Component-specific → `src/component/<name>.json`
+   - Semantic aliases → `src/semantic/`; a new semantic **colour** also needs its dark value in
+     `src/semantic/dark/color.json` (same name; the build fails without it)
+   - Component-specific → `src/component/<name>.json` (semantic references only)
 2. `cd packages/tokens && pnpm build`
-3. The CSS custom property is immediately available
+3. The CSS custom property is immediately available. `pnpm --filter @kalads/tokens test` checks the
+   contrast of the colour pairs components use, in both themes.
 
 ## Adding a New Icon
 
@@ -170,7 +180,9 @@ Guidelines); only `SKILL.md`'s rules and `setup.md` are written by hand, in `too
 ## Documentation (Storybook)
 
 `apps/storybook` is themed with KalaDS itself. Sections: Introduction, Getting Started, Foundations
-(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Writing, For AI Agents, Agent Skills).
+(token pages), Components, Guidelines (Accessibility, Buttons and Surfaces, Dark Mode, Writing, For AI Agents, Agent
+Skills). The toolbar's Theme switch (`preview.ts` / `manager.ts`) sets `data-kds-theme` on the preview and
+switches Storybook's own interface and the docs frame (`ThemedDocsContainer`).
 
 - **Component pages:** every component has `<Name>.mdx` next to its stories, using `<Meta of={...} />`, the
   header block, and a Usage section with `Do` / `Dont` examples built from real components. Usage text

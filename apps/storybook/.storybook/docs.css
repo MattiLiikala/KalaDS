@@ -182,6 +182,18 @@
   border-radius: var(--kds-semantic-radius-sm);
 }
 
+.kds-docs-preview--small {
+  flex: none;
+  width: var(--kds-semantic-spacing-xl);
+}
+
+/* A themed token value: swatch, palette step and hex value. */
+.kds-docs-value {
+  display: flex;
+  align-items: center;
+  gap: var(--kds-semantic-spacing-sm);
+}
+
 .kds-docs-preview--size {
   min-width: var(--kds-size-25-px);
   max-width: 100%;

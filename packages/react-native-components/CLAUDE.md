@@ -9,7 +9,11 @@ Storybook's Getting Started).
 - [ ] `src/<name>/<Name>.tsx`
 - [ ] Props `extend <Name>Spec` from `@kalads/spec`; leave out web-only props explicitly with `Omit<…>`
       (form `name`, link `rel` / `download`, grid `rowSpan`) and document why
-- [ ] Every value from `@kalads/tokens/native` (`c`, `s`, `t` in `internal/theme.ts`). **Zero hardcoded values.**
+- [ ] Every value from `@kalads/tokens/native`. **Zero hardcoded values.** Colours and shadows come from
+      `useTokens()` inside the component (`const { c, s } = useTokens();`), so they follow
+      `KalaThemeProvider`; the static `c`, `s`, `t` exports of `internal/theme.ts` are the light theme, for
+      module-level dimensions only. `src/test/theme.test.tsx` renders every component with placeholder
+      colours and fails on any colour read from the static tokens: add new components to its gallery.
 - [ ] Text through `typeStyle()` / `textStyle()` (absolute line heights, the right font file per weight)
 - [ ] States with Pressable: pressed, `onHoverIn/Out`, focus ring via `useFocusVisible()` + `ring()`
 - [ ] Icons colour and size through `IconContext` (React Native has no CSS inheritance)
@@ -18,7 +22,7 @@ Storybook's Getting Started).
 
 ## Shared helpers (`src/internal/`)
 
-`Popup.tsx` (anchored popups in a Modal, placement from `@kalads/spec`), `modal.tsx` (Dialog / Drawer
+`theme.ts` (`KalaThemeProvider`, `useTokens`), `Popup.tsx` (anchored popups in a Modal, placement from `@kalads/spec`), `modal.tsx` (Dialog / Drawer
 open state and close reasons), `Field.tsx`, `Group.tsx`, `Listbox.tsx`, `options.tsx` (`Option`), `fonts.ts` (`useKalaFonts`, `fontFamily`), `focus.ts`, `motion.ts`.
 
 ## Verify

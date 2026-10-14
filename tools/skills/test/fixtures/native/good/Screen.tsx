@@ -1,10 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { tokens } from '@kalads/tokens/native';
-import { Box, Button, Typography } from '@kalads/react-native-components';
+import { Box, Button, Typography, useTokens } from '@kalads/react-native-components';
 
 export function Screen() {
+  const { s } = useTokens();
   return (
-    <View style={styles.page}>
+    <View style={[styles.page, { backgroundColor: s.bg.default }]}>
       <Box bg="inverse" padding="lg">
         <Button variant="primary" onInverse onPress={() => {}}>
           Save
@@ -16,5 +17,5 @@ export function Screen() {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, padding: tokens.semantic.padding.lg, backgroundColor: tokens.semantic.bg.default },
+  page: { flex: 1, padding: tokens.semantic.padding.lg },
 });

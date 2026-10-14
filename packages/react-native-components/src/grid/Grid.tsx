@@ -1,7 +1,7 @@
 import { Children, isValidElement, useState, type ReactNode } from 'react';
 import { View, type FlexAlignType, type LayoutChangeEvent, type ViewProps } from 'react-native';
 import type { GridSpec } from '@kalads/spec';
-import { c, s, space } from '../internal/theme.js';
+import { space, useTokens } from '../internal/theme.js';
 import { GridItem } from '../grid-item/GridItem.js';
 import { GridContext, spanWidth } from './context.js';
 
@@ -20,6 +20,7 @@ const ALIGN: Record<NonNullable<GridSpec['align']>, FlexAlignType> = {
  * the same maths. Use GridItem to span several columns.
  */
 export function Grid({ columns = 1, min, gap, rowGap, align, style, children, onLayout, ...rest }: GridProps) {
+  const { c, s } = useTokens();
   const [width, setWidth] = useState(0);
   const columnGap = space(gap) ?? c.grid.gap;
   const verticalGap = space(rowGap) ?? columnGap;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, View, type DimensionValue, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { SkeletonDefaults, type SkeletonSpec } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 
 export interface SkeletonProps extends Omit<SkeletonSpec, 'width' | 'height'> {
@@ -13,11 +13,11 @@ export interface SkeletonProps extends Omit<SkeletonSpec, 'width' | 'height'> {
   style?: StyleProp<ViewStyle>;
 }
 
-const k = c.skeleton;
 const lineHeight = typeStyle('body').lineHeight!;
 
 /** A shimmering shape: the highlight sweeps across every 1.4 s, or stays still with reduced motion. */
 function Shape({ style, shimmer }: { style: StyleProp<ViewStyle>; shimmer: Animated.Value | null }) {
+  const k = useTokens().c.skeleton;
   const [width, setWidth] = useState(0);
   return (
     <View style={[{ backgroundColor: k.bg, overflow: 'hidden' }, style]} onLayout={(e) => setWidth(e.nativeEvent.layout.width)}>
@@ -52,6 +52,8 @@ function Shape({ style, shimmer }: { style: StyleProp<ViewStyle>; shimmer: Anima
  * with aria-busy. Text lines are one body line tall; the last of several is shorter.
  */
 export function Skeleton({ variant = SkeletonDefaults.variant, lines = 1, width, height, style }: SkeletonProps) {
+  const { c, s } = useTokens();
+  const k = c.skeleton;
   const shimmer = useRef(new Animated.Value(0)).current;
   const [animate, setAnimate] = useState(false);
 

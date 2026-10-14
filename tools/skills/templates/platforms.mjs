@@ -55,8 +55,9 @@ const RULES = {
 3. **Lay out with \`kds-stack\`, \`kds-grid\`, \`kds-container\` and \`kds-box\`**, and put text in
    \`kds-typography\` — not styled \`<div>\`s and \`<span>\`s.
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own CSS use the semantic
-   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. Core palette tokens
-   (\`--kds-color-*\`) are only for data visualisation. See [references/tokens.md](references/tokens.md).
+   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. They follow dark mode;
+   core palette tokens (\`--kds-color-*\`) and literal colours don't, so use them only for data
+   visualisation. See [references/tokens.md](references/tokens.md).
 5. **Icons are \`<kds-icon-*>\` elements** (\`<kds-icon-plus>\`). Never inline \`<svg>\` or icon image files.
    Give an icon a \`label\` when it carries meaning on its own; decorative icons need none.
 6. **Solid buttons need a surface they stand out from.** On \`bg="inverse"\` surfaces add \`on-inverse\` to
@@ -72,8 +73,9 @@ const RULES = {
 3. **Lay out with \`Stack\`, \`Grid\`, \`Container\` and \`Box\`**, and put text in \`Typography\` — not styled
    \`<div>\`s and \`<span>\`s.
 4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own CSS use the semantic
-   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. Core palette tokens
-   (\`--kds-color-*\`) are only for data visualisation. See [references/tokens.md](references/tokens.md).
+   tokens: \`var(--kds-semantic-spacing-md)\`, \`var(--kds-semantic-bg-subtle)\`. They follow dark mode;
+   core palette tokens (\`--kds-color-*\`) and literal colours don't, so use them only for data
+   visualisation. See [references/tokens.md](references/tokens.md).
 5. **Icons come from \`@kalads/icons/react\`** (\`<PlusIcon />\`), or \`<Icon name="plus" />\`. Never inline
    \`<svg>\` or icon image files. Give an icon a \`label\` when it carries meaning on its own.
 6. **Solid buttons need a surface they stand out from.** Inside \`<Box bg="inverse">\` add \`onInverse\` to every
@@ -92,10 +94,11 @@ const RULES = {
    spacing, fonts or borders. If no prop does what you need, pick another component or variant.
 3. **Lay out with \`Stack\`, \`Grid\`, \`Container\` and \`Box\`, and put every text in \`Typography\`** (or a
    component that takes text, such as \`Button\`). Don't style \`Text\` from react-native yourself.
-4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own StyleSheets use the
-   semantic tokens from \`@kalads/tokens/native\`: \`tokens.semantic.spacing.md\`,
-   \`tokens.semantic.bg.subtle\`. Core palette tokens (\`tokens.color.*\`) are only for data visualisation.
-   See [references/tokens.md](references/tokens.md).
+4. **Never hardcode colours, spacing, font sizes, radii or shadows.** In your own styles use the semantic
+   tokens. Read colours and shadows inside the component with \`useTokens()\` (\`const { s } = useTokens();\`
+   then \`s.bg.subtle\`), so they follow dark mode; sizes and spacing can also come from \`tokens.semantic\`
+   in \`@kalads/tokens/native\` (\`tokens.semantic.spacing.md\`). Core palette tokens (\`tokens.color.*\`) are
+   only for data visualisation. See [references/tokens.md](references/tokens.md).
 5. **Icons come from \`@kalads/icons/native\`** (\`<PlusIcon />\`), or \`<Icon name="plus" />\`. Never draw
    icons with react-native-svg or image files. Give an icon a \`label\` when it carries meaning on its own.
 6. **Solid buttons need a surface they stand out from.** Inside \`<Box bg="inverse">\` add \`onInverse\` to every
@@ -251,6 +254,48 @@ body {
 - Typography inside \`<Box bg="inverse">\` switches to inverse text by itself.
 - Grid has no row spans, and form submission props (\`name\`) don't apply.`,
   }[platform];
+  const dark = {
+    web: `Light is the default. For dark mode, set \`data-kds-theme\` on \`<html>\`: \`dark\`, \`light\`, or \`auto\`
+(follows the device's appearance setting). It works on any element too, for a section in the other theme;
+give that section \`background-color: var(--kds-semantic-bg-default)\`.
+
+\`\`\`html
+<html data-kds-theme="auto">
+\`\`\`
+
+Only semantic tokens change with the theme; palette tokens and literal colours stay the same, so never use
+them for interface colours. On \`bg="inverse"\` surfaces keep \`on-inverse\` on buttons in both themes.`,
+    react: `Light is the default. For dark mode, set \`data-kds-theme\` on \`<html>\`: \`dark\`, \`light\`, or \`auto\`
+(follows the device's appearance setting). It works on any element too, for a section in the other theme;
+give that section \`background-color: var(--kds-semantic-bg-default)\`.
+
+\`\`\`tsx
+document.documentElement.dataset.kdsTheme = 'auto';
+\`\`\`
+
+Only semantic tokens change with the theme; palette tokens and literal colours stay the same, so never use
+them for interface colours. Inside \`<Box bg="inverse">\` keep \`onInverse\` on buttons in both themes.`,
+    native: `Light is the default. For dark mode, wrap the app root in \`KalaThemeProvider\` with \`scheme\`
+\`"dark"\`, \`"light"\` or \`"auto"\` (follows the device's appearance setting). Dialogs, drawers, menus and
+tooltips keep the theme.
+
+\`\`\`tsx
+import { KalaThemeProvider, useTokens } from '@kalads/react-native-components';
+
+<KalaThemeProvider scheme="auto">
+  <App />
+</KalaThemeProvider>;
+
+// In your own components, read colours from the active theme:
+function Section({ children }: { children: React.ReactNode }) {
+  const { s } = useTokens();
+  return <View style={{ backgroundColor: s.bg.subtle, padding: s.padding.lg }}>{children}</View>;
+}
+\`\`\`
+
+Colours imported from \`@kalads/tokens/native\` (\`tokens.semantic.bg.*\`) are the light theme's: use them
+only for sizes and spacing. Inside \`<Box bg="inverse">\` keep \`onInverse\` on buttons in both themes.`,
+  }[platform];
   return `# Setup (${PLATFORMS[platform].package} ${version})
 
 \`\`\`sh
@@ -260,5 +305,9 @@ ${install}
 ${load}
 
 ${page}
+
+## Dark mode
+
+${dark}
 `;
 }

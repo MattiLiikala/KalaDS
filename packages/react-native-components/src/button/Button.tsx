@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { IconContext } from '@kalads/icons/native';
 import { ButtonDefaults, type ButtonSize, type ButtonSpec } from '@kalads/spec';
-import { c, t } from '../internal/theme.js';
+import type { Tokens } from '@kalads/tokens/native';
+import { t, useTokens } from '../internal/theme.js';
 import { textStyle } from '../internal/text.js';
 import { hasContent } from '../internal/children.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
@@ -66,8 +67,9 @@ export function ButtonBase({
   square?: boolean;
   iconSize?: number;
   /** Overrides for the variant's colour tokens (Notification's close button follows the notification variant). */
-  colors?: Partial<(typeof c.button)['ghost']>;
+  colors?: Partial<Tokens['component']['button']['ghost']>;
 }) {
+  const { c, t } = useTokens();
   const v = { ...(onInverse ? c.button[variant].onInverse : c.button[variant]), ...colors };
   const shape = c.button[variant];
   const { fontSize, paddingY = shape.paddingY, paddingX = shape.paddingX } = SIZES[size];

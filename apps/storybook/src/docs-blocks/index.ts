@@ -7,5 +7,6 @@ export { ComponentDocsPage, ComponentHeader } from './ComponentDocsPage';
 export { Do, DoDont, Dont } from './DoDont';
 export { FrameworkTabs } from './FrameworkTabs';
 export { IconGallery } from './IconGallery';
+export { ThemedDocsContainer } from './ThemedDocsContainer';
 export { TokenTable } from './TokenTable';
 export { contrast, getTokens, tokenValue } from './tokens';

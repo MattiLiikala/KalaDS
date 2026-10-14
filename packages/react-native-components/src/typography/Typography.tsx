@@ -1,6 +1,6 @@
 import { Text, type TextProps, type TextStyle } from 'react-native';
 import { TypographyDefaults, type TypographySpec, type TypographyVariant } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { useSurface } from '../internal/surface.js';
 
@@ -14,15 +14,6 @@ export interface TypographyProps extends Omit<TypographySpec, 'as'>, TextProps {
 
 const HEADING_LEVEL: Partial<Record<TypographyVariant, number>> = { h1: 1, h2: 2, h3: 3, h4: 4, h5: 5, h6: 6 };
 
-const COLORS = {
-  default: c.typography.colorDefault,
-  subtle: c.typography.colorSubtle,
-  muted: c.typography.colorMuted,
-  brand: c.typography.colorBrand,
-  danger: c.typography.colorDanger,
-  inverse: c.typography.colorInverse,
-};
-
 /** Text in the KalaDS type scale: headings, body, caption, label and overline. */
 export function Typography({
   variant = TypographyDefaults.variant,
@@ -34,12 +25,21 @@ export function Typography({
   style,
   ...rest
 }: TypographyProps) {
+  const { c } = useTokens();
+  const colors = {
+    default: c.typography.colorDefault,
+    subtle: c.typography.colorSubtle,
+    muted: c.typography.colorMuted,
+    brand: c.typography.colorBrand,
+    danger: c.typography.colorDanger,
+    inverse: c.typography.colorInverse,
+  };
   const surface = useSurface();
   const heading = level ?? HEADING_LEVEL[variant] ?? 0;
   const resolved = color === 'default' && surface === 'inverse' ? 'inverse' : color;
   const text: TextStyle = {
     ...typeStyle(variant),
-    color: COLORS[resolved],
+    color: colors[resolved],
     ...(variant === 'overline' ? { textTransform: 'uppercase' } : {}),
     ...(align ? { textAlign: align === 'start' ? 'left' : align === 'end' ? 'right' : 'center' } : {}),
     ...(gutter ? { marginBottom: c.typography.gutter } : {}),

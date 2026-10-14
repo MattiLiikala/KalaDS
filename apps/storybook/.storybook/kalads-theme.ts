@@ -1,17 +1,9 @@
 import { create } from '@storybook/theming';
-import {
-  FontFamilyBase,
-  SemanticBgDefault,
-  SemanticBgMuted,
-  SemanticBgSubtle,
-  SemanticBorderControl,
-  SemanticBorderDefault,
-  SemanticInteractiveAccent,
-  SemanticRadiusMd,
-  SemanticTextDefault,
-  SemanticTextInverse,
-  SemanticTextSubtle,
-} from '@kalads/tokens/js';
+import * as light from '@kalads/tokens/js';
+import * as dark from '@kalads/tokens/js/dark';
+
+/** The JS tokens of one theme: the light and dark modules export the same names. */
+export type ThemeTokens = typeof light;
 
 /** Storybook's theme wants radii as pixel numbers; tokens are rem. */
 const toPx = (rem: string) => Math.round(parseFloat(rem) * 16);
@@ -23,41 +15,51 @@ const toPx = (rem: string) => Math.round(parseFloat(rem) * 16);
  *
  * colorSecondary is the selected sidebar item's background (with inverse text) and the link colour.
  */
-export const kaladsTheme = create({
-  base: 'light',
+function kaladsTheme(t: ThemeTokens, base: 'light' | 'dark') {
+  return create({
+    base,
 
-  brandTitle: 'KalaDS',
-  brandUrl: './',
-  brandTarget: '_self',
+    brandTitle: 'KalaDS',
+    brandUrl: './',
+    brandTarget: '_self',
 
-  colorPrimary: SemanticInteractiveAccent,
-  colorSecondary: SemanticInteractiveAccent,
+    colorPrimary: t.SemanticInteractiveAccent,
+    colorSecondary: t.SemanticInteractiveAccent,
 
-  appBg: SemanticBgSubtle,
-  appContentBg: SemanticBgDefault,
-  appPreviewBg: SemanticBgDefault,
-  appBorderColor: SemanticBorderDefault,
-  appBorderRadius: toPx(SemanticRadiusMd),
+    appBg: t.SemanticBgSubtle,
+    appContentBg: t.SemanticBgDefault,
+    appPreviewBg: t.SemanticBgDefault,
+    appBorderColor: t.SemanticBorderDefault,
+    appBorderRadius: toPx(t.SemanticRadiusMd),
 
-  fontBase: FontFamilyBase,
-  fontCode: "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace",
+    fontBase: t.FontFamilyBase,
+    fontCode: "ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace",
 
-  textColor: SemanticTextDefault,
-  textMutedColor: SemanticTextSubtle,
-  textInverseColor: SemanticTextInverse,
+    textColor: t.SemanticTextDefault,
+    textMutedColor: t.SemanticTextSubtle,
+    textInverseColor: t.SemanticTextInverse,
 
-  barBg: SemanticBgDefault,
-  barTextColor: SemanticTextSubtle,
-  barSelectedColor: SemanticInteractiveAccent,
-  barHoverColor: SemanticInteractiveAccent,
+    barBg: t.SemanticBgDefault,
+    barTextColor: t.SemanticTextSubtle,
+    barSelectedColor: t.SemanticInteractiveAccent,
+    barHoverColor: t.SemanticInteractiveAccent,
 
-  buttonBg: SemanticBgSubtle,
-  buttonBorder: SemanticBorderControl,
-  booleanBg: SemanticBgMuted,
-  booleanSelectedBg: SemanticBgDefault,
+    buttonBg: t.SemanticBgSubtle,
+    buttonBorder: t.SemanticBorderControl,
+    booleanBg: t.SemanticBgMuted,
+    booleanSelectedBg: t.SemanticBgDefault,
 
-  inputBg: SemanticBgDefault,
-  inputBorder: SemanticBorderControl,
-  inputTextColor: SemanticTextDefault,
-  inputBorderRadius: toPx(SemanticRadiusMd),
-});
+    inputBg: t.SemanticBgDefault,
+    inputBorder: t.SemanticBorderControl,
+    inputTextColor: t.SemanticTextDefault,
+    inputBorderRadius: toPx(t.SemanticRadiusMd),
+  });
+}
+
+export type ThemeName = 'light' | 'dark';
+
+/** The toolbar global that holds the theme, and the theme for each of its values. */
+export const THEME_GLOBAL = 'theme';
+export const TOKENS: Record<ThemeName, ThemeTokens> = { light, dark };
+export const kaladsThemes = { light: kaladsTheme(light, 'light'), dark: kaladsTheme(dark, 'dark') };
+export const themeName = (value: unknown): ThemeName => (value === 'dark' ? 'dark' : 'light');

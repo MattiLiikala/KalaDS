@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Pressable, Text, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import { IconContext, CheckIcon, MinusIcon } from '@kalads/icons/native';
 import type { CheckboxSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { useControllable } from '../internal/controllable.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
@@ -23,6 +23,7 @@ const body = typeStyle('body');
  * the touch target. There's no error state on a single checkbox: show errors on the CheckboxGroup.
  */
 export function Checkbox({ checked, defaultChecked = false, indeterminate, disabled, required, onChange, children, style, ...rest }: CheckboxProps) {
+  const { c } = useTokens();
   const [on, setOn] = useControllable(checked, defaultChecked);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

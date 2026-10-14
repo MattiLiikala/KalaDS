@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { CheckCircleIcon, CloseIcon, ErrorIcon, InfoIcon, WarningIcon } from '@kalads/icons/native';
 import { NotificationDefaults, type NotificationSpec, type NotificationVariant } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { c, useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { hasContent, isText } from '../internal/children.js';
 import { ButtonBase } from '../button/Button.js';
@@ -38,6 +38,7 @@ export function Notification({
   children,
   style,
 }: NotificationProps) {
+  const { c, s } = useTokens();
   const [dismissed, setDismissed] = useState(false);
   if (dismissed) return null;
   const k = c.notification;

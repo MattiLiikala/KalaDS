@@ -70,7 +70,8 @@ const mdx = (path) => mdxToMarkdown(read(path));
 const usage = (page) => section(mdx(join(storiesDir, `${page}.mdx`)), 'Usage');
 
 const tokensJson = json(join(packages, 'tokens/dist/json/tokens.json'));
-const { tokens: nativeTokens } = await import(join(packages, 'tokens/dist/native/tokens.js'));
+const tokensDark = json(join(packages, 'tokens/dist/json/dark.json'));
+const { tokens: nativeTokens, themes: nativeThemes } = await import(join(packages, 'tokens/dist/native/tokens.js'));
 const icons = readdirSync(join(packages, 'icons/src/svgs'))
   .filter((f) => f.endsWith('.svg'))
   .map((f) => f.slice(0, -4))
@@ -232,23 +233,28 @@ function tokensPage(platform) {
     '# Tokens',
     '',
     native
-      ? 'Use these in your own StyleSheets, from `import { tokens } from \'@kalads/tokens/native\'`. Dimensions are numbers (density-independent pixels), colours are strings, shadows are `boxShadow` values.'
-      : 'Use these CSS custom properties in your own CSS, for the layout around components. They are defined by `@kalads/tokens/css`.',
+      ? 'Use these in your own styles. Dimensions are numbers (density-independent pixels), colours are strings, shadows are `boxShadow` values. Read colours and shadows inside a component with `const { s } = useTokens()` (`s.bg.subtle`), so they follow dark mode; sizes and spacing can also come from `import { tokens } from \'@kalads/tokens/native\'` (`tokens.semantic.spacing.md`).'
+      : 'Use these CSS custom properties in your own CSS, for the layout around components. They are defined by `@kalads/tokens/css`. Colours and shadows have a value per theme: the **Dark** column is what the token resolves to inside `data-kds-theme="dark"`.',
     '',
     'Use the **semantic** tokens: they say what a value is for, so they stay right when the palette changes. Core palette tokens (`color.*`) are only for data visualisation.',
     '',
     `Layout components take the token steps directly as props: \`gap="md"\`, \`padding="lg"\`, \`bg="subtle"\`, \`radius="md"\` — prefer them to writing styles.`,
   ];
   const groups = native ? nativeTokens.semantic : tokensJson.semantic;
+  const darkGroups = native ? nativeThemes.dark.semantic : tokensDark.semantic;
   const flat = (obj, path = []) =>
     Object.entries(obj).flatMap(([k, v]) => (v && typeof v === 'object' && !Array.isArray(v) && !('offsetX' in v) && !('offset-x' in v) ? flat(v, [...path, k]) : [[[...path, k], v]]));
   const show = (v) => (typeof v === 'object' ? JSON.stringify(v) : String(v));
+  const get = (tree, path) => path.reduce((n, k) => n?.[k], tree);
   for (const [group, values] of Object.entries(groups)) {
     if (group === 'type') continue; // Text styles: use Typography's variants.
-    out.push('', `## ${group}`, '', '| Token | Value |', '| --- | --- |');
-    for (const [path, value] of flat(values)) {
-      const name = native ? `tokens.semantic.${[group, ...path].map((s) => (/^[a-z]\w*$/i.test(s) ? `.${s}` : `['${s}']`)).join('').slice(1)}` : `var(--kds-semantic-${[group, ...path].join('-')})`;
-      out.push(`| \`${name}\` | \`${cell(show(value))}\` |`);
+    const rows = flat(values).map(([path, value]) => [path, value, get(darkGroups, [group, ...path])]);
+    const themed = rows.some(([, light, dark]) => show(light) !== show(dark));
+    out.push('', `## ${group}`, '', themed ? '| Token | Light | Dark |' : '| Token | Value |', themed ? '| --- | --- | --- |' : '| --- | --- |');
+    for (const [path, value, dark] of rows) {
+      const key = [group, ...path].map((s) => (/^[a-z]\w*$/i.test(s) ? `.${s}` : `['${s}']`)).join('').slice(1);
+      const name = native ? (themed ? `s.${key}` : `tokens.semantic.${key}`) : `var(--kds-semantic-${[group, ...path].join('-')})`;
+      out.push(`| \`${name}\` | \`${cell(show(value))}\` |${themed ? ` \`${cell(show(dark))}\` |` : ''}`);
     }
   }
   out.push('', '## Text styles', '', 'Use `Typography` variants (`h1`–`h6`, `body`, `body-sm`, `label`, `caption`, `overline`) instead of setting font sizes.'.replace('`Typography`', platform === 'web' ? '`<kds-typography>`' : '`Typography`'));

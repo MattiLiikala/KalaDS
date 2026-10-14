@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { CloseIcon, IconContext } from '@kalads/icons/native';
 import { ChipDefaults, type ChipSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { textOf } from '../internal/children.js';
 import { useControllable } from '../internal/controllable.js';
@@ -41,6 +41,7 @@ export function Chip({
   children,
   style,
 }: ChipProps) {
+  const { c } = useTokens();
   const [on, setOn] = useControllable(selected, defaultSelected);
   const [hovered, setHovered] = useState(false);
   const [removeHovered, setRemoveHovered] = useState(false);

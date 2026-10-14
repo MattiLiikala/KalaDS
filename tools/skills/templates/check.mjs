@@ -3,7 +3,7 @@
  * KalaDS rule checker for app code. Usage: node check.mjs [files or folders…]   (default: src)
  *
  * Flags the rule breaks it can find without running the app: hardcoded colours and sizes in styles,
- * restyled components, raw elements and icons that KalaDS replaces, and buttons on inverse surfaces
+ * colours that don't follow dark mode (palette tokens, static React Native colour tokens), restyled components, raw elements and icons that KalaDS replaces, and buttons on inverse surfaces
  * without the inverse variant. Exits 1 when it finds any. It can't judge everything: the rules in
  * SKILL.md still apply.
  */
@@ -115,11 +115,23 @@ function checkNativeImports(file, code) {
   for (const m of code.matchAll(/from\s*['"]react-native-svg['"]/g)) report(file, code, m.index, 'react-native-svg: use an icon from @kalads/icons/native');
 }
 
+/** Colours that stay the same in dark mode: palette tokens in UI, React Native colours read without useTokens(). */
+function checkThemed(file, code) {
+  if (PLATFORM === 'native') {
+    for (const m of code.matchAll(/\btokens\.(semantic\.(bg|text|border|status|interactive|shadow)|component\.[\w.]*(bg|text|color|border|shadow)\w*|color\.(?!data\d))/gi))
+      report(file, code, m.index, `static colour token \`tokens.${m[1]}\`: read colours from useTokens() so they follow dark mode`);
+  } else {
+    for (const m of code.matchAll(/--kds-color-(?!data\d)[\w-]+/g))
+      report(file, code, m.index, `palette token \`${m[0]}\` doesn't follow dark mode: use a semantic token (var(--kds-semantic-…))`);
+  }
+}
+
 function checkFile(file) {
   const ext = extname(file);
   const text = readFileSync(file, 'utf8');
+  if (!STYLE_EXT.has(ext) && !CODE_EXT.has(ext)) return;
+  checkThemed(file, text);
   if (STYLE_EXT.has(ext)) return checkCss(file, text);
-  if (!CODE_EXT.has(ext)) return;
   if (['.html', '.htm', '.vue', '.svelte', '.astro'].includes(ext)) {
     for (const m of text.matchAll(/<style[^>]*>([^]*?)<\/style>/g)) checkCss(file, m[1], m.index + m[0].indexOf(m[1]), text);
   }

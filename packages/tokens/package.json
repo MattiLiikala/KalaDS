@@ -5,7 +5,9 @@
   "exports": {
     "./css": "./dist/css/variables.css",
     "./js": "./dist/js/tokens.js",
+    "./js/dark": "./dist/js/dark.js",
     "./json": "./dist/json/tokens.json",
+    "./json/dark": "./dist/json/dark.json",
     "./native": {
       "types": "./dist/native/tokens.d.ts",
       "default": "./dist/native/tokens.js"
@@ -14,6 +16,7 @@
   "scripts": {
     "build": "node sd.config.mjs",
     "dev": "node sd.config.mjs --watch",
+    "test": "node --test test/*.test.mjs",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

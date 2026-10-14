@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { AccessibilityInfo, Animated, Pressable, Text, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import type { ToggleSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { useControllable } from '../internal/controllable.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
@@ -22,6 +22,7 @@ const body = typeStyle('body');
  * after a form is submitted. The thumb slides over 150 ms, or jumps when the user prefers reduced motion.
  */
 export function Toggle({ checked, defaultChecked = false, disabled, onChange, children, style, ...rest }: ToggleProps) {
+  const { c } = useTokens();
   const [on, setOn] = useControllable(checked, defaultChecked);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

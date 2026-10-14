@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guidelines/Dark Mode" />
+
+# Dark mode
+
+KalaDS has a light and a dark theme. Both use the same components, the same component tokens and the
+same semantic token names: a theme only changes which palette colour each semantic token points to
+(`semantic.bg.default` is `neutral.100` in light and `neutral.900` in dark). Sizes, spacing and fonts are
+the same in both. Light is the default; dark mode is something your app turns on.
+
+Use the **Theme** switch in the toolbar to see every page in either theme. **Foundations/Colors** lists
+the light and dark value of every semantic colour.
+
+## Turn it on
+
+### Web components and React
+
+Set `data-kds-theme` on the `<html>` element:
+
+```html
+<html data-kds-theme="dark">
+```
+
+<table className="kds-docs-table">
+  <thead><tr><th>Value</th><th>Theme</th></tr></thead>
+  <tbody>
+    <tr><td><code>light</code></td><td>Light (also without the attribute)</td></tr>
+    <tr><td><code>dark</code></td><td>Dark</td></tr>
+    <tr><td><code>auto</code></td><td>Follows the device's appearance setting (<code>prefers-color-scheme</code>)</td></tr>
+  </tbody>
+</table>
+
+The attribute also sets the CSS `color-scheme`, so scrollbars and native form controls match. Change it at
+any time, for example from a settings menu; every component updates without a reload.
+
+### React Native
+
+Wrap the app root in `KalaThemeProvider`:
+
+```tsx
+import { KalaThemeProvider, useKalaFonts } from '@kalads/react-native-components';
+
+export default function App() {
+  const [loaded] = useKalaFonts();
+  if (!loaded) return null;
+  return (
+    <KalaThemeProvider scheme="auto">
+      <Main />
+    </KalaThemeProvider>
+  );
+}
+```
+
+`scheme` is `light` (the default), `dark`, or `auto` (follows the device's appearance setting). Dialogs,
+drawers, menus and tooltips keep the theme. In your own components, read colours from `useTokens()`
+instead of importing them from `@kalads/tokens/native`, so they change with the theme:
+
+```tsx
+const { s } = useTokens();
+return <View style={{ flex: 1, backgroundColor: s.bg.default }} />;
+```
+
+## Part of a page
+
+On the web, `data-kds-theme` works on any element, not only `<html>`: everything inside it uses that
+theme. Use it for a section that is always dark (a hero, a code sample), or `light` for a light section
+inside a dark page:
+
+```html
+<section data-kds-theme="dark">
+  <kds-button variant="primary">Get started</kds-button>
+</section>
+```
+
+Give the section a background (`var(--kds-semantic-bg-default)`), since the attribute only changes the
+tokens.
+
+## Build for both themes
+
+- **Use semantic tokens for everything that has a colour**: backgrounds, text, borders, shadows. They
+  switch with the theme. Palette tokens (`--kds-color-*`) and literal colours stay the same in both
+  themes, so text or surfaces built from them disappear in one of them.
+- **Name colours by their job.** Text on an accent fill is `interactive.on-accent`, not `text.inverse`;
+  a link is `text.link`, not `text.brand`. Tokens with the same value in one theme can differ in the other.
+- **Inverse surfaces flip.** `bg.inverse` is dark in the light theme and light in the dark theme. Keep
+  `on-inverse` on buttons placed on `bg.inverse` in both themes: it means "on the inverse surface", not
+  "on a dark surface".
+- **Check images and illustrations.** Logos and pictures with transparent backgrounds may need a version
+  for dark backgrounds.
+- **Check both themes** before you ship a screen, including hover, focus and disabled states.
+
+```css
+/* Do: follows the theme */
+.panel {
+  background-color: var(--kds-semantic-bg-subtle);
+  color: var(--kds-semantic-text-default);
+}
+
+/* Don't: stays a light panel with dark text in the dark theme */
+.panel {
+  background-color: var(--kds-color-neutral-200);
+  color: #20160e;
+}
+```

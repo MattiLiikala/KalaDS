@@ -6,7 +6,7 @@
       "bg-hover":       { "$type": "color",      "$value": "{semantic.bg.subtle}" },
       "bg-active":      { "$type": "color",      "$value": "{semantic.bg.muted}" },
       "bg-selected":    { "$type": "color",      "$value": "{semantic.interactive.accent-subtle}" },
-      "text-selected":  { "$type": "color",      "$value": "{semantic.interactive.accent-strong}" },
+      "text-selected":  { "$type": "color",      "$value": "{semantic.interactive.on-accent-subtle}" },
       "text-disabled":  { "$type": "color",      "$value": "{semantic.text.muted}" },
       "radius":         { "$type": "dimension",  "$value": "{semantic.radius.md}" },
       "padding-x":      { "$type": "dimension",  "$value": "{semantic.padding.md}" },

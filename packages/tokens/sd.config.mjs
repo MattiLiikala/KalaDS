@@ -1,4 +1,7 @@
+import { readFileSync, rmSync, writeFileSync } from 'node:fs';
 import StyleDictionary from 'style-dictionary';
+import { formattedVariables } from 'style-dictionary/utils';
+import { checkSources } from './scripts/check-sources.mjs';
 
 const isWatch = process.argv.includes('--watch');
 
@@ -83,7 +86,7 @@ const HEADER = '/**\n * Do not edit directly, this file was auto-generated.\n */
 StyleDictionary.registerFormat({
   name: 'kds/native/js',
   format: ({ dictionary }) =>
-    `${HEADER}export const tokens = ${JSON.stringify(nativeTree(dictionary), null, 2)};\n\nexport default tokens;\n`,
+    `${HEADER}import { darkTokens } from './dark.js';\n\nexport const tokens = ${JSON.stringify(nativeTree(dictionary), null, 2)};\n\n/** Every token per theme. The light theme is \`tokens\`; only colours and shadows differ. */\nexport const themes = { light: tokens, dark: darkTokens };\n\nexport default tokens;\n`,
 });
 
 StyleDictionary.registerFormat({
@@ -102,40 +105,61 @@ export interface NativeShadow {
 export type Tokens = ${typeOf(nativeTree(dictionary), 0)};
 
 export declare const tokens: Tokens;
+
+/** Every token per theme. The light theme is \`tokens\`; only colours and shadows differ. */
+export declare const themes: { readonly light: Tokens; readonly dark: Tokens };
+
 export default tokens;
 `,
 });
 
-const sd = new StyleDictionary({
-  source: ['src/**/*.json'],
+StyleDictionary.registerFormat({
+  name: 'kds/native/dark-js',
+  format: ({ dictionary }) => `${HEADER}export const darkTokens = ${JSON.stringify(nativeTree(dictionary), null, 2)};\n`,
+});
+
+/** Names of the tokens whose value differs between the themes, filled in before the builds run. */
+const themed = new Set();
+
+/**
+ * One theme's variables for the `data-kds-theme` scopes: `[data-kds-theme="dark"]` and, inside the
+ * prefers-color-scheme media query, `[data-kds-theme="auto"]`. Only the tokens whose value differs between
+ * the themes are written, references kept, so component tokens resolve again inside a themed subtree.
+ */
+StyleDictionary.registerFormat({
+  name: 'kds/css/theme',
+  format: ({ dictionary, options }) => {
+    // Filtered here rather than with a file filter: the references stay resolvable (no "filtered out
+    // references" warning), since the variables they point to are declared in :root.
+    const changed = { ...dictionary, allTokens: dictionary.allTokens.filter((t) => themed.has(t.name)) };
+    const body = `  color-scheme: ${options.theme};\n${formattedVariables({ format: 'css', dictionary: changed, outputReferences: true, usesDtcg: true })}`;
+    return `[data-kds-theme="${options.theme}"] {\n${body}\n}\n\n@media (prefers-color-scheme: ${options.theme}) {\n  [data-kds-theme="auto"] {\n${body.replace(/^/gm, '  ')}\n  }\n}\n`;
+  },
+});
+
+/** Core, then semantic, then component. The dark theme swaps in src/semantic/dark/ for the semantic colours. */
+const SOURCES = ['src/core/**/*.json', 'src/semantic/*.json', 'src/component/**/*.json'];
+const DARK = ['src/semantic/dark/*.json'];
+
+
+const light = new StyleDictionary({
+  source: SOURCES,
   platforms: {
     css: {
       transformGroup: 'css',
       prefix: 'kds',
       buildPath: 'dist/css/',
       files: [
-        {
-          destination: 'variables.css',
-          format: 'css/variables',
-          options: {
-            outputReferences: true,
-            selector: ':root',
-          },
-        },
+        { destination: 'variables.css', format: 'css/variables', options: { outputReferences: true, selector: ':root' } },
+        { destination: 'theme-light.css', format: 'kds/css/theme', options: { theme: 'light' } },
       ],
     },
     js: {
       transformGroup: 'js',
       buildPath: 'dist/js/',
       files: [
-        {
-          destination: 'tokens.js',
-          format: 'javascript/es6',
-        },
-        {
-          destination: 'tokens.d.ts',
-          format: 'typescript/es6-declarations',
-        },
+        { destination: 'tokens.js', format: 'javascript/es6' },
+        { destination: 'tokens.d.ts', format: 'typescript/es6-declarations' },
       ],
     },
     // React Native: resolved values, dimensions as numbers, shadows as boxShadow objects.
@@ -149,25 +173,76 @@ const sd = new StyleDictionary({
     },
     json: {
       buildPath: 'dist/json/',
-      files: [
-        {
-          destination: 'tokens.json',
-          format: 'json/nested',
-        },
-      ],
+      files: [{ destination: 'tokens.json', format: 'json/nested' }],
     },
   },
 });
 
-await sd.buildAllPlatforms();
-console.log('[tokens] build complete');
+// The light sources stay included; the dark semantic colours override them (same token paths).
+const dark = new StyleDictionary({
+  include: SOURCES,
+  source: DARK,
+  platforms: {
+    css: {
+      transformGroup: 'css',
+      prefix: 'kds',
+      buildPath: 'dist/css/',
+      files: [{ destination: 'theme-dark.css', format: 'kds/css/theme', options: { theme: 'dark' } }],
+    },
+    js: {
+      transformGroup: 'js',
+      buildPath: 'dist/js/',
+      files: [
+        { destination: 'dark.js', format: 'javascript/es6' },
+        { destination: 'dark.d.ts', format: 'typescript/es6-declarations' },
+      ],
+    },
+    native: {
+      transforms: ['name/camel', 'kds/native/value'],
+      buildPath: 'dist/native/',
+      files: [{ destination: 'dark.js', format: 'kds/native/dark-js' }],
+    },
+    json: {
+      buildPath: 'dist/json/',
+      files: [{ destination: 'dark.json', format: 'json/nested' }],
+    },
+  },
+});
+
+async function build() {
+  checkSources();
+  themed.clear();
+  const values = async (sd) => {
+    const { allTokens } = await sd.getPlatformTokens('css', { cache: false });
+    return new Map(allTokens.map((t) => [t.name, JSON.stringify(t.$value ?? t.value)]));
+  };
+  const [l, d] = await Promise.all([values(light), values(dark)]);
+  for (const [name, value] of l) if (d.get(name) !== value) themed.add(name);
+
+  await light.buildAllPlatforms();
+  await dark.buildAllPlatforms();
+
+  // One stylesheet: :root (light), then the light and dark theme scopes.
+  const css = (f) => readFileSync(`dist/css/${f}`, 'utf8');
+  writeFileSync('dist/css/variables.css', `${css('variables.css')}\n${css('theme-light.css')}\n${css('theme-dark.css')}`);
+  rmSync('dist/css/theme-light.css');
+  rmSync('dist/css/theme-dark.css');
+  console.log(`[tokens] build complete (${themed.size} tokens change in dark mode)`);
+}
+
+await build();
 
 if (isWatch) {
   const { default: chokidar } = await import('chokidar');
   chokidar.watch('src/**/*.json').on('change', async (path) => {
     console.log(`[tokens] changed: ${path}`);
-    await sd.buildAllPlatforms();
-    console.log('[tokens] rebuilt');
+    // A Style Dictionary instance reads its sources once: rebuild in a fresh process.
+    const { execFileSync } = await import('node:child_process');
+    try {
+      execFileSync(process.execPath, ['sd.config.mjs'], { stdio: 'inherit' });
+    } catch {
+      // The build printed its error.
+    }
   });
   console.log('[tokens] watching src/**/*.json');
 }

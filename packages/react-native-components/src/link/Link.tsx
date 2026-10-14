@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Linking, Text, View, type TextProps } from 'react-native';
 import { ExternalLinkIcon } from '@kalads/icons/native';
 import { LinkDefaults, type LinkSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useFocusVisible, ring } from '../internal/focus.js';
 
 export interface LinkProps extends Omit<LinkSpec, 'rel' | 'download'>, Omit<TextProps, 'onPress' | 'role'> {
@@ -21,6 +21,7 @@ export interface LinkProps extends Omit<LinkSpec, 'rel' | 'download'>, Omit<Text
  * the external icon and the screen-reader note, and opens in the browser.
  */
 export function Link({ href, target, variant = LinkDefaults.variant, newTabLabel = LinkDefaults.newTabLabel, onPress, style, children, ...rest }: LinkProps) {
+  const { c } = useTokens();
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
   const focus = useFocusVisible();

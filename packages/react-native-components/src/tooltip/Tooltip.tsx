@@ -1,7 +1,7 @@
 import { cloneElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { Text, View } from 'react-native';
 import { TooltipDefaults, type TooltipSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { Popup } from '../internal/Popup.js';
 
@@ -30,6 +30,7 @@ type TriggerProps = {
  * accessibility hint, so screen readers announce it. Icon buttons still need their own `label`.
  */
 export function Tooltip({ content, placement = TooltipDefaults.placement, disabled, children }: TooltipProps) {
+  const { c } = useTokens();
   const [open, setOpen] = useState(false);
   const anchor = useRef<View>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);

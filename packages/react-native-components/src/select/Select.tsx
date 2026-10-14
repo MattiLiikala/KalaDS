@@ -2,7 +2,7 @@ import { useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { SelectSpec } from '@kalads/spec';
 import { ChevronDownIcon } from '@kalads/icons/native';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useControllable } from '../internal/controllable.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
 import { Field, fieldBox, fieldText } from '../internal/Field.js';
@@ -24,6 +24,7 @@ export interface SelectProps extends Omit<SelectSpec, 'name'> {
  * the list next to it; picking an option closes it. For long lists or type-to-filter, use Autocomplete.
  */
 export function Select({ label, value, defaultValue = '', placeholder, helper, error, disabled, required, onChange, children, style }: SelectProps) {
+  const { c, s } = useTokens();
   const id = useId();
   const options = useMemo(() => readOptions(children), [children]);
   // Without a placeholder the first option is selected, as with a native select.

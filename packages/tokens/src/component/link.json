@@ -1,11 +1,11 @@
 {
   "component": {
     "link": {
-      "text":                  { "$type": "color",      "$value": "{semantic.interactive.accent}" },
-      "text-hover":            { "$type": "color",      "$value": "{semantic.interactive.accent-hover}" },
-      "text-active":           { "$type": "color",      "$value": "{semantic.interactive.accent-active}" },
+      "text":                  { "$type": "color",      "$value": "{semantic.text.link}" },
+      "text-hover":            { "$type": "color",      "$value": "{semantic.text.link-hover}" },
+      "text-active":           { "$type": "color",      "$value": "{semantic.text.link-active}" },
       "text-subtle":           { "$type": "color",      "$value": "{semantic.text.default}" },
-      "text-subtle-hover":     { "$type": "color",      "$value": "{semantic.interactive.accent}" },
+      "text-subtle-hover":     { "$type": "color",      "$value": "{semantic.text.link}" },
       "underline-width":       { "$type": "dimension",  "$value": "{semantic.border-width.default}" },
       "underline-width-hover": { "$type": "dimension",  "$value": "{semantic.border-width.strong}" },
       "icon-size":             { "$type": "dimension",  "$value": "{semantic.spacing.md}" },

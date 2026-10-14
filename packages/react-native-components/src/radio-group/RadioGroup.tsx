@@ -1,7 +1,7 @@
 import { useMemo, type ReactNode } from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { RadioGroupDefaults, type RadioGroupSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useControllable } from '../internal/controllable.js';
 import { Group } from '../internal/Group.js';
 import { RadioGroupContext } from './context.js';
@@ -25,6 +25,7 @@ export function RadioGroup({
   children,
   ...rest
 }: RadioGroupProps) {
+  const { c } = useTokens();
   const [current, setCurrent] = useControllable(value, defaultValue);
   const context = useMemo(
     () => ({

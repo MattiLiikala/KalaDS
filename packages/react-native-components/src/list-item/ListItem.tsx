@@ -1,7 +1,7 @@
 import { useContext, useState, type ReactNode } from 'react';
 import { Linking, Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { ListItemSpec } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { hasContent, isText } from '../internal/children.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
@@ -32,6 +32,7 @@ const small = typeStyle('body-sm');
  * `interactive` a button that calls onSelect.
  */
 export function ListItem({ href, interactive, selected, disabled, children, secondary, start, end, nested, onSelect, style }: ListItemProps) {
+  const { c, s } = useTokens();
   const { dense } = useContext(ListContext);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

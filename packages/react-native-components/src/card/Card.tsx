@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Pressable, View, type StyleProp, type ViewStyle } from 'react-native';
 import { CardDefaults, type CardSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { c, useTokens } from '../internal/theme.js';
 import { hasContent } from '../internal/children.js';
 import { useReducedMotion } from '../internal/motion.js';
 
@@ -21,7 +21,6 @@ export interface CardProps extends CardSpec {
   style?: StyleProp<ViewStyle>;
 }
 
-const SHADOW = { 1: c.card.shadow1, 2: c.card.shadow2, 3: c.card.shadow3 };
 const OFFSET = { 1: c.card.offsetHover1, 2: c.card.offsetHover2, 3: c.card.offsetHover3 };
 
 /**
@@ -30,6 +29,7 @@ const OFFSET = { 1: c.card.offsetHover1, 2: c.card.offsetHover2, 3: c.card.offse
  * into its shadow when hovered or pressed.
  */
 export function Card({ elevation = CardDefaults.elevation, interactive, header, footer, onPress, accessibilityLabel, children, style }: CardProps) {
+  const { c } = useTokens();
   const [hovered, setHovered] = useState(false);
   const reduce = useReducedMotion();
   const k = c.card;
@@ -40,7 +40,7 @@ export function Card({ elevation = CardDefaults.elevation, interactive, header, 
     borderWidth: k.borderWidth,
     borderColor: k.border,
     borderRadius: k.radius,
-    boxShadow: (down ? k.shadowHover : SHADOW[elevation]) as ViewStyle['boxShadow'],
+    boxShadow: (down ? k.shadowHover : { 1: k.shadow1, 2: k.shadow2, 3: k.shadow3 }[elevation]) as ViewStyle['boxShadow'],
     ...(down && !reduce ? { transform: [{ translateX: OFFSET[elevation] }, { translateY: OFFSET[elevation] }] } : {}),
   });
   const content = (

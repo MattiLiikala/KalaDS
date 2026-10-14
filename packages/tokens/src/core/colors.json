@@ -30,13 +30,17 @@
       "500": { "$type": "color", "$value": "#aca097" },
       "600": { "$type": "color", "$value": "#7e7067" },
       "700": { "$type": "color", "$value": "#5e5249" },
+      "750": { "$type": "color", "$value": "#483d34", "$description": "Between 700 and 800: the muted dark surface, light enough to tell from 800 and dark enough for primary.300 text (4.5:1)." },
       "800": { "$type": "color", "$value": "#31271f" },
-      "900": { "$type": "color", "$value": "#20160e" }
+      "900": { "$type": "color", "$value": "#20160e" },
+      "950": { "$type": "color", "$value": "#140d08", "$description": "Dark mode: crisp shadows, darker than the default dark surface (neutral.900)." }
     },
     "neutral-alpha": {
       "100": { "$type": "color", "$value": "#20160e0f" },
       "200": { "$type": "color", "$value": "#20160e1a" },
-      "300": { "$type": "color", "$value": "#20160e29" }
+      "300": { "$type": "color", "$value": "#20160e29" },
+      "400": { "$type": "color", "$value": "#140d0866", "$description": "Dark mode: soft shadows need a stronger, darker shade to show on dark surfaces." },
+      "500": { "$type": "color", "$value": "#140d08a3", "$description": "Dark mode: soft shadows need a stronger, darker shade to show on dark surfaces." }
     },
     "danger": {
       "100": { "$type": "color", "$value": "#ffebe9" },

@@ -9,6 +9,7 @@
       "inputs": [
         "src/**",
         "*.config.*",
+        "scripts/**",
         "*.json",
         "!package.json"
       ],
@@ -76,6 +77,17 @@
         "templates/**",
         "lib/**",
         "build-skills.mjs"
+      ]
+    },
+    "@kalads/tokens#test": {
+      "dependsOn": [
+        "build"
+      ],
+      "inputs": [
+        "test/**",
+        "src/**",
+        "scripts/**",
+        "sd.config.mjs"
       ]
     }
   }

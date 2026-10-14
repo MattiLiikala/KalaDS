@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { Animated, Modal, Pressable, StyleSheet, View } from 'react-native';
 import type { BackdropSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { SurfaceContext } from '../internal/surface.js';
 import { useReducedMotion } from '../internal/motion.js';
 
@@ -17,6 +17,7 @@ export interface BackdropProps extends BackdropSpec {
  * anything the user must interact with, use Dialog.
  */
 export function Backdrop({ open = false, onClose, children }: BackdropProps) {
+  const { c } = useTokens();
   const opacity = useRef(new Animated.Value(0)).current;
   const reduce = useReducedMotion();
   useEffect(() => {

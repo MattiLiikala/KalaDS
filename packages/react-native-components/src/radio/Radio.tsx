@@ -1,7 +1,7 @@
 import { useContext, useState, type ReactNode } from 'react';
 import { Pressable, Text, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import type { RadioSpec } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { typeStyle } from '../internal/text.js';
 import { ring, useFocusVisible } from '../internal/focus.js';
 import { RadioGroupContext } from '../radio-group/context.js';
@@ -16,6 +16,7 @@ const body = typeStyle('body');
 
 /** One option in a RadioGroup. Always use inside a RadioGroup: the group owns the selection. */
 export function Radio({ value = '', disabled, children, style, ...rest }: RadioProps) {
+  const { c } = useTokens();
   const group = useContext(RadioGroupContext);
   const [hovered, setHovered] = useState(false);
   const focus = useFocusVisible();

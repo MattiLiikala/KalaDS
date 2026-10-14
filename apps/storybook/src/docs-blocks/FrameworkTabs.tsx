@@ -1,5 +1,6 @@
 import React from 'react';
 import { Source } from '@storybook/blocks';
+import { useColorTheme } from './ThemedDocsContainer';
 import { markup } from '@kalads/skills-builder/markup';
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
  * The live source of the main story, following the Props controls, stays under its "Show code".
  */
 export function FrameworkTabs({ web, react, native }: Props) {
+  const dark = useColorTheme() === 'dark';
   return (
     <div className="kds-docs-frameworks">
       <kds-tabs label="Framework">
@@ -25,13 +27,13 @@ export function FrameworkTabs({ web, react, native }: Props) {
         <kds-tab value="react">React</kds-tab>
         <kds-tab value="native">React Native</kds-tab>
         <kds-tab-panel value="web">
-          <Source code={web.trim()} language="html" dark={false} />
+          <Source code={web.trim()} language="html" dark={dark} />
         </kds-tab-panel>
         <kds-tab-panel value="react">
-          <Source code={markup(react)} language="tsx" dark={false} />
+          <Source code={markup(react)} language="tsx" dark={dark} />
         </kds-tab-panel>
         <kds-tab-panel value="native">
-          <Source code={markup(native)} language="tsx" dark={false} />
+          <Source code={markup(native)} language="tsx" dark={dark} />
         </kds-tab-panel>
       </kds-tabs>
     </div>

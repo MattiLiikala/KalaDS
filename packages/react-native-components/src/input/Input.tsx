@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
 import { TextInput, View, type StyleProp, type TextInputProps, type ViewStyle } from 'react-native';
 import { InputDefaults, type InputSpec, type InputType } from '@kalads/spec';
-import { c } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useControllable } from '../internal/controllable.js';
 import { Field, fieldBox, fieldText } from '../internal/Field.js';
 
@@ -43,6 +43,7 @@ export function Input({
   onBlur,
   ...rest
 }: InputProps) {
+  const { c } = useTokens();
   const id = useId();
   const [current, setCurrent] = useControllable(value, defaultValue);
   const [focused, setFocused] = useState(false);

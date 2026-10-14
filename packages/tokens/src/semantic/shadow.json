@@ -6,6 +6,9 @@
       "crisp-color-warning": { "$type": "color", "$value": "{color.warning.300}" },
       "crisp-color-success": { "$type": "color", "$value": "{color.success.300}" },
       "crisp-color-info":    { "$type": "color", "$value": "{color.info.300}" },
+      "soft-color-faint":  { "$type": "color", "$value": "{color.neutral-alpha.100}" },
+      "soft-color":        { "$type": "color", "$value": "{color.neutral-alpha.200}" },
+      "soft-color-strong": { "$type": "color", "$value": "{color.neutral-alpha.300}" },
       "crisp-offset": {
         "1": { "$type": "dimension", "$value": "{size.75.px}" },
         "2": { "$type": "dimension", "$value": "{size.100.px}" },
@@ -18,16 +21,16 @@
       },
       "soft": {
         "1": { "$type": "shadow", "$value": [
-          { "offsetX": "{size.0.px}", "offsetY": "{size.25.px}", "blur": "{size.75.px}",  "spread": "{size.0.px}", "color": "{color.neutral-alpha.300}" },
-          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}", "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.100}" }
+          { "offsetX": "{size.0.px}", "offsetY": "{size.25.px}", "blur": "{size.75.px}",  "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color-strong}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}", "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color-faint}" }
         ] },
         "2": { "$type": "shadow", "$value": [
-          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}",  "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" },
-          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.300.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" }
+          { "offsetX": "{size.0.px}", "offsetY": "{size.75.px}",  "blur": "{size.100.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.300.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color}" }
         ] },
         "3": { "$type": "shadow", "$value": [
-          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.200.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.200}" },
-          { "offsetX": "{size.0.px}", "offsetY": "{size.300.px}", "blur": "{size.600.px}", "spread": "{size.0.px}", "color": "{color.neutral-alpha.300}" }
+          { "offsetX": "{size.0.px}", "offsetY": "{size.100.px}", "blur": "{size.200.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color}" },
+          { "offsetX": "{size.0.px}", "offsetY": "{size.300.px}", "blur": "{size.600.px}", "spread": "{size.0.px}", "color": "{semantic.shadow.soft-color-strong}" }
         ] }
       }
     }

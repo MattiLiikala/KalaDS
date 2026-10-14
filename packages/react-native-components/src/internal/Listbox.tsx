@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { typeStyle } from './text.js';
-import { t } from './theme.js';
+import { t, useTokens } from './theme.js';
 import { fontFamily } from './fonts.js';
 import type { OptionData } from './options.js';
-
-/** Popup surface tokens shared by the listbox popups (component.autocomplete popup-* and option-*). */
-const p = t.component.autocomplete;
 
 interface ListboxProps {
   options: OptionData[];
@@ -22,6 +19,8 @@ interface ListboxProps {
 
 /** The option list of Select and Autocomplete, styled like kds-autocomplete's listbox. */
 export function Listbox({ options, selected, active, emptyText, label, onPick, onHover, pickOnPressIn }: ListboxProps) {
+  // Popup surface tokens shared by the listbox popups (component.autocomplete popup-* and option-*).
+  const p = useTokens().c.autocomplete;
   const body = typeStyle('body');
   const [hover, setHover] = useState(-1);
   return (

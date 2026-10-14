@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Text, View } from 'react-native';
 import { ChevronRightIcon } from '@kalads/icons/native';
 import type { BreadcrumbItemSpec } from '@kalads/spec';
-import { c, t } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { fontFamily } from '../internal/fonts.js';
 import { typeStyle } from '../internal/text.js';
 import { Link } from '../link/Link.js';
@@ -21,6 +21,7 @@ export interface BreadcrumbItemProps extends BreadcrumbItemSpec {
  * page otherwise. A chevron separator comes before every item but the first.
  */
 export function BreadcrumbItem({ href, current, onPress, first, children }: BreadcrumbItemProps) {
+  const { c, t } = useTokens();
   const k = c.breadcrumbItem;
   const isCurrent = current || (!href && !onPress);
   const font = typeStyle('body-sm');

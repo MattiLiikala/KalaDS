@@ -1,7 +1,7 @@
 import { Children, isValidElement, useMemo, type ReactElement, type ReactNode } from 'react';
 import { ScrollView, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { TabsSpec } from '@kalads/spec';
-import { c, s } from '../internal/theme.js';
+import { useTokens } from '../internal/theme.js';
 import { useControllable } from '../internal/controllable.js';
 import { Tab, type TabProps } from '../tab/Tab.js';
 import { TabsContext } from './context.js';
@@ -20,6 +20,7 @@ export interface TabsProps extends TabsSpec {
  * `value`; the tabs are gathered into a horizontally scrolling tab list. Defaults to the first enabled tab.
  */
 export function Tabs({ value, defaultValue, label, onChange, children, style }: TabsProps) {
+  const { c, s } = useTokens();
   const items = Children.toArray(children);
   const tabs = items.filter((c): c is ReactElement<TabProps> => isValidElement(c) && c.type === Tab);
   const others = items.filter((c) => !(isValidElement(c) && c.type === Tab));

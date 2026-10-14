@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Text, View, type ViewProps } from 'react-native';
 import { BadgeDefaults, type BadgeSpec } from '@kalads/spec';
-import { c, t } from '../internal/theme.js';
+import { t, useTokens } from '../internal/theme.js';
 import { textStyle } from '../internal/text.js';
 
 export interface BadgeProps extends BadgeSpec, ViewProps {
@@ -15,6 +15,7 @@ const font = textStyle(t.font.family.label, t.font.size['100'], t.font.weight.bo
  * contrast with the surface behind it at 4.5:1 or more.
  */
 export function Badge({ variant = BadgeDefaults.variant, style, children, ...rest }: BadgeProps) {
+  const { c } = useTokens();
   const b = c.badge[variant];
   return (
     <View

@@ -1,42 +1,74 @@
 import { addons } from '@storybook/manager-api';
-import {
-  ColorSecondary500,
-  FontFamilyHeading,
-  FontSize500,
-  FontWeightBold,
-  SemanticInteractiveAccent,
-  SemanticTextDefault,
-  SemanticTextSubtle,
-} from '@kalads/tokens/js';
-import { kaladsTheme } from './kalads-theme';
+import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events';
+import { kaladsThemes, themeName, THEME_GLOBAL, TOKENS, type ThemeName } from './kalads-theme';
 
 addons.setConfig({
-  theme: kaladsTheme,
+  theme: kaladsThemes.light,
   sidebar: { showRoots: true },
 });
 
 /*
  * What the theme can't set: the sidebar icon colours (Storybook's defaults for documents, stories and
  * folders are orange, teal and purple) and the brand title size. Storybook's interface can't read the
- * token CSS variables, so the values come from the JS tokens. The selected row keeps Storybook's inverse
- * icon colour.
+ * token CSS variables, so the values come from the JS tokens of the active theme.
+ *
+ * The selected row: Storybook paints it with colorSecondary and white text. In light that is the accent
+ * fill; in dark the accent is a light pink that white text can't be read on, so the row uses the subtle
+ * accent fill and its label colour instead, as the selected Drawer and List items do, and the other
+ * rows hover on the next surface step rather than Storybook's saturated pink. (The id outranks
+ * Storybook's own rules, which it injects after these.)
  */
 const style = document.createElement('style');
-style.textContent = `
+document.head.append(style);
+
+function sidebarStyles(theme: ThemeName) {
+  const t = TOKENS[theme];
+  style.textContent = `
   .sidebar-header a[href="./"] {
-    font-family: ${FontFamilyHeading};
-    font-size: ${FontSize500};
-    font-weight: ${FontWeightBold};
-    color: ${SemanticTextDefault};
+    font-family: ${t.FontFamilyHeading};
+    font-size: ${t.FontSize500};
+    font-weight: ${t.FontWeightBold};
+    color: ${t.SemanticTextDefault};
   }
   .sidebar-item[data-nodetype="document"]:not([data-selected="true"]) svg {
-    color: ${SemanticInteractiveAccent};
+    color: ${t.SemanticInteractiveAccent};
   }
   .sidebar-item[data-nodetype="story"]:not([data-selected="true"]) svg {
-    color: ${ColorSecondary500};
+    color: ${t.SemanticInteractiveSecondary};
   }
   .sidebar-item[data-nodetype="group"]:not([data-selected="true"]) svg {
-    color: ${SemanticTextSubtle};
+    color: ${t.SemanticTextSubtle};
   }
-`;
-document.head.append(style);
+${
+  theme === 'dark'
+    ? `  #storybook-explorer-tree .sidebar-item[data-selected="true"] {
+    background: ${t.SemanticInteractiveAccentSubtle};
+    color: ${t.SemanticInteractiveOnAccentSubtle};
+  }
+  #storybook-explorer-tree .sidebar-item[data-selected="true"]:hover {
+    background: ${t.SemanticInteractiveAccentSubtleHover};
+  }
+  #storybook-explorer-tree .sidebar-item[data-selected="true"] :is(a, button, svg) {
+    color: ${t.SemanticInteractiveOnAccentSubtle};
+  }
+  #storybook-explorer-tree .sidebar-item:not([data-selected="true"]):is(:hover, :focus) {
+    background: ${t.SemanticBgMuted};
+  }`
+    : ''
+}`;
+}
+sidebarStyles('light');
+
+// The interface follows the dark mode switch in the toolbar (the `theme` global, set in preview.ts).
+addons.register('kalads/theme', (api) => {
+  let current: ThemeName = 'light';
+  const apply = ({ globals }: { globals?: Record<string, unknown> }) => {
+    const next = themeName(globals?.[THEME_GLOBAL]);
+    if (next === current) return;
+    current = next;
+    api.setOptions({ theme: kaladsThemes[next] });
+    sidebarStyles(next);
+  };
+  api.getChannel()?.on(SET_GLOBALS, apply);
+  api.getChannel()?.on(GLOBALS_UPDATED, apply);
+});

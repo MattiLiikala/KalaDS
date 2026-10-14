@@ -1,6 +1,6 @@
 import { View, type ViewProps, type ViewStyle } from 'react-native';
 import type { BoxSpec } from '@kalads/spec';
-import { c, s, space } from '../internal/theme.js';
+import { space, useTokens } from '../internal/theme.js';
 import { SurfaceContext } from '../internal/surface.js';
 
 export interface BoxProps extends Omit<BoxSpec, 'inline'>, ViewProps {
@@ -13,6 +13,7 @@ export interface BoxProps extends Omit<BoxSpec, 'inline'>, ViewProps {
  * name. `bg="inverse"` also switches Typography inside it to inverse text.
  */
 export function Box({ padding, paddingX, paddingY, marginY, bg, radius, border, inline, style, children, ...rest }: BoxProps) {
+  const { c, s } = useTokens();
   const p = space(padding) ?? c.box.padding;
   const box: ViewStyle = {
     paddingVertical: space(paddingY) ?? p,

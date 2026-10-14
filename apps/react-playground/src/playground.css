@@ -6,6 +6,11 @@ body {
   background: var(--kds-semantic-bg-default);
 }
 
+.toolbar {
+  padding: var(--kds-semantic-spacing-md) var(--kds-semantic-spacing-lg);
+  border-bottom: 1px solid var(--kds-semantic-border-default);
+}
+
 .case {
   display: grid;
   grid-template-columns: 1fr 1fr;
