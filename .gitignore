@@ -6,3 +6,10 @@ storybook-static/
 .DS_Store
 packages/icons/src/components/
 packages/icons/src/index.ts
+packages/icons/src/data/
+packages/icons/src/react/
+packages/icons/src/native/
+packages/spec/src/generated.ts
+packages/*/skills/
+apps/*/.claude/skills/
+apps/*/.agents/skills/
