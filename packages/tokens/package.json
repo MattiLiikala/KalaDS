@@ -1,6 +1,6 @@
 {
   "name": "@kalads/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "KalaDS design tokens: CSS custom properties, typed CSS variable references for React, JS, JSON and React Native values, in a light and a dark theme.",
   "keywords": [

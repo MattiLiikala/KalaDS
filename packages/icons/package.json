@@ -1,6 +1,6 @@
 {
   "name": "@kalads/icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "KalaDS icons: <kds-icon-*> web components, and icon components for React and React Native.",
   "keywords": [
@@ -45,15 +45,15 @@
     "lit": "^3.3.3"
   },
   "devDependencies": {
-    "chokidar": "^4.0.0",
-    "glob": "^11.0.0",
-    "svgo": "^4.0.1",
-    "typescript": "^6.0.3",
     "@kalads/tokens": "workspace:*",
     "@types/react": "catalog:",
+    "chokidar": "^4.0.0",
+    "glob": "^11.0.0",
     "react": "catalog:",
     "react-native": "catalog:",
-    "react-native-svg": "catalog:"
+    "react-native-svg": "catalog:",
+    "svgo": "^4.0.1",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@kalads/tokens": "workspace:^",
