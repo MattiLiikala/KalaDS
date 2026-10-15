@@ -17,6 +17,22 @@
         "dist/**"
       ]
     },
+    "@kalads/web-components#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "src/**",
+        "*.config.*",
+        "*.json",
+        "!package.json",
+        "!custom-elements.json"
+      ],
+      "outputs": [
+        "dist/**",
+        "custom-elements.json"
+      ]
+    },
     "@kalads/skills-builder#build": {
       "dependsOn": [
         "^build"
