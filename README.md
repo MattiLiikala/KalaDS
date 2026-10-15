@@ -4,6 +4,8 @@ A design system with one set of design tokens and component libraries for multip
 libraries have the same components, props, variants and defaults, and come in a light and a dark theme. A
 test checks the contrast of the colour pairs the components use, in both themes.
 
+**Documentation:** [kalads.netlify.app](https://kalads.netlify.app)
+
 ## Packages
 
 | Package                                                               | What it is                                                                         |
@@ -17,7 +19,8 @@ test checks the contrast of the colour pairs the components use, in both themes.
 
 Apps and tools:
 
-- [`apps/storybook`](apps/storybook): the documentation. It has one page per component, with code for
+- [`apps/storybook`](apps/storybook): the documentation, published at
+  [kalads.netlify.app](https://kalads.netlify.app). It has one page per component, with code for
   all three libraries, plus the token pages (Foundations) and Guidelines.
 - [`apps/react-playground`](apps/react-playground): every React component next to its web component,
   for checking that they look the same.
@@ -91,7 +94,7 @@ export default function App() {
 ```
 
 The fonts (Overlock and Parkinsans), the React Native peer dependencies and how the APIs map between
-platforms are covered in Storybook's **Getting Started** page.
+platforms are covered in the docs' [Getting Started](https://kalads.netlify.app/?path=/docs/getting-started--docs) page.
 
 ### Dark mode
 

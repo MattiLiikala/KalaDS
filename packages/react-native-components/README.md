@@ -32,9 +32,9 @@ Building with a coding agent? Run `pnpm exec kalads-skills` in your app to give 
 
 ## Documentation
 
-KalaDS is a design system with one set of tokens and component libraries for multiple platforms. See the
-[KalaDS repository](https://github.com/MattiLiikala/KalaDS) for all packages and the documentation
-(Storybook, `apps/storybook`).
+KalaDS is a design system with one set of tokens and component libraries for multiple platforms. Read the
+documentation at [kalads.netlify.app](https://kalads.netlify.app), and see the
+[KalaDS repository](https://github.com/MattiLiikala/KalaDS) for all packages.
 
 ## License
 
