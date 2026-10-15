@@ -12,7 +12,6 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
   staticDirs: [
-    '../public',
     // Font files for Storybook's own interface (see manager-head.html).
     { from: '../node_modules/@fontsource/overlock/files', to: '/fonts/overlock' },
     { from: '../node_modules/@fontsource/parkinsans/files', to: '/fonts/parkinsans' },

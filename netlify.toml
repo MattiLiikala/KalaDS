@@ -1,0 +1,39 @@
+# The Storybook docs on Netlify: production deploys from `main`, a preview per pull request.
+# Builds every workspace package first (turbo's ^build), then the static Storybook.
+
+[build]
+  base = "/"
+  command = "pnpm build:storybook"
+  publish = "apps/storybook/storybook-static"
+  # Exit 0 skips the build: nothing the docs are built from changed since the last deploy (for example a
+  # playground-only change). A first or repeated build of the same commit always builds.
+  ignore = """
+    [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ] && exit 1;
+    git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- \
+      apps/storybook packages tools \
+      package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.base.json .npmrc netlify.toml
+  """
+
+[build.environment]
+  # Match engines (node >=22) and packageManager (pnpm@9.15.0) in package.json.
+  NODE_VERSION = "22"
+  PNPM_VERSION = "9.15.0"
+  STORYBOOK_DISABLE_TELEMETRY = "1"
+
+# Vite's asset names contain a content hash and the fonts are versioned files: cache them for a year.
+# Pages (index.html, iframe.html, index.json) keep Netlify's default revalidation, so a deploy shows at once.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
