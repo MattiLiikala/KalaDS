@@ -1,9 +1,8 @@
 # KalaDS
 
-A design system with one set of design tokens and three component libraries built on them: web
-components, React and React Native. The three libraries have the same components, props, variants and
-defaults, and come in a light and a dark theme. A test checks the contrast of the colour pairs the
-components use, in both themes.
+A design system with one set of design tokens and component libraries for multiple platforms. The
+libraries have the same components, props, variants and defaults, and come in a light and a dark theme. A
+test checks the contrast of the colour pairs the components use, in both themes.
 
 ## Packages
 
@@ -154,3 +153,11 @@ pnpm test             # Token contrast (both themes), React, React Native, the a
 
 Contributor rules (no hard-coded values, no inline styles, the new component checklist) are in
 [`CLAUDE.md`](CLAUDE.md) and in each package's `CLAUDE.md`.
+
+## Releasing
+
+The packages are released to npm by the author.
+
+## License
+
+[MIT](LICENSE) © 2026 Matti Liikala

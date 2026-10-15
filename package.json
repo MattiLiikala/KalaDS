@@ -11,7 +11,8 @@
     "typecheck": "turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,json,css,md,mdx}\"",
     "clean": "turbo run clean && rm -rf node_modules",
-    "test": "turbo run test && node packages/spec/scripts/check-parity.mjs"
+    "test": "turbo run test && node packages/spec/scripts/check-parity.mjs",
+    "release:check": "pnpm build && pnpm typecheck && pnpm test && pnpm -r --filter \"./packages/*\" publish --dry-run --no-git-checks"
   },
   "devDependencies": {
     "prettier": "^3.8.3",

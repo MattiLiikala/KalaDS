@@ -128,6 +128,13 @@ pnpm typecheck            # TypeScript type checking (includes the docs' code sn
 pnpm test                 # Unit tests: token contrast (both themes), React (Vitest), React Native (jest-expo), the agent skills, API parity
 ```
 
+## Releases
+
+The packages are published to npm by hand by the author, and only by the author. Agents never
+publish, bump package versions, or create release commits or tags. Every package ships `dist/` (and
+`skills/`, `bin/`, `custom-elements.json` where listed in its `files`), so a new package needs `files`,
+`license`, `repository` and `publishConfig` like the others, and a `LICENSE` and `README.md`.
+
 ## Adding a New Token
 
 1. Edit the appropriate file in `packages/tokens/src/`

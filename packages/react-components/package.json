@@ -3,6 +3,24 @@
   "version": "0.0.0",
   "type": "module",
   "description": "KalaDS components for React, styled with the KalaDS design tokens.",
+  "keywords": [
+    "kalads",
+    "design-system",
+    "react",
+    "components",
+    "ui"
+  ],
+  "license": "MIT",
+  "author": "Matti Liikala",
+  "homepage": "https://github.com/MattiLiikala/KalaDS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiLiikala/KalaDS.git",
+    "directory": "packages/react-components"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiLiikala/KalaDS/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -20,14 +38,16 @@
     "kalads-skills": "./bin/kalads-skills.mjs"
   },
   "types": "dist/types/index.d.ts",
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "build": "vite build && tsc --project tsconfig.build.json",
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "clean": "rm -rf dist",
-    "prepack": "node ../../tools/skills/build-skills.mjs"
+    "prepack": "node ../../tools/skills/build-skills.mjs --only react-components"
   },
   "dependencies": {
     "@kalads/icons": "workspace:*",
@@ -35,8 +55,8 @@
     "@kalads/tokens": "workspace:*"
   },
   "peerDependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.0",
@@ -50,5 +70,8 @@
     "typescript": "^6.0.3",
     "vite": "^6.3.5",
     "vitest": "^3.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -2,6 +2,26 @@
   "name": "@kalads/icons",
   "version": "0.0.0",
   "type": "module",
+  "description": "KalaDS icons: <kds-icon-*> web components, and icon components for React and React Native.",
+  "keywords": [
+    "kalads",
+    "design-system",
+    "icons",
+    "web-components",
+    "react",
+    "react-native"
+  ],
+  "license": "MIT",
+  "author": "Matti Liikala",
+  "homepage": "https://github.com/MattiLiikala/KalaDS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiLiikala/KalaDS.git",
+    "directory": "packages/icons"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiLiikala/KalaDS/issues"
+  },
   "exports": {
     ".": "./dist/index.js",
     "./react": {
@@ -36,9 +56,9 @@
     "react-native-svg": "catalog:"
   },
   "peerDependencies": {
-    "@kalads/tokens": "workspace:*",
-    "react": "catalog:",
-    "react-native-svg": "catalog:"
+    "@kalads/tokens": "workspace:^",
+    "react": ">=19",
+    "react-native-svg": ">=15.8"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -47,5 +67,11 @@
     "react-native-svg": {
       "optional": true
     }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -3,6 +3,23 @@
   "version": "0.0.0",
   "type": "module",
   "description": "The shared component API (prop types, variants, defaults) of the KalaDS web, React and React Native libraries.",
+  "keywords": [
+    "kalads",
+    "design-system",
+    "types",
+    "component-api"
+  ],
+  "license": "MIT",
+  "author": "Matti Liikala",
+  "homepage": "https://github.com/MattiLiikala/KalaDS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiLiikala/KalaDS.git",
+    "directory": "packages/spec"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiLiikala/KalaDS/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,5 +36,11 @@
   "devDependencies": {
     "@kalads/web-components": "workspace:*",
     "typescript": "^6.0.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -291,7 +291,13 @@ function guideline(platform, file, title) {
 
 // ------------------------------------------------------------------------------------------------ write
 
+// `--only <package dir>` (each component package's prepack) writes that package's skill only, so packs
+// running in parallel (`pnpm -r publish`) don't delete each other's skills folders.
+const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : undefined;
+if (only && !Object.values(PLATFORMS).some((p) => p.dir === only)) throw new Error(`[skills] --only: unknown package "${only}"`);
+
 for (const [platform, p] of Object.entries(PLATFORMS)) {
+  if (only && p.dir !== only) continue;
   const pkgDir = join(packages, p.dir);
   const { version } = json(join(pkgDir, 'package.json'));
   const out = join(pkgDir, 'skills', p.skill);

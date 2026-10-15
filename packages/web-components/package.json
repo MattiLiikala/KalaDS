@@ -2,6 +2,26 @@
   "name": "@kalads/web-components",
   "version": "0.0.0",
   "type": "module",
+  "description": "KalaDS components as framework-agnostic web components (<kds-button>, <kds-input>…), styled with the KalaDS design tokens.",
+  "keywords": [
+    "kalads",
+    "design-system",
+    "web-components",
+    "lit",
+    "custom-elements",
+    "ui"
+  ],
+  "license": "MIT",
+  "author": "Matti Liikala",
+  "homepage": "https://github.com/MattiLiikala/KalaDS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiLiikala/KalaDS.git",
+    "directory": "packages/web-components"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiLiikala/KalaDS/issues"
+  },
   "exports": {
     ".": "./dist/index.js",
     "./custom-elements.json": "./custom-elements.json",
@@ -23,7 +43,7 @@
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist custom-elements.json",
-    "prepack": "node ../../tools/skills/build-skills.mjs"
+    "prepack": "node ../../tools/skills/build-skills.mjs --only web-components"
   },
   "dependencies": {
     "@kalads/icons": "workspace:*",
@@ -35,5 +55,8 @@
     "glob": "^11.0.0",
     "typescript": "^6.0.3",
     "vite": "^6.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

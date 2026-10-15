@@ -2,6 +2,26 @@
   "name": "@kalads/tokens",
   "version": "0.0.0",
   "type": "module",
+  "description": "KalaDS design tokens: CSS custom properties, typed CSS variable references for React, JS, JSON and React Native values, in a light and a dark theme.",
+  "keywords": [
+    "kalads",
+    "design-system",
+    "design-tokens",
+    "css-variables",
+    "dark-mode",
+    "react-native"
+  ],
+  "license": "MIT",
+  "author": "Matti Liikala",
+  "homepage": "https://github.com/MattiLiikala/KalaDS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiLiikala/KalaDS.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiLiikala/KalaDS/issues"
+  },
   "exports": {
     "./css": "./dist/css/variables.css",
     "./js": "./dist/js/tokens.js",
@@ -26,5 +46,11 @@
   "devDependencies": {
     "chokidar": "^4.0.0",
     "style-dictionary": "^4.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
