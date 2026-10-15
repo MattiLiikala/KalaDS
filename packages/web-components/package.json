@@ -1,6 +1,6 @@
 {
   "name": "@kalads/web-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "KalaDS components as framework-agnostic web components (<kds-button>, <kds-input>…), styled with the KalaDS design tokens.",
   "keywords": [

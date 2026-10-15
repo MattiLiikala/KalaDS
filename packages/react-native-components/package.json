@@ -1,6 +1,6 @@
 {
   "name": "@kalads/react-native-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "KalaDS components for React Native, styled with the KalaDS design tokens.",
   "keywords": [
