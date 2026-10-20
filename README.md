@@ -1,4 +1,9 @@
-# KalaDS
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo/logo-brand-dark.svg">
+    <img src="assets/logo/logo-brand.svg" alt="KalaDS" height="96">
+  </picture>
+</h1>
 
 A design system with one set of design tokens and component libraries for multiple platforms. The
 libraries have the same components, props, variants and defaults, and come in a light and a dark theme. A

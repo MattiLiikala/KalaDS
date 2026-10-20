@@ -20,6 +20,9 @@ function kaladsTheme(t: ThemeTokens, base: 'light' | 'dark') {
     base,
 
     brandTitle: 'KalaDS',
+    // The brand logo's dark text disappears on the dark interface: the dark theme uses the version in
+    // the dark theme's colours.
+    brandImage: base === 'dark' ? './logo/logo-brand-dark.svg' : './logo/logo-brand.svg',
     brandUrl: './',
     brandTarget: '_self',
 

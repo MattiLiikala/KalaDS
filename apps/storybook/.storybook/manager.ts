@@ -30,6 +30,10 @@ function sidebarStyles(theme: ThemeName) {
     font-weight: ${t.FontWeightBold};
     color: ${t.SemanticTextDefault};
   }
+  .sidebar-header a[href="./"] img {
+    height: ${t.SemanticSpacing2xl};
+    width: auto;
+  }
   .sidebar-item[data-nodetype="document"]:not([data-selected="true"]) svg {
     color: ${t.SemanticInteractiveAccent};
   }

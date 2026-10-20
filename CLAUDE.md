@@ -20,6 +20,7 @@ apps/storybook/                   @kalads/storybook               — Documentat
 apps/react-playground/            @kalads/react-playground        — Every React component next to its web component (visual parity)
 apps/native-playground/           @kalads/native-playground       — Expo app with every React Native component (iOS, Android, web)
 tools/skills/                     @kalads/skills-builder          — Generates the agent skills shipped in the component packages (private)
+assets/                           (not a package)                 — The KalaDS logo for the docs and the README (never in @kalads/icons)
 ```
 
 The web components are the reference: their attributes (custom-elements.json) generate `@kalads/spec`,
