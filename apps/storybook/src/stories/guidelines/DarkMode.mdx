@@ -81,7 +81,7 @@ tokens.
 - **Use semantic tokens for everything that has a colour**: backgrounds, text, borders, shadows. They
   switch with the theme. Palette tokens (`--kds-color-*`) and literal colours stay the same in both
   themes, so text or surfaces built from them disappear in one of them.
-- **Name colours by their job.** Text on an accent fill is `interactive.on-accent`, not `text.inverse`;
+- **Name colours by their job.** Text on an interactive fill is `text.on-interactive`, not `text.inverse`;
   a link is `text.link`, not `text.brand`. Tokens with the same value in one theme can differ in the other.
 - **Inverse surfaces flip.** `bg.inverse` is dark in the light theme and light in the dark theme. Keep
   `on-inverse` on buttons placed on `bg.inverse` in both themes: it means "on the inverse surface", not

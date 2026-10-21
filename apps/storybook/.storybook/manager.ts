@@ -12,9 +12,9 @@ addons.setConfig({
  * folders are orange, teal and purple) and the brand title size. Storybook's interface can't read the
  * token CSS variables, so the values come from the JS tokens of the active theme.
  *
- * The selected row: Storybook paints it with colorSecondary and white text. In light that is the accent
- * fill; in dark the accent is a light pink that white text can't be read on, so the row uses the subtle
- * accent fill and its label colour instead, as the selected Drawer and List items do, and the other
+ * The selected row: Storybook paints it with colorSecondary and white text. In light that is the interactive
+ * fill; in dark that fill is a light pink that white text can't be read on, so the row uses the subtle
+ * interactive fill and its label colour instead, as the selected Drawer and List items do, and the other
  * rows hover on the next surface step rather than Storybook's saturated pink. (The id outranks
  * Storybook's own rules, which it injects after these.)
  */
@@ -35,10 +35,10 @@ function sidebarStyles(theme: ThemeName) {
     width: auto;
   }
   .sidebar-item[data-nodetype="document"]:not([data-selected="true"]) svg {
-    color: ${t.SemanticInteractiveAccent};
+    color: ${t.SemanticTextBrand};
   }
   .sidebar-item[data-nodetype="story"]:not([data-selected="true"]) svg {
-    color: ${t.SemanticInteractiveSecondary};
+    color: ${t.SemanticTextInteractiveSecondary};
   }
   .sidebar-item[data-nodetype="group"]:not([data-selected="true"]) svg {
     color: ${t.SemanticTextSubtle};
@@ -46,14 +46,14 @@ function sidebarStyles(theme: ThemeName) {
 ${
   theme === 'dark'
     ? `  #storybook-explorer-tree .sidebar-item[data-selected="true"] {
-    background: ${t.SemanticInteractiveAccentSubtle};
-    color: ${t.SemanticInteractiveOnAccentSubtle};
+    background: ${t.SemanticBgInteractiveSubtle};
+    color: ${t.SemanticTextOnInteractiveSubtle};
   }
   #storybook-explorer-tree .sidebar-item[data-selected="true"]:hover {
-    background: ${t.SemanticInteractiveAccentSubtleHover};
+    background: ${t.SemanticBgInteractiveSubtleHover};
   }
   #storybook-explorer-tree .sidebar-item[data-selected="true"] :is(a, button, svg) {
-    color: ${t.SemanticInteractiveOnAccentSubtle};
+    color: ${t.SemanticTextOnInteractiveSubtle};
   }
   #storybook-explorer-tree .sidebar-item:not([data-selected="true"]):is(:hover, :focus) {
     background: ${t.SemanticBgMuted};

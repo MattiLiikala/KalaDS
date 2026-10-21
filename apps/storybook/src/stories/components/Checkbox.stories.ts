@@ -9,7 +9,7 @@ const meta: Meta = {
     docs: {
       description: {
         component: `
-A native checkbox with the KalaDS look: 2px control border, accent fill when checked. Supports the
+A native checkbox with the KalaDS look: 2px control border, brand fill when checked. Supports the
 indeterminate (mixed) state for "select all", and submits its \`value\` with forms when checked.
 
 Group related checkboxes with **\`kds-checkbox-group\`**, which gives them a shared, announced label plus

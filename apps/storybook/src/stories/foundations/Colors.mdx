@@ -18,30 +18,61 @@ data visualisation (charts, data grids) will come in a later release.
 The tokens to use in your code. Each table lists the palette step a token uses in the light and the dark
 theme (see **Guidelines/Dark Mode**).
 
+### Naming
+
+A semantic colour's name says what it colours, then what for: **property-concept-variant-state-mode**.
+
+<table className="kds-docs-table">
+  <thead><tr><th>Part</th><th>Values</th></tr></thead>
+  <tbody>
+    <tr><td>property</td><td><code>bg</code>, <code>text</code>, <code>border</code>, <code>ring</code> (the focus ring)</td></tr>
+    <tr><td>concept</td><td><code>interactive</code> (buttons, controls, selection), <code>status</code>, or none for page surfaces and text</td></tr>
+    <tr><td>variant</td><td>none for the brand colour, <code>secondary</code>, <code>danger</code>, <code>control</code>; for status <code>danger</code>, <code>warning</code>, <code>success</code>, <code>info</code></td></tr>
+    <tr><td>emphasis</td><td><code>subtle</code>, <code>strong</code></td></tr>
+    <tr><td>state</td><td><code>hover</code>, <code>active</code>, <code>focus</code>, <code>disabled</code></td></tr>
+    <tr><td>mode</td><td><code>on-inverse</code>: for components on an inverse surface</td></tr>
+  </tbody>
+</table>
+
+For example `bg-interactive-hover` (the brand fill, hovered), `bg-interactive-secondary-active`,
+`border-status-danger` and `ring-interactive-focus-on-inverse`. A label on an interactive fill is
+`text-on-interactive` (any solid fill) or `text-on-interactive-subtle` (the subtle one).
+
 ### Backgrounds
 
-<TokenTable path="semantic.bg" preview="color" />
+<TokenTable path="semantic.bg" concept="none" preview="color" />
 
 ### Text
 
-<TokenTable path="semantic.text" preview="color" />
+<TokenTable path="semantic.text" concept="none" preview="color" />
 
 ### Borders
 
-<TokenTable path="semantic.border" preview="color" />
+<TokenTable path="semantic.border" concept="none" preview="color" />
 
 ### Interactive
 
-Accent colours for selected and active states, focus rings and disabled controls.
+The brand, secondary and danger fills of buttons and selected controls, their labels, borders and focus
+rings, and the disabled state. Each has an `on-inverse` version for inverse surfaces.
 
-<TokenTable path="semantic.interactive" preview="color" />
+<TokenTable path="semantic.bg" concept="interactive" preview="color" />
+
+<TokenTable path="semantic.text" concept="interactive" preview="color" />
+
+<TokenTable path="semantic.border" concept="interactive" preview="color" />
+
+<TokenTable path="semantic.ring" preview="color" />
 
 ### Status
 
-`danger`, `warning`, `success` and `info` each have a base colour, a **strong** step for text and icons,
-a **subtle** step for backgrounds, and a **subtle-hover** step.
+`danger`, `warning`, `success` and `info` each have a base colour for text, icons and borders, a
+**strong** step for text and icons on the subtle fill, a **subtle** fill and its **subtle-hover** step.
 
-<TokenTable path="semantic.status" preview="color" />
+<TokenTable path="semantic.bg" concept="status" preview="color" />
+
+<TokenTable path="semantic.text" concept="status" preview="color" />
+
+<TokenTable path="semantic.border" concept="status" preview="color" />
 
 ## Palettes
 

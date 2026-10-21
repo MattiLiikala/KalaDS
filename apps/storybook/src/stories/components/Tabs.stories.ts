@@ -12,7 +12,7 @@ const meta: Meta = {
         component: `
 Switch between related panels. **\`kds-tab\`** and **\`kds-tab-panel\`** children are matched by \`value\`.
 The tab list is a single Tab stop; **←/→**, **Home** and **End** move between tabs and select them.
-The selected tab gets the accent text colour and a 2px accent indicator.
+The selected tab gets the brand text colour and a 2px brand-coloured indicator.
 `,
       },
     },

@@ -98,6 +98,7 @@ the button colour. See **Guidelines/Buttons and Surfaces** in Storybook.
 - `var(--kds-semantic-bg-*)` — background colors
 - `var(--kds-semantic-text-*)` — text colors
 - `var(--kds-semantic-border-*)` — border colors
+- `var(--kds-semantic-ring-*)` — focus rings
 - `var(--kds-semantic-radius-*)` — border radius
 - `var(--kds-semantic-padding-*)` — component internal padding
 
@@ -110,10 +111,15 @@ apps or docs.
 
 **5. Expose `part="..."` on interactive elements** for legitimate external CSS targeting.
 
-**6. Point every component colour token at a semantic token with the same meaning** (a fill at a fill, a
-label on a fill at that fill's `on-*` token, a border at a border), never at a core colour. The tokens
-build checks this (`packages/tokens/scripts/check-sources.mjs`): two tokens that share a value in one theme
-can differ in the other.
+**6. Point every component colour token at a semantic token for the same property** (a fill at a `bg-*`
+token, a label on an interactive fill at `text-on-interactive*`, a border at a `border-*` token, a focus
+ring at a `ring-*` token), never at a core colour. The tokens build checks this
+(`packages/tokens/scripts/check-sources.mjs`): two tokens that share a value in one theme can differ in the
+other.
+
+**7. Name semantic colours property-concept-variant-state-mode**: `bg-interactive-hover`,
+`bg-interactive-secondary-active`, `text-status-danger-strong`, `ring-interactive-focus-on-inverse`. The
+brand colour has no variant name; see Foundations/Colors in Storybook.
 
 ---
 
@@ -218,4 +224,6 @@ switches Storybook's own interface and the docs frame (`ThemedDocsContainer`).
   `.storybook/kalads-theme.ts` reads `@kalads/tokens/js`.
 - In MDX, keep a component's text on the same line as its tags (`<kds-notification>Text</kds-notification>`):
   text on lines of its own becomes a `<p>`, and the docs' paragraph margins add space inside the component.
+- MDX here has no GitHub-flavoured Markdown: a `| … |` table renders as plain text. Write tables as
+  `<table className="kds-docs-table">` (see `Icons.mdx`).
 - In stories, build layouts with `kds-stack`, `kds-box`, `kds-grid` and `kds-typography`, not styled `<div>`s.

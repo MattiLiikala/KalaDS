@@ -18,7 +18,7 @@
         "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "danger": {
-        "text":         { "$type": "color",     "$value": "{semantic.status.danger-strong}" },
+        "text":         { "$type": "color",     "$value": "{semantic.text.status-danger-strong}" },
         "border":       { "$type": "color",     "$value": "{component.badge.danger.text}" },
         "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
         "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
@@ -26,7 +26,7 @@
         "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "warning": {
-        "text":         { "$type": "color",     "$value": "{semantic.status.warning-strong}" },
+        "text":         { "$type": "color",     "$value": "{semantic.text.status-warning-strong}" },
         "border":       { "$type": "color",     "$value": "{component.badge.warning.text}" },
         "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
         "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
@@ -34,7 +34,7 @@
         "padding-y":    { "$type": "dimension", "$value": "{semantic.padding.xs}" }
       },
       "success": {
-        "text":         { "$type": "color",     "$value": "{semantic.status.success-strong}" },
+        "text":         { "$type": "color",     "$value": "{semantic.text.status-success-strong}" },
         "border":       { "$type": "color",     "$value": "{component.badge.success.text}" },
         "border-width": { "$type": "dimension", "$value": "{semantic.border-width.default}" },
         "radius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },

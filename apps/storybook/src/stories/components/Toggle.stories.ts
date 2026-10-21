@@ -10,7 +10,7 @@ const meta: Meta = {
       description: {
         component: `
 On/off switch for settings that take effect immediately (role="switch"). Off is an outlined track in the
-control colour; on fills the track with the accent colour. Use a checkbox when the choice only applies
+control colour; on fills the track with the brand colour. Use a checkbox when the choice only applies
 after a form is submitted.
 `,
       },

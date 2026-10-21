@@ -151,7 +151,7 @@ pnpm test             # Token contrast (both themes), React, React Native, the a
 ### How it fits together
 
 - **Tokens come in three layers.** Core holds the raw values (palettes, sizes). Semantic names say what
-  a value is for (`bg.subtle`, `interactive.accent`). Component tokens (`button.primary.bg-hover`) point
+  a value is for (`bg.subtle`, `bg.interactive-hover`). Component tokens (`button.primary.bg-hover`) point
   at semantic tokens only.
 - **Themes swap only the semantic colours.** The dark theme points the same semantic names at other core
   colours. The build checks that each component token points at a semantic token with the matching

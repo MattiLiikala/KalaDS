@@ -8,9 +8,9 @@
       "text-disabled":   { "$type": "color",     "$value": "{semantic.text.muted}" },
       "border":          { "$type": "color",     "$value": "{semantic.border.control}" },
       "border-hover":    { "$type": "color",     "$value": "{semantic.border.control-hover}" },
-      "border-focus":    { "$type": "color",     "$value": "{semantic.interactive.accent}" },
-      "border-error":    { "$type": "color",     "$value": "{semantic.status.danger}" },
-      "border-error-focus": { "$type": "color",  "$value": "{semantic.status.danger}" },
+      "border-focus":    { "$type": "color",     "$value": "{semantic.border.interactive}" },
+      "border-error":    { "$type": "color",     "$value": "{semantic.border.status-danger}" },
+      "border-error-focus": { "$type": "color",  "$value": "{semantic.border.status-danger}" },
       "border-disabled": { "$type": "color",     "$value": "{semantic.border.disabled}" },
       "border-width":    { "$type": "dimension", "$value": "{semantic.border-width.default}" },
       "border-width-focus": { "$type": "dimension", "$value": "{semantic.border-width.focus}" },
@@ -19,7 +19,7 @@
       "padding-y":       { "$type": "dimension", "$value": "{semantic.padding.sm}" },
       "label-text":      { "$type": "color",     "$value": "{semantic.text.default}" },
       "helper-text":     { "$type": "color",     "$value": "{semantic.text.subtle}" },
-      "error-text":      { "$type": "color",     "$value": "{semantic.status.danger-text}" }
+      "error-text":      { "$type": "color",     "$value": "{semantic.text.status-danger}" }
     }
   }
 }

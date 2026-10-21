@@ -9,7 +9,7 @@ Layer 1 → Core (primitive, raw values, no references)
   src/core/size.json         — size scale (size.0 through size.900); every step has .rem and .px values
 
 Layer 2 → Semantic (references Core only)
-  src/semantic/color.json    — bg/text/border/status/interactive semantic aliases (light theme)
+  src/semantic/color.json    — bg/text/border/ring semantic colours (light theme)
   src/semantic/dark/color.json — the dark theme: every semantic colour (incl. shadow colours), same names,
                                other core references. Nothing else differs between themes.
   src/semantic/typography.json
@@ -50,10 +50,16 @@ Light is `:root`; dark applies inside `[data-kds-theme="dark"]` (and `"auto"` wi
 Themes switch at the semantic layer only, so:
 
 - Component colour tokens MUST reference semantic tokens, never core (`{color.*}`) or literal colours
-  (`transparent` is fine), and the semantic token must mean the same thing: a fill → `bg.*` /
-  `interactive.<fill>` / `status.*`, a label on a fill → that fill's `interactive.on-*`, a border →
-  `border.*`. Name new semantic tokens by their job (`interactive.accent-hover`, `text.link`), not by
-  what they happen to equal today.
+  (`transparent` is fine), and the semantic token must be for the same property: a fill → `bg.*`, a
+  label or icon → `text.*` (on an interactive fill: `text.on-interactive*`), a border → `border.*`, a
+  focus ring → `ring.*`.
+- Semantic colour names are **property-concept-variant-state-mode**: `bg-interactive-secondary-hover`,
+  `border-status-danger`, `ring-interactive-focus-on-inverse` (property `bg` / `text` / `border` / `ring`;
+  concept `interactive` / `status` / none; no variant for the brand colour). Name new tokens by their job,
+  not by what they happen to equal today. Where one colour serves two properties, add a token per
+  property (`bg.interactive` and `border.interactive`).
+- Semantic colour keys sit flat in their property group (`"bg": { "interactive-hover": … }`), giving
+  `--kds-semantic-bg-interactive-hover`.
 - `scripts/check-sources.mjs` runs before every build and fails it when a dark colour is missing or
   extra, a component colour references core, or a reference has the wrong role.
 - `test/contrast.test.mjs` (`pnpm test`) checks the text, fill, border and focus pairs in both themes.

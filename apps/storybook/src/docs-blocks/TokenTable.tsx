@@ -36,7 +36,15 @@ interface Props {
   pairUnits?: boolean;
   /** Only rows whose last path segment is in this list. */
   only?: string[];
+  /**
+   * Semantic colours: only the tokens of one concept (`interactive` also takes the `on-interactive`
+   * labels), or `none` for the plain ones (`bg.subtle`, `text.link`).
+   */
+  concept?: 'interactive' | 'status' | 'none';
 }
+
+const CONCEPTS = ['interactive', 'status'];
+const conceptOf = (name: string) => CONCEPTS.find((c) => name.startsWith(c) || name.startsWith(`on-${c}`)) ?? 'none';
 
 /**
  * A value, with the palette step it comes from when it's a palette colour ("neutral.900", "#20160e"),
@@ -63,8 +71,11 @@ function Value({ value, swatch }: { value: string; swatch?: boolean }) {
  * Groups whose values change with the theme (semantic colours) show the path and variable in one column,
  * then the light and the dark value, each with its palette step and a swatch.
  */
-export function TokenTable({ path, preview = 'none', pairUnits = false, only }: Props) {
-  const rows = getTokens(path, { pairUnits }).filter((r) => !only || only.includes(r.path.split('.').pop()!));
+export function TokenTable({ path, preview = 'none', pairUnits = false, only, concept }: Props) {
+  const rows = getTokens(path, { pairUnits }).filter((r) => {
+    const name = r.path.split('.').pop()!;
+    return (!only || only.includes(name)) && (!concept || conceptOf(name) === concept);
+  });
   const themed = rows.some((r) => r.dark !== undefined);
   if (themed) {
     return (

@@ -11,32 +11,32 @@
       "offset-2":     { "$type": "dimension",  "$value": "{semantic.shadow.crisp-offset.2}" },
       "offset-3":     { "$type": "dimension",  "$value": "{semantic.shadow.crisp-offset.3}" },
       "info": {
-        "bg":             { "$type": "color",      "$value": "{semantic.status.info-subtle}" },
-        "accent":         { "$type": "color",      "$value": "{semantic.status.info-strong}" },
+        "bg":             { "$type": "color",      "$value": "{semantic.bg.status-info-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.border.status-info-strong}" },
         "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-info}" },
-        "close":          { "$type": "color",      "$value": "{semantic.status.info-strong}" },
-        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.info-subtle-hover}" }
+        "close":          { "$type": "color",      "$value": "{semantic.text.status-info-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.bg.status-info-subtle-hover}" }
       },
       "success": {
-        "bg":             { "$type": "color",      "$value": "{semantic.status.success-subtle}" },
-        "accent":         { "$type": "color",      "$value": "{semantic.status.success-strong}" },
+        "bg":             { "$type": "color",      "$value": "{semantic.bg.status-success-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.border.status-success-strong}" },
         "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-success}" },
-        "close":          { "$type": "color",      "$value": "{semantic.status.success-strong}" },
-        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.success-subtle-hover}" }
+        "close":          { "$type": "color",      "$value": "{semantic.text.status-success-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.bg.status-success-subtle-hover}" }
       },
       "warning": {
-        "bg":             { "$type": "color",      "$value": "{semantic.status.warning-subtle}" },
-        "accent":         { "$type": "color",      "$value": "{semantic.status.warning-strong}" },
+        "bg":             { "$type": "color",      "$value": "{semantic.bg.status-warning-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.border.status-warning-strong}" },
         "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-warning}" },
-        "close":          { "$type": "color",      "$value": "{semantic.status.warning-strong}" },
-        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.warning-subtle-hover}" }
+        "close":          { "$type": "color",      "$value": "{semantic.text.status-warning-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.bg.status-warning-subtle-hover}" }
       },
       "danger": {
-        "bg":             { "$type": "color",      "$value": "{semantic.status.danger-subtle}" },
-        "accent":         { "$type": "color",      "$value": "{semantic.status.danger-strong}" },
+        "bg":             { "$type": "color",      "$value": "{semantic.bg.status-danger-subtle}" },
+        "accent":         { "$type": "color",      "$value": "{semantic.border.status-danger-strong}" },
         "shadow-color":   { "$type": "color",      "$value": "{semantic.shadow.crisp-color-danger}" },
-        "close":          { "$type": "color",      "$value": "{semantic.status.danger-strong}" },
-        "close-bg-hover": { "$type": "color",      "$value": "{semantic.status.danger-subtle-hover}" }
+        "close":          { "$type": "color",      "$value": "{semantic.text.status-danger-strong}" },
+        "close-bg-hover": { "$type": "color",      "$value": "{semantic.bg.status-danger-subtle-hover}" }
       }
     }
   }

@@ -55,7 +55,7 @@ export function Select({ label, value, defaultValue = '', placeholder, helper, e
         onBlur={focus.onBlur}
         style={[
           fieldBox(f, { focused: open || focus.focused, hovered, invalid: Boolean(error), disabled: Boolean(disabled) }),
-          focus.focusVisible ? ring(s.interactive.focus, s.borderWidth.ring, s.borderWidth.ringOffset) : null,
+          focus.focusVisible ? ring(s.ring.interactiveFocus, s.borderWidth.ring, s.borderWidth.ringOffset) : null,
         ]}
       >
         <Text style={[fieldText, { flex: 1, color: disabled ? f.textDisabled : selected ? f.text : f.textPlaceholder }]} numberOfLines={1}>

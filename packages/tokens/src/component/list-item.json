@@ -5,14 +5,14 @@
       "secondary-text": { "$type": "color",      "$value": "{semantic.text.subtle}" },
       "bg-hover":       { "$type": "color",      "$value": "{semantic.bg.subtle}" },
       "bg-active":      { "$type": "color",      "$value": "{semantic.bg.muted}" },
-      "bg-selected":    { "$type": "color",      "$value": "{semantic.interactive.accent-subtle}" },
-      "text-selected":  { "$type": "color",      "$value": "{semantic.interactive.on-accent-subtle}" },
+      "bg-selected":    { "$type": "color",      "$value": "{semantic.bg.interactive-subtle}" },
+      "text-selected":  { "$type": "color",      "$value": "{semantic.text.on-interactive-subtle}" },
       "text-disabled":  { "$type": "color",      "$value": "{semantic.text.muted}" },
       "radius":         { "$type": "dimension",  "$value": "{semantic.radius.md}" },
       "padding-x":      { "$type": "dimension",  "$value": "{semantic.padding.md}" },
       "padding-y":      { "$type": "dimension",  "$value": "{semantic.padding.sm}" },
       "gap":            { "$type": "dimension",  "$value": "{semantic.spacing.md}" },
-      "ring-focus":     { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-focus":     { "$type": "color",      "$value": "{semantic.ring.interactive-focus}" },
       "ring-width":     { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
       "ring-offset":    { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
     }

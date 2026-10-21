@@ -10,7 +10,7 @@
       "padding-x":    { "$type": "dimension",  "$value": "{semantic.padding.md}" },
       "padding-y":    { "$type": "dimension",  "$value": "{semantic.padding.md}" },
       "radius":       { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
-      "ring-focus":   { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-focus":   { "$type": "color",      "$value": "{semantic.ring.interactive-focus}" },
       "ring-width":   { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
       "ring-offset":  { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
     }

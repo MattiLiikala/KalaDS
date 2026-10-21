@@ -43,7 +43,7 @@
       },
       "ring-focus": {
         "$type": "color",
-        "$value": "{semantic.interactive.focus}"
+        "$value": "{semantic.ring.interactive-focus}"
       },
       "ring-width": {
         "$type": "dimension",
@@ -64,287 +64,287 @@
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle}"
+          "$value": "{semantic.bg.interactive-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent}"
+          "$value": "{semantic.border.interactive}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-accent-subtle}"
+          "$value": "{semantic.text.on-interactive-subtle}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle-hover}"
+          "$value": "{semantic.bg.interactive-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle}"
+          "$value": "{semantic.bg.interactive-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent}"
+          "$value": "{semantic.border.interactive}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-accent-subtle}"
+          "$value": "{semantic.text.on-interactive-subtle}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle-hover}"
+          "$value": "{semantic.bg.interactive-subtle-hover}"
         }
       },
       "primary": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent}"
+          "$value": "{semantic.border.interactive}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-accent-subtle}"
+          "$value": "{semantic.text.on-interactive-subtle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle}"
+          "$value": "{semantic.bg.interactive-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent}"
+          "$value": "{semantic.border.interactive}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-accent-subtle}"
+          "$value": "{semantic.text.on-interactive-subtle}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle-hover}"
+          "$value": "{semantic.bg.interactive-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle}"
+          "$value": "{semantic.bg.interactive-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent}"
+          "$value": "{semantic.border.interactive}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-accent-subtle}"
+          "$value": "{semantic.text.on-interactive-subtle}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.accent-subtle-hover}"
+          "$value": "{semantic.bg.interactive-subtle-hover}"
         }
       },
       "secondary": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary}"
+          "$value": "{semantic.border.interactive-secondary}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-secondary-subtle}"
+          "$value": "{semantic.text.on-interactive-secondary-subtle}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary-subtle}"
+          "$value": "{semantic.bg.interactive-secondary-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary}"
+          "$value": "{semantic.border.interactive-secondary}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-secondary-subtle}"
+          "$value": "{semantic.text.on-interactive-secondary-subtle}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary-subtle-hover}"
+          "$value": "{semantic.bg.interactive-secondary-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary-subtle}"
+          "$value": "{semantic.bg.interactive-secondary-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary}"
+          "$value": "{semantic.border.interactive-secondary}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.interactive.on-secondary-subtle}"
+          "$value": "{semantic.text.on-interactive-secondary-subtle}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.interactive.secondary-subtle-hover}"
+          "$value": "{semantic.bg.interactive-secondary-subtle-hover}"
         }
       },
       "danger": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.status.danger}"
+          "$value": "{semantic.border.status-danger}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.status.danger-strong}"
+          "$value": "{semantic.text.status-danger-strong}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.status.danger-subtle}"
+          "$value": "{semantic.bg.status-danger-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.status.danger}"
+          "$value": "{semantic.border.status-danger}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.status.danger-strong}"
+          "$value": "{semantic.text.status-danger-strong}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.status.danger-subtle-hover}"
+          "$value": "{semantic.bg.status-danger-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.status.danger-subtle}"
+          "$value": "{semantic.bg.status-danger-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.status.danger}"
+          "$value": "{semantic.border.status-danger}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.status.danger-strong}"
+          "$value": "{semantic.text.status-danger-strong}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.status.danger-subtle-hover}"
+          "$value": "{semantic.bg.status-danger-subtle-hover}"
         }
       },
       "warning": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.status.warning}"
+          "$value": "{semantic.border.status-warning}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.status.warning-strong}"
+          "$value": "{semantic.text.status-warning-strong}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.status.warning-subtle}"
+          "$value": "{semantic.bg.status-warning-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.status.warning}"
+          "$value": "{semantic.border.status-warning}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.status.warning-strong}"
+          "$value": "{semantic.text.status-warning-strong}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.status.warning-subtle-hover}"
+          "$value": "{semantic.bg.status-warning-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.status.warning-subtle}"
+          "$value": "{semantic.bg.status-warning-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.status.warning}"
+          "$value": "{semantic.border.status-warning}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.status.warning-strong}"
+          "$value": "{semantic.text.status-warning-strong}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.status.warning-subtle-hover}"
+          "$value": "{semantic.bg.status-warning-subtle-hover}"
         }
       },
       "success": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.status.success}"
+          "$value": "{semantic.border.status-success}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.status.success-strong}"
+          "$value": "{semantic.text.status-success-strong}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.status.success-subtle}"
+          "$value": "{semantic.bg.status-success-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.status.success}"
+          "$value": "{semantic.border.status-success}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.status.success-strong}"
+          "$value": "{semantic.text.status-success-strong}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.status.success-subtle-hover}"
+          "$value": "{semantic.bg.status-success-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.status.success-subtle}"
+          "$value": "{semantic.bg.status-success-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.status.success}"
+          "$value": "{semantic.border.status-success}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.status.success-strong}"
+          "$value": "{semantic.text.status-success-strong}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.status.success-subtle-hover}"
+          "$value": "{semantic.bg.status-success-subtle-hover}"
         }
       },
       "info": {
         "border": {
           "$type": "color",
-          "$value": "{semantic.status.info}"
+          "$value": "{semantic.border.status-info}"
         },
         "text": {
           "$type": "color",
-          "$value": "{semantic.status.info-strong}"
+          "$value": "{semantic.text.status-info-strong}"
         },
         "bg-hover": {
           "$type": "color",
-          "$value": "{semantic.status.info-subtle}"
+          "$value": "{semantic.bg.status-info-subtle}"
         },
         "border-hover": {
           "$type": "color",
-          "$value": "{semantic.status.info}"
+          "$value": "{semantic.border.status-info}"
         },
         "text-hover": {
           "$type": "color",
-          "$value": "{semantic.status.info-strong}"
+          "$value": "{semantic.text.status-info-strong}"
         },
         "bg-active": {
           "$type": "color",
-          "$value": "{semantic.status.info-subtle-hover}"
+          "$value": "{semantic.bg.status-info-subtle-hover}"
         },
         "bg-selected": {
           "$type": "color",
-          "$value": "{semantic.status.info-subtle}"
+          "$value": "{semantic.bg.status-info-subtle}"
         },
         "border-selected": {
           "$type": "color",
-          "$value": "{semantic.status.info}"
+          "$value": "{semantic.border.status-info}"
         },
         "text-selected": {
           "$type": "color",
-          "$value": "{semantic.status.info-strong}"
+          "$value": "{semantic.text.status-info-strong}"
         },
         "bg-selected-hover": {
           "$type": "color",
-          "$value": "{semantic.status.info-subtle-hover}"
+          "$value": "{semantic.bg.status-info-subtle-hover}"
         }
       }
     }

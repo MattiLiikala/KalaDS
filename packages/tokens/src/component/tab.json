@@ -3,15 +3,15 @@
     "tab": {
       "text":            { "$type": "color",      "$value": "{semantic.text.subtle}" },
       "text-hover":      { "$type": "color",      "$value": "{semantic.text.default}" },
-      "text-selected":   { "$type": "color",      "$value": "{semantic.interactive.accent-text}" },
+      "text-selected":   { "$type": "color",      "$value": "{semantic.text.interactive}" },
       "text-disabled":   { "$type": "color",      "$value": "{semantic.text.muted}" },
       "bg-hover":        { "$type": "color",      "$value": "{semantic.bg.subtle}" },
-      "indicator":       { "$type": "color",      "$value": "{semantic.interactive.accent}" },
+      "indicator":       { "$type": "color",      "$value": "{semantic.bg.interactive}" },
       "indicator-width": { "$type": "dimension",  "$value": "{semantic.border-width.strong}" },
       "padding-x":       { "$type": "dimension",  "$value": "{semantic.padding.lg}" },
       "padding-y":       { "$type": "dimension",  "$value": "{semantic.padding.sm}" },
       "radius":          { "$type": "dimension",  "$value": "{semantic.radius.sm}" },
-      "ring-focus":      { "$type": "color",      "$value": "{semantic.interactive.focus}" },
+      "ring-focus":      { "$type": "color",      "$value": "{semantic.ring.interactive-focus}" },
       "ring-width":      { "$type": "dimension",  "$value": "{semantic.border-width.ring}" },
       "ring-offset":     { "$type": "dimension",  "$value": "{semantic.border-width.ring-offset}" }
     }

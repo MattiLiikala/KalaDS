@@ -31,11 +31,14 @@ function pairs() {
   // Text on the page surfaces.
   for (const bg of surfaces) {
     for (const t of ['default', 'subtle', 'muted', 'brand', 'brand-strong', 'link', 'link-hover', 'link-active']) add(`semantic.text.${t}`, bg, TEXT);
-    for (const s of ['danger', 'warning', 'success', 'info']) add(`semantic.status.${s}`, bg, TEXT);
-    for (const s of ['danger-strong', 'warning-strong', 'success-strong', 'info-strong', 'danger-text']) add(`semantic.status.${s}`, bg, TEXT);
-    add('semantic.interactive.accent-text', bg, TEXT);
+    for (const s of ['danger', 'warning', 'success', 'info']) {
+      add(`semantic.text.status-${s}`, bg, TEXT);
+      add(`semantic.text.status-${s}-strong`, bg, TEXT);
+      add(`semantic.border.status-${s}`, bg, UI);
+    }
+    add('semantic.text.interactive', bg, TEXT);
     // Controls and focus.
-    for (const b of ['border.control', 'border.control-hover', 'interactive.control', 'interactive.control-hover', 'interactive.focus', 'interactive.accent']) add(`semantic.${b}`, bg, UI);
+    for (const b of ['border.control', 'border.control-hover', 'bg.interactive-control', 'bg.interactive-control-hover', 'ring.interactive-focus', 'bg.interactive', 'border.interactive']) add(`semantic.${b}`, bg, UI);
   }
   add('semantic.text.default', 'semantic.bg.muted', TEXT);
   add('semantic.text.subtle', 'semantic.bg.muted', TEXT);
@@ -58,15 +61,15 @@ function pairs() {
 
   // Status: labels on the subtle status fills (notifications, chips).
   for (const s of ['danger', 'warning', 'success', 'info']) {
-    for (const fill of [`semantic.status.${s}-subtle`, `semantic.status.${s}-subtle-hover`]) {
-      add(`semantic.status.${s}-strong`, fill, TEXT);
+    for (const fill of [`semantic.bg.status-${s}-subtle`, `semantic.bg.status-${s}-subtle-hover`]) {
+      add(`semantic.text.status-${s}-strong`, fill, TEXT);
       add('semantic.text.default', fill, TEXT);
     }
   }
   // Labels on the subtle accent fills (selected chips, list items, options).
   for (const [label, fills] of [
-    ['interactive.on-accent-subtle', ['interactive.accent-subtle', 'interactive.accent-subtle-hover']],
-    ['interactive.on-secondary-subtle', ['interactive.secondary-subtle', 'interactive.secondary-subtle-hover']],
+    ['text.on-interactive-subtle', ['bg.interactive-subtle', 'bg.interactive-subtle-hover']],
+    ['text.on-interactive-secondary-subtle', ['bg.interactive-secondary-subtle', 'bg.interactive-secondary-subtle-hover']],
   ]) {
     for (const fill of fills) add(`semantic.${label}`, `semantic.${fill}`, TEXT);
   }
@@ -81,7 +84,7 @@ function pairs() {
  * Light-theme pairs that were already just below 4.5:1 before the dark theme (4.41 and 4.39). Listed so
  * they stay visible; remove an entry once its colours are retuned.
  */
-const KNOWN = new Set(['light semantic.text.muted semantic.bg.subtle', 'light semantic.status.warning semantic.bg.subtle']);
+const KNOWN = new Set(['light semantic.text.muted semantic.bg.subtle', 'light semantic.text.status-warning semantic.bg.subtle']);
 
 const get = (tree, path) => path.split('.').reduce((node, key) => node?.[key], tree);
 

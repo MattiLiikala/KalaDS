@@ -197,7 +197,7 @@
 .kds-docs-preview--size {
   min-width: var(--kds-size-25-px);
   max-width: 100%;
-  background-color: var(--kds-semantic-interactive-accent);
+  background-color: var(--kds-semantic-bg-interactive);
   border-radius: var(--kds-semantic-radius-sm);
 }
 
@@ -293,7 +293,7 @@
 }
 
 .kds-docs-example {
-  --_accent: var(--kds-semantic-status-success-strong);
+  --_accent: var(--kds-semantic-border-status-success-strong);
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -305,7 +305,7 @@
 }
 
 .kds-docs-example--dont {
-  --_accent: var(--kds-semantic-status-danger-strong);
+  --_accent: var(--kds-semantic-border-status-danger-strong);
 }
 
 /* Examples span the canvas width, so full-width components (fields, lists, skeletons) show at their real size. */
@@ -365,13 +365,13 @@
  * Storybook removes their outline without a replacement; this restores the KalaDS focus ring.
  */
 .sbdocs-wrapper :is(button, input, select, textarea, a, [tabindex]):focus-visible {
-  outline: var(--kds-semantic-border-width-ring) solid var(--kds-semantic-interactive-focus);
+  outline: var(--kds-semantic-border-width-ring) solid var(--kds-semantic-ring-interactive-focus);
   outline-offset: var(--kds-semantic-border-width-ring-offset);
 }
 
 /* Native radios and checkboxes in the controls column */
 .sbdocs-wrapper .docblock-argstable input {
-  accent-color: var(--kds-semantic-interactive-accent);
+  accent-color: var(--kds-semantic-bg-interactive);
 }
 
 /* Icon gallery (Foundations/Icons) */

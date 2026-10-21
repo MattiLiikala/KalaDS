@@ -26,8 +26,8 @@ function kaladsTheme(t: ThemeTokens, base: 'light' | 'dark') {
     brandUrl: './',
     brandTarget: '_self',
 
-    colorPrimary: t.SemanticInteractiveAccent,
-    colorSecondary: t.SemanticInteractiveAccent,
+    colorPrimary: t.SemanticBgInteractive,
+    colorSecondary: t.SemanticBgInteractive,
 
     appBg: t.SemanticBgSubtle,
     appContentBg: t.SemanticBgDefault,
@@ -44,8 +44,8 @@ function kaladsTheme(t: ThemeTokens, base: 'light' | 'dark') {
 
     barBg: t.SemanticBgDefault,
     barTextColor: t.SemanticTextSubtle,
-    barSelectedColor: t.SemanticInteractiveAccent,
-    barHoverColor: t.SemanticInteractiveAccent,
+    barSelectedColor: t.SemanticTextBrand,
+    barHoverColor: t.SemanticTextBrand,
 
     buttonBg: t.SemanticBgSubtle,
     buttonBorder: t.SemanticBorderControl,

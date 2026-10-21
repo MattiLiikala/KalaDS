@@ -5,9 +5,10 @@
  *    light set: a theme only changes which core colour a semantic token points to, never its name.
  * 2. A component colour token references a core colour: themes switch at the semantic layer, so a core
  *    reference would stay the same in every theme.
- * 3. A component colour token references a semantic token with a different meaning (a fill pointing to a
- *    border or text token, a label on a fill not using that fill's `on-*` token). Values that happen to
- *    match in one theme drift apart in the other.
+ * 3. A component colour token references a semantic token for a different property. Semantic colour
+ *    names start with the property they're for (`bg-*`, `text-*`, `border-*`, `ring-*`): a fill uses a
+ *    `bg` token, a border a `border` token, and a label on an interactive fill uses a `text-on-interactive*`
+ *    token. Values that happen to match in one theme drift apart in the other.
  */
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -29,20 +30,22 @@ function role(path) {
   const name = path.at(-1);
   if (/ring/.test(name)) return 'ring';
   if (/shadow/.test(name)) return 'shadow';
-  if (/border/.test(name) || (path.at(-2) === 'divider' && name === 'color')) return 'border';
+  // A notification's accent is its border and icon colour.
+  if (/border/.test(name) || name === 'accent' || (path.at(-2) === 'divider' && name === 'color')) return 'border';
   if (/^(thumb|dot|check)/.test(name)) return 'mark';
   if (/(^|-)text($|-)|^color|label|^close$|separator|placeholder|^icon/.test(name)) return 'text';
   return 'fill';
 }
 
-/** Semantic tokens each role may reference: [group, name] → allowed. */
+/** Semantic tokens each role may reference: [group (the property), name] → allowed. */
 const ALLOWED = {
-  fill: (g, n) => g === 'bg' || g === 'status' || (g === 'interactive' && !/^on-|text/.test(n)),
-  text: (g, n) => g === 'text' || g === 'status' || (g === 'interactive' && /^on-|text/.test(n)),
-  border: (g, n) => g === 'border' || g === 'status' || (g === 'interactive' && !/^on-|text/.test(n)),
-  // Marks (a toggle's thumb, a radio's dot, a checkbox's check) sit on the control's fill.
-  mark: (g) => g === 'bg' || g === 'interactive',
-  ring: (g, n) => g === 'interactive' && /focus/.test(n),
+  fill: (g) => g === 'bg',
+  text: (g) => g === 'text',
+  border: (g) => g === 'border',
+  // Marks (a toggle's thumb, a radio's dot, a checkbox's check) sit on the control's fill: a fill colour,
+  // or the label colour of that fill.
+  mark: (g, n) => g === 'bg' || (g === 'text' && /^on-/.test(n)),
+  ring: (g) => g === 'ring',
   shadow: (g) => g === 'shadow',
 };
 
@@ -85,12 +88,12 @@ export function checkSources(root = new URL('..', import.meta.url).pathname) {
       const [, group, ...rest] = ref;
       const r = role(path);
       if (!ALLOWED[r](group, rest.join('-'))) errors.push(`${file}: ${name}: a ${r} token can't use semantic.${group}.${rest.join('.')}`);
-      // A label on an interactive fill uses that fill's on-* token.
+      // A label on an interactive fill uses a text-on-interactive* token.
       const label = labelFor(path.at(-1));
       const labelToken = label && byPath.get(key([...path.slice(0, -1), label]));
-      if (group === 'interactive' && labelToken) {
-        const labelRef = String(labelToken.$value).match(/^\{semantic\.interactive\.(on-[^}]+)\}$/);
-        if (!labelRef) errors.push(`${file}: ${key([...path.slice(0, -1), label])} → ${labelToken.$value}: the label on ${value} needs an interactive.on-* token`);
+      if (group === 'bg' && rest[0].startsWith('interactive') && labelToken) {
+        const labelRef = String(labelToken.$value).match(/^\{semantic\.text\.(on-interactive[^}]*)\}$/);
+        if (!labelRef) errors.push(`${file}: ${key([...path.slice(0, -1), label])} → ${labelToken.$value}: the label on ${value} needs a text.on-interactive* token`);
       }
     }
   }
