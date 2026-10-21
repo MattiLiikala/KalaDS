@@ -1,6 +1,6 @@
 {
   "name": "@kalads/icons",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "KalaDS icons: <kds-icon-*> web components, and icon components for React and React Native.",
   "keywords": [

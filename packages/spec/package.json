@@ -1,6 +1,6 @@
 {
   "name": "@kalads/spec",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "The shared component API (prop types, variants, defaults) of the KalaDS web, React and React Native libraries.",
   "keywords": [

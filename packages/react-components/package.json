@@ -1,6 +1,6 @@
 {
   "name": "@kalads/react-components",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "description": "KalaDS components for React, styled with the KalaDS design tokens.",
   "keywords": [
